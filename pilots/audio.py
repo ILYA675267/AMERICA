@@ -159,10 +159,40 @@ def v3(buf):
         tone(buf, 8.4, 1.5, note(m), 0.05, "pluck", decay=1.0)
 
 
+def low_battery(buf, t0, vol=0.18):
+    """Percy's signature sound: two descending soft beeps."""
+    tone(buf, t0, 0.14, note(81), vol, "square", decay=0.1)
+    tone(buf, t0 + 0.18, 0.2, note(76), vol, "square", decay=0.14)
+
+
+def v4(buf):
+    # morning: bright plucks + stretch "ding"
+    chords(buf, [[60, 64, 67, 72], [65, 69, 72]], 96, 0.2, 2.3, vol=0.05)
+    tone(buf, 0.9, 1.0, note(84), 0.07, "pluck", decay=0.6)
+    # doom-scroll: fast loop, swipe whooshes, drain "glugs" descending
+    drums(buf, 128, 2.4, 5.2, 0.18)
+    chords(buf, [[62, 65, 69], [60, 64, 67]], 128, 2.4, 5.2, vol=0.04, rhythm=(0, 1, 2, 3))
+    for i in range(8):
+        whoosh(buf, 2.5 + i * 0.32, 0.18, 0.18)
+        tone(buf, 2.62 + i * 0.32, 0.12, note(79 - i * 2), 0.08, "sine", decay=0.07, glide=note(74 - i * 2))
+    # 3%: signature beeps
+    for k in range(3):
+        low_battery(buf, 5.3 + k * 0.5)
+    # shutdown: falling power-down tone + thud
+    tone(buf, 6.9, 0.8, 600, 0.2, "saw", glide=60, decay=0.4)
+    noise(buf, 7.45, 0.3, 0.5, decay=0.07, lowpass=0.15)
+    tone(buf, 7.45, 0.3, 80, 0.4, glide=40, decay=0.12)
+    # title
+    pop(buf, 8.1)
+    pop(buf, 8.4)
+    low_battery(buf, 8.8, 0.15)
+    chords(buf, [[57, 60, 64], [53, 57, 60]], 96, 8.0, 9.8, vol=0.05)
+
+
 def main():
     name, out = sys.argv[1], sys.argv[2]
     buf = np.zeros(N)
-    {"v1_5am": v1, "v2_office": v2, "v3_365": v3}[name](buf)
+    {"v1_5am": v1, "v2_office": v2, "v3_365": v3, "v4_percy": v4}[name](buf)
     fade = int(0.3 * SR)
     buf[-fade:] *= np.linspace(1, 0, fade)
     buf = np.tanh(buf * 1.2) / np.tanh(1.2) * 0.8  # soft limiter
