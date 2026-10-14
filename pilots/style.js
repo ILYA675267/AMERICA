@@ -1,102 +1,85 @@
-// Our own house style: deep-teal world, teal ink outlines, hard offset "riso" shadows, film grain,
-// cream / coral / mustard palette. Main character: Percy, whose head is a battery filled with liquid charge.
+// House style v2: dark world (like the niche), simple cream character, light film grain.
+// Our signature: Percy's battery head with liquid charge; brand accent = battery green, warnings = red.
 const P = {
-  bg: '#17414A', bg2: '#1F5560', ink: '#0B2227', cream: '#FFF4E0', coral: '#FF7A59',
-  mustard: '#FFC845', green: '#57D68D', red: '#FF4D4D', dead: '#6B7F84',
+  bg: '#101013', bg2: '#17171b', ink: '#0a0a0a', cream: '#F1EDE4', coral: '#E8483F',
+  mustard: '#F2B544', green: '#4CC57F', red: '#E8483F', dead: '#55555c', dim: '#8a8a92',
 };
 const chargeColor = l => (l > 0.5 ? P.green : l > 0.2 ? P.mustard : P.red);
 
-// SVG defs shared by every frame: hard shadow + animated grain.
 function styleDefs(t) {
   const seed = Math.floor(t * 12) % 50;
   return `<defs>
-    <filter id="hard" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="9" dy="9" stdDeviation="0" flood-color="${P.ink}" flood-opacity="0.55"/></filter>
+    <filter id="hard" x="-20%" y="-20%" width="150%" height="150%"><feDropShadow dx="0" dy="0" stdDeviation="0" flood-opacity="0"/></filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
     <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="${seed}"/><feColorMatrix type="saturate" values="0"/></filter>
   </defs>`;
 }
-const grain = (op = 0.07) => `<rect width="${W}" height="${H}" filter="url(#grain)" opacity="${op}"/>`;
+const grain = (op = 0.05) => `<rect width="${W}" height="${H}" filter="url(#grain)" opacity="${op}"/>`;
 
 function sframe(inner, t, bg = P.bg) {
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${styleDefs(t)}
     <rect width="${W}" height="${H}" fill="${bg}"/>${inner}${grain()}</svg>`;
 }
 
-// Title text with a coral hard shadow.
-function stitle(x, y, s, size, fill = P.cream, sh = P.coral, o = {}) {
-  return txt(x + size * 0.06, y + size * 0.06, s, size, sh, o) + txt(x, y, s, size, fill, o);
+// Title: plain cream, heavy weight (shadow only when asked).
+function stitle(x, y, s, size, fill = P.cream, sh = null, o = {}) {
+  return (sh ? txt(x + size * 0.05, y + size * 0.05, s, size, sh, o) : '') + txt(x, y, s, size, fill, o);
 }
-// Caption in a cream label box.
+// Caption: understated text line, like a subtitle.
 function caption(x, y, s, size = 34, o = {}) {
-  const w = Math.max(40, s.length * size * 0.62 + 44);
   if (!s) return '';
-  return `<g opacity="${o.op ?? 1}"><rect x="${x - w / 2}" y="${y - size - 6}" width="${w}" height="${size + 26}" rx="10" fill="${o.bg || P.cream}" filter="url(#hard)"/>
-    ${txt(x, y, s, size, o.fill || P.ink, { weight: 800 })}</g>`;
+  if (o.bg) {
+    const w = s.length * size * 0.6 + 44;
+    return `<rect x="${x - w / 2}" y="${y - size - 6}" width="${w}" height="${size + 26}" rx="8" fill="${o.bg}"/>${txt(x, y, s, size, o.fill || P.cream, { weight: 700 })}`;
+  }
+  return txt(x, y, s, size, o.fill || P.cream, { weight: 600, op: o.op ?? 1 });
 }
 
-let _pid = 0;
-// Percy. (x,y) = head centre, s = scale. o: level 0..1, t, eyes, mouth, armL/armR (deg), pct (label), body, rot, dead.
+// Milo: simple round-headed guy. Signature: a sprout on his head that stands up when he has energy
+// and wilts when he doesn't. o: level 0..1 (energy), t, eyes (open|wide|happy), lid 0..1, mouth,
+// armL/armR (deg from down), look, rot, dead, body.
 function percy(x, y, s, o = {}) {
-  const id = 'ph' + (_pid++);
-  const lvl = clamp(o.level ?? 1), t = o.t || 0;
-  const dead = o.dead;
-  const liquid = dead ? P.dead : chargeColor(lvl);
-  const top = 95 - lvl * 200;
-  let wave = `M-90 ${top}`;
-  for (let xx = -90; xx <= 90; xx += 10) wave += ` L${xx} ${top + Math.sin(xx / 18 + t * 6) * (lvl > 0.02 ? 6 : 0)}`;
-  wave += ' L90 120 L-90 120 Z';
-  const head = `<rect x="-80" y="-105" width="160" height="200" rx="46"/>`;
-  // eyes
-  const lid = clamp(o.lid ?? 0);
-  const look = o.look || 0;
+  const lvl = clamp(o.level ?? 1), t = o.t || 0, dead = o.dead;
+  const look = o.look || 0, lid = clamp(o.lid ?? 0);
+  // sprout: tip swings from upright (lvl 1) to drooping (lvl 0)
+  const sway = Math.sin(t * 3) * 4 * lvl;
+  const droop = dead ? 1 : 1 - lvl;
+  const tipX = lerp(6, 62, droop) + sway, tipY = lerp(-168, -92, droop);
+  const leafCol = dead ? '#6e5a3c' : lvl > 0.3 ? P.green : '#8a9a4a';
+  const leafAng = lerp(-30, 70, droop);
+  const sprout = `<path d="M0 -88 Q${lerp(2, 30, droop)} ${lerp(-140, -130, droop)} ${tipX} ${tipY}" stroke="${P.ink}" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M0 -88 Q${lerp(2, 30, droop)} ${lerp(-140, -130, droop)} ${tipX} ${tipY}" stroke="${leafCol}" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <g transform="translate(${tipX},${tipY}) rotate(${leafAng})"><path d="M0 0 Q18 -26 44 -6 Q18 12 0 0 Z" fill="${leafCol}" stroke="${P.ink}" stroke-width="5" stroke-linejoin="round"/></g>`;
   let eyes;
-  if (dead) eyes = `<path d="M-52 -30 l28 28 M-24 -30 l-28 28 M24 -30 l28 28 M52 -30 l-28 28" stroke="${P.ink}" stroke-width="8" stroke-linecap="round"/>`;
-  else if (o.eyes === 'happy') eyes = `<path d="M-56 -10 q18 -24 36 0 M20 -10 q18 -24 36 0" stroke="${P.ink}" stroke-width="8" fill="none" stroke-linecap="round"/>`;
-  else {
-    const ry = o.eyes === 'wide' ? 30 : 24, pr = o.eyes === 'wide' ? 7 : 10;
-    const eye = cx => `<ellipse cx="${cx}" cy="-16" rx="21" ry="${ry}" fill="#fff" stroke="${P.ink}" stroke-width="6"/>
-      <circle cx="${cx + look}" cy="-12" r="${pr}" fill="${P.ink}"/>
-      ${lid > 0 ? `<clipPath id="${id}e${cx}"><ellipse cx="${cx}" cy="-16" rx="21" ry="${ry}"/></clipPath>
-        <rect x="${cx - 24}" y="${-16 - ry - 4}" width="48" height="${(ry * 2 + 8) * lid}" fill="${P.cream}" clip-path="url(#${id}e${cx})"/>
-        <path d="M${cx - 21} ${-16 - ry + (ry * 2 + 8) * lid - 4} h42" stroke="${P.ink}" stroke-width="6" stroke-linecap="round"/>
-        <ellipse cx="${cx}" cy="-16" rx="21" ry="${ry}" fill="none" stroke="${P.ink}" stroke-width="6"/>` : ''}`;
-    eyes = eye(-37) + eye(37);
-    if (o.brows) eyes += `<path d="M-60 ${-54 + o.brows} l40 ${o.brows > 0 ? -8 : 8} M60 ${-54 + o.brows} l-40 ${o.brows > 0 ? -8 : 8}" stroke="${P.ink}" stroke-width="8" stroke-linecap="round"/>`;
-  }
+  if (dead) eyes = `<path d="M-44 -22 l20 20 M-24 -22 l-20 20 M24 -22 l20 20 M44 -22 l-20 20" stroke="${P.ink}" stroke-width="8" stroke-linecap="round"/>`;
+  else if (o.eyes === 'happy') eyes = `<path d="M-46 -6 q12 -17 24 0 M22 -6 q12 -17 24 0" stroke="${P.ink}" stroke-width="8" fill="none" stroke-linecap="round"/>`;
+  else if (o.eyes === 'wide') eyes = `<circle cx="-32" cy="-12" r="16" fill="#fff" stroke="${P.ink}" stroke-width="6"/><circle cx="32" cy="-12" r="16" fill="#fff" stroke="${P.ink}" stroke-width="6"/>
+      <circle cx="${-32 + look}" cy="-12" r="6" fill="${P.ink}"/><circle cx="${32 + look}" cy="-12" r="6" fill="${P.ink}"/>`;
+  else if (lid > 0) {
+    const r = 10, y0 = -10 + lid * 4;
+    const half = cx => `<path d="M${cx - r} ${y0} A${r} ${r} 0 0 0 ${cx + r} ${y0} Z" fill="${P.ink}"/><path d="M${cx - r - 3} ${y0} h${2 * r + 6}" stroke="${P.ink}" stroke-width="6" stroke-linecap="round"/>`;
+    eyes = half(-32 + look) + half(32 + look);
+  } else eyes = `<ellipse cx="${-32 + look}" cy="-10" rx="8" ry="12" fill="${P.ink}"/><ellipse cx="${32 + look}" cy="-10" rx="8" ry="12" fill="${P.ink}"/>`;
   const mouths = {
-    smile: `<path d="M-26 42 q26 26 52 0" stroke="${P.ink}" stroke-width="7" fill="none" stroke-linecap="round"/>`,
-    grin: `<path d="M-34 36 q34 46 68 0 z" fill="${P.ink}"/>`,
-    flat: `<path d="M-18 48 h36" stroke="${P.ink}" stroke-width="7" stroke-linecap="round"/>`,
-    sad: `<path d="M-22 56 q22 -18 44 0" stroke="${P.ink}" stroke-width="7" fill="none" stroke-linecap="round"/>`,
-    open: `<ellipse cx="0" cy="50" rx="16" ry="20" fill="${P.ink}"/>`,
-    wobble: `<path d="M-26 50 q6.5 -8 13 0 t13 0 t13 0 t13 0" stroke="${P.ink}" stroke-width="6" fill="none" stroke-linecap="round"/>`,
+    smile: `<path d="M-20 32 q20 18 40 0" stroke="${P.ink}" stroke-width="7" fill="none" stroke-linecap="round"/>`,
+    grin: `<path d="M-28 26 q28 38 56 0 z" fill="${P.ink}"/>`,
+    flat: `<path d="M-14 38 h28" stroke="${P.ink}" stroke-width="7" stroke-linecap="round"/>`,
+    sad: `<path d="M-18 44 q18 -14 36 0" stroke="${P.ink}" stroke-width="7" fill="none" stroke-linecap="round"/>`,
+    open: `<ellipse cx="0" cy="40" rx="13" ry="16" fill="${P.ink}"/>`,
+    wobble: `<path d="M-22 40 q5.5 -7 11 0 t11 0 t11 0 t11 0" stroke="${P.ink}" stroke-width="6" fill="none" stroke-linecap="round"/>`,
   };
-  const mouth = mouths[o.mouth || 'smile'];
-  // body: coral hoodie, teal pants, sneakers, arms
+  const limb = (x1, y1, x2, y2) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${P.ink}" stroke-width="24" stroke-linecap="round"/>
+    <path d="M${x1} ${y1} L${x2} ${y2}" stroke="${P.cream}" stroke-width="14" stroke-linecap="round"/>`;
   const arm = (side, ang) => {
-    const sx = side * 62, a = (ang ?? 20) * Math.PI / 180;
-    const ex = sx + side * Math.sin(a) * 95, ey = 130 + Math.cos(a) * 95;
-    return `<path d="M${sx} 130 L${ex} ${ey}" stroke="${P.ink}" stroke-width="34" stroke-linecap="round"/>
-      <path d="M${sx} 130 L${ex} ${ey}" stroke="${P.coral}" stroke-width="22" stroke-linecap="round"/>
-      <circle cx="${ex}" cy="${ey}" r="15" fill="${P.cream}" stroke="${P.ink}" stroke-width="5"/>`;
+    const a = (ang ?? 15) * Math.PI / 180, sx = side * 38;
+    return limb(sx, 112, sx + side * Math.sin(a) * 78, 112 + Math.cos(a) * 78);
   };
-  const pct = o.pct ?? Math.round(lvl * 100) + '%';
   const body = o.body === false ? '' : `
-    <path d="M-30 250 v60 M30 250 v60" stroke="${P.ink}" stroke-width="34" stroke-linecap="round"/>
-    <path d="M-30 250 v60 M30 250 v60" stroke="#2E6E78" stroke-width="22" stroke-linecap="round"/>
-    <rect x="-62" y="300" width="56" height="26" rx="13" fill="${P.cream}" stroke="${P.ink}" stroke-width="5"/>
-    <rect x="6" y="300" width="56" height="26" rx="13" fill="${P.cream}" stroke="${P.ink}" stroke-width="5"/>
+    ${limb(-16, 214, -20, 292)}${limb(16, 214, 20, 292)}
     ${arm(-1, o.armL)}${arm(1, o.armR)}
-    <path d="M-70 105 Q-82 255 -50 262 L50 262 Q82 255 70 105 Q0 85 -70 105 Z" fill="${P.coral}" stroke="${P.ink}" stroke-width="7"/>
-    <path d="M-14 112 v34 M14 112 v34" stroke="${P.cream}" stroke-width="5" stroke-linecap="round"/>
-    <rect x="-40" y="176" width="80" height="38" rx="9" fill="${P.ink}"/>
-    ${txt(0, 205, pct, 28, dead ? P.dead : chargeColor(lvl), { weight: 900 })}`;
-  return `<g transform="translate(${x},${y}) rotate(${o.rot || 0}) scale(${s})" filter="url(#hard)">
-    <defs><clipPath id="${id}">${head}</clipPath></defs>
-    ${body}
-    <rect x="-26" y="-128" width="52" height="30" rx="9" fill="${P.cream}" stroke="${P.ink}" stroke-width="7"/>
-    <g clip-path="url(#${id})"><rect x="-90" y="-120" width="180" height="240" fill="${P.cream}"/><path d="${wave}" fill="${liquid}"/>
-      ${!dead && lvl > 0.05 ? `<circle cx="${-40 + Math.sin(t * 3) * 8}" cy="${80 - ((t * 60) % 100)}" r="5" fill="#fff" opacity="0.5"/><circle cx="${30}" cy="${85 - ((t * 45 + 40) % 100)}" r="4" fill="#fff" opacity="0.5"/>` : ''}</g>
-    <rect x="-80" y="-105" width="160" height="200" rx="46" fill="none" stroke="${P.ink}" stroke-width="8"/>
-    <path d="M-58 -78 q10 -14 26 -16" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round" opacity="0.7"/>
-    ${eyes}${mouth}${o.extra || ''}</g>`;
+    <path d="M-40 92 Q-50 214 -25 222 L25 222 Q50 214 40 92 Q0 80 -40 92 Z" fill="${P.cream}" stroke="${P.ink}" stroke-width="6"/>`;
+  return `<g transform="translate(${x},${y}) rotate(${o.rot || 0}) scale(${s})">
+    ${body}${sprout}
+    <circle r="90" fill="${dead ? '#bdb9b0' : P.cream}" stroke="${P.ink}" stroke-width="7"/>
+    ${eyes}${mouths[o.mouth || 'smile']}${o.extra || ''}</g>`;
 }
