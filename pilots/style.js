@@ -102,10 +102,16 @@ function milo(x, y, s, o = {}) {
     <path d="M0 -84 Q${cx} ${cy} ${tipX} ${tipY}" stroke="${leafCol}" stroke-width="5" fill="none" stroke-linecap="round"/>
     ${leaf(lerp(-40, 60, droop) + sway * 0.8, dead ? 30 : 40)}${o.oneLeaf ? '' : leaf(lerp(-150, 110, droop) - sway * 0.6, dead ? 28 : 36)}
     <ellipse cx="0" cy="-86" rx="12" ry="5" fill="#5a4030" stroke="${ink}" stroke-width="3"/>`;
+  const fl = clamp(o.flower || 0);
+  const flower = fl > 0 ? `<g transform="translate(${tipX},${tipY - 4}) scale(${fl}) rotate(${t * 20})">${[0, 1, 2, 3, 4, 5].map(i =>
+    `<ellipse cx="0" cy="-17" rx="10" ry="16" fill="#ffb3c7" stroke="${ink}" stroke-width="3.5" transform="rotate(${i * 60})"/>`).join('')}
+    <circle r="10" fill="#ffd45e" stroke="${ink}" stroke-width="3.5"/></g>` : '';
   // eyes
   const ex = 30;
   let eyes;
-  if (o.eyes === 'happy') eyes = `<path d="M${-ex - 11} -4 q11 -15 22 0 M${ex - 11} -4 q11 -15 22 0" stroke="${ink}" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+  if (o.eyes === 'wide') eyes = [-ex, ex].map(c => `<circle cx="${c}" cy="-6" r="17" fill="#fff" stroke="${ink}" stroke-width="4.5"/><circle cx="${c + look * 0.6}" cy="-4" r="7" fill="${ink}"/><circle cx="${c + look * 0.6 + 2.5}" cy="-7" r="2.2" fill="#fff"/>`).join('');
+  else if (o.eyes === 'closed') eyes = `<path d="M${-ex - 11} -4 q11 9 22 0 M${ex - 11} -4 q11 9 22 0" stroke="${ink}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+  else if (o.eyes === 'happy') eyes = `<path d="M${-ex - 11} -4 q11 -15 22 0 M${ex - 11} -4 q11 -15 22 0" stroke="${ink}" stroke-width="7" fill="none" stroke-linecap="round"/>`;
   else {
     const e = c => `<ellipse cx="${c + look}" cy="-6" rx="7.5" ry="10.5" fill="${ink}"/><circle cx="${c + look + 2.5}" cy="-10" r="2.6" fill="#fff"/>`;
     eyes = e(-ex) + e(ex);
@@ -122,7 +128,11 @@ function milo(x, y, s, o = {}) {
     flat: `<path d="M-9 28 h18" stroke="${ink}" stroke-width="5.5" stroke-linecap="round"/>`,
     sad: `<path d="M-12 32 q12 -9 24 0" stroke="${ink}" stroke-width="5.5" fill="none" stroke-linecap="round"/>`,
     open: `<ellipse cx="0" cy="28" rx="8" ry="10" fill="${ink}"/>`,
+    o: `<ellipse cx="0" cy="30" rx="6" ry="7" fill="${ink}"/>`,
+    wobble: `<path d="M-16 30 q4 -6 8 0 t8 0 t8 0 t8 0" stroke="${ink}" stroke-width="5" fill="none" stroke-linecap="round"/>`,
+    shock: `<path d="M-15 22 q15 -8 30 0 q2 18 -15 20 q-17 -2 -15 -20 z" fill="${ink}"/>`,
   };
+  const sweat = o.sweat ? `<g opacity="${o.sweat}"><path d="M74 -46 q12 18 0 27 q-12 -9 0 -27 z" fill="#9fd8ff" stroke="${ink}" stroke-width="3.5"/></g>` : '';
   const cheeks = `<ellipse cx="-54" cy="16" rx="14" ry="8.5" fill="#f2969a" opacity="0.75"/><ellipse cx="54" cy="16" rx="14" ry="8.5" fill="#f2969a" opacity="0.75"/>`;
   const limb = (x1, y1, x2, y2) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${ink}" stroke-width="25" stroke-linecap="round"/><path d="M${x1} ${y1} L${x2} ${y2}" stroke="${skin}" stroke-width="15" stroke-linecap="round"/>`;
   const arm = (side, ang, hand) => {
@@ -143,7 +153,7 @@ function milo(x, y, s, o = {}) {
   return `<g transform="translate(${x},${y}) rotate(${o.rot || 0}) scale(${s * (1 + sq * 0.5)},${s * (1 - sq)})">
     <defs><radialGradient id="mhead" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset="0.65" stop-color="${skin}"/><stop offset="1" stop-color="${sh}"/></radialGradient>
     <radialGradient id="mbody" cx="40%" cy="20%" r="90%"><stop offset="0" stop-color="#ffffff"/><stop offset="0.6" stop-color="${skin}"/><stop offset="1" stop-color="${sh}"/></radialGradient></defs>
-    ${body}${o.armsBehind ? '' : ''}${sprout}
+    ${body}${sprout}${flower}
     <circle r="90" fill="url(#mhead)" stroke="${ink}" stroke-width="6"/>
-    ${cheeks}${eyes}${mouths[o.mouth || 'smile']}${tint}${arms}${o.extra || ''}</g>`;
+    ${cheeks}${eyes}${mouths[o.mouth || 'smile']}${sweat}${tint}${arms}${o.extra || ''}</g>`;
 }

@@ -12,7 +12,7 @@ const path = require('path');
     .map(f => [f.replace(/\.\w+$/, ''), `data:image/${f.endsWith('png') ? 'png' : 'jpeg'};base64,` + fs.readFileSync(path.join(adir, f)).toString('base64')])) : {};
   const code = `const ASSETS = ${JSON.stringify(assets)};\n` + ['lib.js', 'style.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8')).join('\n') + '\n' + fs.readFileSync(scene, 'utf8');
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
-  const page = await browser.newPage({ viewport: { width: 1280, height: 720 } });
+  const page = await browser.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: Number(process.env.SCALE || 1) });
   await page.setContent(`<html><body style="margin:0;background:#000"><div id="s"></div><script>${code}</script></body></html>`);
   await page.evaluate(() => document.fonts.ready);
   const times = only ? only.split(',').map(Number) : [...Array(300).keys()].map(i => i / 30);
