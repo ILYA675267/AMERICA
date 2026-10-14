@@ -83,3 +83,67 @@ function percy(x, y, s, o = {}) {
     <circle r="90" fill="${dead ? '#bdb9b0' : P.cream}" stroke="${P.ink}" stroke-width="7"/>
     ${eyes}${mouths[o.mouth || 'smile']}${o.extra || ''}</g>`;
 }
+
+// Milo v2 (hand-drawn, chibi): huge round head, tiny bean body about one head tall, stubby limbs
+// without knees or elbows, pink cheeks, two-leaf sprout. (x,y) = head centre, head radius 90*s.
+// o: level 0..1 (sprout energy), dead (dry brown sprout), t, lid 0..1, look, mouth, bags,
+//    pose 'stand'|'sit'|'none', armL/armR (deg from down) or handL/handR [x,y], squash, rot,
+//    oneLeaf (second leaf already fallen), light (tint colour over the whole figure), lightOp.
+function milo(x, y, s, o = {}) {
+  const lvl = clamp(o.level ?? 1), t = o.t || 0, dead = o.dead, look = o.look || 0, lid = clamp(o.lid ?? 0);
+  const ink = '#16161a', skin = '#f4f1ea', sh = '#c9c4ba';
+  const droop = dead ? 1 : 1 - lvl, sway = Math.sin(t * 2.6) * 5 * (0.3 + lvl);
+  const tipX = lerp(4, 46, droop) + sway, tipY = lerp(-150, -104, droop);
+  const leafCol = dead ? '#8a6a3e' : mix('#9aa04a', '#5bc46a', lvl), leafDark = dead ? '#5e4526' : mix('#6a7a30', '#2f8f45', lvl);
+  const leaf = (ang, len) => `<g transform="translate(${tipX},${tipY}) rotate(${ang})"><path d="M0 0 Q${len * 0.45} ${-len * 0.55} ${len} ${-len * 0.12} Q${len * 0.5} ${len * 0.32} 0 0 Z" fill="${leafCol}" stroke="${ink}" stroke-width="4.5" stroke-linejoin="round"/>
+    <path d="M3 -1 Q${len * 0.5} ${-len * 0.2} ${len * 0.85} ${-len * 0.12}" stroke="${leafDark}" stroke-width="3" fill="none" stroke-linecap="round"/></g>`;
+  const cx = lerp(2, 26, droop), cy = lerp(-125, -128, droop);
+  const sprout = `<path d="M0 -84 Q${cx} ${cy} ${tipX} ${tipY}" stroke="${ink}" stroke-width="11" fill="none" stroke-linecap="round"/>
+    <path d="M0 -84 Q${cx} ${cy} ${tipX} ${tipY}" stroke="${leafCol}" stroke-width="5" fill="none" stroke-linecap="round"/>
+    ${leaf(lerp(-40, 60, droop) + sway * 0.8, dead ? 30 : 40)}${o.oneLeaf ? '' : leaf(lerp(-150, 110, droop) - sway * 0.6, dead ? 28 : 36)}
+    <ellipse cx="0" cy="-86" rx="12" ry="5" fill="#5a4030" stroke="${ink}" stroke-width="3"/>`;
+  // eyes
+  const ex = 30;
+  let eyes;
+  if (o.eyes === 'happy') eyes = `<path d="M${-ex - 11} -4 q11 -15 22 0 M${ex - 11} -4 q11 -15 22 0" stroke="${ink}" stroke-width="7" fill="none" stroke-linecap="round"/>`;
+  else {
+    const e = c => `<ellipse cx="${c + look}" cy="-6" rx="7.5" ry="10.5" fill="${ink}"/><circle cx="${c + look + 2.5}" cy="-10" r="2.6" fill="#fff"/>`;
+    eyes = e(-ex) + e(ex);
+    if (lid > 0) {
+      const lidY = -17 + lid * 15;
+      const l = c => `<path d="M${c - 14} -20 H${c + 14} V${lidY} Q${c} ${lidY + 6} ${c - 14} ${lidY} Z" fill="url(#mhead)"/><path d="M${c - 11} ${lidY + 1} Q${c} ${lidY + 5} ${c + 11} ${lidY + 1}" stroke="${ink}" stroke-width="3.5" fill="none" stroke-linecap="round"/>`;
+      eyes += l(-ex + look) + l(ex + look);
+    }
+    if (o.bags) eyes += `<path d="M${-ex - 9} 9 q9 6 18 0 M${ex - 9} 9 q9 6 18 0" stroke="#8a7f95" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="${o.bags}"/>`;
+  }
+  const mouths = {
+    smile: `<path d="M-13 24 q13 12 26 0" stroke="${ink}" stroke-width="5.5" fill="none" stroke-linecap="round"/>`,
+    grin: `<path d="M-19 20 q19 28 38 0 z" fill="${ink}"/><path d="M-10 33 q10 6 20 0" stroke="#e07b7b" stroke-width="5" stroke-linecap="round"/>`,
+    flat: `<path d="M-9 28 h18" stroke="${ink}" stroke-width="5.5" stroke-linecap="round"/>`,
+    sad: `<path d="M-12 32 q12 -9 24 0" stroke="${ink}" stroke-width="5.5" fill="none" stroke-linecap="round"/>`,
+    open: `<ellipse cx="0" cy="28" rx="8" ry="10" fill="${ink}"/>`,
+  };
+  const cheeks = `<ellipse cx="-54" cy="16" rx="14" ry="8.5" fill="#f2969a" opacity="0.75"/><ellipse cx="54" cy="16" rx="14" ry="8.5" fill="#f2969a" opacity="0.75"/>`;
+  const limb = (x1, y1, x2, y2) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${ink}" stroke-width="25" stroke-linecap="round"/><path d="M${x1} ${y1} L${x2} ${y2}" stroke="${skin}" stroke-width="15" stroke-linecap="round"/>`;
+  const arm = (side, ang, hand) => {
+    const sx = side * 40, sy = 96;
+    if (hand) return limb(sx, sy, hand[0], hand[1]);
+    const a = (ang ?? 12) * Math.PI / 180;
+    return limb(sx, sy, sx + side * Math.sin(a) * 40, sy + Math.cos(a) * 40);
+  };
+  const pose = o.pose || 'stand';
+  let legs = '';
+  if (pose === 'stand') legs = limb(-20, 160, -22, 190) + limb(20, 160, 22, 190);
+  if (pose === 'sit') legs = `<ellipse cx="-24" cy="176" rx="19" ry="15" fill="${skin}" stroke="${ink}" stroke-width="5"/><ellipse cx="24" cy="176" rx="19" ry="15" fill="${skin}" stroke="${ink}" stroke-width="5"/>`;
+  const body = pose === 'none' ? '' : `${pose === 'stand' ? legs : ''}
+    <path d="M-46 74 Q-60 170 0 172 Q60 170 46 74 Q0 62 -46 74 Z" fill="url(#mbody)" stroke="${ink}" stroke-width="5.5"/>${pose === 'sit' ? legs : ''}`;
+  const arms = o.arms === false ? '' : arm(-1, o.armL, o.handL) + arm(1, o.armR, o.handR);
+  const sq = o.squash || 0;
+  const tint = o.light ? `<g style="mix-blend-mode:${o.lightMode || 'multiply'}" opacity="${o.lightOp ?? 0.5}"><circle r="90" fill="${o.light}"/>${pose === 'none' ? '' : `<path d="M-46 74 Q-60 170 0 172 Q60 170 46 74 Q0 62 -46 74 Z" fill="${o.light}"/>`}</g>` : '';
+  return `<g transform="translate(${x},${y}) rotate(${o.rot || 0}) scale(${s * (1 + sq * 0.5)},${s * (1 - sq)})">
+    <defs><radialGradient id="mhead" cx="38%" cy="32%" r="75%"><stop offset="0" stop-color="#ffffff"/><stop offset="0.65" stop-color="${skin}"/><stop offset="1" stop-color="${sh}"/></radialGradient>
+    <radialGradient id="mbody" cx="40%" cy="20%" r="90%"><stop offset="0" stop-color="#ffffff"/><stop offset="0.6" stop-color="${skin}"/><stop offset="1" stop-color="${sh}"/></radialGradient></defs>
+    ${body}${o.armsBehind ? '' : ''}${sprout}
+    <circle r="90" fill="url(#mhead)" stroke="${ink}" stroke-width="6"/>
+    ${cheeks}${eyes}${mouths[o.mouth || 'smile']}${tint}${arms}${o.extra || ''}</g>`;
+}

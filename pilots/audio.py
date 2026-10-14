@@ -212,10 +212,43 @@ def v5(buf):
         tone(buf, 8.4, 1.5, note(m), 0.05, "pluck", attack=0.05, decay=1.0)
 
 
+def v6(buf):
+    # Day 1: hopeful plucks, marker squeak, jump "boing" + sparkle
+    for i, ch in enumerate([[60, 64, 67], [65, 69, 72]]):
+        for m in ch:
+            tone(buf, 0.3 + i * 1.4, 2.0, note(m), 0.05, "pluck", decay=1.0)
+    noise(buf, 0.95, 0.5, 0.05, decay=0.4)  # marker on paper
+    tone(buf, 1.5, 0.35, 300, 0.18, "sine", glide=900, decay=0.2)  # jump
+    for k, m in enumerate([84, 88, 91]):
+        tone(buf, 1.65 + k * 0.08, 0.4, note(m), 0.05, "sine", decay=0.2)
+    pop(buf, 2.25, 0.2)  # landing
+    tone(buf, 0.75, 0.4, note(88), 0.03, "sine", decay=0.25)  # HUD shimmer
+    # Day 19: night hum, thumb-scroll ticks, slow drain
+    for m in [50, 53, 57]:
+        tone(buf, 3.2, 3.0, note(m), 0.035, "sine", attack=0.4, decay=2.0)
+    for i in range(7):
+        tone(buf, 3.4 + i * 0.4, 0.04, 2400, 0.04, "sine", decay=0.02)
+        noise(buf, 3.42 + i * 0.4, 0.08, 0.03, decay=0.03)
+    tone(buf, 3.6, 2.2, 520, 0.05, "sine", glide=260, decay=1.4)
+    # Day 47: low sad minor, leaf falls (soft descending), warning beeps
+    for i, ch in enumerate([[45, 48, 52], [41, 45, 48]]):
+        for m in ch:
+            tone(buf, 6.2 + i * 1.2, 2.2, note(m), 0.05, "pluck", decay=1.3)
+    tone(buf, 6.8, 1.4, note(76), 0.04, "sine", glide=note(64), decay=0.9)
+    for k in range(3):
+        tone(buf, 7.4 + k * 0.4, 0.12, note(81), 0.06, "square", decay=0.08)
+    # title: low boom + chord
+    tone(buf, 8.62, 1.2, 70, 0.5, "sine", glide=35, decay=0.5)
+    noise(buf, 8.62, 0.5, 0.25, decay=0.15, lowpass=0.1)
+    pop(buf, 8.95, 0.25)
+    for m in [45, 57, 60, 64]:
+        tone(buf, 8.7, 1.3, note(m), 0.05, "pluck", attack=0.05, decay=1.0)
+
+
 def main():
     name, out = sys.argv[1], sys.argv[2]
     buf = np.zeros(N)
-    {"v1_5am": v1, "v2_office": v2, "v3_365": v3, "v4_percy": v4, "v5_ai": v5}[name](buf)
+    {"v1_5am": v1, "v2_office": v2, "v3_365": v3, "v4_percy": v4, "v5_ai": v5, "v6_drawn": v6}[name](buf)
     fade = int(0.3 * SR)
     buf[-fade:] *= np.linspace(1, 0, fade)
     buf = np.tanh(buf * 1.2) / np.tanh(1.2) * 0.8  # soft limiter
