@@ -189,10 +189,33 @@ def v4(buf):
     chords(buf, [[57, 60, 64], [53, 57, 60]], 96, 8.0, 9.8, vol=0.05)
 
 
+def v5(buf):
+    # Day 1: hopeful soft piano
+    for i, ch in enumerate([[60, 64, 67], [57, 60, 64], [53, 57, 60]]):
+        for m in ch:
+            tone(buf, 0.3 + i * 1.3, 2.2, note(m), 0.05, "pluck", decay=1.1)
+    for t0, m in [(0.9, 72), (1.6, 76), (2.3, 74), (3.0, 72), (3.6, 79)]:
+        tone(buf, t0, 0.9, note(m), 0.06, "pluck", decay=0.6)
+    tone(buf, 0.95, 0.4, note(88), 0.03, "sine", decay=0.25)  # HUD shimmer
+    # Day 47: low, sad minor; energy drain "glug" + warning beeps
+    for i, ch in enumerate([[45, 48, 52], [41, 45, 48], [43, 47, 50]]):
+        for m in ch:
+            tone(buf, 4.3 + i * 1.3, 2.4, note(m), 0.05, "pluck", decay=1.4)
+    tone(buf, 4.6, 1.4, 700, 0.08, "sine", glide=150, decay=0.9)
+    for k in range(4):
+        tone(buf, 6.1 + k * 0.5, 0.12, note(81), 0.07, "square", decay=0.08)
+    # title: low boom + rising tail
+    tone(buf, 8.35, 1.2, 70, 0.5, "sine", glide=35, decay=0.5)
+    noise(buf, 8.35, 0.5, 0.25, decay=0.15, lowpass=0.1)
+    pop(buf, 8.7, 0.25)
+    for m in [45, 57, 60, 64]:
+        tone(buf, 8.4, 1.5, note(m), 0.05, "pluck", attack=0.05, decay=1.0)
+
+
 def main():
     name, out = sys.argv[1], sys.argv[2]
     buf = np.zeros(N)
-    {"v1_5am": v1, "v2_office": v2, "v3_365": v3, "v4_percy": v4}[name](buf)
+    {"v1_5am": v1, "v2_office": v2, "v3_365": v3, "v4_percy": v4, "v5_ai": v5}[name](buf)
     fade = int(0.3 * SR)
     buf[-fade:] *= np.linspace(1, 0, fade)
     buf = np.tanh(buf * 1.2) / np.tanh(1.2) * 0.8  # soft limiter
