@@ -77,7 +77,7 @@ def noise(dur, a=0.08, decay=0.05):
 
 def tick(vol_scale=1.0):
     """Soft wooden clock tick."""
-    return soft_tone(1900, 0.06, attack=0.001, decay=0.012, harm=0) * 0.6 + noise(0.05, 0.25, 0.008) * 0.3
+    return soft_tone(1900, 0.06, attack=0.001, decay=0.012, harm=0) * 0.6 + noise(0.06, 0.25, 0.008) * 0.3
 
 
 def buzz(dur=0.45):
