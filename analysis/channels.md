@@ -40,3 +40,20 @@
 фоны, один яркий акцент на кадр (жёлтый дождевик, красный демон гнева), мягкий блюр, крупный жирный заголовок на превью.
 Цифры (14.10.2026): 2,1 тыс. подписчиков, ролики по ~5 мин. «1 MINUTE – Can You Run One Minute?» — 91 тыс. за 3 дня,
 «TEMPER» — 20 тыс. за 6 дней, «CONNECTED» — 5,4 тыс. за 9 часов. Новый канал, но алгоритм уже раздаёт.
+
+## Повторный анализ (14.10.2026): что собирает просмотры в нише
+Добавлены крупные каналы: Better Than Yesterday (2,6 млн подп.), Improvement Pill (3,8 млн), Psych2Go (13,2 млн), After Skool (3,8 млн).
+
+Хиты по темам:
+- **Дофамин / «полюбить трудное»**: BTY «How I Tricked My Brain To Like Doing Hard Things (dopamine detox)» — 28 млн;
+  Day One DOPAMINE — 304 тыс. за 2 недели; After Skool «A Caveman's Journey into the Prison of Dopamine» — 217 тыс.
+- **Комфорт и лень**: BTY «Comfort Will Ruin Your Life» — 2,8 млн, «Use Laziness To Your Advantage – The 20 Second Rule» — 6,8 млн;
+  Day One «You're Not Lazy. You're Too Comfortable.» — 63 тыс. за 4 дня.
+- **Усталость и сон**: BTY «Why You're Always Tired Between 1pm – 4pm» — 1,7 млн; A Better Mind «You Don't Need 8 Hours of Sleep...» — 694 тыс.
+- **Скука, внимание, «мозг поджарен»**: A Better Mind «Why Being Bored Is Actually Good For You» — 321 тыс., «This Is Why Nothing Excites You Anymore» — 263 тыс.;
+  BTY «Your Brain Is FRIED» — 71 тыс.; Psych2Go «Doomscrolling, Brainrot...» — 97 тыс. за 3 дня (тема на подъёме).
+- **Дисциплина**: Day One DISCIPLINE — 3,3 млн за 2 недели.
+
+Форматы: разбор «почему X вредит + что делать» (BTY, Improvement Pill, 8–15 мин), «X vs Y» (Goals vs Systems — 448 тыс.),
+короткий анимационный фильм без слов/с текстом (Day One, Last Soul, 2,5–5,5 мин).
+Свободная ниша: никто не показывает минусы и плюсы **наглядно рядом** — две версии героя на разделённом экране.
