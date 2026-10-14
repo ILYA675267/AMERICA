@@ -198,7 +198,15 @@ def minute(tr):
         tr.add(t0, soft_tone(midi(m), 2.0, decay=1.0), 0.06)
 
 
-ACTS = {"hook": (20, hook), "minute": (75, minute)}
+def probe(tr):
+    """Smooth only: slow warm pad chords that melt into each other + a few low, soft piano notes."""
+    for i, ch in enumerate([[45, 52, 57, 60], [41, 48, 53, 57], [48, 55, 60, 64], [43, 50, 55, 59]]):
+        tr.add(i * 2.6 - 0.3, pad(ch, 4.2, attack=1.4, release=1.8), 0.09, send=0.5)
+    for t0, m in [(0.8, 64), (2.2, 67), (3.6, 65), (5.0, 64), (6.4, 60), (7.8, 64), (8.5, 67)]:
+        tr.add(t0, soft_tone(midi(m), 2.5, attack=0.03, decay=1.2, harm=0.05), 0.045, send=0.6)
+
+
+ACTS = {"hook": (20, hook), "minute": (75, minute), "probe": (10, probe)}
 
 
 def main():
