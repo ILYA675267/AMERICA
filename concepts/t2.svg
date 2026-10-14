@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><rect width="1280" height="720" fill="#12131c"/>
+<path d="M300 560 C120 560 110 330 260 300 C240 160 430 110 520 190 C580 90 780 90 830 190 C930 120 1110 200 1060 330 C1180 380 1130 580 960 560 Z" fill="#2b2140" stroke="#ff4fa3" stroke-width="8"/>
+<g transform="translate(470,420)"><circle r="70" fill="#f2efe6" stroke="#000" stroke-width="5"/><circle cx="-22" cy="-5" r="20" fill="#fff" stroke="#000" stroke-width="4"/><circle cx="22" cy="-5" r="20" fill="#fff" stroke="#000" stroke-width="4"/><circle cx="-22" cy="-5" r="6"/><circle cx="22" cy="-5" r="6"/><ellipse cy="40" rx="20" ry="14" fill="#000"/><rect x="-60" y="-95" width="120" height="22" fill="#4a7cff"/></g>
+<text x="400" y="320" fill="#4a7cff" style="font-family:'DejaVu Sans',Arial,sans-serif;font-weight:900" font-size="34">MANAGER</text>
+<g transform="translate(800,420)"><circle r="70" fill="#ff4fa3" stroke="#000" stroke-width="5"/><path d="M-40 -10 q15 -20 30 0 M10 -10 q15 -20 30 0" stroke="#000" stroke-width="7" fill="none"/><path d="M-35 25 q35 40 70 0" fill="#000"/><polygon points="-40,-70 0,-120 40,-70" fill="#FFB800" stroke="#000" stroke-width="4"/></g>
+<text x="700" y="320" fill="#ff4fa3" style="font-family:'DejaVu Sans',Arial,sans-serif;font-weight:900" font-size="34">DOPAMINE</text>
+<text x="640" y="100" text-anchor="middle" fill="#fff" style="font-family:'DejaVu Sans',Arial,sans-serif;font-weight:900" font-size="90">WHO'S IN CHARGE?</text></svg>

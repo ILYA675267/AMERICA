@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720"><rect width="1280" height="720" fill="#0e0e0e"/>
+<rect x="0" y="0" width="640" height="720" fill="#1b1b1b"/>
+<text x="320" y="110" text-anchor="middle" fill="#777" style="font-family:'DejaVu Sans',Arial,sans-serif;font-weight:900" font-size="80">DAY 1</text>
+<text x="960" y="110" text-anchor="middle" fill="#3ddc84" style="font-family:'DejaVu Sans',Arial,sans-serif;font-weight:900" font-size="80">DAY 365</text>
+<g transform="translate(320,450)"><ellipse cy="60" rx="150" ry="120" fill="#888"/><circle cy="-90" r="95" fill="#cfccc3" stroke="#000" stroke-width="5"/><path d="M-45 -100 h30 M15 -100 h30" stroke="#000" stroke-width="8"/><path d="M-25 -40 q25 -15 50 0" stroke="#000" stroke-width="6" fill="none"/></g>
+<g transform="translate(960,450)"><path d="M-110 200 L-90 10 Q0 -20 90 10 L110 200 Z" fill="#f2efe6" stroke="#000" stroke-width="5"/><circle cy="-90" r="95" fill="#f2efe6" stroke="#000" stroke-width="5"/><path d="M-55 -115 l35 12 M55 -115 l-35 12" stroke="#000" stroke-width="9"/><circle cx="-35" cy="-85" r="9"/><circle cx="35" cy="-85" r="9"/><path d="M-30 -40 q30 22 60 0" stroke="#000" stroke-width="6" fill="none"/></g>
+<rect x="390" y="610" width="500" height="80" fill="#3ddc84"/><text x="640" y="670" text-anchor="middle" fill="#0e0e0e" style="font-family:'DejaVu Sans',Arial,sans-serif;font-weight:900" font-size="58">EPISODE 1</text></svg>
