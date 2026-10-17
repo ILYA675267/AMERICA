@@ -206,7 +206,35 @@ def probe(tr):
         tr.add(t0, soft_tone(midi(m), 2.5, attack=0.03, decay=1.2, harm=0.05), 0.045, send=0.6)
 
 
-ACTS = {"hook": (20, hook), "minute": (75, minute), "probe": (10, probe)}
+def hq(tr):
+    """Pilot 7: smooth pads only, soft swells instead of hits."""
+    tr.add(0.0, pad([48, 55, 60, 64], 3.2, attack=1.0, release=1.2), 0.09, send=0.5)        # desk: calm C major
+    for t0, m in [(0.6, 64), (1.6, 67)]:
+        tr.add(t0, soft_tone(midi(m), 2.0, attack=0.03, decay=1.1, harm=0.05), 0.04, send=0.6)
+    tr.add(2.4, pad([45, 52, 57, 60], 3.4, attack=0.8, release=1.2), 0.08, send=0.5)          # HQ: curious A minor
+    tr.add(3.8, pad([53, 57, 60, 65, 69], 2.2, attack=0.25, release=1.4), 0.08, send=0.6)     # door opens: bright swell
+    for i, m in enumerate([72, 76, 79, 84]):
+        tr.add(3.85 + i * 0.09, soft_tone(midi(m), 1.6, attack=0.02, decay=0.7, harm=0), 0.025, send=0.7)
+    tr.add(5.4, pad([41, 48, 53, 57], 3.2, attack=0.8, release=1.4), 0.08, send=0.5)          # phone: slow F
+    for t0, m in [(5.9, 69), (6.85, 67), (7.8, 64)]:                                           # time slipping, falling notes
+        tr.add(t0, soft_tone(midi(m), 1.8, attack=0.03, decay=1.0, harm=0.05), 0.04, send=0.6)
+    tr.add(8.3, pad([45, 52, 57, 60, 64], 1.9, attack=0.4, release=1.2), 0.10, send=0.6)      # title
+
+
+def heavy(tr):
+    """Pilot 8 (18.5 s): only slow pads and soft low piano; warm at the start and the end, minor in the middle."""
+    prog = [(0.0, [48, 55, 60, 64]), (2.0, [45, 52, 57, 60]),            # park: warm
+            (4.0, [45, 52, 55, 60]), (6.0, [41, 48, 53, 57]),            # silences: minor, open
+            (8.0, [38, 45, 50, 53]), (10.0, [40, 47, 52, 55]),           # uphill: low, heavy
+            (12.0, [41, 48, 53, 57]), (14.0, [48, 55, 60, 64, 67]),      # together: resolves to warm C
+            (16.0, [45, 52, 57, 60, 64])]                                # title
+    for t0, ch in prog:
+        tr.add(t0, pad(ch, 3.2, attack=1.2, release=1.6), 0.085, send=0.55)
+    for t0, m in [(0.8, 67), (2.4, 64), (4.6, 62), (6.6, 60), (8.6, 57), (10.4, 55), (12.6, 60), (13.6, 64), (14.6, 67), (16.4, 64)]:
+        tr.add(t0, soft_tone(midi(m), 2.6, attack=0.04, decay=1.4, harm=0.04), 0.04, send=0.65)
+
+
+ACTS = {"hook": (20, hook), "minute": (75, minute), "probe": (10, probe), "hq": (10, hq), "heavy": (18.5, heavy)}
 
 
 def main():
