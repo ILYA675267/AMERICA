@@ -98,9 +98,15 @@ function milo(x, y, s, o = {}) {
   const leaf = (ang, len) => `<g transform="translate(${tipX},${tipY}) rotate(${ang})"><path d="M0 0 Q${len * 0.45} ${-len * 0.55} ${len} ${-len * 0.12} Q${len * 0.5} ${len * 0.32} 0 0 Z" fill="${leafCol}" stroke="${ink}" stroke-width="4.5" stroke-linejoin="round"/>
     <path d="M3 -1 Q${len * 0.5} ${-len * 0.2} ${len * 0.85} ${-len * 0.12}" stroke="${leafDark}" stroke-width="3" fill="none" stroke-linecap="round"/></g>`;
   const cx = lerp(2, 26, droop), cy = lerp(-125, -128, droop);
-  const sprout = `<path d="M0 -84 Q${cx} ${cy} ${tipX} ${tipY}" stroke="${ink}" stroke-width="11" fill="none" stroke-linecap="round"/>
+  let sprout = `<path d="M0 -84 Q${cx} ${cy} ${tipX} ${tipY}" stroke="${ink}" stroke-width="11" fill="none" stroke-linecap="round"/>
     <path d="M0 -84 Q${cx} ${cy} ${tipX} ${tipY}" stroke="${leafCol}" stroke-width="5" fill="none" stroke-linecap="round"/>
     ${leaf(lerp(-40, 60, droop) + sway * 0.8, dead ? 30 : 40)}${o.oneLeaf ? '' : leaf(lerp(-150, 110, droop) - sway * 0.6, dead ? 28 : 36)}
+    <ellipse cx="0" cy="-86" rx="12" ry="5" fill="#5a4030" stroke="${ink}" stroke-width="3"/>`;
+  if (o.tree) sprout = `<path d="M-7 -86 Q-12 -120 -4 -150 L4 -150 Q12 -120 7 -86 Z" fill="#7a5638" stroke="${ink}" stroke-width="4"/>
+    <path d="M-2 -128 Q-24 -138 -34 -150 M2 -120 Q22 -128 30 -142" stroke="#7a5638" stroke-width="6" fill="none" stroke-linecap="round"/>
+    ${[[-30, -176, 30], [10, -192, 34], [36, -164, 26], [-6, -160, 30], [-40, -150, 20]].map(([cx2, cy2, r]) => `<circle cx="${cx2}" cy="${cy2 + Math.sin(t * 1.2 + cx2) * 1.5}" r="${r}" fill="#5bbf6e" stroke="${ink}" stroke-width="4"/>`).join('')}
+    ${[[-30, -176, 30], [10, -192, 34], [36, -164, 26], [-6, -160, 30], [-40, -150, 20]].map(([cx2, cy2, r]) => `<circle cx="${cx2}" cy="${cy2 + Math.sin(t * 1.2 + cx2) * 1.5}" r="${r - 4}" fill="#5bbf6e"/>`).join('')}
+    <circle cx="-14" cy="-184" r="7" fill="#8fe39c" opacity="0.7"/><circle cx="20" cy="-200" r="6" fill="#8fe39c" opacity="0.6"/>
     <ellipse cx="0" cy="-86" rx="12" ry="5" fill="#5a4030" stroke="${ink}" stroke-width="3"/>`;
   const fl = clamp(o.flower || 0);
   const flower = fl > 0 ? `<g transform="translate(${tipX},${tipY - 4}) scale(${fl}) rotate(${t * 20})">${[0, 1, 2, 3, 4, 5].map(i =>

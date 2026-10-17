@@ -236,7 +236,14 @@ def heavy(tr):
     for t0 in (3.65, 7.65, 11.65, 15.65):
         tr.add(t0, whoosh(0.8), 0.022, send=0.4)
 
-ACTS = {"hook": (20, hook), "minute": (75, minute), "probe": (10, probe), "hq": (10, hq), "heavy": (18.5, heavy)}
+def small(tr):
+    """Only whooshes for 'The Small Things' (music bed is mixed in separately): one soft whoosh per scene change."""
+    bl = 170 / 7
+    for c in [25, 50] + [50 + k * bl for k in range(1, 7)] + [220, 250]:
+        tr.add(c - 0.45, whoosh(0.9), 0.5, send=0.4)
+
+
+ACTS = {"hook": (20, hook), "minute": (75, minute), "probe": (10, probe), "hq": (10, hq), "heavy": (18.5, heavy), "small": (272, small)}
 
 
 def main():
