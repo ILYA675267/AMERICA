@@ -232,12 +232,9 @@ def heavy(tr):
         tr.add(t0, pad(ch, 3.2, attack=1.2, release=1.6), 0.085, send=0.55)
     for t0, m in [(0.8, 67), (2.4, 64), (4.6, 62), (6.6, 60), (8.6, 57), (10.4, 55), (12.6, 60), (13.6, 64), (14.6, 67), (16.4, 64)]:
         tr.add(t0, soft_tone(midi(m), 2.6, attack=0.04, decay=1.4, harm=0.04), 0.04, send=0.65)
-    # light, soft whooshes: scene transitions and actions (stones falling, sack down, walking over, title)
-    for t0, d, v in [(3.65, 0.7, 0.05), (7.65, 0.7, 0.05), (11.65, 0.7, 0.05), (15.65, 0.7, 0.05),
-                     (8.35, 0.5, 0.035), (9.35, 0.5, 0.035), (10.35, 0.5, 0.035),
-                     (12.15, 0.45, 0.04), (12.85, 0.6, 0.03), (14.15, 0.6, 0.035), (16.0, 0.55, 0.045)]:
-        tr.add(t0, whoosh(d), v, send=0.35)
-
+    # very light whooshes, only on scene changes
+    for t0 in (3.65, 7.65, 11.65, 15.65):
+        tr.add(t0, whoosh(0.8), 0.022, send=0.4)
 
 ACTS = {"hook": (20, hook), "minute": (75, minute), "probe": (10, probe), "hq": (10, hq), "heavy": (18.5, heavy)}
 
