@@ -23,10 +23,11 @@ function render(t) {
     <path d="M-80 -110 Q-88 0 -80 110" stroke="#fff" stroke-width="10" stroke-linecap="round" opacity="0.5"/></g>`;
   // headline
   const hl = (y, str, col, size = 118) => txt(1220 + 6, y + 6, str, size, '#000', { anchor: 'end', op: 0.55 }) + txt(1220, y, str, size, col, { anchor: 'end' });
-  s += hl(170, 'SHE NEVER', P.cream) + hl(300, 'FORGOT', P.mustard, 140);
-  s += `<g transform="translate(1100,350)"><rect x="-230" y="-34" width="250" height="62" rx="14" fill="#16161a" stroke="#f1ede4" stroke-opacity="0.4" stroke-width="3"/>${txt(-105, 9, '40 YEARS LATER', 30, P.cream, { weight: 900 })}</g>`;
+  s += hl(150, 'SHE\'LL', P.cream, 104) + hl(255, 'REMEMBER', P.cream, 104) + hl(395, 'THIS', P.mustard, 170);
+  s += `<g transform="translate(1060,450) rotate(-3)"><rect x="-150" y="-34" width="300" height="60" rx="14" fill="#16161a" stroke="#f1ede4" stroke-opacity="0.4" stroke-width="3"/>
+    ${txt(0, 9, 'not the gifts.', 32, P.cream, { weight: 900 })}</g>`;
   // red arrow pointing at the jar
-  s += `<path d="M960 440 Q860 540 660 560" stroke="#16161a" stroke-width="30" fill="none" stroke-linecap="round"/><path d="M960 440 Q860 540 660 560" stroke="${P.red}" stroke-width="18" fill="none" stroke-linecap="round"/>
-    <path d="M690 520 L630 562 L694 598" stroke="#16161a" stroke-width="30" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M690 520 L630 562 L694 598" stroke="${P.red}" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+  s += `<path d="M900 520 Q820 590 660 590" stroke="#16161a" stroke-width="30" fill="none" stroke-linecap="round"/><path d="M900 520 Q820 590 660 590" stroke="${P.red}" stroke-width="18" fill="none" stroke-linecap="round"/>
+    <path d="M692 552 L632 592 L694 628" stroke="#16161a" stroke-width="30" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M692 552 L632 592 L694 628" stroke="${P.red}" stroke-width="18" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${styleDefs(0)}${s}${grain(0.035)}</svg>`;
 }
