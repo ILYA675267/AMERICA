@@ -21,9 +21,9 @@ _Смысл:_ Представь: ты просыпаешься и слышиш�
 
 **Промпт для Google Vids:**
 ```
-Location: a cozy teenage bedroom at dawn, unmade bed, posters on the wall, a desk with a lamp in the foreground, soft blue morning light through half-open blinds creating volumetric light rays. Action: HERO slowly sits up in bed, rubbing his eyes, then freezes and tilts his head as faint glowing pale-blue translucent wisps of light begin to drift in through the window toward his head. Camera: slow push-in from medium shot to close-up on HERO's face.
+Location: a cozy teenage bedroom at dawn, unmade bed, posters on the wall, a desk with a lamp in the foreground, soft blue morning light through half-open blinds creating volumetric light rays. Action: HERO slowly sits up in bed, rubbing his eyes with his mitten hands, then freezes and tilts his head as faint glowing pale-blue translucent wisps of light begin to drift in through the window toward his head. Camera: slow push-in from medium shot to close-up on HERO's face.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -43,7 +43,7 @@ _Смысл:_ Звучит круто? К вечеру будешь умолят
 ```
 Location: a busy city street at golden hour, tall buildings, depth haze, warm sunlight. Action: HERO stands still in the middle of the sidewalk as dozens of glowing pale-blue wisps of light stream from the heads of passing people and swirl around him like a storm; he presses both hands over his ears and squeezes his eyes shut. Camera: slow 180-degree orbit around HERO, background crowd motion-blurred.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -63,7 +63,7 @@ _Смысл:_ Правила: слышишь всех в радиусе ~9 м, �
 ```
 Location: an empty dark infinite studio space with a reflective floor and soft fog. Action: HERO stands in the center; a thin glowing pale-blue ring of light appears on the floor around him and slowly expands outward like a sonar wave, lighting up the fog. HERO looks down at it curiously. Camera: high-angle wide shot slowly descending to eye level.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -83,7 +83,7 @@ _Смысл:_ 7 утра. Мама улыбается: «Доброе утро!�
 ```
 Location: a warm suburban kitchen in the morning, sunlight through the window over the sink, steam rising from a coffee mug, plants on the windowsill, kitchen cabinets in soft focus behind. Action: MOM pours coffee and smiles warmly at HERO, who sits at the kitchen table with a bowl of cereal. Camera: medium two-shot, slow dolly sideways.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] MOM: a friendly woman in her forties with a warm smile, shoulder-length brown hair, a mustard-yellow scarf and a soft beige cardigan.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. MOM: a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a small brown hair bun on top of her head and a mustard-yellow scarf.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -103,7 +103,7 @@ _Смысл:_ Мысль мамы: «Помыл посуду? Конечно н�
 ```
 Location: the same warm suburban kitchen, a stack of dirty dishes visible in the sink in the foreground. Action: close-up of MOM still smiling sweetly while a glowing pale-blue wisp of light floats from her head toward HERO; cut feeling to HERO, who slowly lowers his spoon and glances guiltily at the sink. Camera: rack focus from MOM to the dirty dishes.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] MOM: a friendly woman in her forties with a warm smile, shoulder-length brown hair, a mustard-yellow scarf and a soft beige cardigan.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. MOM: a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a small brown hair bun on top of her head and a mustard-yellow scarf.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -123,7 +123,7 @@ _Смысл:_ Ладно, мамы волнуются. Берёшь рюкзак
 ```
 Location: a sunny American suburban street with green lawns, white picket fences, trees and parked cars, long morning shadows. Action: HERO walks out of the front door of his house wearing a backpack, takes a deep breath and walks down the sidewalk with a small confident smile. Camera: low-angle tracking shot following HERO from the front.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -143,7 +143,7 @@ _Смысл:_ В школьном автобусе: 30 человек, 30 гол
 ```
 Location: inside a crowded yellow school bus, rows of green seats, morning sunlight flickering through the windows. Action: HERO sits by the window as glowing pale-blue wisps of light rise from the heads of all the students and converge toward him, overlapping; he winces and shrinks into his seat. Camera: slow push-in down the bus aisle toward HERO.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -163,7 +163,7 @@ _Смысл:_ Мысли пассажиров: «Забыл зарядку?» «
 ```
 Location: inside the same school bus. Action: HERO's eyes dart from one student to another as each one emits a single glowing pale-blue wisp; a girl in the seat in front turns around and gives HERO a suspicious look, and he quickly looks away out the window, embarrassed. Camera: handheld-style quick pans between faces, then settle on HERO.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -183,7 +183,7 @@ _Смысл:_ 9 утра. Внезапная контрольная. Ты не �
 ```
 Location: a bright American high school classroom, rows of desks, a chalkboard with math formulas out of focus, sunlight through big windows with dust floating in the light. Action: HERO stares nervously at a test paper on his desk and taps his pencil; behind him LEO writes quickly and confidently. Camera: shallow depth of field, focus shifts from HERO's worried face to LEO behind him.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] LEO: a skinny teenage boy with big round glasses, neat side-parted hair and a white collared shirt.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. LEO: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with big round black glasses and a tiny blue bow tie.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -203,7 +203,7 @@ _Смысл:_ Слышишь мысли отличника: «Четвёртый
 ```
 Location: the same classroom. Action: a glowing pale-blue wisp of light floats from LEO's head over HERO's shoulder; HERO grins slyly and starts writing very fast, pencil flying across the paper. Camera: over-the-shoulder close-up on the test paper and HERO's hand, then tilt up to his sneaky smile.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] LEO: a skinny teenage boy with big round glasses, neat side-parted hair and a white collared shirt.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. LEO: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with big round black glasses and a tiny blue bow tie.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -223,7 +223,7 @@ _Смысл:_ Сто баллов впервые в жизни. Эта сила 
 ```
 Location: a high school hallway with rows of blue lockers, students passing in soft focus, bright light from windows at the end of the hallway. Action: HERO holds a test paper with a big red circle mark at the top, raises it above his head and does a joyful little jump and fist pump. Camera: low-angle hero shot, slow motion at the peak of the jump.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -243,7 +243,7 @@ _Смысл:_ Обед. Пора узнать, что о тебе думают �
 ```
 Location: a busy high school cafeteria, long tables, students eating, big windows with warm noon light, background softly blurred. Action: HERO walks confidently holding a lunch tray toward a table where his friends sit, a mischievous look on his face. Camera: tracking shot from behind HERO, then he turns his head to the camera with a smirk.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -263,7 +263,7 @@ _Смысл:_ Лучший друг Джейк смеётся над твоей 
 ```
 Location: the same cafeteria table, lunch trays and drinks in the foreground. Action: JAKE laughs loudly and slaps the table while HERO, sitting across from him, smiles proudly. Camera: medium two-shot across the table.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] JAKE: a teenage boy, HERO's best friend, with messy blond hair, a red baseball cap worn backwards and a grey hoodie.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. JAKE: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose), HERO's best friend, wearing a red baseball cap backwards.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -283,7 +283,7 @@ _Смысл:_ Мысль Джейка: «Это вообще не смешно. 
 ```
 Location: the same cafeteria table. Action: JAKE's laugh fades into a tired, bored expression for a second as a glowing pale-blue wisp floats from his head to HERO; HERO's smile slowly freezes and drops. Camera: slow push-in to an extreme close-up of HERO's face, background cafeteria noise fading into blur.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] JAKE: a teenage boy, HERO's best friend, with messy blond hair, a red baseball cap worn backwards and a grey hoodie.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. JAKE: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose), HERO's best friend, wearing a red baseball cap backwards.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -303,7 +303,7 @@ _Смысл:_ Люди добры вслух… и честны в мыслях.
 ```
 Location: the same cafeteria, now slightly darker with cooler colors. Action: HERO sits alone at the end of a long table, poking his food, while the other students around him laugh and talk in soft focus. Camera: slow wide pull-back, making HERO look small in the large room.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -323,7 +323,7 @@ _Смысл:_ Эмма — твоя симпатия уже два года. П�
 ```
 Location: the school hallway by the lockers, warm afternoon light with soft lens flare from the windows. Action: EMMA walks past HERO in slow motion, glances at him and looks away shyly; a soft glowing pale-blue wisp floats from her head toward him. HERO stands frozen by his open locker. Camera: slow-motion side tracking shot following EMMA, then hold on HERO.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] EMMA: a teenage girl with a short dark bob haircut, a yellow headband and a teal jacket.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. EMMA: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a short dark bob haircut and a yellow headband.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -343,7 +343,7 @@ _Смысл:_ Мысль Эммы: «Он милый. Почему он не з�
 ```
 Location: the same hallway by the lockers. Action: HERO's eyes go wide, his jaw drops, then he slowly breaks into a huge excited grin and silently celebrates with both fists, trying to hide it. Camera: close-up on HERO's face, quick zoom-in for comedic effect.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -363,7 +363,7 @@ _Смысл:_ Сила для личной жизни: ты точно знае�
 ```
 Location: the school hallway by the lockers. Action: HERO walks up to EMMA and talks to her confidently, leaning on a locker; EMMA laughs and tucks her hair behind her ear. Camera: medium two-shot, slow orbit around them, warm backlight rim light.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] EMMA: a teenage girl with a short dark bob haircut, a yellow headband and a teal jacket.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. EMMA: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a short dark bob haircut and a yellow headband.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -383,7 +383,7 @@ _Смысл:_ Но каждую паузу ты слышишь её сомнен
 ```
 Location: the same hallway, the light gradually becoming cooler. Action: EMMA smiles at HERO, but small glowing pale-blue wisps keep floating from her head; HERO's eyes keep darting to the wisps instead of looking at her face, his smile becoming nervous. Camera: slow push-in on HERO, slight dutch angle.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] EMMA: a teenage girl with a short dark bob haircut, a yellow headband and a teal jacket.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. EMMA: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a short dark bob haircut and a yellow headband.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -403,7 +403,7 @@ _Смысл:_ Ты больше не можешь просто наслажда�
 ```
 Location: the same hallway, colors slowly desaturating around HERO. Action: EMMA waves goodbye and walks away; HERO stands alone, staring at the floor, the hallway around him going quiet and grey. Camera: static wide shot, HERO in the center, EMMA leaving the frame.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] EMMA: a teenage girl with a short dark bob haircut, a yellow headband and a teal jacket.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. EMMA: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a short dark bob haircut and a yellow headband.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -423,7 +423,7 @@ _Смысл:_ 16:00. Торговый центр. Сотни людей. Мыс�
 ```
 Location: a huge bright shopping mall atrium with several floors, escalators, glass railings, skylight with volumetric sunbeams, crowds of shoppers. Action: hundreds of glowing pale-blue wisps rise from all the shoppers and swirl together into a large glowing cloud spinning above HERO, who stands frozen in the middle of the atrium. Camera: dramatic crane shot rising from HERO up to the swirling cloud.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -443,7 +443,7 @@ _Смысл:_ Голова раскалывается. Ты не слышишь 
 ```
 Location: a bench in the shopping mall, shoppers passing by in heavy motion blur. Action: HERO sits hunched on the bench gripping his head with both hands, eyes squeezed shut, the glowing wisps whirling tightly around him. Camera: slow push-in with a subtle pulsing wobble, as if the image is throbbing.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] CROWD: many stylized 3D cartoon people of different ages and looks with simplified faces, slightly out of focus.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. CROWD: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -463,7 +463,7 @@ _Смысл:_ Реальная наука: мозг прямо сейчас иг
 ```
 Location: a dark abstract space with soft fog. Action: HERO stands calmly; above his head floats a large transparent glowing glass funnel; thousands of tiny colorful sparks of light rain down into the funnel, but only a few sparks pass through to HERO's head while the rest bounce away. Camera: slow upward tilt from HERO to the funnel.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -483,7 +483,7 @@ _Смысл:_ Чтение мыслей — как выдрать этот фи�
 ```
 Location: the same dark abstract space with fog. Action: the glowing glass funnel above HERO cracks and shatters into pieces; a flood of colorful sparks pours straight down onto HERO, who staggers back and shields his face with his arms. Camera: low-angle shot, slow motion when the funnel shatters.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -503,7 +503,7 @@ _Смысл:_ Ужин. Папа спрашивает, как день. «Нор
 ```
 Location: a warm family dining room in the evening, a hanging lamp over the table casting a cozy golden light, plates of spaghetti, dark window in the background. Action: DAD smiles at HERO across the table and asks a question; HERO shrugs and answers briefly, pushing food with his fork; MOM eats beside them. Camera: wide shot of the table, slow push-in.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] MOM: a friendly woman in her forties with a warm smile, shoulder-length brown hair, a mustard-yellow scarf and a soft beige cardigan. DAD: a kind man in his forties with round glasses, a short brown mustache and a navy-blue sweater.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. MOM: a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a small brown hair bun on top of her head and a mustard-yellow scarf. DAD: a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with round black glasses and a small brown mustache.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -523,7 +523,7 @@ _Смысл:_ Мысль папы: «С деньгами туго в этом м
 ```
 Location: the same dining room under the warm hanging lamp. Action: close-up of DAD still smiling kindly, but his eyes look tired; a faint glowing pale-blue wisp floats from his head across the table; HERO slowly stops eating and looks at him with a sad, surprised expression. Camera: rack focus from DAD to HERO.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail] DAD: a kind man in his forties with round glasses, a short brown mustache and a navy-blue sweater.
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D. DAD: a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with round black glasses and a small brown mustache.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -543,7 +543,7 @@ _Смысл:_ Некоторые секреты — не ложь, а забот
 ```
 Location: HERO's bedroom at night, lit only by cool moonlight through the window and a small warm desk lamp, dust floating in the moonbeam. Action: HERO sits on the edge of his bed, elbows on his knees, quietly staring out of the window. Camera: slow side dolly, silhouette against the window.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -563,7 +563,7 @@ _Смысл:_ 23:00. Дом затих. Впервые за день — ни о
 ```
 Location: HERO's dark bedroom at night, city lights twinkling far away through the window, soft blue moonlight on the blanket. Action: HERO lies in bed on his back, eyes open, then lets out a long relieved breath and his face relaxes. Camera: top-down shot slowly rotating above the bed.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -583,7 +583,7 @@ _Смысл:_ Может, лучшее в людях — то, что наши �
 ```
 Location: the same dark bedroom, moonlight on HERO's face. Action: HERO smiles softly and slowly closes his eyes, turning on his side to sleep. Camera: slow push-in to a gentle close-up.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -603,7 +603,7 @@ _Смысл:_ Но засыпая, ты слышишь ещё одну мысл�
 ```
 Location: the same dark bedroom, the window behind the bed. Action: a single cold, bright glowing blue wisp of light slowly drifts in through the closed window glass and floats toward HERO's head; HERO's eyes snap open wide in the darkness. Camera: slow creeping push-in, suspenseful.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 
@@ -623,7 +623,7 @@ _Смысл:_ Оставил бы силу или вернул? Пиши в ко
 ```
 Location: HERO's bedroom in warm morning light, cozy and bright. Action: HERO looks straight into the camera, shrugs with a playful grin and waves; then his body slowly turns semi-transparent like glass with a shimmering outline until he almost disappears. Camera: static medium shot, centered.
 
-Characters: HERO: [HERO — paste the full description of your character here: age, face, hair, clothes, colors, signature detail]
+Characters: HERO: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
 Thoughts look like: soft glowing pale-blue translucent wisps of light that float from a person's head toward HERO.
 

@@ -42,20 +42,22 @@
 **[STYLE]**
 > Stylized 3D animated film look, high-quality 3D render, soft rounded shapes, detailed three-dimensional environment with real depth and perspective, cinematic volumetric lighting with soft shadows, gentle dust particles floating in light beams, shallow depth of field, rich but slightly moody color grading, 16:9. No text, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 
-**[HERO]** — ⚠️ заполнить описанием вашего персонажа (внешность, рост/возраст, лицо, волосы, одежда, цвета, отличительная деталь).
-Чем конкретнее, тем стабильнее: «короткие рыжие кудрявые волосы, зелёное худи с белыми шнурками, белые кеды»
-лучше, чем «парень в худи».
+**[HERO]** — наш персонаж (образец: `hero_reference.jpg`). Без имени: он — это «ты», зритель.
+> a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
 
-**Второстепенные персонажи** (в том же 3D-стиле; одна яркая деталь у каждого, чтобы различать):
+**Второстепенные персонажи** — того же «вида», что герой (белая круглая голова, точки-глаза, без носа), отличаются ОДНОЙ яркой деталью.
+Так весь мир выглядит единым, а героя легко отличить: у него нет никаких аксессуаров.
 
-| Имя | Описание для промпта |
+| Имя | Отличие |
 |---|---|
-| MOM | a friendly woman in her forties with a warm smile, shoulder-length brown hair, mustard-yellow scarf and a soft beige cardigan |
-| DAD | a kind man in his forties with round glasses, a short brown mustache and a navy-blue sweater |
-| JAKE (друг) | a teenage boy with messy blond hair, a red baseball cap worn backwards and a grey hoodie |
-| EMMA (симпатия) | a teenage girl with a short dark bob haircut, a yellow headband and a teal jacket |
-| LEO (отличник) | a skinny teenage boy with big round glasses, neat side-parted hair and a white collared shirt |
-| CROWD | many stylized 3D cartoon people of different ages and looks, simplified faces, slightly out of focus |
+| MOM | выше ростом, коричневый пучок волос, горчичный шарф |
+| DAD | выше ростом, круглые чёрные очки, коричневые усики |
+| JAKE (друг) | красная кепка козырьком назад |
+| EMMA (симпатия) | тёмное каре и жёлтый ободок |
+| LEO (отличник) | большие круглые очки, синяя бабочка |
+| CROWD | у каждого одна цветная деталь: шапка, шарф, очки |
+
+Полные английские описания — в `blocks.py`, в промптах серий они уже подставлены.
 
 Если ваш герой взрослый, а не школьник — скажите, перепишу сцены (школа → офис).
 

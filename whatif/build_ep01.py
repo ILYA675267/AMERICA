@@ -6,7 +6,7 @@ from blocks import STYLE, HERO, CAST, THOUGHT
 S = [
  ("HOOK", "(calm) Imagine waking up tomorrow… and hearing every single thought of every person around you.",
   "Представь: ты просыпаешься и слышишь все мысли людей вокруг.", [],
-  "Location: a cozy teenage bedroom at dawn, unmade bed, posters on the wall, a desk with a lamp in the foreground, soft blue morning light through half-open blinds creating volumetric light rays. Action: HERO slowly sits up in bed, rubbing his eyes, then freezes and tilts his head as faint glowing pale-blue translucent wisps of light begin to drift in through the window toward his head. Camera: slow push-in from medium shot to close-up on HERO's face."),
+  "Location: a cozy teenage bedroom at dawn, unmade bed, posters on the wall, a desk with a lamp in the foreground, soft blue morning light through half-open blinds creating volumetric light rays. Action: HERO slowly sits up in bed, rubbing his eyes with his mitten hands, then freezes and tilts his head as faint glowing pale-blue translucent wisps of light begin to drift in through the window toward his head. Camera: slow push-in from medium shot to close-up on HERO's face."),
  ("HOOK", "(playful) Sounds amazing, right? (dramatic) Well… by tonight, you'll be begging for it to stop.",
   "Звучит круто? К вечеру будешь умолять, чтобы это прекратилось.", ["CROWD"],
   "Location: a busy city street at golden hour, tall buildings, depth haze, warm sunlight. Action: HERO stands still in the middle of the sidewalk as dozens of glowing pale-blue wisps of light stream from the heads of passing people and swirl around him like a storm; he presses both hands over his ears and squeezes his eyes shut. Camera: slow 180-degree orbit around HERO, background crowd motion-blurred."),
