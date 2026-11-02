@@ -25,3 +25,9 @@
 ## Ограничения среды
 - YouTube блокирует скачивание с этого сервера («Sign in to confirm you're not a bot»): работают только
   обложки (i.ytimg.com), oEmbed и иногда раскадровки через `player_client=mweb`.
+
+## Новый проект (ноябрь 2026): канал «WHAT IF…» — папка `whatif/`
+Отдельный канал с новым персонажем пользователя (не Майло). Видео — Google Vids, озвучка — Fish Audio, стиль — объёмное 3D.
+- `whatif/README.md` — библия: формат, структура, блоки промптов, правила Vids/Fish Audio, банк из 30 тем.
+- `whatif/blocks.py` — общие блоки (STYLE, HERO, CAST); **HERO пока заглушка** — ждём описание персонажа.
+- `whatif/build_ep01.py` → `whatif/ep01_read_minds.md` (31 клип: озвучка + промпт). После правки HERO перезапустить.
