@@ -41,7 +41,13 @@
 | **A Better Mind** | I Dare You to Finish… — 5,2 млн | **простота**: одна идея на экран, крупные короткие надписи, прямое обращение к зрителю, вызов («досмотри до конца») |
 | **Ockeroid** | ANIMATE ME!! — 25 млн | **юмор и характер**: короткие смешные моменты внутри серьёзного рассказа |
 
-**Наш стиль = картинка Day One + подача знаний BetterU + простота A Better Mind + капля юмора Ockeroid.**
+**Наш стиль (обновлено): плоская рисовка как у A Better Mind / BetterU** — чёрный маркер на белой бумаге, минимум цвета,
+простые фоны из нескольких линий, простой монтаж. Персонаж и так нарисован в этом стиле.
+Подача знаний — BetterU, простота — A Better Mind, капля юмора — Ockeroid.
+
+**Связность:** каждый выпуск — одна непрерывная история (один день героя). Каждый клип начинается там, где закончился
+предыдущий, места описываются одинаково (словарь `LOC` в сценарии), факты показываются прямо в сцене (рисунок появляется
+рядом с героем), а не в отдельной «абстрактной» сцене.
 Отличие от всех: формат «What if» с реальной наукой и единым героем-«тобой».
 
 **Монтаж:**
@@ -65,10 +71,10 @@
 В файлах серий эти блоки уже вставлены в каждый промпт.
 
 **[STYLE]**
-> Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+> Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 
 **[HERO]** — наш персонаж (образец: `hero_reference.jpg`). Без имени: он — это «ты», зритель.
-> a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+> a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
 **Второстепенные персонажи** — того же «вида», что герой (белая круглая голова, точки-глаза, без носа), отличаются ОДНОЙ яркой деталью.
 Так весь мир выглядит единым, а героя легко отличить: у него нет никаких аксессуаров.
@@ -123,7 +129,8 @@
 ---
 
 ## Банк тем (по силе хука)
-Готово: **01 — What If You Could Read Minds?** → `ep01_read_minds.md`
+Готово: **01 — What If You Could Read Minds?** → `ep01_read_minds.md`; **02 — What If Everyone Told the Truth?** → `ep02_everyone_tells_truth.md`.
+Сборка: `python3 build_ep01.py`, `python3 build_ep02.py`; страница с кнопками копирования — `python3 build_page.py 02 out.html`.
 
 | # | Название | Почему цепляет |
 |---|---|---|
@@ -132,7 +139,7 @@
 | 04 | What If You Could Stop Time? | эффектные кадры застывшего мира |
 | 05 | What If You Knew the Exact Day You'll Die? | эмоции, высокое удержание |
 | 06 | What If You Could Rewind 10 Seconds? | неловкие моменты, шутки |
-| 07 | What If You Could Never Lie Again? | школа, друзья, родители |
+| 07 | What If You Could Never Lie Again? | (вошла в выпуск 02) |
 | 08 | What If You Woke Up 100 Years in the Future? | город будущего |
 | 09 | What If You Were the Last Person on Earth? | пустой город, атмосфера |
 | 10 | What If You Could Talk to Animals? | кот говорит, что думает о тебе |

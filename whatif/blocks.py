@@ -1,28 +1,36 @@
-# Shared prompt blocks. Edit HERO once, then run `python3 build_ep01.py` to regenerate every prompt.
-STYLE = ("Cinematic animated short film look in the style of modern dark motivational animations: soft painterly "
-         "3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources "
-         "(lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, "
-         "volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character "
-         "acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, "
-         "no lip movement. Sound: soft ambient sound only, no dialogue, no music.")
+# Shared prompt blocks for every Google Vids prompt. Edit here, then run `python3 build_ep01.py`.
+# Look: flat 2D hand-drawn doodle (like A Better Mind / BetterU), black marker on off-white paper, few color accents.
+STYLE = ("Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker "
+         "outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic "
+         "textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small "
+         "accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, "
+         "no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient "
+         "sound only.")
 
 # The channel's character (reference: hero_reference.jpg).
-HERO = ("a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, "
-        "about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black "
-        "dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; "
-        "no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short "
-        "straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple "
-        "hand-drawn doodle brought to life in 3D.")
+HERO = ("a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as "
+        "big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, "
+        "no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded "
+        "mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled "
+        "with plain white.")
 
+_SAME = "a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines)"
 CAST = {
-    "MOM": "a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a small brown hair bun on top of her head and a mustard-yellow scarf.",
-    "DAD": "a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with round black glasses and a small brown mustache.",
-    "JAKE": "a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose), HERO's best friend, wearing a red baseball cap backwards.",
-    "EMMA": "a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a short dark bob haircut and a yellow headband.",
-    "LEO": "a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with big round black glasses and a tiny blue bow tie.",
-    "SCIENTIST": "a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) wearing a white lab coat and thin rectangular glasses.",
-    "CROWD": "many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.",
+    "MOM": f"{_SAME}, a bit taller, with a small brown hair bun on top of her head and a mustard-yellow scarf.",
+    "JAKE": f"{_SAME}, the main character's best friend, wearing a red baseball cap backwards.",
+    "EMMA": f"{_SAME}, a girl with a short dark bob haircut and a yellow headband.",
+    "LEO": f"{_SAME}, with big round black glasses and a tiny blue bow tie.",
+    "TEACHER": f"{_SAME}, taller, with a green cardigan and a small grey beard.",
+    "OLDMAN": f"{_SAME}, an old man with a knitted orange hat and a walking cane.",
+    "GRANDMA": f"{_SAME}, an old woman with a grey hair bun, round glasses and a purple shawl, lying in a hospital bed.",
+    "DOCTOR": f"{_SAME}, wearing a white coat and a light-blue stethoscope.",
+    "SALESMAN": f"{_SAME}, wearing a bright orange shirt and a name badge with no readable text.",
+    "KID": f"{_SAME}, a small child with a green beanie.",
+    "NEIGHBOR": f"{_SAME}, with curly brown hair and a pink apron.",
+    "POLITICIAN": f"{_SAME}, in a dark-blue suit and a red tie, standing at a podium with microphones.",
+    "CROWD": "several doodle characters in the same style (big round white heads, black dot eyes, no noses), each with one small colored accessory like a hat, scarf or glasses.",
 }
 
-THOUGHT = ("other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; "
-           "dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.")
+THOUGHT = ("other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float "
+           "from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts "
+           "are a small yellow scribble above his head.")

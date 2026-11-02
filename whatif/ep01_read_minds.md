@@ -1,21 +1,19 @@
-# Ep. 01 — What If You Could Read Minds? (5:30)
+# Ep. 01 — What If You Could Read Minds? (Science Explains) (5:30)
 
-33 клипов × 10 с = 5:30. Озвучка — английский, под ней смысл по-русски.
+33 клипов × 10 с. Плоская рисовка, одна непрерывная история: каждый клип начинается там, где закончился предыдущий. 
 
 **Название:** What If You Could Read Minds? (Science Explains)  
-**Обложка:** герой крупно в темноте, глаза широко раскрыты, вокруг головы вихрь голубых и красных светящихся завитков; надпись `READ MINDS?` белым рукописным шрифтом, слово `MINDS` на розовой плашке.  
-**Главы для описания:** 0:00 Intro · 0:30 Day 1 · 1:20 The Noise · 2:00 Dark Thoughts · 2:40 Trust · 3:10 The Brain · 3:50 Losing Your Mind · 4:20 Is It Possible? · 5:00 Ending
+**Обложка:** белый фон, герой крупно с испуганными глазами, вокруг головы клубок голубых и красных каракулей; рукописная надпись `READ MINDS?`.  
+**Главы для описания:** 0:00 Intro · 0:30 Day 1 · 1:30 The Noise · 2:10 Dark Thoughts · 2:50 Trust · 3:20 The Brain · 4:00 Losing Your Mind · 4:30 Is It Possible? · 5:00 Ending
 
-**Как пользоваться:** «Промпт» → Google Vids целиком. «Озвучка» → Fish Audio (текст без смысловой строки; весь текст подряд — в `ep01_voiceover.md`). «Надпись» — добавить в монтаже крупно, ключевое слово на розовой плашке.
-
-Источники фактов — в конце файла.
+**Как пользоваться:** «Промпт» → Google Vids целиком. «Озвучка» → Fish Audio (весь текст подряд — `ep01_voiceover.md`). «Надпись» — добавить в монтаже. Для связности: если Vids умеет начинать видео с картинки, давайте ему последний кадр предыдущего клипа.
 
 
 # Глава: INTRO
 
 ---
 
-## Клип 01 · 0:00
+## Клип 01 · 0:00–0:10
 
 **Озвучка:**
 > (calm) Right now, about eight billion people are thinking. And not one of them knows what YOU are thinking. (serious) But what if that changed… tomorrow?
@@ -26,18 +24,20 @@ _Смысл:_ Сейчас думают 8 млрд человек, и никто
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A huge city at night seen from high above, thousands of warm glowing windows, light fog between the buildings. 0–4 s: tiny pale-blue glowing wisps of light slowly rise from every window like fireflies. 4–7 s: the camera glides down toward one small apartment window. 7–10 s: through the window we see the main character sitting on his bed in a dark bedroom, lit only by a bedside lamp. Camera: slow aerial descent and push-in.
+10-second shot. Location: A quiet doodle street of small simple houses at dawn, drawn with a few black lines, a pale-yellow sun low in the sky.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: 0–4 s: tiny pale-blue scribbled thought clouds slowly rise from the roofs of all the houses. 4–7 s: the camera slowly pushes in toward one small house with a window. 7–10 s: through the window we see the main character asleep in his bed. Camera: one slow continuous push-in.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 02 · 0:10
+## Клип 02 · 0:10–0:20
 
 **Озвучка:**
 > What if you woke up… and could hear every thought of every person around you? Their secrets. Their lies. What they REALLY think of you.
@@ -46,35 +46,39 @@ _Смысл:_ А если ты проснёшься и услышишь мысл
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark bedroom at dawn, cold blue light through the blinds making volumetric rays, dust in the air. 0–4 s: the main character lies in bed, his dot eyes suddenly open wide. 4–7 s: faint pale-blue glowing wisps of light seep in through the window and the gap under the door. 7–10 s: he slowly sits up and tilts his big round head, listening, as the wisps circle around him. Camera: slow push-in from medium shot to close-up.
+10-second shot. This shot follows directly after the previous one. Location: The main character's small bedroom drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow sun in the middle, a small desk with a laptop on the right.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character is asleep in his bed. 0–4 s: his dot eyes pop open. 4–7 s: small pale-blue scribbled thought clouds float in through the window and circle around his head. 7–10 s: he sits up in bed and tilts his big round head, listening. Camera: static medium shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 03 · 0:20
+## Клип 03 · 0:20–0:30
 
 **Озвучка:**
 > (serious) It sounds like a superpower. But brain scientists would tell you… it might be the fastest way to lose your mind. Let's find out why.
 
-_Смысл:_ Звучит как суперсила. Но учёные сказали бы: это быстрый способ сойти с ума.
+_Смысл:_ Звучит как суперсила. Но учёные сказали бы: это самый быстрый способ сойти с ума.
 
 **Надпись на экране:** `WHAT IF YOU COULD READ MINDS?`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. An empty dark infinite space with a reflective black floor and soft fog. 0–4 s: the main character stands calmly in the center while a few pale-blue glowing wisps orbit his head peacefully. 4–7 s: more and more wisps appear, spinning faster and turning chaotic. 7–10 s: a few of them flicker dark red, the light pulses, and the character looks up at the storm above him with fear. Camera: slow low-angle orbit.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow sun in the middle, a small desk with a laptop on the right.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character sits on the edge of his bed with a few pale-blue thought clouds around his head. 0–4 s: he smiles at them curiously. 4–7 s: more and more scribbles appear and tangle into a messy ball above his head. 7–10 s: a few of the scribbles turn dark red and his smile turns into a worried flat line. Camera: slow push-in.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -82,7 +86,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 04 · 0:30
+## Клип 04 · 0:30–0:40
 
 **Озвучка:**
 > (warm) Day one. Seven A.M. At first, it's amazing. Your mom says, "Good morning, sweetie." And her thoughts agree: "I'm so proud of him."
@@ -93,65 +97,94 @@ _Смысл:_ День первый, 7 утра. Мама говорит «до�
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A warm cozy kitchen in the morning, golden sunlight through the window, steam rising from a coffee mug, the rest of the room in soft darkness. 0–4 s: the mom pours coffee and smiles warmly at the main character, who sits at the table with a bowl of cereal. 4–7 s: a soft pale-blue glowing wisp floats gently from her head to his. 7–10 s: he looks up at her and his face slowly lights up with a happy smile. Camera: medium two-shot, slow sideways dolly.
+10-second shot. This shot follows directly after the previous one. Location: A simple doodle kitchen: a table in the middle, a window behind it, a sink on the right, a coffee pot on the counter.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Mom: a taller character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a small brown hair bun on top of her head and a mustard-yellow scarf.
+Action: 0–4 s: the main character walks into the kitchen and sits down at the table; the mom pours coffee and smiles at him. 4–7 s: a pale-blue scribbled thought cloud with a small red heart inside floats from her head to his. 7–10 s: he looks up at her and smiles widely. Camera: static medium two-shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Mom: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), a bit taller, with a small brown hair bun on top of her head and a mustard-yellow scarf.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 05 · 0:40
+## Клип 05 · 0:40–0:50
+
+**Озвучка:**
+> You leave the house feeling great. Someone loves you, and for once, you know it for sure. Then the school bus pulls up.
+
+_Смысл:_ Ты выходишь из дома счастливым: тебя любят, и ты знаешь это точно. Подъезжает школьный автобус.
+
+**Промпт для Google Vids:**
+```
+10-second shot. This shot follows directly after the previous one. Location: The front of the main character's small doodle house with a door and steps, a sidewalk and a bus stop sign on the right.
+
+Action: 0–4 s: the main character walks out of the front door with a small backpack and waves back to the mom standing in the doorway. 4–7 s: he walks happily down the sidewalk to the bus stop with a small yellow scribble bouncing above his head. 7–10 s: a simple yellow doodle school bus drives in from the right and stops next to him. Camera: static wide side view.
+
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Mom: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), a bit taller, with a small brown hair bun on top of her head and a mustard-yellow scarf.
+
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
+```
+
+---
+
+## Клип 06 · 0:50–1:00
 
 **Озвучка:**
 > On the bus, you hear everything. The driver hates Mondays. The guy next to you forgot his homework. And honestly? Nobody's thinking about you.
 
-_Смысл:_ В автобусе слышишь всех: водитель ненавидит понедельники, сосед забыл домашку, о тебе не думает никто.
+_Смысл:_ В автобусе слышишь всех: водитель ненавидит понедельники, сосед забыл домашку. А о тебе не думает никто.
 
-**Надпись на экране:** `8:30 AM`
+**Надпись на экране:** `8:00 AM`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. Inside a dim yellow school bus in the morning, sunlight flickering through the windows. 0–4 s: the main character sits by the window and looks around curiously. 4–7 s: pale-blue wisps rise from the heads of the passengers, each one drifting toward him. 7–10 s: he looks at all the passengers absorbed in their own thoughts, none of them looking at him, and he blinks in surprise. Camera: slow push-in down the aisle.
+10-second shot. This shot follows directly after the previous one. Location: Inside a simple doodle school bus: rows of seats drawn with simple lines, windows with a few passing trees.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: The main character has just sat down by the window. 0–4 s: pale-blue scribbled thought clouds pop up above the heads of the other passengers one by one. 4–7 s: he looks from one passenger to another. 7–10 s: he notices that nobody is looking at him and blinks in surprise. Camera: static side view of the seats.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Crowd: several doodle characters in the same style (big round white heads, black dot eyes, no noses), each with one small colored accessory like a hat, scarf or glasses.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 06 · 0:50 · ФАКТ
+## Клип 07 · 1:00–1:10
 
 **Озвучка:**
 > That's actually real. Psychologists call it the spotlight effect: we believe people notice us far more than they actually do.
 
-_Смысл:_ Это реальный эффект — «эффект прожектора»: нам кажется, что нас замечают гораздо чаще, чем на самом деле.
+_Смысл:_ Это реальный «эффект прожектора»: нам кажется, что нас замечают гораздо чаще, чем на самом деле.
 
 **Надпись на экране:** `THE SPOTLIGHT EFFECT`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark theater. 0–4 s: the main character stands alone on a stage under one bright spotlight, nervously hugging himself. 4–7 s: the house lights slowly come up. 7–10 s: we see the audience seats are full, but everyone is looking at their own glowing phones or at each other, nobody watches him; he lowers his arms with relief. Camera: starts on the character, then pulls back wide to reveal the audience.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: Inside a simple doodle school bus: rows of seats drawn with simple lines, windows with a few passing trees.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: Same bus, the main character sits by the window. 0–4 s: a doodle spotlight beam drawn in pale yellow appears and shines down on him, and he shrinks shyly in his seat. 4–7 s: the beam slowly fades away. 7–10 s: we see all the other passengers looking at their own phones or out the window, and he relaxes with relief. Camera: slow pull-back to show the whole bus.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Crowd: several doodle characters in the same style (big round white heads, black dot eyes, no noses), each with one small colored accessory like a hat, scarf or glasses.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 07 · 1:00
+## Клип 08 · 1:10–1:20
 
 **Озвучка:**
 > (sly) At school, you find the real cheat code. The smartest kid in class is thinking the answers to the test. Loudly. In your head.
@@ -162,35 +195,42 @@ _Смысл:_ В школе — чит-код: отличник думает о�
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A classroom with a dark moody atmosphere, sunlight beams through tall windows full of dust, rows of desks. 0–4 s: the main character stares nervously at a test paper and taps his pencil. 4–7 s: behind him the classmate with big round glasses writes quickly while a pale-blue wisp floats from his head over the main character's shoulder. 7–10 s: the main character smiles slyly and starts writing very fast. Camera: over-the-shoulder shot, focus shift from the classmate to the main character.
+10-second shot. This shot follows directly after the previous one. Location: A simple doodle classroom: a blackboard with scribbles (no readable text), a few rows of desks, a window on the left.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Leo: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with big round black glasses and a tiny blue bow tie.
+Action: The main character sits at a desk with a blank test paper; behind him sits the classmate with big round glasses. 0–4 s: the main character taps his pencil nervously. 4–7 s: a pale-blue thought cloud with small check marks inside floats from the classmate's head over his shoulder. 7–10 s: the main character smiles slyly and writes very fast. Camera: static over-the-shoulder view.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Leo: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), with big round black glasses and a tiny blue bow tie.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 08 · 1:10
+## Клип 09 · 1:20–1:30
 
 **Озвучка:**
-> (excited) Perfect score. Your friends are impressed. Your teacher is impressed. By lunch, you feel like the most powerful person alive.
+> (excited) Perfect score. Your teacher is impressed. Everyone is impressed. By lunch, you feel like the most powerful person alive.
 
-_Смысл:_ Идеальный балл. К обеду ты чувствуешь себя самым могущественным человеком.
+_Смысл:_ Идеальный балл. Учитель в восторге. К обеду ты чувствуешь себя самым могущественным человеком.
+
+**Надпись на экране:** `100%`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A school hallway with rows of lockers, warm backlight from a big window at the end creating a glowing silhouette effect. 0–4 s: the main character walks confidently toward the camera holding a test paper. 4–7 s: classmates around him turn and look at him with admiration. 7–10 s: he raises the paper above his head and does a triumphant little jump, captured in slow motion. Camera: low-angle hero shot, slow motion at the peak.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: A simple doodle classroom: a blackboard with scribbles (no readable text), a few rows of desks, a window on the left.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: Same classroom, the main character at his desk. 0–4 s: the teacher walks up and hands him back his test paper with a big red circle drawn on it. 4–7 s: he looks at it and his mouth opens in a huge happy grin. 7–10 s: he raises both mitten hands in victory while the classmate with glasses stares at him in surprise. Camera: static medium shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Teacher: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), taller, with a green cardigan and a small grey beard.
+Leo: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), with big round black glasses and a tiny blue bow tie.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -198,7 +238,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 09 · 1:20
+## Клип 10 · 1:30–1:40
 
 **Озвучка:**
 > (serious) But then you notice something strange. People don't think in neat little sentences. Their thoughts are messy. Fast. And they never… ever… stop.
@@ -209,19 +249,21 @@ _Смысл:_ Но мысли людей — не аккуратные фраз�
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A crowded school cafeteria, warm light over the tables but dark edges, background blurred. 0–4 s: the main character sits down with a lunch tray, still smiling. 4–7 s: from every head in the room, pale-blue wisps start rising in tangled, chaotic streams. 7–10 s: the streams pile up above him into a buzzing cloud, and his smile fades into worry. Camera: slow crane up from the character to the cloud.
+10-second shot. This shot follows directly after the previous one. Location: A simple doodle school cafeteria: long tables, lunch trays, a big window in the back.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: 0–4 s: the main character walks into the cafeteria carrying a lunch tray, still smiling. 4–7 s: pale-blue scribbles start popping up above every head at the tables, faster and faster. 7–10 s: the scribbles tangle together into a messy cloud above the room, and he stops walking. Camera: static wide shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Crowd: several doodle characters in the same style (big round white heads, black dot eyes, no noses), each with one small colored accessory like a hat, scarf or glasses.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 10 · 1:30 · ФАКТ
+## Клип 11 · 1:40–1:50
 
 **Озвучка:**
 > In twenty-twenty, researchers at Queen's University in Canada estimated that the average person has more than six thousand separate thoughts every single day.
@@ -232,57 +274,63 @@ _Смысл:_ В 2020 году учёные Университета Квинс 
 
 **Промпт для Google Vids:**
 ```
-10-second shot. An abstract dark space. 0–4 s: the main character stands small in the center of the frame. 4–7 s: a huge river of thousands of tiny glowing pale-blue particles flows past him from left to right like a galaxy. 7–10 s: he reaches out a mitten hand and the particles stream around it. Camera: slow wide dolly, the river of light fills the screen.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: A simple doodle school cafeteria: long tables, lunch trays, a big window in the back.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character sits down at a table with his tray. 0–4 s: next to him a simple doodle drawing appears of one small head. 4–7 s: a long stream of hundreds of tiny pale-blue scribbles pours out of that drawn head like a river. 7–10 s: the river of scribbles flows across the whole frame while he watches with wide eyes. Camera: static medium shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 11 · 1:40 · ФАКТ
+## Клип 12 · 1:50–2:00
 
 **Озвучка:**
-> Now multiply that by thirty people in one classroom. That's nearly two hundred thousand thoughts a day. All of them… crashing into your head.
+> Now multiply that by everyone at these tables. That's hundreds of thousands of thoughts a day. All of them… crashing into your head.
 
-_Смысл:_ Умножь на 30 человек в классе — почти 200 000 мыслей в день, и все летят тебе в голову.
+_Смысл:_ Умножь на всех за этими столами — сотни тысяч мыслей в день, и все летят тебе в голову.
 
-**Надпись на экране:** `×30 = 180,000`
+**Надпись на экране:** `× 30`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark classroom lit by a single warm desk lamp. 0–4 s: the main character sits at his desk surrounded by classmates. 4–7 s: thick streams of pale-blue wisps pour from all thirty heads at once and converge on him. 7–10 s: the light around his head becomes blinding and he grips the edge of his desk. Camera: slow push-in, slight shake.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: A simple doodle school cafeteria: long tables, lunch trays, a big window in the back.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: Same cafeteria, the main character sits at the table. 0–4 s: thick streams of pale-blue scribbles flow from all the students toward him. 4–7 s: they wrap around his head into a big messy scribble ball. 7–10 s: he grips the edge of the table with both mitten hands, his eyes squeezed shut. Camera: slow push-in.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Crowd: several doodle characters in the same style (big round white heads, black dot eyes, no noses), each with one small colored accessory like a hat, scarf or glasses.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 12 · 1:50 · ФАКТ
+## Клип 13 · 2:00–2:10
 
 **Озвучка:**
 > And most of it isn't even words. Studies of inner experience show people often think in images, feelings and half-finished fragments.
 
-_Смысл:_ И это даже не слова: исследования показывают, что люди часто думают образами, чувствами и обрывками.
+_Смысл:_ И это даже не слова: люди часто думают образами, чувствами и обрывками.
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark space with soft fog. 0–4 s: a girl with a yellow headband stands beside the main character; a pale-blue wisp rises from her head. 4–7 s: the wisp breaks apart into small glowing translucent images floating in the air: a dog, a slice of pizza, a rain cloud, a cracked heart. 7–10 s: the images flicker and dissolve before the main character can catch them; he tilts his head, confused. Camera: slow orbit around the floating images.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: A simple doodle school cafeteria: long tables, lunch trays, a big window in the back.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: Same cafeteria table; the girl with the yellow headband sits down across from the main character. 0–4 s: a pale-blue thought cloud appears above her head. 4–7 s: inside it, tiny doodle pictures pop up one after another: a dog, a slice of pizza, a rain cloud, a cracked heart. 7–10 s: the pictures scribble away before he can understand them, and he tilts his head, confused. Camera: static two-shot across the table.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Emma: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), a girl with a short dark bob haircut and a yellow headband.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -290,30 +338,32 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 13 · 2:00
+## Клип 14 · 2:10–2:20
 
 **Озвучка:**
-> (quiet) Then comes the darkest part. You start hearing things people would never say out loud. Strange thoughts. Scary thoughts. Even from people you love.
+> (quiet) Then comes the darkest part. You start hearing things people would never say out loud. Strange thoughts. Scary thoughts.
 
-_Смысл:_ Потом самое тёмное: ты слышишь то, что люди никогда не скажут вслух. Даже от близких.
+_Смысл:_ Потом самое тёмное: ты слышишь то, что люди никогда не скажут вслух. Странные, пугающие мысли.
 
-**Надпись на экране:** `7:00 PM`
+**Надпись на экране:** `3:30 PM`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dimly lit evening bus stop in the rain, streetlight reflections on wet asphalt. 0–4 s: the main character waits next to a kind elderly character with a knitted hat. 4–7 s: a calm pale-blue wisp rises from the elderly character's head. 7–10 s: the wisp suddenly flickers and turns dark red; the main character slowly turns his head and looks at the old man in shock. Camera: static medium shot, rain in the foreground.
+10-second shot. This shot follows directly after the previous one. Location: A simple doodle city street after school: a sidewalk, a bus stop bench, a few shop fronts drawn with simple lines, a pale-orange evening sun.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: After school, the main character walks along the sidewalk and stops at the bus stop bench next to the old man with the orange hat. 0–4 s: the old man smiles kindly at him. 4–7 s: a pale-blue thought cloud rises from the old man's head. 7–10 s: it suddenly turns into a messy dark-red scribble, and the main character slowly turns to look at him in shock. Camera: static side view.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Oldman: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), an old man with a knitted orange hat and a walking cane.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 14 · 2:10 · ФАКТ
+## Клип 15 · 2:20–2:30
 
 **Озвучка:**
 > Here's the twist. In a study across thirteen countries, about ninety-four percent of people said they have unwanted, intrusive thoughts.
@@ -324,57 +374,63 @@ _Смысл:_ Поворот: в исследовании в 13 странах �
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A vast dark space filled with a huge crowd of minimalist characters standing in rows, each with a small colorful accessory. 0–4 s: the camera rises slowly above the crowd. 4–7 s: above almost every head a small flickering dark-red wisp lights up, one after another. 7–10 s: only a few heads stay without one; the main character stands in the middle, looking around. Camera: slow crane up to a high wide shot.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: A simple doodle city street after school: a sidewalk, a bus stop bench, a few shop fronts drawn with simple lines, a pale-orange evening sun.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: The main character walks on along the same street past many people. 0–4 s: small dark-red scribbles pop up above almost every head he passes. 4–7 s: he looks around at them, his eyes growing wider. 7–10 s: he notices only one or two people without a red scribble. Camera: slow side tracking along the sidewalk.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Crowd: several doodle characters in the same style (big round white heads, black dot eyes, no noses), each with one small colored accessory like a hat, scarf or glasses.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 15 · 2:20 · ФАКТ
+## Клип 16 · 2:30–2:40
 
 **Озвучка:**
-> Like standing on a balcony and thinking, "What if I jumped?" Psychologists call it the call of the void. It's normal. It means nothing.
+> Even you have them. Standing on a bridge and thinking, "What if I jumped?" Psychologists call it the call of the void. It's normal. It means nothing.
 
-_Смысл:_ Как мысль «а что если прыгнуть?» на балконе — «зов бездны». Это нормально и ничего не значит.
+_Смысл:_ Они есть и у тебя: стоишь на мосту и думаешь «а что если прыгнуть?» Это «зов бездны». Это нормально и ничего не значит.
 
 **Надпись на экране:** `THE CALL OF THE VOID`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A high apartment balcony at night overlooking a glowing city far below. 0–4 s: the main character leans on the railing, looking down at the lights. 4–7 s: a small flickering dark-red wisp appears from his own head. 7–10 s: he blinks, steps back from the railing, and the wisp fades into a calm golden glow. Camera: over-the-shoulder shot, then slow pull-back.
+10-second shot. This shot follows directly after the previous one. Location: A simple doodle footbridge over a river drawn with a few wavy blue lines, the small town in the distance, a pale-orange sunset.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character walks onto the footbridge and stops at the railing, looking down at the river. 0–4 s: a small dark-red scribble appears above his own head. 4–7 s: he blinks and steps back from the railing. 7–10 s: the red scribble turns back into his small calm yellow scribble, and he walks on. Camera: static side view.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 16 · 2:30
+## Клип 17 · 2:40–2:50
 
 **Озвучка:**
-> But you can't push them away. You hear everyone's worst three seconds… all day long. And slowly, you start to believe people are monsters.
+> But other people's dark thoughts, you can't push away. You hear everyone's worst three seconds… all day long. And you start to believe people are monsters.
 
-_Смысл:_ Но ты не можешь их отогнать. Слышишь худшие три секунды каждого — весь день. И начинаешь верить, что люди — монстры.
+_Смысл:_ Но чужие тёмные мысли не отогнать. Ты слышишь худшие три секунды каждого — весь день. И начинаешь верить, что люди — монстры.
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark city street at night, people walking under streetlights. 0–4 s: the main character walks slowly through the crowd, looking anxious. 4–7 s: dark-red wisps flicker above many heads around him. 7–10 s: the shadows of the passersby on the brick wall slowly stretch and twist into tall monster shapes with long claws, while the people themselves look normal. Camera: side tracking shot along the wall.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: A simple doodle footbridge over a river drawn with a few wavy blue lines, the small town in the distance, a pale-orange sunset.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: The main character walks off the bridge as people pass by him in the sunset. 0–4 s: dark-red scribbles float above their heads. 4–7 s: their long shadows on the ground slowly stretch and twist into scribbly monster shapes with claws. 7–10 s: he hurries home past them, hugging himself. Camera: static wide shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Crowd: several doodle characters in the same style (big round white heads, black dot eyes, no noses), each with one small colored accessory like a hat, scarf or glasses.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -382,69 +438,74 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 17 · 2:40
+## Клип 18 · 2:50–3:00
 
 **Озвучка:**
-> Next to go: trust. Research suggests the average person tells one or two lies a day. Mostly tiny ones. "I'm fine." "I love the gift."
+> At home, your best friend drops by. Research suggests the average person tells one or two lies a day. Mostly tiny ones. "I love the gift!"
 
-_Смысл:_ Дальше рушится доверие. В среднем человек врёт 1–2 раза в день, в основном по мелочи: «Я в порядке», «Обожаю подарок».
+_Смысл:_ Дома заходит лучший друг. В среднем человек врёт 1–2 раза в день, в основном по мелочи: «Обожаю подарок!»
 
 **Надпись на экране:** `1–2 LIES / DAY`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A cozy dark living room lit by a warm floor lamp and birthday candles. 0–4 s: the best friend with a red cap opens a gift box from the main character and smiles widely. 4–7 s: a pale-blue wisp floats from the friend's head. 7–10 s: the main character's happy face slowly falls as he hears it. Camera: medium two-shot, slow push-in on the main character.
+10-second shot. This shot follows directly after the previous one. Location: A simple doodle living room in the evening: a sofa, a floor lamp with a pale-yellow glow, a small table.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Jake: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose), HERO's best friend, wearing a red baseball cap backwards.
+Action: The main character and his best friend with the red cap sit on the sofa. 0–4 s: the main character hands him a small wrapped gift box. 4–7 s: the friend opens it, pulls out a lumpy knitted sweater and smiles widely. 7–10 s: a pale-blue thought cloud with a small grimace face inside floats from the friend's head, and the main character's smile falls. Camera: static medium two-shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Jake: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), the main character's best friend, wearing a red baseball cap backwards.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 18 · 2:50
+## Клип 19 · 3:00–3:10
 
 **Озвучка:**
-> Your best friend laughs at your joke… and thinks, "That wasn't funny." Your crush smiles at you… and thinks about someone else.
+> You tell a joke. He laughs… and thinks, "That wasn't funny." Those little lies are glue that holds friendships together. And you hear every one.
 
-_Смысл:_ Друг смеётся над шуткой и думает «не смешно». Симпатия улыбается — и думает о другом.
+_Смысл:_ Шутишь — он смеётся и думает: «Не смешно». Мелкая ложь — клей дружбы. А ты слышишь каждую.
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A school hallway in cool evening light, lockers in soft focus. 0–4 s: the best friend with a red cap laughs and pats the main character on the shoulder; a pale-blue wisp leaves his head. 4–7 s: the girl with a yellow headband walks by and smiles at the main character; a pale-blue wisp drifts from her head toward a different boy down the hallway. 7–10 s: the main character stands alone, his smile slowly freezing. Camera: slow push-in to a close-up.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: A simple doodle living room in the evening: a sofa, a floor lamp with a pale-yellow glow, a small table.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Jake: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose), HERO's best friend, wearing a red baseball cap backwards.
-Emma: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) with a short dark bob haircut and a yellow headband.
+Action: Same sofa. 0–4 s: the main character says something and the friend with the red cap laughs loudly, slapping his knee. 4–7 s: a flat, bored pale-blue thought cloud floats from the friend's head. 7–10 s: a thin crack is drawn on the sofa between them, and the main character slowly moves a little further away. Camera: slow push-in on the main character.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
+Jake: a doodle character in the same style (big round white head, black dot eyes, simple line mouth, no nose, thick black marker outlines), the main character's best friend, wearing a red baseball cap backwards.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 19 · 3:00
+## Клип 20 · 3:10–3:20
 
 **Озвучка:**
-> (sad) Within a week, you stop calling people. Not because they're bad. Because you know too much. And knowing too much… is lonely.
+> (sad) A week later, you've stopped calling people. Not because they're bad. Because you know too much. And knowing too much… is lonely.
 
-_Смысл:_ Через неделю ты перестаёшь звонить людям. Не потому, что они плохие. Ты знаешь слишком много, и это одиноко.
+_Смысл:_ Через неделю ты перестал звонить людям. Не потому, что они плохие. Ты знаешь слишком много, и это одиноко.
 
 **Надпись на экране:** `DAY 7`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark bedroom at night, rain running down the window, city lights blurred outside. 0–4 s: the main character sits on the floor against his bed, knees pulled up. 4–7 s: his phone lies on the floor beside him, the screen lighting up again and again with incoming calls. 7–10 s: he slowly turns the phone face down and the room goes darker. Camera: slow side dolly, cold blue light with one warm lamp.
+10-second shot. This shot follows directly after the previous one. Location: The main character's small bedroom drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow sun in the middle, a small desk with a laptop on the right.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character sits on the floor of his bedroom, leaning against the bed, knees pulled up. 0–4 s: his phone on the floor lights up with a ringing doodle wave. 4–7 s: it rings again and again. 7–10 s: he slowly turns the phone face down and hugs his knees. Camera: static wide shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -452,74 +513,80 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 20 · 3:10
+## Клип 21 · 3:20–3:30
 
 **Озвучка:**
-> Now let's talk about your brain. Right now, it's ignoring most of what your senses pick up. Scientists call this sensory gating.
+> So what's happening to your brain? Normally, it ignores most of what your senses pick up. Scientists call this sensory gating.
 
-_Смысл:_ Теперь про мозг. Прямо сейчас он игнорирует большую часть сигналов от органов чувств. Это «сенсорный гейтинг».
+_Смысл:_ Что происходит с мозгом? Обычно он игнорирует большую часть сигналов от органов чувств. Это «сенсорный гейтинг».
 
 **Надпись на экране:** `SENSORY GATING`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. An abstract dark space with soft fog. 0–4 s: the main character stands calmly; above his head floats a large transparent glowing glass funnel. 4–7 s: thousands of tiny colorful sparks rain down into the funnel. 7–10 s: only a few sparks pass through the funnel into his head, while the rest bounce away harmlessly. Camera: slow tilt up from the character to the funnel.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow sun in the middle, a small desk with a laptop on the right.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character lies on his bed looking up. 0–4 s: a simple doodle funnel drawn in black lines appears above his head. 4–7 s: many tiny colorful dots rain down into the funnel. 7–10 s: only a few dots pass through the funnel into his head, the rest bounce away. Camera: static medium shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 21 · 3:20
+## Клип 22 · 3:30–3:40
 
 **Озвучка:**
-> It's a filter. It's the reason you can read a book in a noisy café. (serious) Mind reading would rip that filter out. Permanently.
+> It's a filter. It's the reason you can read a book in a noisy café. (serious) Mind reading rips that filter out. Permanently.
 
-_Смысл:_ Это фильтр — благодаря ему ты читаешь в шумном кафе. Чтение мыслей вырвало бы его навсегда.
+_Смысл:_ Это фильтр — благодаря ему ты читаешь в шумном кафе. Чтение мыслей вырывает его навсегда.
 
 **Промпт для Google Vids:**
 ```
-10-second shot. The same abstract dark space with the glowing glass funnel above the main character. 0–4 s: the funnel starts to crack with bright lines. 4–7 s: it shatters into glittering pieces in slow motion. 7–10 s: a flood of sparks pours straight down onto the character, who staggers back and shields his head with his arms. Camera: low-angle shot, slow motion at the shatter.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow sun in the middle, a small desk with a laptop on the right.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: Same bed, the funnel above his head. 0–4 s: cracks appear on the funnel. 4–7 s: it breaks into pieces. 7–10 s: a flood of colorful dots and pale-blue scribbles pours straight onto him, and he covers his head with the pillow. Camera: static medium shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 22 · 3:30
+## Клип 23 · 3:40–3:50
 
 **Озвучка:**
 > With no filter, your brain never rests. Your stress hormone, cortisol, stays high. You can't focus. And you can't fall asleep.
 
 _Смысл:_ Без фильтра мозг не отдыхает. Кортизол — гормон стресса — держится высоким. Ни сосредоточиться, ни уснуть.
 
-**Надпись на экране:** `3:17 AM`
+**Надпись на экране:** `3:00 AM`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark bedroom at 3 a.m., only a dim red glow from an alarm clock with no visible numbers. 0–4 s: the main character lies in bed with eyes wide open. 4–7 s: pale-blue whispering wisps slip through the walls and swirl around the bed. 7–10 s: he pulls the blanket over his head, but the glow still shines through the fabric. Camera: top-down shot slowly rotating above the bed.
+10-second shot. This shot follows directly after the previous one. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: It is now night. The main character lies in bed under the blanket. 0–4 s: his eyes are wide open. 4–7 s: pale-blue scribbles slip in through the walls and swirl around the bed. 7–10 s: he pulls the blanket over his head, but the scribbles keep circling. Camera: static wide shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 23 · 3:40 · ФАКТ
+## Клип 24 · 3:50–4:00
 
 **Озвучка:**
-> And after just a couple of days without proper sleep, people can start to hallucinate. Seeing shapes. Hearing voices. Things that aren't there.
+> And after a couple of days without proper sleep, people can start to hallucinate. Seeing shapes. Hearing voices. Things that aren't there.
 
 _Смысл:_ А после пары суток без нормального сна у людей начинаются галлюцинации: тени, голоса, то, чего нет.
 
@@ -527,13 +594,15 @@ _Смысл:_ А после пары суток без нормального с
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark bathroom lit by a single flickering bulb. 0–4 s: the exhausted main character looks at himself in the mirror, his eyes heavy. 4–7 s: his reflection slowly blurs and doubles. 7–10 s: for a split second a dark shadow figure appears behind him in the mirror, then vanishes; he spins around but nothing is there. Camera: over-the-shoulder into the mirror, slow push-in.
+10-second shot. This shot follows directly after the previous one. Location: A simple doodle bathroom at night: a sink and a mirror, the paper tinted soft grey-blue.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The tired main character, with dark circles under his eyes, stands at the sink in front of the mirror. 0–4 s: he splashes water on his face. 4–7 s: his reflection in the mirror wobbles and doubles. 7–10 s: for a second a black scribble shadow figure appears behind him in the mirror; he spins around, but nothing is there. Camera: static side view.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -541,10 +610,10 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 24 · 3:50
+## Клип 25 · 4:00–4:10
 
 **Озвучка:**
-> (serious) And here's what really worries psychiatrists. Some people with schizophrenia describe thought insertion: the feeling that the thoughts in their head belong to someone else.
+> (serious) Here's what really worries psychiatrists. Some people with schizophrenia describe thought insertion: the feeling that the thoughts in their head belong to someone else.
 
 _Смысл:_ Психиатров тревожит вот что: при шизофрении бывает «вкладывание мыслей» — ощущение, что мысли в голове чужие.
 
@@ -552,18 +621,20 @@ _Смысл:_ Психиатров тревожит вот что: при шиз
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark abstract space resembling the inside of a mind, soft fog with glowing threads. 0–4 s: the main character stands still with his eyes closed. 4–7 s: thin pale-blue threads of light reach in from the darkness and slowly connect to his head. 7–10 s: his small golden wisp starts flickering and turns pale blue like the others; he opens his eyes in alarm. Camera: slow circular dolly around him.
+10-second shot. This shot follows directly after the previous one. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character comes back and sits on the edge of his bed with his eyes closed and his small yellow scribble above his head. 0–4 s: thin pale-blue lines are drawn from the window toward his head. 4–7 s: they connect to his head. 7–10 s: his yellow scribble slowly turns pale blue like the others, and his eyes pop open in alarm. Camera: slow push-in.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 25 · 4:00
+## Клип 26 · 4:10–4:20
 
 **Озвучка:**
 > For you, that wouldn't be a symptom. It would be reality. So which voice in your head is yours? After a while… you can't tell anymore.
@@ -572,18 +643,20 @@ _Смысл:_ Для тебя это была бы реальность. Как�
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark room with a large mirror. 0–4 s: the main character stares at his reflection. 4–7 s: dozens of pale-blue wisps swirl around both him and his reflection, mixing together. 7–10 s: his reflection slowly moves out of sync with him, turning its head a moment later than he does; he steps back in fear. Camera: static shot from the side showing both him and the mirror.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: Same bed. 0–4 s: many thought clouds of different colors crowd around the main character's head. 4–7 s: he looks from one to another, trying to find his own. 7–10 s: they all spin around him and blur together, and he holds his head with both mitten hands. Camera: static medium shot.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 26 · 4:10
+## Клип 27 · 4:20–4:30
 
 **Озвучка:**
 > (quiet) That's the real danger. Not knowing too much about other people… but losing the one voice that's truly yours.
@@ -592,13 +665,15 @@ _Смысл:_ Настоящая опасность — не знать слиш
 
 **Промпт для Google Vids:**
 ```
-10-second shot. An endless dark space. 0–4 s: hundreds of pale-blue wisps float around the main character like a slow storm. 4–7 s: his small warm golden wisp flickers weakly among them. 7–10 s: it fades and almost disappears in the blue noise as he reaches out his mitten hand toward it. Camera: slow push-in on the tiny golden light.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: Same bed. 0–4 s: the pale-blue scribbles swirl slowly around the main character. 4–7 s: among them, one tiny yellow scribble flickers weakly. 7–10 s: he reaches out his mitten hand to catch it as it fades. Camera: slow push-in on the tiny yellow scribble.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -606,89 +681,72 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 27 · 4:20
+## Клип 28 · 4:30–4:40
 
 **Озвучка:**
-> And this isn't pure science fiction anymore. In twenty-twenty-three, scientists in Texas used brain scans and AI to decode the gist of stories people heard… and even imagined.
+> You open your laptop. Is this even possible? Almost. In twenty-twenty-three, Texas scientists used brain scans and AI to decode the gist of stories people heard.
 
-_Смысл:_ Это уже не совсем фантастика: в 2023 году учёные в Техасе с помощью томографа и ИИ расшифровали смысл историй, которые люди слушали и даже представляли.
+_Смысл:_ Ты открываешь ноутбук: это вообще возможно? Почти. В 2023 году учёные в Техасе с помощью томографа и ИИ расшифровали смысл историй, которые слышали люди.
 
 **Надпись на экране:** `2023 · UNIVERSITY OF TEXAS`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark high-tech lab lit by the cold blue glow of monitors. 0–4 s: a character lies inside a large brain scanner machine. 4–7 s: the scientist in a lab coat watches glowing monitors showing abstract colorful brain maps and flowing patterns. 7–10 s: pale-blue wisps rise from the scanner and turn into glowing data streams flowing into the screens. Camera: slow dolly from the scanner to the scientist.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Scientist: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) wearing a white lab coat and thin rectangular glasses.
+Action: The main character gets up, sits at his desk and opens the laptop. 0–4 s: the screen lights up pale blue. 4–7 s: on the screen, a simple doodle of a person lying in a big round brain scanner appears. 7–10 s: pale-blue scribbles flow from the scanner into wavy lines on the screen, and he leans closer. Camera: static over-the-shoulder view of the laptop.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 28 · 4:30
+## Клип 29 · 4:40–4:50
 
 **Озвучка:**
-> It wasn't perfect. It only worked on volunteers who spent many hours inside the scanner, and only if they cooperated. But it proved thoughts can be decoded.
+> It only worked with willing volunteers after hours in the scanner. But brain implants already let paralyzed patients move a cursor just by thinking.
 
-_Смысл:_ Неидеально: работало только на добровольцах после многих часов в томографе и с их согласия. Но доказало, что мысли можно расшифровать.
-
-**Промпт для Google Vids:**
-```
-10-second shot. The same dark lab. 0–4 s: the scientist leans closer to the main monitor. 4–7 s: blurry glowing images on the screen slowly sharpen into a recognizable soft picture of a house and a tree. 7–10 s: the scientist slowly takes off his glasses and stares at the screen in amazement. Camera: over-the-shoulder shot toward the monitor, slow push-in.
-
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Scientist: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose) wearing a white lab coat and thin rectangular glasses.
-
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
-
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
-```
-
----
-
-## Клип 29 · 4:40
-
-**Озвучка:**
-> Meanwhile, brain implants already let paralyzed patients move a computer cursor just by thinking. Step by step, the walls of the mind are getting thinner.
-
-_Смысл:_ А мозговые импланты уже позволяют парализованным двигать курсор силой мысли. Стены разума становятся тоньше.
+_Смысл:_ Работало только с добровольцами после многих часов в томографе. Но импланты уже позволяют парализованным двигать курсор силой мысли.
 
 **Надпись на экране:** `BRAIN IMPLANTS`
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dim hospital room lit by a large glowing screen. 0–4 s: a minimalist character with a tiny glowing dot on the side of his round head sits in a wheelchair facing the screen. 4–7 s: a pale-blue thread of light flows from the glowing dot to the screen, and a small glowing cursor moves across it. 7–10 s: the character smiles as the cursor lands on a target that bursts into soft light. Camera: slow side dolly.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: Same desk, the laptop screen. 0–4 s: the doodle on the screen changes to a person in a wheelchair with a tiny dot on the side of the head. 4–7 s: a thin pale-blue line goes from the dot to a computer, and a small arrow cursor moves across it. 7–10 s: the main character leans back in his chair, amazed. Camera: static over-the-shoulder view.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 30 · 4:50
+## Клип 30 · 4:50–5:00
 
 **Озвучка:**
-> Which raises a question nobody has answered yet. If your thoughts can be read… who should be allowed to read them?
+> Which raises a question nobody has answered yet. If thoughts can be read… who should be allowed to read them?
 
 _Смысл:_ Встаёт вопрос, на который пока нет ответа: если мысли можно читать — кому это разрешено?
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A vast dark hall. 0–4 s: the main character walks toward a giant translucent glowing glass head floating in the center of the hall. 4–7 s: inside the glass head pale-blue wisps swirl like a galaxy. 7–10 s: from the shadows around the hall, many silent silhouetted figures slowly step forward and watch the glowing head. Camera: slow wide push-in, symmetrical composition.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Crowd: many characters of the same minimalist style (big round matte off-white heads, black dot eyes, no noses), each with one small colorful accessory like a hat, scarf or glasses, slightly out of focus.
+Action: The main character turns from the laptop to the window. 0–4 s: he walks to the window and looks out. 4–7 s: outside, tiny pale-blue scribbles rise from the roofs of all the houses, just like at the very beginning. 7–10 s: he quietly puts his mitten hand on the glass. Camera: static view from behind him.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 
@@ -696,7 +754,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 31 · 5:00
+## Клип 31 · 5:00–5:10
 
 **Озвучка:**
 > (warm) So maybe the privacy of your mind isn't a weakness. Maybe it's exactly what lets us be kind… be strange… and be ourselves.
@@ -705,18 +763,20 @@ _Смысл:_ Может, тайна мыслей — не слабость, а 
 
 **Промпт для Google Vids:**
 ```
-10-second shot. A dark bedroom at night, moonlight through the window and a small warm lamp. 0–4 s: the main character sits on his bed as the pale-blue wisps around him slowly dissolve one by one. 4–7 s: the room becomes calm and quiet. 7–10 s: his small warm golden wisp rises from his head, glowing brighter, and he smiles softly. Camera: slow push-in to a close-up.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character walks from the window and sits on his bed. 0–4 s: the pale-blue scribbles around him slowly fade away one by one. 4–7 s: the room becomes quiet and empty. 7–10 s: his own small yellow scribble appears above his head again, bright and steady, and he smiles softly. Camera: slow push-in.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 32 · 5:10
+## Клип 32 · 5:10–5:20
 
 **Озвучка:**
 > Your thoughts are the last place on Earth where no one can follow you. (whispering) At least… for now.
@@ -725,18 +785,20 @@ _Смысл:_ Твои мысли — последнее место на Зем�
 
 **Промпт для Google Vids:**
 ```
-10-second shot. The same dark bedroom, the window behind the bed showing the night city. 0–4 s: the main character lies down and closes his eyes peacefully. 4–7 s: a single cold, bright blue wisp slowly drifts in through the closed window glass. 7–10 s: it floats toward his head and his eyes snap open in the darkness. Camera: slow creeping push-in, suspenseful.
+10-second shot. This shot continues directly from the previous one, in the same place, with the same framing. Location: The main character's small bedroom at night drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow moon in the middle, a small desk with a laptop on the right; the paper background is tinted soft grey-blue for night.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: The main character lies down in bed and closes his eyes peacefully. 0–4 s: the room is calm. 4–7 s: a single dark-red scribble slowly floats in through the window. 7–10 s: it stops right above his head and his eyes pop open. Camera: static wide shot, then quick push-in on his eyes.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
 
-## Клип 33 · 5:20
+## Клип 33 · 5:20–5:30
 
 **Озвучка:**
 > (friendly) So… would you take this power if someone offered it to you? Tell me in the comments. And next time: what if you became invisible?
@@ -747,13 +809,15 @@ _Смысл:_ Взял бы ты эту силу? Пиши в комментар
 
 **Промпт для Google Vids:**
 ```
-10-second shot. The same bedroom in the warm light of morning. 0–4 s: the main character looks straight into the camera and gives a playful shrug. 4–7 s: he waves with his mitten hand. 7–10 s: his body slowly turns semi-transparent like glass with a shimmering outline until he almost disappears. Camera: static medium shot, centered.
+10-second shot. This shot follows directly after the previous one. Location: The main character's small bedroom drawn with a few simple lines: a bed with a light-blue blanket on the left, a window with a pale-yellow sun in the middle, a small desk with a laptop on the right.
 
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
+Action: Morning again in the same bedroom. 0–4 s: the main character stands in the middle of the room, looks at the viewer and shrugs playfully. 4–7 s: he waves his mitten hand. 7–10 s: his white fill disappears and his black outline turns into a light dotted line until he almost vanishes. Camera: static medium shot, centered.
 
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
+Main character: a simple hand-drawn doodle character: a very large round white head, slightly wider than tall and about as big as the whole body, two small solid black dot eyes set wide apart, a thin curved black smile line, no nose, no ears, no hair, no eyebrows, no neck, a small simple white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet, drawn with thick black marker outlines and filled with plain white.
 
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
+Thought visuals: other people's ordinary thoughts are small pale-blue scribbled thought clouds drawn with a marker that float from their heads; dark intrusive thoughts are messy dark-red scribbles; the main character's own thoughts are a small yellow scribble above his head.
+
+Style: Flat 2D hand-drawn doodle animation, like a simple whiteboard explainer video: clean thick black marker outlines on a plain off-white paper background, flat colors, no shading, no gradients, no 3D, no realistic textures, minimal sketchy backgrounds drawn with only a few simple lines, lots of empty space, only small accents of color, slightly wobbly hand-drawn line boil, simple smooth movements, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: no music, no dialogue, quiet ambient sound only.
 ```
 
 ---
