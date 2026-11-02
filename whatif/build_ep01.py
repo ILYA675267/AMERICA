@@ -1,114 +1,245 @@
-# Builds ep01_read_minds.md: voiceover script + one self-contained Google Vids prompt per clip.
-# Character/style blocks live in blocks.py, so updating the hero description regenerates every prompt.
+# Builds ep01_read_minds.md (36 clips x 10 s = 6:00) and ep01_voiceover.md (narration only, for Fish Audio).
+# Shared character/style blocks live in blocks.py.
 from blocks import STYLE, HERO, CAST, THOUGHT
 
-# (time label, voiceover EN, gist RU, cast keys, shot)
+# (timecode, chapter, voiceover EN, meaning RU, cast keys, shot with 0-4 / 4-7 / 7-10 s beats, on-screen text for editing)
 S = [
- ("HOOK", "(calm) Imagine waking up tomorrow… and hearing every single thought of every person around you.",
-  "Представь: ты просыпаешься и слышишь все мысли людей вокруг.", [],
-  "Location: a cozy teenage bedroom at dawn, unmade bed, posters on the wall, a desk with a lamp in the foreground, soft blue morning light through half-open blinds creating volumetric light rays. Action: HERO slowly sits up in bed, rubbing his eyes with his mitten hands, then freezes and tilts his head as faint glowing pale-blue translucent wisps of light begin to drift in through the window toward his head. Camera: slow push-in from medium shot to close-up on HERO's face."),
- ("HOOK", "(playful) Sounds amazing, right? (dramatic) Well… by tonight, you'll be begging for it to stop.",
-  "Звучит круто? К вечеру будешь умолять, чтобы это прекратилось.", ["CROWD"],
-  "Location: a busy city street at golden hour, tall buildings, depth haze, warm sunlight. Action: HERO stands still in the middle of the sidewalk as dozens of glowing pale-blue wisps of light stream from the heads of passing people and swirl around him like a storm; he presses both hands over his ears and squeezes his eyes shut. Camera: slow 180-degree orbit around HERO, background crowd motion-blurred."),
- ("RULES", "Here are the rules. You hear the thoughts of anyone within about thirty feet. You can't turn it off. And nobody knows.",
-  "Правила: слышишь всех в радиусе ~9 м, выключить нельзя, никто не знает.", [],
-  "Location: an empty dark infinite studio space with a reflective floor and soft fog. Action: HERO stands in the center; a thin glowing pale-blue ring of light appears on the floor around him and slowly expands outward like a sonar wave, lighting up the fog. HERO looks down at it curiously. Camera: high-angle wide shot slowly descending to eye level."),
- ("7:00 AM", "Seven A.M. First test: Mom. She smiles and says, \"Good morning, sweetie!\" But in her head…",
-  "7 утра. Мама улыбается: «Доброе утро!» Но в голове…", ["MOM"],
-  "Location: a warm suburban kitchen in the morning, sunlight through the window over the sink, steam rising from a coffee mug, plants on the windowsill, kitchen cabinets in soft focus behind. Action: MOM pours coffee and smiles warmly at HERO, who sits at the kitchen table with a bowl of cereal. Camera: medium two-shot, slow dolly sideways."),
- ("7:00 AM", "(mom's thought voice) \"Did he wash the dishes? …Of course he didn't.\"",
-  "Мысль мамы: «Помыл посуду? Конечно нет».", ["MOM"],
-  "Location: the same warm suburban kitchen, a stack of dirty dishes visible in the sink in the foreground. Action: close-up of MOM still smiling sweetly while a glowing pale-blue wisp of light floats from her head toward HERO; cut feeling to HERO, who slowly lowers his spoon and glances guiltily at the sink. Camera: rack focus from MOM to the dirty dishes."),
- ("7:30 AM", "Okay. That's fine. Moms worry. You grab your backpack and head out.",
-  "Ладно, мамы волнуются. Берёшь рюкзак и выходишь.", [],
-  "Location: a sunny American suburban street with green lawns, white picket fences, trees and parked cars, long morning shadows. Action: HERO walks out of the front door of his house wearing a backpack, takes a deep breath and walks down the sidewalk with a small confident smile. Camera: low-angle tracking shot following HERO from the front."),
- ("8:00 AM", "The school bus is where things get weird. Thirty people. Thirty voices. All at once.",
-  "В школьном автобусе: 30 человек, 30 голосов сразу.", ["CROWD"],
-  "Location: inside a crowded yellow school bus, rows of green seats, morning sunlight flickering through the windows. Action: HERO sits by the window as glowing pale-blue wisps of light rise from the heads of all the students and converge toward him, overlapping; he winces and shrinks into his seat. Camera: slow push-in down the bus aisle toward HERO."),
- ("8:00 AM", "\"Did I leave my phone charger?\" \"I hate this song.\" \"Why is that kid staring at me?\"",
-  "Мысли пассажиров: «Забыл зарядку?» «Ненавижу эту песню» «Чего он пялится?»", ["CROWD"],
-  "Location: inside the same school bus. Action: HERO's eyes dart from one student to another as each one emits a single glowing pale-blue wisp; a girl in the seat in front turns around and gives HERO a suspicious look, and he quickly looks away out the window, embarrassed. Camera: handheld-style quick pans between faces, then settle on HERO."),
- ("9:00 AM", "Nine A.M. Surprise math test. You didn't study. But the smartest kid in class sits right behind you.",
-  "9 утра. Внезапная контрольная. Ты не готовился, но сзади сидит отличник.", ["LEO"],
-  "Location: a bright American high school classroom, rows of desks, a chalkboard with math formulas out of focus, sunlight through big windows with dust floating in the light. Action: HERO stares nervously at a test paper on his desk and taps his pencil; behind him LEO writes quickly and confidently. Camera: shallow depth of field, focus shifts from HERO's worried face to LEO behind him."),
- ("9:00 AM", "(whispering) \"Question four is B. Question five… is C.\" (excited) Oh, this is too easy.",
-  "Слышишь мысли отличника: «Четвёртый — B, пятый — C». Это слишком легко.", ["LEO"],
-  "Location: the same classroom. Action: a glowing pale-blue wisp of light floats from LEO's head over HERO's shoulder; HERO grins slyly and starts writing very fast, pencil flying across the paper. Camera: over-the-shoulder close-up on the test paper and HERO's hand, then tilt up to his sneaky smile."),
- ("11:00 AM", "You get a hundred percent. The first in your life. This power? This power is incredible.",
-  "Сто баллов впервые в жизни. Эта сила — невероятна.", ["CROWD"],
-  "Location: a high school hallway with rows of blue lockers, students passing in soft focus, bright light from windows at the end of the hallway. Action: HERO holds a test paper with a big red circle mark at the top, raises it above his head and does a joyful little jump and fist pump. Camera: low-angle hero shot, slow motion at the peak of the jump."),
- ("12:30 PM", "Lunch time. Time to find out what people REALLY think of you.",
-  "Обед. Пора узнать, что о тебе думают на самом деле.", ["CROWD"],
-  "Location: a busy high school cafeteria, long tables, students eating, big windows with warm noon light, background softly blurred. Action: HERO walks confidently holding a lunch tray toward a table where his friends sit, a mischievous look on his face. Camera: tracking shot from behind HERO, then he turns his head to the camera with a smirk."),
- ("12:30 PM", "Your best friend Jake laughs at your joke. \"Ha! Good one, man!\" But his thoughts say…",
-  "Лучший друг Джейк смеётся над твоей шуткой. А в мыслях…", ["JAKE"],
-  "Location: the same cafeteria table, lunch trays and drinks in the foreground. Action: JAKE laughs loudly and slaps the table while HERO, sitting across from him, smiles proudly. Camera: medium two-shot across the table."),
- ("12:30 PM", "(Jake's thought voice, flat) \"…That wasn't even funny. Why do I always have to pretend?\"",
-  "Мысль Джейка: «Это вообще не смешно. Почему я всегда притворяюсь?»", ["JAKE"],
-  "Location: the same cafeteria table. Action: JAKE's laugh fades into a tired, bored expression for a second as a glowing pale-blue wisp floats from his head to HERO; HERO's smile slowly freezes and drops. Camera: slow push-in to an extreme close-up of HERO's face, background cafeteria noise fading into blur."),
- ("1:00 PM", "And that's what nobody tells you about reading minds. People are kind out loud… and honest in their heads.",
-  "Люди добры вслух… и честны в мыслях.", ["CROWD"],
-  "Location: the same cafeteria, now slightly darker with cooler colors. Action: HERO sits alone at the end of a long table, poking his food, while the other students around him laugh and talk in soft focus. Camera: slow wide pull-back, making HERO look small in the large room."),
- ("2:00 PM", "Then there's Emma. You've had a crush on her for two years. She walks past… and she thinks about YOU.",
-  "Эмма — твоя симпатия уже два года. Проходит мимо и думает о тебе.", ["EMMA"],
-  "Location: the school hallway by the lockers, warm afternoon light with soft lens flare from the windows. Action: EMMA walks past HERO in slow motion, glances at him and looks away shyly; a soft glowing pale-blue wisp floats from her head toward him. HERO stands frozen by his open locker. Camera: slow-motion side tracking shot following EMMA, then hold on HERO."),
- ("2:00 PM", "(Emma's thought voice) \"He's kinda cute. Why does he never talk to me?\" (excited) Wait. WHAT?",
-  "Мысль Эммы: «Он милый. Почему он не заговорит со мной?» Что?!", [],
-  "Location: the same hallway by the lockers. Action: HERO's eyes go wide, his jaw drops, then he slowly breaks into a huge excited grin and silently celebrates with both fists, trying to hide it. Camera: close-up on HERO's face, quick zoom-in for comedic effect."),
- ("2:05 PM", "Finally — a superpower for your love life. You walk up to her… and you know exactly what to say. Every time.",
-  "Сила для личной жизни: ты точно знаешь, что сказать.", ["EMMA"],
-  "Location: the school hallway by the lockers. Action: HERO walks up to EMMA and talks to her confidently, leaning on a locker; EMMA laughs and tucks her hair behind her ear. Camera: medium two-shot, slow orbit around them, warm backlight rim light."),
- ("2:10 PM", "But here's the problem. Every time she pauses, you hear her doubt. Every time she smiles, you check if it's real.",
-  "Но каждую паузу ты слышишь её сомнения, каждую улыбку — проверяешь.", ["EMMA"],
-  "Location: the same hallway, the light gradually becoming cooler. Action: EMMA smiles at HERO, but small glowing pale-blue wisps keep floating from her head; HERO's eyes keep darting to the wisps instead of looking at her face, his smile becoming nervous. Camera: slow push-in on HERO, slight dutch angle."),
- ("2:15 PM", "You can't just enjoy the moment anymore. You're too busy reading it.",
-  "Ты больше не можешь просто наслаждаться моментом — ты его читаешь.", ["EMMA"],
-  "Location: the same hallway, colors slowly desaturating around HERO. Action: EMMA waves goodbye and walks away; HERO stands alone, staring at the floor, the hallway around him going quiet and grey. Camera: static wide shot, HERO in the center, EMMA leaving the frame."),
- ("4:00 PM", "Four P.M. The mall. Hundreds of people. The thoughts don't come one by one anymore. They come as noise.",
-  "16:00. Торговый центр. Сотни людей. Мысли превращаются в шум.", ["CROWD"],
-  "Location: a huge bright shopping mall atrium with several floors, escalators, glass railings, skylight with volumetric sunbeams, crowds of shoppers. Action: hundreds of glowing pale-blue wisps rise from all the shoppers and swirl together into a large glowing cloud spinning above HERO, who stands frozen in the middle of the atrium. Camera: dramatic crane shot rising from HERO up to the swirling cloud."),
- ("4:05 PM", "Your head is pounding. You can't even hear your own thoughts anymore.",
-  "Голова раскалывается. Ты не слышишь даже собственных мыслей.", ["CROWD"],
-  "Location: a bench in the shopping mall, shoppers passing by in heavy motion blur. Action: HERO sits hunched on the bench gripping his head with both hands, eyes squeezed shut, the glowing wisps whirling tightly around him. Camera: slow push-in with a subtle pulsing wobble, as if the image is throbbing."),
- ("SCIENCE", "And here's the real science. Right now, your brain is ignoring most of what your senses pick up. Scientists call it sensory gating.",
-  "Реальная наука: мозг прямо сейчас игнорирует большую часть сигналов от органов чувств — это «сенсорный гейтинг».", [],
-  "Location: a dark abstract space with soft fog. Action: HERO stands calmly; above his head floats a large transparent glowing glass funnel; thousands of tiny colorful sparks of light rain down into the funnel, but only a few sparks pass through to HERO's head while the rest bounce away. Camera: slow upward tilt from HERO to the funnel."),
- ("SCIENCE", "Reading minds would be like ripping that filter out. And studies show information overload makes people anxious, exhausted… and worse at making decisions.",
-  "Чтение мыслей — как выдрать этот фильтр. Перегрузка информацией вызывает тревогу, усталость и плохие решения.", [],
-  "Location: the same dark abstract space with fog. Action: the glowing glass funnel above HERO cracks and shatters into pieces; a flood of colorful sparks pours straight down onto HERO, who staggers back and shields his face with his arms. Camera: low-angle shot, slow motion when the funnel shatters."),
- ("6:30 PM", "Six-thirty. Dinner. Dad asks how your day was. You say, \"Fine.\" And then you hear it.",
-  "Ужин. Папа спрашивает, как день. «Нормально». И тут ты слышишь…", ["MOM", "DAD"],
-  "Location: a warm family dining room in the evening, a hanging lamp over the table casting a cozy golden light, plates of spaghetti, dark window in the background. Action: DAD smiles at HERO across the table and asks a question; HERO shrugs and answers briefly, pushing food with his fork; MOM eats beside them. Camera: wide shot of the table, slow push-in."),
- ("6:30 PM", "(Dad's thought voice, quiet) \"Money's really tight this month. I hope he doesn't notice.\"",
-  "Мысль папы: «С деньгами туго в этом месяце. Надеюсь, он не заметит».", ["DAD"],
-  "Location: the same dining room under the warm hanging lamp. Action: close-up of DAD still smiling kindly, but his eyes look tired; a faint glowing pale-blue wisp floats from his head across the table; HERO slowly stops eating and looks at him with a sad, surprised expression. Camera: rack focus from DAD to HERO."),
- ("9:00 PM", "Some secrets aren't lies. They're people trying to protect you. And now… you can't un-know them.",
-  "Некоторые секреты — не ложь, а забота. И теперь ты не можешь этого «разузнать» обратно.", [],
-  "Location: HERO's bedroom at night, lit only by cool moonlight through the window and a small warm desk lamp, dust floating in the moonbeam. Action: HERO sits on the edge of his bed, elbows on his knees, quietly staring out of the window. Camera: slow side dolly, silhouette against the window."),
- ("11:00 PM", "Eleven P.M. The house is quiet. For the first time all day… there are no voices.",
-  "23:00. Дом затих. Впервые за день — ни одного голоса.", [],
-  "Location: HERO's dark bedroom at night, city lights twinkling far away through the window, soft blue moonlight on the blanket. Action: HERO lies in bed on his back, eyes open, then lets out a long relieved breath and his face relaxes. Camera: top-down shot slowly rotating above the bed."),
- ("11:00 PM", "And you realize: maybe the best thing about being human… is that our thoughts are private. Theirs. And yours.",
-  "Может, лучшее в людях — то, что наши мысли принадлежат только нам.", [],
-  "Location: the same dark bedroom, moonlight on HERO's face. Action: HERO smiles softly and slowly closes his eyes, turning on his side to sleep. Camera: slow push-in to a gentle close-up."),
- ("11:59 PM", "(whispering) But just as you drift off to sleep… you hear one more thought. And it's not coming from anyone in this house.",
-  "Но засыпая, ты слышишь ещё одну мысль. И она не от кого-то из домашних.", [],
-  "Location: the same dark bedroom, the window behind the bed. Action: a single cold, bright glowing blue wisp of light slowly drifts in through the closed window glass and floats toward HERO's head; HERO's eyes snap open wide in the darkness. Camera: slow creeping push-in, suspenseful."),
- ("OUTRO", "So… would you keep this power, or give it back? Tell me in the comments. Next time: what if you became invisible for twenty-four hours?",
-  "Оставил бы силу или вернул? Пиши в комментариях. В следующий раз — невидимость на 24 часа.", [],
-  "Location: HERO's bedroom in warm morning light, cozy and bright. Action: HERO looks straight into the camera, shrugs with a playful grin and waves; then his body slowly turns semi-transparent like glass with a shimmering outline until he almost disappears. Camera: static medium shot, centered."),
+ # ---------------- HOOK ----------------
+ ("0:00", "HOOK",
+  "(calm) Right now, about eight billion people are thinking. And not one of them knows what YOU are thinking. (serious) But what if that changed… tomorrow?",
+  "Сейчас думают 8 млрд человек, и никто не знает, что думаешь ты. А если завтра это изменится?", [],
+  "A huge city at night seen from high above, thousands of warm glowing windows, light fog between the buildings. 0–4 s: tiny pale-blue glowing wisps of light slowly rise from every window like fireflies. 4–7 s: the camera glides down toward one small apartment window. 7–10 s: through the window we see the main character sitting on his bed in a dark bedroom, lit only by a bedside lamp. Camera: slow aerial descent and push-in.",
+  "8,000,000,000"),
+ ("0:10", "HOOK",
+  "What if you woke up… and could hear every thought of every person around you? Their secrets. Their lies. What they REALLY think of you.",
+  "А если ты проснёшься и услышишь мысли всех вокруг? Секреты, ложь, что о тебе думают на самом деле.", [],
+  "A dark bedroom at dawn, cold blue light through the blinds making volumetric rays, dust in the air. 0–4 s: the main character lies in bed, his dot eyes suddenly open wide. 4–7 s: faint pale-blue glowing wisps of light seep in through the window and the gap under the door. 7–10 s: he slowly sits up and tilts his big round head, listening, as the wisps circle around him. Camera: slow push-in from medium shot to close-up.",
+  ""),
+ ("0:20", "HOOK",
+  "(serious) It sounds like a superpower. But brain scientists would tell you… it might be the fastest way to lose your mind. Let's find out why.",
+  "Звучит как суперсила. Но учёные сказали бы: это быстрый способ сойти с ума.", [],
+  "An empty dark infinite space with a reflective black floor and soft fog. 0–4 s: the main character stands calmly in the center while a few pale-blue glowing wisps orbit his head peacefully. 4–7 s: more and more wisps appear, spinning faster and turning chaotic. 7–10 s: a few of them flicker dark red, the light pulses, and the character looks up at the storm above him with fear. Camera: slow low-angle orbit.",
+  "WHAT IF YOU COULD READ MINDS?"),
+ # ---------------- DAY 1: FUN ----------------
+ ("0:30", "DAY 1",
+  "(warm) Day one. Seven A.M. At first, it's amazing. Your mom says, \"Good morning, sweetie.\" And her thoughts agree: \"I'm so proud of him.\"",
+  "День первый, 7 утра. Мама говорит «доброе утро», и мысли совпадают: «Я так им горжусь».", ["MOM"],
+  "A warm cozy kitchen in the morning, golden sunlight through the window, steam rising from a coffee mug, the rest of the room in soft darkness. 0–4 s: the mom pours coffee and smiles warmly at the main character, who sits at the table with a bowl of cereal. 4–7 s: a soft pale-blue glowing wisp floats gently from her head to his. 7–10 s: he looks up at her and his face slowly lights up with a happy smile. Camera: medium two-shot, slow sideways dolly.",
+  "7:00 AM"),
+ ("0:40", "DAY 1",
+  "You smile. For a second, this feels like the best gift in the world. Hearing that someone loves you… with zero doubt.",
+  "На секунду это кажется лучшим подарком: слышать, что тебя любят, без сомнений.", [],
+  "The same warm kitchen. 0–4 s: close-up of the main character smiling, warm golden light on his round off-white head, a strong rim light. 4–7 s: he closes his eyes peacefully as the pale-blue wisp gently circles his head. 7–10 s: a small warm golden wisp rises from his own head and twirls together with the blue one. Camera: slow push-in, very shallow depth of field.",
+  ""),
+ ("0:50", "DAY 1",
+  "On the bus, you hear everything. The driver hates Mondays. The guy next to you forgot his homework. And honestly? Nobody's thinking about you.",
+  "В автобусе слышишь всех: водитель ненавидит понедельники, сосед забыл домашку, о тебе не думает никто.", ["CROWD"],
+  "Inside a dim yellow school bus in the morning, sunlight flickering through the windows. 0–4 s: the main character sits by the window and looks around curiously. 4–7 s: pale-blue wisps rise from the heads of the passengers, each one drifting toward him. 7–10 s: he looks at all the passengers absorbed in their own thoughts, none of them looking at him, and he blinks in surprise. Camera: slow push-in down the aisle.",
+  "8:30 AM"),
+ ("1:00", "FACT",
+  "That's actually real. Psychologists call it the spotlight effect: we believe people notice us far more than they actually do.",
+  "Это реальный эффект — «эффект прожектора»: нам кажется, что нас замечают гораздо чаще, чем на самом деле.", ["CROWD"],
+  "A dark theater. 0–4 s: the main character stands alone on a stage under one bright spotlight, nervously hugging himself. 4–7 s: the house lights slowly come up. 7–10 s: we see the audience seats are full, but everyone is looking at their own glowing phones or at each other, nobody watches him; he lowers his arms with relief. Camera: starts on the character, then pulls back wide to reveal the audience.",
+  "THE SPOTLIGHT EFFECT"),
+ ("1:10", "DAY 1",
+  "(sly) At school, you find the real cheat code. The smartest kid in class is thinking the answers to the test. Loudly. In your head.",
+  "В школе — чит-код: отличник думает ответы на тест прямо тебе в голову.", ["LEO"],
+  "A classroom with a dark moody atmosphere, sunlight beams through tall windows full of dust, rows of desks. 0–4 s: the main character stares nervously at a test paper and taps his pencil. 4–7 s: behind him the classmate with big round glasses writes quickly while a pale-blue wisp floats from his head over the main character's shoulder. 7–10 s: the main character smiles slyly and starts writing very fast. Camera: over-the-shoulder shot, focus shift from the classmate to the main character.",
+  "9:00 AM"),
+ ("1:20", "DAY 1",
+  "(excited) Perfect score. Your friends are impressed. Your teacher is impressed. By lunch, you feel like the most powerful person alive.",
+  "Идеальный балл. К обеду ты чувствуешь себя самым могущественным человеком.", ["CROWD"],
+  "A school hallway with rows of lockers, warm backlight from a big window at the end creating a glowing silhouette effect. 0–4 s: the main character walks confidently toward the camera holding a test paper. 4–7 s: classmates around him turn and look at him with admiration. 7–10 s: he raises the paper above his head and does a triumphant little jump, captured in slow motion. Camera: low-angle hero shot, slow motion at the peak.",
+  ""),
+ # ---------------- PROBLEM: NOISE ----------------
+ ("1:30", "THE NOISE",
+  "(serious) But then you notice something strange. People don't think in neat little sentences. Their thoughts are messy. Fast. And they never… ever… stop.",
+  "Но мысли людей — не аккуратные фразы. Они хаотичные, быстрые и никогда не останавливаются.", ["CROWD"],
+  "A crowded school cafeteria, warm light over the tables but dark edges, background blurred. 0–4 s: the main character sits down with a lunch tray, still smiling. 4–7 s: from every head in the room, pale-blue wisps start rising in tangled, chaotic streams. 7–10 s: the streams pile up above him into a buzzing cloud, and his smile fades into worry. Camera: slow crane up from the character to the cloud.",
+  "12:00 PM"),
+ ("1:40", "FACT",
+  "In twenty-twenty, researchers at Queen's University in Canada estimated that the average person has more than six thousand separate thoughts every single day.",
+  "В 2020 году учёные Университета Квинс (Канада) оценили: у человека больше 6000 отдельных мыслей в день.", [],
+  "An abstract dark space. 0–4 s: the main character stands small in the center of the frame. 4–7 s: a huge river of thousands of tiny glowing pale-blue particles flows past him from left to right like a galaxy. 7–10 s: he reaches out a mitten hand and the particles stream around it. Camera: slow wide dolly, the river of light fills the screen.",
+  "6,000+ THOUGHTS / DAY"),
+ ("1:50", "FACT",
+  "Now multiply that by thirty people in one classroom. That's nearly two hundred thousand thoughts a day. All of them… crashing into your head.",
+  "Умножь на 30 человек в классе — почти 200 000 мыслей в день, и все летят тебе в голову.", ["CROWD"],
+  "A dark classroom lit by a single warm desk lamp. 0–4 s: the main character sits at his desk surrounded by classmates. 4–7 s: thick streams of pale-blue wisps pour from all thirty heads at once and converge on him. 7–10 s: the light around his head becomes blinding and he grips the edge of his desk. Camera: slow push-in, slight shake.",
+  "×30 = 180,000"),
+ ("2:00", "FACT",
+  "And most of it isn't even words. Studies of inner experience show people often think in images, feelings and half-finished fragments.",
+  "И это даже не слова: исследования показывают, что люди часто думают образами, чувствами и обрывками.", ["CROWD"],
+  "A dark space with soft fog. 0–4 s: a girl with a yellow headband stands beside the main character; a pale-blue wisp rises from her head. 4–7 s: the wisp breaks apart into small glowing translucent images floating in the air: a dog, a slice of pizza, a rain cloud, a cracked heart. 7–10 s: the images flicker and dissolve before the main character can catch them; he tilts his head, confused. Camera: slow orbit around the floating images.",
+  ""),
+ ("2:10", "THE NOISE",
+  "So what you'd hear isn't a podcast. It's static. Like a hundred radios playing at once… each one tuned to a different station.",
+  "Ты слышишь не подкаст, а шум, как сто радио на разных волнах.", [],
+  "A dark room filled with dozens of old glowing vintage radios floating in the air around the main character. 0–4 s: the radios glow softly one by one. 4–7 s: their dials and lights start flickering wildly, pale-blue sound waves rippling out of each radio. 7–10 s: the main character covers the sides of his head with both mitten hands and squeezes his eyes shut. Camera: slow 360-degree orbit.",
+  ""),
+ # ---------------- DARK THOUGHTS ----------------
+ ("2:20", "DARK THOUGHTS",
+  "(quiet) Then comes the darkest part. You start hearing things people would never say out loud. Strange thoughts. Scary thoughts. Even from people you love.",
+  "Потом самое тёмное: ты слышишь то, что люди никогда не скажут вслух. Даже от близких.", ["CROWD"],
+  "A dimly lit evening bus stop in the rain, streetlight reflections on wet asphalt. 0–4 s: the main character waits next to a kind elderly character with a knitted hat. 4–7 s: a calm pale-blue wisp rises from the elderly character's head. 7–10 s: the wisp suddenly flickers and turns dark red; the main character slowly turns his head and looks at the old man in shock. Camera: static medium shot, rain in the foreground.",
+  "7:00 PM"),
+ ("2:30", "FACT",
+  "Here's the twist. In a study across thirteen countries, about ninety-four percent of people said they have unwanted, intrusive thoughts.",
+  "Поворот: в исследовании в 13 странах около 94% людей признались, что у них бывают навязчивые нежелательные мысли.", ["CROWD"],
+  "A vast dark space filled with a huge crowd of minimalist characters standing in rows, each with a small colorful accessory. 0–4 s: the camera rises slowly above the crowd. 4–7 s: above almost every head a small flickering dark-red wisp lights up, one after another. 7–10 s: only a few heads stay without one; the main character stands in the middle, looking around. Camera: slow crane up to a high wide shot.",
+  "94%"),
+ ("2:40", "FACT",
+  "Like standing on a balcony and thinking, \"What if I jumped?\" Psychologists call it the call of the void. It's normal. It means nothing.",
+  "Как мысль «а что если прыгнуть?» на балконе — «зов бездны». Это нормально и ничего не значит.", [],
+  "A high apartment balcony at night overlooking a glowing city far below. 0–4 s: the main character leans on the railing, looking down at the lights. 4–7 s: a small flickering dark-red wisp appears from his own head. 7–10 s: he blinks, steps back from the railing, and the wisp fades into a calm golden glow. Camera: over-the-shoulder shot, then slow pull-back.",
+  "THE CALL OF THE VOID"),
+ ("2:50", "DARK THOUGHTS",
+  "But you can't push them away. You hear everyone's worst three seconds… all day long. And slowly, you start to believe people are monsters.",
+  "Но ты не можешь их отогнать. Слышишь худшие три секунды каждого — весь день. И начинаешь верить, что люди — монстры.", ["CROWD"],
+  "A dark city street at night, people walking under streetlights. 0–4 s: the main character walks slowly through the crowd, looking anxious. 4–7 s: dark-red wisps flicker above many heads around him. 7–10 s: the shadows of the passersby on the brick wall slowly stretch and twist into tall monster shapes with long claws, while the people themselves look normal. Camera: side tracking shot along the wall.",
+  ""),
+ # ---------------- TRUST ----------------
+ ("3:00", "TRUST",
+  "Next to go: trust. Research suggests the average person tells one or two lies a day. Mostly tiny ones. \"I'm fine.\" \"I love the gift.\"",
+  "Дальше рушится доверие. В среднем человек врёт 1–2 раза в день, в основном по мелочи: «Я в порядке», «Обожаю подарок».", ["JAKE"],
+  "A cozy dark living room lit by a warm floor lamp and birthday candles. 0–4 s: the best friend with a red cap opens a gift box from the main character and smiles widely. 4–7 s: a pale-blue wisp floats from the friend's head. 7–10 s: the main character's happy face slowly falls as he hears it. Camera: medium two-shot, slow push-in on the main character.",
+  "1–2 LIES / DAY"),
+ ("3:10", "TRUST",
+  "Those little lies are like glue. They keep friendships, families and whole workplaces from falling apart. And you can hear every single one.",
+  "Эта мелкая ложь — клей, который держит дружбу, семьи и коллективы. А ты слышишь каждую.", ["JAKE"],
+  "A table in a dark diner lit by a hanging warm lamp. 0–4 s: the main character and his best friend with a red cap sit across from each other laughing. 4–7 s: a thin glowing crack slowly runs across the wooden table between them. 7–10 s: the crack splits the table in two and the two halves drift slightly apart while they keep smiling awkwardly. Camera: top-down shot slowly turning.",
+  ""),
+ ("3:20", "TRUST",
+  "Your best friend laughs at your joke… and thinks, \"That wasn't funny.\" Your crush smiles at you… and thinks about someone else.",
+  "Друг смеётся над шуткой и думает «не смешно». Симпатия улыбается — и думает о другом.", ["JAKE", "EMMA"],
+  "A school hallway in cool evening light, lockers in soft focus. 0–4 s: the best friend with a red cap laughs and pats the main character on the shoulder; a pale-blue wisp leaves his head. 4–7 s: the girl with a yellow headband walks by and smiles at the main character; a pale-blue wisp drifts from her head toward a different boy down the hallway. 7–10 s: the main character stands alone, his smile slowly freezing. Camera: slow push-in to a close-up.",
+  ""),
+ ("3:30", "TRUST",
+  "(sad) Within a week, you stop calling people. Not because they're bad. Because you know too much. And knowing too much… is lonely.",
+  "Через неделю ты перестаёшь звонить людям. Не потому, что они плохие. Ты знаешь слишком много, и это одиноко.", [],
+  "A dark bedroom at night, rain running down the window, city lights blurred outside. 0–4 s: the main character sits on the floor against his bed, knees pulled up. 4–7 s: his phone lies on the floor beside him, the screen lighting up again and again with incoming calls. 7–10 s: he slowly turns the phone face down and the room goes darker. Camera: slow side dolly, cold blue light with one warm lamp.",
+  "DAY 7"),
+ # ---------------- THE BRAIN ----------------
+ ("3:40", "THE BRAIN",
+  "Now let's talk about your brain. Right now, it's ignoring most of what your senses pick up. Scientists call this sensory gating.",
+  "Теперь про мозг. Прямо сейчас он игнорирует большую часть сигналов от органов чувств. Это «сенсорный гейтинг».", [],
+  "An abstract dark space with soft fog. 0–4 s: the main character stands calmly; above his head floats a large transparent glowing glass funnel. 4–7 s: thousands of tiny colorful sparks rain down into the funnel. 7–10 s: only a few sparks pass through the funnel into his head, while the rest bounce away harmlessly. Camera: slow tilt up from the character to the funnel.",
+  "SENSORY GATING"),
+ ("3:50", "THE BRAIN",
+  "It's a filter. It's the reason you can read a book in a noisy café. (serious) Mind reading would rip that filter out. Permanently.",
+  "Это фильтр — благодаря ему ты читаешь в шумном кафе. Чтение мыслей вырвало бы его навсегда.", [],
+  "The same abstract dark space with the glowing glass funnel above the main character. 0–4 s: the funnel starts to crack with bright lines. 4–7 s: it shatters into glittering pieces in slow motion. 7–10 s: a flood of sparks pours straight down onto the character, who staggers back and shields his head with his arms. Camera: low-angle shot, slow motion at the shatter.",
+  ""),
+ ("4:00", "THE BRAIN",
+  "With no filter, your brain never rests. Your stress hormone, cortisol, stays high. You can't focus. And you can't fall asleep.",
+  "Без фильтра мозг не отдыхает. Кортизол — гормон стресса — держится высоким. Ни сосредоточиться, ни уснуть.", [],
+  "A dark bedroom at 3 a.m., only a dim red glow from an alarm clock with no visible numbers. 0–4 s: the main character lies in bed with eyes wide open. 4–7 s: pale-blue whispering wisps slip through the walls and swirl around the bed. 7–10 s: he pulls the blanket over his head, but the glow still shines through the fabric. Camera: top-down shot slowly rotating above the bed.",
+  "3:17 AM"),
+ ("4:10", "FACT",
+  "And after just a couple of days without proper sleep, people can start to hallucinate. Seeing shapes. Hearing voices. Things that aren't there.",
+  "А после пары суток без нормального сна у людей начинаются галлюцинации: тени, голоса, то, чего нет.", [],
+  "A dark bathroom lit by a single flickering bulb. 0–4 s: the exhausted main character looks at himself in the mirror, his eyes heavy. 4–7 s: his reflection slowly blurs and doubles. 7–10 s: for a split second a dark shadow figure appears behind him in the mirror, then vanishes; he spins around but nothing is there. Camera: over-the-shoulder into the mirror, slow push-in.",
+  "48–72 HOURS"),
+ # ---------------- MADNESS ----------------
+ ("4:20", "LOSING YOUR MIND",
+  "(serious) And here's what really worries psychiatrists. Some people with schizophrenia describe thought insertion: the feeling that the thoughts in their head belong to someone else.",
+  "Психиатров тревожит вот что: при шизофрении бывает «вкладывание мыслей» — ощущение, что мысли в голове чужие.", [],
+  "A dark abstract space resembling the inside of a mind, soft fog with glowing threads. 0–4 s: the main character stands still with his eyes closed. 4–7 s: thin pale-blue threads of light reach in from the darkness and slowly connect to his head. 7–10 s: his small golden wisp starts flickering and turns pale blue like the others; he opens his eyes in alarm. Camera: slow circular dolly around him.",
+  "THOUGHT INSERTION"),
+ ("4:30", "LOSING YOUR MIND",
+  "For you, that wouldn't be a symptom. It would be reality. So which voice in your head is yours? After a while… you can't tell anymore.",
+  "Для тебя это была бы реальность. Какой голос в голове твой? Со временем ты уже не различишь.", [],
+  "A dark room with a large mirror. 0–4 s: the main character stares at his reflection. 4–7 s: dozens of pale-blue wisps swirl around both him and his reflection, mixing together. 7–10 s: his reflection slowly moves out of sync with him, turning its head a moment later than he does; he steps back in fear. Camera: static shot from the side showing both him and the mirror.",
+  ""),
+ ("4:40", "LOSING YOUR MIND",
+  "(quiet) That's the real danger. Not knowing too much about other people… but losing the one voice that's truly yours.",
+  "Настоящая опасность — не знать слишком много о других, а потерять единственный голос, который по-настоящему твой.", [],
+  "An endless dark space. 0–4 s: hundreds of pale-blue wisps float around the main character like a slow storm. 4–7 s: his small warm golden wisp flickers weakly among them. 7–10 s: it fades and almost disappears in the blue noise as he reaches out his mitten hand toward it. Camera: slow push-in on the tiny golden light.",
+  ""),
+ # ---------------- REAL SCIENCE ----------------
+ ("4:50", "IS IT POSSIBLE?",
+  "And this isn't pure science fiction anymore. In twenty-twenty-three, scientists in Texas used brain scans and AI to decode the gist of stories people heard… and even imagined.",
+  "Это уже не совсем фантастика: в 2023 году учёные в Техасе с помощью томографа и ИИ расшифровали смысл историй, которые люди слушали и даже представляли.", ["SCIENTIST"],
+  "A dark high-tech lab lit by the cold blue glow of monitors. 0–4 s: a character lies inside a large brain scanner machine. 4–7 s: the scientist in a lab coat watches glowing monitors showing abstract colorful brain maps and flowing patterns. 7–10 s: pale-blue wisps rise from the scanner and turn into glowing data streams flowing into the screens. Camera: slow dolly from the scanner to the scientist.",
+  "2023 · UNIVERSITY OF TEXAS"),
+ ("5:00", "IS IT POSSIBLE?",
+  "It wasn't perfect. It only worked on volunteers who spent many hours inside the scanner, and only if they cooperated. But it proved thoughts can be decoded.",
+  "Неидеально: работало только на добровольцах после многих часов в томографе и с их согласия. Но доказало, что мысли можно расшифровать.", ["SCIENTIST"],
+  "The same dark lab. 0–4 s: the scientist leans closer to the main monitor. 4–7 s: blurry glowing images on the screen slowly sharpen into a recognizable soft picture of a house and a tree. 7–10 s: the scientist slowly takes off his glasses and stares at the screen in amazement. Camera: over-the-shoulder shot toward the monitor, slow push-in.",
+  ""),
+ ("5:10", "IS IT POSSIBLE?",
+  "Meanwhile, brain implants already let paralyzed patients move a computer cursor just by thinking. Step by step, the walls of the mind are getting thinner.",
+  "А мозговые импланты уже позволяют парализованным двигать курсор силой мысли. Стены разума становятся тоньше.", [],
+  "A dim hospital room lit by a large glowing screen. 0–4 s: a minimalist character with a tiny glowing dot on the side of his round head sits in a wheelchair facing the screen. 4–7 s: a pale-blue thread of light flows from the glowing dot to the screen, and a small glowing cursor moves across it. 7–10 s: the character smiles as the cursor lands on a target that bursts into soft light. Camera: slow side dolly.",
+  "BRAIN IMPLANTS"),
+ ("5:20", "IS IT POSSIBLE?",
+  "Which raises a question nobody has answered yet. If your thoughts can be read… who should be allowed to read them?",
+  "Встаёт вопрос, на который пока нет ответа: если мысли можно читать — кому это разрешено?", ["CROWD"],
+  "A vast dark hall. 0–4 s: the main character walks toward a giant translucent glowing glass head floating in the center of the hall. 4–7 s: inside the glass head pale-blue wisps swirl like a galaxy. 7–10 s: from the shadows around the hall, many silent silhouetted figures slowly step forward and watch the glowing head. Camera: slow wide push-in, symmetrical composition.",
+  ""),
+ # ---------------- ENDING ----------------
+ ("5:30", "ENDING",
+  "(warm) So maybe the privacy of your mind isn't a weakness. Maybe it's exactly what lets us be kind… be strange… and be ourselves.",
+  "Может, тайна мыслей — не слабость, а то, что позволяет быть добрыми, странными и самими собой.", [],
+  "A dark bedroom at night, moonlight through the window and a small warm lamp. 0–4 s: the main character sits on his bed as the pale-blue wisps around him slowly dissolve one by one. 4–7 s: the room becomes calm and quiet. 7–10 s: his small warm golden wisp rises from his head, glowing brighter, and he smiles softly. Camera: slow push-in to a close-up.",
+  ""),
+ ("5:40", "ENDING",
+  "Your thoughts are the last place on Earth where no one can follow you. (whispering) At least… for now.",
+  "Твои мысли — последнее место на Земле, куда никто не может пойти за тобой. По крайней мере, пока.", [],
+  "The same dark bedroom, the window behind the bed showing the night city. 0–4 s: the main character lies down and closes his eyes peacefully. 4–7 s: a single cold, bright blue wisp slowly drifts in through the closed window glass. 7–10 s: it floats toward his head and his eyes snap open in the darkness. Camera: slow creeping push-in, suspenseful.",
+  ""),
+ ("5:50", "OUTRO",
+  "(friendly) So… would you take this power if someone offered it to you? Tell me in the comments. And next time: what if you became invisible?",
+  "Взял бы ты эту силу? Пиши в комментариях. А в следующий раз — что если ты станешь невидимым?", [],
+  "The same bedroom in the warm light of morning. 0–4 s: the main character looks straight into the camera and gives a playful shrug. 4–7 s: he waves with his mitten hand. 7–10 s: his body slowly turns semi-transparent like glass with a shimmering outline until he almost disappears. Camera: static medium shot, centered.",
+  "WHAT IF YOU BECAME INVISIBLE?"),
 ]
 
-def prompt(cast, shot):
-    chars = [f"HERO: {HERO}"] + [f"{k}: {CAST[k]}" for k in cast]
-    return (shot + "\n\nCharacters: " + " ".join(chars) + f"\n\nThoughts look like: {THOUGHT}\n\nStyle: {STYLE}")
 
-out = ["# Ep. 01 — What If You Could Read Minds?\n",
-       "Клипы по 10 с (лимит Vids), лишнее подрезаем в монтаже; длина ≈ 4–5 мин, " + str(len(S)) + " клипов. Озвучка — на английском (американская аудитория), под ней — смысл по-русски.\n",
-       "**Название:** What If You Could Read Minds for 24 Hours?  \n**Обложка:** герой крупно, глаза широко раскрыты, вокруг головы голубые светящиеся завитки мыслей; текст «I HEAR EVERYTHING» (жёлтый на тёмном).  \n**Описание (начало):** What would really happen if you could hear every thought around you for one day? Comment: would you keep this power?\n",
-       "**Как пользоваться:** блок «Озвучка» → Fish Audio (по 3–5 сцен за раз). Блок «Промпт» → Google Vids целиком, как есть. Пометки в скобках `(excited)` — подсказки эмоций; мысли других персонажей можно озвучить отдельными голосами.\n",
-       "**Надписи в монтаже:** время в углу (7:00 AM и т. д.), текст мыслей курсивом рядом с голубым завитком, на клипе «SCIENCE» — подпись «SENSORY GATING».\n"]
-for i, (t, vo, ru, cast, shot) in enumerate(S, 1):
-    out.append(f"---\n\n## Клип {i:02d} · {t}\n\n**Озвучка:**\n> {vo}\n\n_Смысл:_ {ru}\n\n**Промпт для Google Vids:**\n```\n{prompt(cast, shot)}\n```\n")
-open("ep01_read_minds.md", "w").write("\n".join(out))
-print(len(S), "clips")
+def prompt(cast, shot):
+    chars = [f"Main character: {HERO}"] + [f"{k.title()}: {CAST[k]}" for k in cast]
+    return (f"10-second shot. {shot}\n\n" + "\n".join(chars) +
+            f"\n\nThought visuals: {THOUGHT}\n\nStyle: {STYLE}")
+
+
+ep = ["# Ep. 01 — What If You Could Read Minds? (6:00)\n",
+      f"{len(S)} клипов × 10 с = {len(S) * 10 // 60}:{len(S) * 10 % 60:02d}. Озвучка — английский, под ней смысл по-русски.\n",
+      "**Название:** What If You Could Read Minds? (Science Explains)  \n"
+      "**Обложка:** герой крупно в темноте, глаза широко раскрыты, вокруг головы вихрь голубых и красных светящихся завитков; "
+      "надпись `READ MINDS?` белым рукописным шрифтом, слово `MINDS` на розовой плашке.  \n"
+      "**Главы для описания:** 0:00 Intro · 0:30 Day One · 1:30 The Noise · 2:20 Dark Thoughts · 3:00 Trust · "
+      "3:40 Your Brain · 4:20 Losing Your Mind · 4:50 Is It Possible? · 5:30 Ending\n",
+      "**Как пользоваться:** «Промпт» → Google Vids целиком. «Озвучка» → Fish Audio (текст без смысловой строки; "
+      "весь текст подряд — в `ep01_voiceover.md`). «Надпись» — добавить в монтаже крупно, ключевое слово на розовой плашке.\n",
+      "Источники фактов — в конце файла.\n"]
+vo = ["# Ep. 01 — текст для озвучки (Fish Audio)\n",
+      "Один голос рассказчика. Скорость 1.0. Каждый блок = 10 секунд, генерировать по 3–4 блока за раз. "
+      "Файлы называть `ep01_01.mp3`, `ep01_02.mp3` … по номеру клипа.\n"]
+chapter = None
+for i, (tc, ch, en, ru, cast, shot, onscreen) in enumerate(S, 1):
+    if ch != chapter:
+        ep.append(f"\n# {ch}\n")
+        vo.append(f"\n## {ch}\n")
+        chapter = ch
+    ep.append(f"---\n\n## Клип {i:02d} · {tc}\n\n**Озвучка:**\n> {en}\n\n_Смысл:_ {ru}\n" +
+              (f"\n**Надпись на экране:** `{onscreen}`\n" if onscreen else "") +
+              f"\n**Промпт для Google Vids:**\n```\n{prompt(cast, shot)}\n```\n")
+    vo.append(f"**{i:02d}** ({tc})  \n{en}\n")
+ep.append("""---
+
+## Источники фактов (для описания под видео)
+- Spotlight effect — Gilovich, Medvec & Savitsky, 2000, *Journal of Personality and Social Psychology*.
+- ~6 000 мыслей в день — Tseng & Poppenk, 2020, *Nature Communications* (Queen's University).
+- Мышление образами и обрывками — исследования Р. Херлберта (Descriptive Experience Sampling).
+- 94% людей с навязчивыми мыслями, 13 стран — Radomsky et al., 2014, *Journal of Obsessive-Compulsive and Related Disorders*.
+- «Зов бездны» — Hames et al., 2012, *Journal of Affective Disorders* (high place phenomenon).
+- 1–2 лжи в день — DePaulo et al., 1996; Serota et al., 2010.
+- Галлюцинации от недосыпа — Waters et al., 2018, *Frontiers in Psychiatry*.
+- Thought insertion — один из «симптомов первого ранга» шизофрении (К. Шнайдер).
+- Декодер мыслей — Tang, LeBel, Jain & Huth, 2023, *Nature Neuroscience* (University of Texas at Austin).
+- Управление курсором через имплант — BrainGate, Neuralink (2024).
+""")
+open("ep01_read_minds.md", "w").write("\n".join(ep))
+open("ep01_voiceover.md", "w").write("\n".join(vo))
+words = sum(len(s[2].split()) for s in S)
+print(len(S), "clips,", words, "words,", round(words / len(S), 1), "words/clip")
