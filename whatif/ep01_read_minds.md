@@ -1,17 +1,17 @@
-# Ep. 01 — What If You Could Read Minds? (6:00)
+# Ep. 01 — What If You Could Read Minds? (5:30)
 
-36 клипов × 10 с = 6:00. Озвучка — английский, под ней смысл по-русски.
+33 клипов × 10 с = 5:30. Озвучка — английский, под ней смысл по-русски.
 
 **Название:** What If You Could Read Minds? (Science Explains)  
 **Обложка:** герой крупно в темноте, глаза широко раскрыты, вокруг головы вихрь голубых и красных светящихся завитков; надпись `READ MINDS?` белым рукописным шрифтом, слово `MINDS` на розовой плашке.  
-**Главы для описания:** 0:00 Intro · 0:30 Day One · 1:30 The Noise · 2:20 Dark Thoughts · 3:00 Trust · 3:40 Your Brain · 4:20 Losing Your Mind · 4:50 Is It Possible? · 5:30 Ending
+**Главы для описания:** 0:00 Intro · 0:30 Day 1 · 1:20 The Noise · 2:00 Dark Thoughts · 2:40 Trust · 3:10 The Brain · 3:50 Losing Your Mind · 4:20 Is It Possible? · 5:00 Ending
 
 **Как пользоваться:** «Промпт» → Google Vids целиком. «Озвучка» → Fish Audio (текст без смысловой строки; весь текст подряд — в `ep01_voiceover.md`). «Надпись» — добавить в монтаже крупно, ключевое слово на розовой плашке.
 
 Источники фактов — в конце файла.
 
 
-# HOOK
+# Глава: INTRO
 
 ---
 
@@ -78,7 +78,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# DAY 1
+# Глава: DAY 1
 
 ---
 
@@ -108,26 +108,6 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ## Клип 05 · 0:40
 
 **Озвучка:**
-> You smile. For a second, this feels like the best gift in the world. Hearing that someone loves you… with zero doubt.
-
-_Смысл:_ На секунду это кажется лучшим подарком: слышать, что тебя любят, без сомнений.
-
-**Промпт для Google Vids:**
-```
-10-second shot. The same warm kitchen. 0–4 s: close-up of the main character smiling, warm golden light on his round off-white head, a strong rim light. 4–7 s: he closes his eyes peacefully as the pale-blue wisp gently circles his head. 7–10 s: a small warm golden wisp rises from his own head and twirls together with the blue one. Camera: slow push-in, very shallow depth of field.
-
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
-
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
-```
-
----
-
-## Клип 06 · 0:50
-
-**Озвучка:**
 > On the bus, you hear everything. The driver hates Mondays. The guy next to you forgot his homework. And honestly? Nobody's thinking about you.
 
 _Смысл:_ В автобусе слышишь всех: водитель ненавидит понедельники, сосед забыл домашку, о тебе не думает никто.
@@ -146,12 +126,9 @@ Thought visuals: other people's ordinary thoughts are soft glowing pale-blue tra
 Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 ```
 
-
-# FACT
-
 ---
 
-## Клип 07 · 1:00
+## Клип 06 · 0:50 · ФАКТ
 
 **Озвучка:**
 > That's actually real. Psychologists call it the spotlight effect: we believe people notice us far more than they actually do.
@@ -172,12 +149,9 @@ Thought visuals: other people's ordinary thoughts are soft glowing pale-blue tra
 Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 ```
 
-
-# DAY 1
-
 ---
 
-## Клип 08 · 1:10
+## Клип 07 · 1:00
 
 **Озвучка:**
 > (sly) At school, you find the real cheat code. The smartest kid in class is thinking the answers to the test. Loudly. In your head.
@@ -200,7 +174,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 09 · 1:20
+## Клип 08 · 1:10
 
 **Озвучка:**
 > (excited) Perfect score. Your friends are impressed. Your teacher is impressed. By lunch, you feel like the most powerful person alive.
@@ -220,11 +194,11 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# THE NOISE
+# Глава: THE NOISE
 
 ---
 
-## Клип 10 · 1:30
+## Клип 09 · 1:20
 
 **Озвучка:**
 > (serious) But then you notice something strange. People don't think in neat little sentences. Their thoughts are messy. Fast. And they never… ever… stop.
@@ -245,12 +219,9 @@ Thought visuals: other people's ordinary thoughts are soft glowing pale-blue tra
 Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 ```
 
-
-# FACT
-
 ---
 
-## Клип 11 · 1:40
+## Клип 10 · 1:30 · ФАКТ
 
 **Озвучка:**
 > In twenty-twenty, researchers at Queen's University in Canada estimated that the average person has more than six thousand separate thoughts every single day.
@@ -272,7 +243,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 12 · 1:50
+## Клип 11 · 1:40 · ФАКТ
 
 **Озвучка:**
 > Now multiply that by thirty people in one classroom. That's nearly two hundred thousand thoughts a day. All of them… crashing into your head.
@@ -295,7 +266,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 13 · 2:00
+## Клип 12 · 1:50 · ФАКТ
 
 **Озвучка:**
 > And most of it isn't even words. Studies of inner experience show people often think in images, feelings and half-finished fragments.
@@ -315,34 +286,11 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# THE NOISE
+# Глава: DARK THOUGHTS
 
 ---
 
-## Клип 14 · 2:10
-
-**Озвучка:**
-> So what you'd hear isn't a podcast. It's static. Like a hundred radios playing at once… each one tuned to a different station.
-
-_Смысл:_ Ты слышишь не подкаст, а шум, как сто радио на разных волнах.
-
-**Промпт для Google Vids:**
-```
-10-second shot. A dark room filled with dozens of old glowing vintage radios floating in the air around the main character. 0–4 s: the radios glow softly one by one. 4–7 s: their dials and lights start flickering wildly, pale-blue sound waves rippling out of each radio. 7–10 s: the main character covers the sides of his head with both mitten hands and squeezes his eyes shut. Camera: slow 360-degree orbit.
-
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
-
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
-```
-
-
-# DARK THOUGHTS
-
----
-
-## Клип 15 · 2:20
+## Клип 13 · 2:00
 
 **Озвучка:**
 > (quiet) Then comes the darkest part. You start hearing things people would never say out loud. Strange thoughts. Scary thoughts. Even from people you love.
@@ -363,12 +311,9 @@ Thought visuals: other people's ordinary thoughts are soft glowing pale-blue tra
 Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 ```
 
-
-# FACT
-
 ---
 
-## Клип 16 · 2:30
+## Клип 14 · 2:10 · ФАКТ
 
 **Озвучка:**
 > Here's the twist. In a study across thirteen countries, about ninety-four percent of people said they have unwanted, intrusive thoughts.
@@ -391,7 +336,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 17 · 2:40
+## Клип 15 · 2:20 · ФАКТ
 
 **Озвучка:**
 > Like standing on a balcony and thinking, "What if I jumped?" Psychologists call it the call of the void. It's normal. It means nothing.
@@ -411,12 +356,9 @@ Thought visuals: other people's ordinary thoughts are soft glowing pale-blue tra
 Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 ```
 
-
-# DARK THOUGHTS
-
 ---
 
-## Клип 18 · 2:50
+## Клип 16 · 2:30
 
 **Озвучка:**
 > But you can't push them away. You hear everyone's worst three seconds… all day long. And slowly, you start to believe people are monsters.
@@ -436,11 +378,11 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# TRUST
+# Глава: TRUST
 
 ---
 
-## Клип 19 · 3:00
+## Клип 17 · 2:40
 
 **Озвучка:**
 > Next to go: trust. Research suggests the average person tells one or two lies a day. Mostly tiny ones. "I'm fine." "I love the gift."
@@ -463,28 +405,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 20 · 3:10
-
-**Озвучка:**
-> Those little lies are like glue. They keep friendships, families and whole workplaces from falling apart. And you can hear every single one.
-
-_Смысл:_ Эта мелкая ложь — клей, который держит дружбу, семьи и коллективы. А ты слышишь каждую.
-
-**Промпт для Google Vids:**
-```
-10-second shot. A table in a dark diner lit by a hanging warm lamp. 0–4 s: the main character and his best friend with a red cap sit across from each other laughing. 4–7 s: a thin glowing crack slowly runs across the wooden table between them. 7–10 s: the crack splits the table in two and the two halves drift slightly apart while they keep smiling awkwardly. Camera: top-down shot slowly turning.
-
-Main character: a cute minimalist 3D cartoon character: a very large, perfectly smooth round head, slightly wider than tall, about as big as the whole body, made of matte off-white material like a soft vinyl toy; two small solid black dot eyes set wide apart, a thin simple curved black smile line, no nose, no ears, no hair, no eyebrows; no neck, a small simple off-white body with no clothes, short thin arms with rounded mitten hands, short straight legs with small rounded feet; a subtle thin dark outline around the silhouette, like a simple hand-drawn doodle brought to life in 3D.
-Jake: a character of the same minimalist style (big round matte off-white head, black dot eyes, simple line mouth, no nose), HERO's best friend, wearing a red baseball cap backwards.
-
-Thought visuals: other people's ordinary thoughts are soft glowing pale-blue translucent wisps of light that float from their heads; dark intrusive thoughts are flickering dark-red wisps; the main character's own thoughts are a small warm golden wisp.
-
-Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
-```
-
----
-
-## Клип 21 · 3:20
+## Клип 18 · 2:50
 
 **Озвучка:**
 > Your best friend laughs at your joke… and thinks, "That wasn't funny." Your crush smiles at you… and thinks about someone else.
@@ -506,7 +427,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 22 · 3:30
+## Клип 19 · 3:00
 
 **Озвучка:**
 > (sad) Within a week, you stop calling people. Not because they're bad. Because you know too much. And knowing too much… is lonely.
@@ -527,11 +448,11 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# THE BRAIN
+# Глава: THE BRAIN
 
 ---
 
-## Клип 23 · 3:40
+## Клип 20 · 3:10
 
 **Озвучка:**
 > Now let's talk about your brain. Right now, it's ignoring most of what your senses pick up. Scientists call this sensory gating.
@@ -553,7 +474,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 24 · 3:50
+## Клип 21 · 3:20
 
 **Озвучка:**
 > It's a filter. It's the reason you can read a book in a noisy café. (serious) Mind reading would rip that filter out. Permanently.
@@ -573,7 +494,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 25 · 4:00
+## Клип 22 · 3:30
 
 **Озвучка:**
 > With no filter, your brain never rests. Your stress hormone, cortisol, stays high. You can't focus. And you can't fall asleep.
@@ -593,12 +514,9 @@ Thought visuals: other people's ordinary thoughts are soft glowing pale-blue tra
 Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 ```
 
-
-# FACT
-
 ---
 
-## Клип 26 · 4:10
+## Клип 23 · 3:40 · ФАКТ
 
 **Озвучка:**
 > And after just a couple of days without proper sleep, people can start to hallucinate. Seeing shapes. Hearing voices. Things that aren't there.
@@ -619,11 +537,11 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# LOSING YOUR MIND
+# Глава: LOSING YOUR MIND
 
 ---
 
-## Клип 27 · 4:20
+## Клип 24 · 3:50
 
 **Озвучка:**
 > (serious) And here's what really worries psychiatrists. Some people with schizophrenia describe thought insertion: the feeling that the thoughts in their head belong to someone else.
@@ -645,7 +563,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 28 · 4:30
+## Клип 25 · 4:00
 
 **Озвучка:**
 > For you, that wouldn't be a symptom. It would be reality. So which voice in your head is yours? After a while… you can't tell anymore.
@@ -665,7 +583,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 29 · 4:40
+## Клип 26 · 4:10
 
 **Озвучка:**
 > (quiet) That's the real danger. Not knowing too much about other people… but losing the one voice that's truly yours.
@@ -684,11 +602,11 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# IS IT POSSIBLE?
+# Глава: IS IT POSSIBLE?
 
 ---
 
-## Клип 30 · 4:50
+## Клип 27 · 4:20
 
 **Озвучка:**
 > And this isn't pure science fiction anymore. In twenty-twenty-three, scientists in Texas used brain scans and AI to decode the gist of stories people heard… and even imagined.
@@ -711,7 +629,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 31 · 5:00
+## Клип 28 · 4:30
 
 **Озвучка:**
 > It wasn't perfect. It only worked on volunteers who spent many hours inside the scanner, and only if they cooperated. But it proved thoughts can be decoded.
@@ -732,7 +650,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 32 · 5:10
+## Клип 29 · 4:40
 
 **Озвучка:**
 > Meanwhile, brain implants already let paralyzed patients move a computer cursor just by thinking. Step by step, the walls of the mind are getting thinner.
@@ -754,7 +672,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 33 · 5:20
+## Клип 30 · 4:50
 
 **Озвучка:**
 > Which raises a question nobody has answered yet. If your thoughts can be read… who should be allowed to read them?
@@ -774,11 +692,11 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 ```
 
 
-# ENDING
+# Глава: ENDING
 
 ---
 
-## Клип 34 · 5:30
+## Клип 31 · 5:00
 
 **Озвучка:**
 > (warm) So maybe the privacy of your mind isn't a weakness. Maybe it's exactly what lets us be kind… be strange… and be ourselves.
@@ -798,7 +716,7 @@ Style: Cinematic animated short film look in the style of modern dark motivation
 
 ---
 
-## Клип 35 · 5:40
+## Клип 32 · 5:10
 
 **Озвучка:**
 > Your thoughts are the last place on Earth where no one can follow you. (whispering) At least… for now.
@@ -816,12 +734,9 @@ Thought visuals: other people's ordinary thoughts are soft glowing pale-blue tra
 Style: Cinematic animated short film look in the style of modern dark motivational animations: soft painterly 3D-like shading with real volume and depth, a dark moody world lit only by warm practical light sources (lamps, screens, windows, streetlights), strong rim light around the character, deep soft black shadows, volumetric haze and floating dust in the light beams, glowing accents, expressive emotional character acting, shallow depth of field, 16:9. No text, no letters, no numbers, no subtitles, no logos, no speech, no lip movement. Sound: soft ambient sound only, no dialogue, no music.
 ```
 
-
-# OUTRO
-
 ---
 
-## Клип 36 · 5:50
+## Клип 33 · 5:20
 
 **Озвучка:**
 > (friendly) So… would you take this power if someone offered it to you? Tell me in the comments. And next time: what if you became invisible?

@@ -1,4 +1,4 @@
-# Builds ep01_read_minds.md (36 clips x 10 s = 6:00) and ep01_voiceover.md (narration only, for Fish Audio).
+# Builds ep01_read_minds.md (33 clips x 10 s = 5:30) and ep01_voiceover.md (narration only, for Fish Audio).
 # Shared character/style blocks live in blocks.py.
 from blocks import STYLE, HERO, CAST, THOUGHT
 
@@ -26,11 +26,6 @@ S = [
   "День первый, 7 утра. Мама говорит «доброе утро», и мысли совпадают: «Я так им горжусь».", ["MOM"],
   "A warm cozy kitchen in the morning, golden sunlight through the window, steam rising from a coffee mug, the rest of the room in soft darkness. 0–4 s: the mom pours coffee and smiles warmly at the main character, who sits at the table with a bowl of cereal. 4–7 s: a soft pale-blue glowing wisp floats gently from her head to his. 7–10 s: he looks up at her and his face slowly lights up with a happy smile. Camera: medium two-shot, slow sideways dolly.",
   "7:00 AM"),
- ("0:40", "DAY 1",
-  "You smile. For a second, this feels like the best gift in the world. Hearing that someone loves you… with zero doubt.",
-  "На секунду это кажется лучшим подарком: слышать, что тебя любят, без сомнений.", [],
-  "The same warm kitchen. 0–4 s: close-up of the main character smiling, warm golden light on his round off-white head, a strong rim light. 4–7 s: he closes his eyes peacefully as the pale-blue wisp gently circles his head. 7–10 s: a small warm golden wisp rises from his own head and twirls together with the blue one. Camera: slow push-in, very shallow depth of field.",
-  ""),
  ("0:50", "DAY 1",
   "On the bus, you hear everything. The driver hates Mondays. The guy next to you forgot his homework. And honestly? Nobody's thinking about you.",
   "В автобусе слышишь всех: водитель ненавидит понедельники, сосед забыл домашку, о тебе не думает никто.", ["CROWD"],
@@ -72,11 +67,6 @@ S = [
   "И это даже не слова: исследования показывают, что люди часто думают образами, чувствами и обрывками.", ["CROWD"],
   "A dark space with soft fog. 0–4 s: a girl with a yellow headband stands beside the main character; a pale-blue wisp rises from her head. 4–7 s: the wisp breaks apart into small glowing translucent images floating in the air: a dog, a slice of pizza, a rain cloud, a cracked heart. 7–10 s: the images flicker and dissolve before the main character can catch them; he tilts his head, confused. Camera: slow orbit around the floating images.",
   ""),
- ("2:10", "THE NOISE",
-  "So what you'd hear isn't a podcast. It's static. Like a hundred radios playing at once… each one tuned to a different station.",
-  "Ты слышишь не подкаст, а шум, как сто радио на разных волнах.", [],
-  "A dark room filled with dozens of old glowing vintage radios floating in the air around the main character. 0–4 s: the radios glow softly one by one. 4–7 s: their dials and lights start flickering wildly, pale-blue sound waves rippling out of each radio. 7–10 s: the main character covers the sides of his head with both mitten hands and squeezes his eyes shut. Camera: slow 360-degree orbit.",
-  ""),
  # ---------------- DARK THOUGHTS ----------------
  ("2:20", "DARK THOUGHTS",
   "(quiet) Then comes the darkest part. You start hearing things people would never say out loud. Strange thoughts. Scary thoughts. Even from people you love.",
@@ -104,11 +94,6 @@ S = [
   "Дальше рушится доверие. В среднем человек врёт 1–2 раза в день, в основном по мелочи: «Я в порядке», «Обожаю подарок».", ["JAKE"],
   "A cozy dark living room lit by a warm floor lamp and birthday candles. 0–4 s: the best friend with a red cap opens a gift box from the main character and smiles widely. 4–7 s: a pale-blue wisp floats from the friend's head. 7–10 s: the main character's happy face slowly falls as he hears it. Camera: medium two-shot, slow push-in on the main character.",
   "1–2 LIES / DAY"),
- ("3:10", "TRUST",
-  "Those little lies are like glue. They keep friendships, families and whole workplaces from falling apart. And you can hear every single one.",
-  "Эта мелкая ложь — клей, который держит дружбу, семьи и коллективы. А ты слышишь каждую.", ["JAKE"],
-  "A table in a dark diner lit by a hanging warm lamp. 0–4 s: the main character and his best friend with a red cap sit across from each other laughing. 4–7 s: a thin glowing crack slowly runs across the wooden table between them. 7–10 s: the crack splits the table in two and the two halves drift slightly apart while they keep smiling awkwardly. Camera: top-down shot slowly turning.",
-  ""),
  ("3:20", "TRUST",
   "Your best friend laughs at your joke… and thinks, \"That wasn't funny.\" Your crush smiles at you… and thinks about someone else.",
   "Друг смеётся над шуткой и думает «не смешно». Симпатия улыбается — и думает о другом.", ["JAKE", "EMMA"],
@@ -196,19 +181,27 @@ S = [
 ]
 
 
+# chapter starts (FACT clips belong to the surrounding chapter)
+CHAPTERS, _cur = [], None
+for _i, _s in enumerate(S):
+    if _s[1] != "FACT" and _s[1] != _cur:
+        _cur = _s[1]
+        CHAPTERS.append((_i, {"HOOK": "INTRO", "OUTRO": "ENDING"}.get(_cur, _cur)))
+CHAPTERS = [c for k, c in enumerate(CHAPTERS) if k == 0 or c[1] != CHAPTERS[k - 1][1]]
+
+
 def prompt(cast, shot):
     chars = [f"Main character: {HERO}"] + [f"{k.title()}: {CAST[k]}" for k in cast]
     return (f"10-second shot. {shot}\n\n" + "\n".join(chars) +
             f"\n\nThought visuals: {THOUGHT}\n\nStyle: {STYLE}")
 
 
-ep = ["# Ep. 01 — What If You Could Read Minds? (6:00)\n",
+ep = ["# Ep. 01 — What If You Could Read Minds? (5:30)\n",
       f"{len(S)} клипов × 10 с = {len(S) * 10 // 60}:{len(S) * 10 % 60:02d}. Озвучка — английский, под ней смысл по-русски.\n",
       "**Название:** What If You Could Read Minds? (Science Explains)  \n"
       "**Обложка:** герой крупно в темноте, глаза широко раскрыты, вокруг головы вихрь голубых и красных светящихся завитков; "
       "надпись `READ MINDS?` белым рукописным шрифтом, слово `MINDS` на розовой плашке.  \n"
-      "**Главы для описания:** 0:00 Intro · 0:30 Day One · 1:30 The Noise · 2:20 Dark Thoughts · 3:00 Trust · "
-      "3:40 Your Brain · 4:20 Losing Your Mind · 4:50 Is It Possible? · 5:30 Ending\n",
+      "**Главы для описания:** " + " · ".join(f"{(i * 10) // 60}:{(i * 10) % 60:02d} {c.title()}" for i, c in CHAPTERS) + "\n",
       "**Как пользоваться:** «Промпт» → Google Vids целиком. «Озвучка» → Fish Audio (текст без смысловой строки; "
       "весь текст подряд — в `ep01_voiceover.md`). «Надпись» — добавить в монтаже крупно, ключевое слово на розовой плашке.\n",
       "Источники фактов — в конце файла.\n"]
@@ -216,12 +209,13 @@ vo = ["# Ep. 01 — текст для озвучки (Fish Audio)\n",
       "Один голос рассказчика. Скорость 1.0. Каждый блок = 10 секунд, генерировать по 3–4 блока за раз. "
       "Файлы называть `ep01_01.mp3`, `ep01_02.mp3` … по номеру клипа.\n"]
 chapter = None
-for i, (tc, ch, en, ru, cast, shot, onscreen) in enumerate(S, 1):
-    if ch != chapter:
-        ep.append(f"\n# {ch}\n")
-        vo.append(f"\n## {ch}\n")
-        chapter = ch
-    ep.append(f"---\n\n## Клип {i:02d} · {tc}\n\n**Озвучка:**\n> {en}\n\n_Смысл:_ {ru}\n" +
+for i, (_tc, ch, en, ru, cast, shot, onscreen) in enumerate(S, 1):
+    tc = f"{(i - 1) * 10 // 60}:{(i - 1) * 10 % 60:02d}"
+    starts = dict(CHAPTERS)
+    if i - 1 in starts:
+        ep.append(f"\n# Глава: {starts[i - 1]}\n")
+        vo.append(f"\n## {starts[i - 1]}\n")
+    ep.append(f"---\n\n## Клип {i:02d} · {tc}{' · ФАКТ' if ch == 'FACT' else ''}\n\n**Озвучка:**\n> {en}\n\n_Смысл:_ {ru}\n" +
               (f"\n**Надпись на экране:** `{onscreen}`\n" if onscreen else "") +
               f"\n**Промпт для Google Vids:**\n```\n{prompt(cast, shot)}\n```\n")
     vo.append(f"**{i:02d}** ({tc})  \n{en}\n")
