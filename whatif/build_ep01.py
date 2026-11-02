@@ -104,7 +104,7 @@ def prompt(cast, shot):
     return (shot + "\n\nCharacters: " + " ".join(chars) + f"\n\nThoughts look like: {THOUGHT}\n\nStyle: {STYLE}")
 
 out = ["# Ep. 01 — What If You Could Read Minds?\n",
-       "Длина ≈ 4 мин, " + str(len(S)) + " клипов. Озвучка — на английском (американская аудитория), под ней — смысл по-русски.\n",
+       "Клипы по 10 с (лимит Vids), лишнее подрезаем в монтаже; длина ≈ 4–5 мин, " + str(len(S)) + " клипов. Озвучка — на английском (американская аудитория), под ней — смысл по-русски.\n",
        "**Название:** What If You Could Read Minds for 24 Hours?  \n**Обложка:** герой крупно, глаза широко раскрыты, вокруг головы голубые светящиеся завитки мыслей; текст «I HEAR EVERYTHING» (жёлтый на тёмном).  \n**Описание (начало):** What would really happen if you could hear every thought around you for one day? Comment: would you keep this power?\n",
        "**Как пользоваться:** блок «Озвучка» → Fish Audio (по 3–5 сцен за раз). Блок «Промпт» → Google Vids целиком, как есть. Пометки в скобках `(excited)` — подсказки эмоций; мысли других персонажей можно озвучить отдельными голосами.\n",
        "**Надписи в монтаже:** время в углу (7:00 AM и т. д.), текст мыслей курсивом рядом с голубым завитком, на клипе «SCIENCE» — подпись «SENSORY GATING».\n"]
