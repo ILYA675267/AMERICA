@@ -55,6 +55,8 @@ const range = opt('--range');   // "from,to" seconds: render only this part (for
   }
   enc.stdin.end();
   await new Promise(r => enc.on('close', r));
+  const log = await page.evaluate(() => window.WRITE_LOG || []);
+  if (log.length) fs.writeFileSync(out.replace(/\.mp4$/, '') + '.writes.json', JSON.stringify(log));
   await browser.close();
   console.log(`\rdone: ${out}`);
 })();

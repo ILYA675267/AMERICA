@@ -293,7 +293,7 @@ function render(t) {
   const im = typeof IMGS[i] === 'function' ? IMGS[i](lt, s.dur) : IMGS[i];
   if (im) bgImg(im);
   else { ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(-600, GY + 2); ctx.lineTo(2600, GY + 2); ctx.strokeStyle = '#8d8c88'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1; }
-  WRITE_ON = BOARD.has(i); WRITE_T = TT; WRITE_SCN = i;
+  WRITE_ON = BOARD.has(i); WRITE_T = TT; WRITE_SCN = i; WRITE_OCC = new Map();
   s.draw(lt, s.dur);
   WRITE_ON = false;
   ctx.setTransform(1, 0, 0, 1, 0, 0);

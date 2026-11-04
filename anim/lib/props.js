@@ -11,6 +11,7 @@ function at(x, y, s, rot, f) { ctx.save(); ctx.translate(x, y); if (rot) ctx.rot
 // Each piece of text is remembered by scene + its letters (digits ignored, so animated counters are written once).
 let WRITE_ON = false, WRITE_T = 0, WRITE_SCN = -1;
 const WRITTEN = new Map(), QEND = new Map();
+let WRITE_OCC = new Map();
 function marker(text, x, y, size, o = {}) {
   ctx.save(); ctx.translate(x, y); if (o.rot) ctx.rotate(o.rot);
   ctx.font = `${size}px "Permanent Marker"`; ctx.textAlign = o.align || 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
@@ -18,12 +19,15 @@ function marker(text, x, y, size, o = {}) {
   let wp = 1;
   if (WRITE_ON && !o.noWrite) {
     // one marker for the whole board: each new text waits in a queue until the previous one is finished
-    const key = WRITE_SCN + '|' + text.replace(/[0-9.,]/g, '#') + '|' + size;
+    const base = WRITE_SCN + '|' + text.replace(/[0-9.,]/g, '#') + '|' + size;
+    const occ = WRITE_OCC.get(base) || 0; WRITE_OCC.set(base, occ + 1);   // same-looking texts ($10, $70…) told apart by order
+    const key = base + '|' + occ;
     const dur = Math.min(1.3, 0.2 + text.length * 0.05);
     let e = WRITTEN.get(key);
     if (!e || e.seen > WRITE_T) {
       const start = Math.max(WRITE_T, (QEND.get(WRITE_SCN) || 0) + 0.08);
       e = { seen: WRITE_T, start, dur }; WRITTEN.set(key, e); QEND.set(WRITE_SCN, start + dur);
+      (window.WRITE_LOG = window.WRITE_LOG || []).push({ t: +start.toFixed(3), d: +dur.toFixed(3) });   // for the marker sound
     }
     wp = clamp((WRITE_T - e.start) / e.dur);
   }
@@ -34,6 +38,7 @@ function marker(text, x, y, size, o = {}) {
   ctx.fillStyle = o.color || C.ink; ctx.fillText(text, 0, 0);
   if (wp < 1) {
     ctx.restore();
+    if (wp > 0) {
     // the marker pen at the writing edge, wiggling like handwriting
     const ex = x0 + w * wp, ey = Math.sin(WRITE_T * 40) * size * 0.12, k = size / 100;
     ctx.save(); ctx.translate(ex, ey); ctx.rotate(-0.75); ctx.scale(k, k);
@@ -41,6 +46,7 @@ function marker(text, x, y, size, o = {}) {
     ctx.beginPath(); ctx.roundRect(14, -14, 40, 28, 6); ctx.fillStyle = o.color === GREEN ? GREEN : o.color === RED ? RED : '#3a3a3a'; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = 4; ctx.stroke();
     ctx.beginPath(); ctx.roundRect(54, -16, 120, 32, 10); ctx.fillStyle = '#f4f1e8'; ctx.fill(); ctx.stroke();
     ctx.restore();
+    }
   }
   ctx.restore(); return w;
 }

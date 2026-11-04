@@ -84,6 +84,25 @@ for i, s in enumerate(data):
         if re.search(r"-|INFLATION|CAN'T|FEE", ons): add(boom(), la + 0.5, 0.6)
     t0 += s["dur"]
 
+# marker on a whiteboard: scratchy band-limited noise in short strokes, with a faint squeak
+def marker_sound(d):
+    n = int(d * SR); t = np.arange(n) / SR
+    noise = rng.standard_normal(n)
+    lo1 = np.zeros(n); lo2 = np.zeros(n); a1 = 0.55; a2 = 0.08; y1 = y2 = 0.0
+    for k in range(n):
+        y1 += a1 * (noise[k] - y1); y2 += a2 * (noise[k] - y2); lo1[k] = y1; lo2[k] = y2
+    band = lo1 - lo2                                  # roughly 0.7-5 kHz
+    rate = 7 + rng.random() * 3                        # pen strokes per second
+    strokes = np.abs(np.sin(np.pi * rate * t + rng.random() * 3)) ** 0.6
+    squeak = 0.15 * np.sin(2 * np.pi * (2300 + 300 * np.sin(2 * np.pi * 3 * t)) * t) * strokes
+    fade = np.minimum(1, np.minimum(t / 0.03, (d - t) / 0.05))
+    return (band * 2.2 * strokes + squeak) * fade
+
+
+if "--writes" in sys.argv:
+    for w in json.load(open(sys.argv[sys.argv.index("--writes") + 1])):
+        add(marker_sound(w["d"]), COLD + w["t"], 0.32)
+
 if music:   # gentle pluck arpeggio, I–V–vi–IV in C, 96 bpm, very low in the mix
     beat = 60 / 96
     chords = [[60, 64, 67, 72], [55, 59, 62, 67], [57, 60, 64, 69], [53, 57, 60, 65]]
