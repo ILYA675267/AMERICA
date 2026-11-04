@@ -13,12 +13,18 @@ const audio = opt('--audio');
 const preview = opt('--preview');
 
 (async () => {
-  const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js', 'lib/street.js', 'lib/walk.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
+  const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js', 'lib/street.js', 'lib/walk.js', 'lib/hero_front.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
   const code = lib.join('\n;\n') + '\n;\n' + fs.readFileSync(scene, 'utf8') + '\n;window.__DUR = DURATION;';
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   page.on('pageerror', e => { console.error('PAGE ERROR', e.message); process.exit(1); });
-  await page.setContent('<html><body style="margin:0"><canvas id="c" width="1920" height="1080"></canvas></body></html>');
+  const fdir = path.join(__dirname, 'fonts');
+  const faces = fs.readdirSync(fdir).filter(f => f.endsWith('.ttf')).map(f => {
+    const name = f.replace(/-Regular\.ttf$|\.ttf$/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
+    return `@font-face{font-family:"${name}";src:url(data:font/ttf;base64,${fs.readFileSync(path.join(fdir, f)).toString('base64')})}`;
+  }).join('');
+  await page.setContent(`<html><head><style>${faces}</style></head><body style="margin:0"><canvas id="c" width="1920" height="1080"></canvas></body></html>`);
+  await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load())));
   await page.addScriptTag({ content: code });
   const dur = await page.evaluate(() => window.__DUR);
   const grab = t => page.evaluate(t => { render(t); return document.getElementById('c').toDataURL('image/jpeg', 0.95).split(',')[1]; }, t);
