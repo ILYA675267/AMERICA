@@ -13,8 +13,8 @@ function render(t) {
   heroFront(520, 690, 0.76, { face: 'grin', armR: [190, -230], armL: [-150, -150] });
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   // title + tagline
-  marker('HUMAN', 1110, 445, 110, { rot: -0.03 });
-  marker('LITERACY', 1110, 555, 110, { hl: YELLOW, rot: -0.03 });
-  marker('Animated "what if" stories. Real math.', 1110, 652, 40, { rot: -0.015 });
+  marker('HUMAN', 1090, 460, 88, { rot: -0.03 });
+  marker('LITERACY', 1090, 548, 88, { hl: YELLOW, rot: -0.03 });
+  marker('Animated "what if" stories. Real math.', 1090, 630, 34, { rot: -0.015 });
   endFrame();
 }
