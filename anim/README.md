@@ -1,0 +1,17 @@
+# Анимация кодом (без Google Vids)
+
+Бесплатный набор: **Chromium + Playwright** (рендер кадров), **rough.js** (линии «от руки»), **ffmpeg** (сборка mp4).
+Стиль повторяет референс: кремовая бумага, тёмно-серые маркерные линии, мягкие цвета, плавные наезды камеры.
+
+## Как собрать клип
+```bash
+cd anim && npm install
+NODE_PATH=$(npm root -g) node render.js scenes/ep02_c01.js out/ep02_c01.mp4
+NODE_PATH=$(npm root -g) node render.js scenes/ep02_c01.js out/ep02_c01.mp4 --audio ep02_01.mp3   # с озвучкой
+NODE_PATH=$(npm root -g) node render.js scenes/ep02_c01.js x.mp4 --preview 0,5,9.9 --preview-dir prev  # стоп-кадры
+```
+
+## Устройство
+- `lib/engine.js` — бумага, камера, дома, деревья, кусты, заборы, пузыри речи (серые/зелёные), каракули, «дорисовка» линий.
+- `lib/hero.js` — наш герой (чистые линии, чтобы не «плыл» на крупных планах) и окно спальни.
+- `scenes/*.js` — одна сцена = мир + `render(t)` с камерой и таймингом. Длина сцены — `DURATION` (любая, не только 10 с).
