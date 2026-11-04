@@ -11,10 +11,12 @@ const [scene, out] = args;
 const fps = +opt('--fps', 30);
 const audio = opt('--audio');
 const preview = opt('--preview');
+const dataFile = opt('--data');
 
 (async () => {
-  const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js', 'lib/street.js', 'lib/walk.js', 'lib/hero_front.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
-  const code = lib.join('\n;\n') + '\n;\n' + fs.readFileSync(scene, 'utf8') + '\n;window.__DUR = DURATION;';
+  const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js', 'lib/street.js', 'lib/walk.js', 'lib/hero_front.js', 'lib/props.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
+  const data = dataFile ? `const DATA = ${fs.readFileSync(dataFile, 'utf8')};\n` : '';
+  const code = lib.join('\n;\n') + '\n;\n' + data + fs.readFileSync(scene, 'utf8') + '\n;window.__DUR = DURATION;';
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
   page.on('pageerror', e => { console.error('PAGE ERROR', e.message); process.exit(1); });

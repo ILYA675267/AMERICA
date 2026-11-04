@@ -2,8 +2,9 @@
 // body widening down into two thick legs, rounded shoes pointing outward, thin arms with round mitten hands.
 // Local units: feet at y = 0, head ry = 100. o: { face: 'smile'|'shock'|'grin', armL: [x,y], armR: [x,y] (hand positions) }
 function heroFront(x, y, s, o = {}) {
-  const T = -205, lw = 6 * HERO_LINE;
+  const T = -205 + (o.bob || 0), lw = 6 * HERO_LINE;
   ctx.save(); ctx.translate(x, y); ctx.scale(s, s);
+  if (o.cane) { ctx.beginPath(); ctx.moveTo(150, 0); ctx.lineTo(150, -150); ctx.quadraticCurveTo(150, -185, 120, -180); ctx.strokeStyle = '#7a5b3a'; ctx.lineWidth = 14; ctx.stroke(); }
   ctx.lineJoin = 'round'; ctx.lineCap = 'round';
   ctx.fillStyle = 'rgba(70,70,75,0.16)'; ctx.beginPath(); ctx.ellipse(0, 4, 110, 14, 0, 0, 7); ctx.fill();
   const stroke = (fill) => { if (fill) { ctx.fillStyle = fill; ctx.fill(); } ctx.strokeStyle = C.ink; ctx.lineWidth = lw; ctx.stroke(); };
@@ -37,10 +38,20 @@ function heroFront(x, y, s, o = {}) {
   ctx.fillStyle = C.ink;
   const face = o.face || 'smile';
   const er = face === 'shock' ? 13 : 9.5;
-  for (const [ex, ey] of [[-38, -14], [40, -18]]) { ctx.beginPath(); ctx.arc(ex, ey, er, 0, 7); ctx.fill(); }
+  if (o.wildHair) { ctx.strokeStyle = C.ink; ctx.lineWidth = lw * 0.8; for (let k = 0; k < 9; k++) { const a = Math.PI * (1.05 + k * 0.1); ctx.beginPath(); ctx.moveTo(Math.cos(a) * 115, Math.sin(a) * 92); ctx.quadraticCurveTo(Math.cos(a) * 160, Math.sin(a) * 140 + 20, Math.cos(a) * 150 + (k % 2 ? 20 : -20), Math.sin(a) * 150); ctx.stroke(); } }
+  if (o.cap) { ctx.beginPath(); ctx.moveTo(-112, -42); ctx.bezierCurveTo(-100, -120, 100, -120, 112, -42); ctx.closePath(); ctx.fillStyle = o.cap; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = lw; ctx.stroke(); ctx.beginPath(); ctx.moveTo(100, -45); ctx.quadraticCurveTo(160, -40, 175, -25); ctx.lineTo(105, -30); ctx.stroke(); }
+  ctx.fillStyle = C.ink;
+  if (o.blink) { ctx.strokeStyle = C.ink; ctx.lineWidth = lw; for (const [ex, ey] of [[-38, -14], [40, -18]]) { ctx.beginPath(); ctx.moveTo(ex - 11, ey); ctx.lineTo(ex + 11, ey); ctx.stroke(); } }
+  else for (const [ex, ey] of [[-38, -14], [40, -18]]) { ctx.beginPath(); ctx.arc(ex, ey, er, 0, 7); ctx.fill(); }
+  if (o.glasses) { ctx.strokeStyle = C.ink; ctx.lineWidth = lw * 0.8; for (const [ex, ey] of [[-38, -14], [40, -18]]) { ctx.beginPath(); ctx.arc(ex, ey, 28, 0, 7); ctx.stroke(); } ctx.beginPath(); ctx.moveTo(-10, -18); ctx.lineTo(12, -20); ctx.stroke(); }
+  if (o.mustache) { ctx.beginPath(); ctx.ellipse(-14, 14, 22, 9, 0.2, 0, 7); ctx.ellipse(18, 12, 22, 9, -0.2, 0, 7); ctx.fillStyle = '#9a9a9a'; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = lw * 0.6; ctx.stroke(); ctx.fillStyle = C.ink; }
   if (face === 'shock') {
     for (const [ex, ey] of [[-38, -14], [40, -18]]) { ctx.beginPath(); ctx.arc(ex, ey - 32, 16, 1.15 * Math.PI, 1.85 * Math.PI); ctx.strokeStyle = C.ink; ctx.lineWidth = lw; ctx.stroke(); }
     ctx.beginPath(); ctx.ellipse(2, 34, 18, 24, 0, 0, 7); ctx.fillStyle = C.ink; ctx.fill();
+  } else if (face === 'sad') {
+    ctx.beginPath(); ctx.moveTo(-26, 34); ctx.bezierCurveTo(-8, 18, 20, 18, 36, 30); ctx.strokeStyle = C.ink; ctx.lineWidth = lw; ctx.stroke();
+  } else if (face === 'flat') {
+    ctx.beginPath(); ctx.moveTo(-22, 26); ctx.lineTo(30, 24); ctx.strokeStyle = C.ink; ctx.lineWidth = lw; ctx.stroke();
   } else if (face === 'grin') {
     ctx.beginPath(); ctx.moveTo(-34, 18); ctx.bezierCurveTo(-18, 54, 26, 52, 40, 12); ctx.closePath(); ctx.fillStyle = C.ink; ctx.fill();
   } else {

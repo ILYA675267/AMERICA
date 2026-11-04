@@ -132,7 +132,48 @@ def chunks(text, limit=500):
         k += 1
 
 
+def blocks_of(P):
+    """Chapter blocks of concatenated scene texts, with (scene index, start, end) char spans."""
+    out, ch, buf, spans = [], None, "", []
+    for i, (c, en, _, _) in enumerate(P):
+        if c != ch and buf:
+            out.append((ch, buf, spans)); buf, spans = "", []
+        ch = c
+        start = len(buf) + (1 if buf else 0)
+        buf = (buf + " " + en).strip()
+        spans.append((i, start, len(buf)))
+    out.append((ch, buf, spans))
+    return out
+
+
+def retime(audio_dir):
+    """Measure Fish Audio files 01.mp3..NN.mp3, give each scene its share of the audio, and join the voice track."""
+    import json, subprocess, os
+    files, durs, idx = [], [0.0] * len(P), 0
+    for ch, text, spans in blocks_of(P):
+        pos = 0
+        for part in chunks(text):
+            idx += 1
+            f = next((os.path.join(audio_dir, f"{idx:02d}.{e}") for e in ("mp3", "wav", "m4a") if os.path.exists(os.path.join(audio_dir, f"{idx:02d}.{e}"))), None)
+            if not f: raise SystemExit(f"missing audio file {idx:02d}.mp3 in {audio_dir}")
+            files.append(f)
+            dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]))
+            a = text.index(part, pos); b = a + len(part); pos = b
+            for i, s0, s1 in spans:
+                ov = max(0, min(b, s1) - max(a, s0))
+                durs[i] += dur * ov / len(part)
+    data = json.load(open("scenes.json"))
+    for d, x in zip(durs, data): d and x.update(dur=round(d, 3))
+    open("scenes.json", "w").write(json.dumps(data, ensure_ascii=False, indent=1))
+    open("concat.txt", "w").write("".join(f"file '{os.path.abspath(f)}'\n" for f in files))
+    subprocess.check_call(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "concat.txt", "-ar", "48000", "-ac", "2", "voice.wav"])
+    print(f"{len(files)} audio files, total {sum(durs):.1f} s -> scenes.json retimed, voice.wav written")
+
+
 if __name__ == "__main__":
+    import sys
+    if len(sys.argv) > 2 and sys.argv[1] == "--audio":
+        retime(sys.argv[2]); raise SystemExit
     words = sum(len(p[1].split()) for p in P)
     mins = words / 150
     # script.md
@@ -168,4 +209,8 @@ if __name__ == "__main__":
             n += 1
             fa.append(f"**{n:02d}** · {len(part)} симв.\n```\n{part}\n```\n")
     open("fish_audio.md", "w").write("\n".join(fa))
+    # scenes.json for the animation (durations estimated at ~156 words/min until real voiceover timings exist)
+    import json
+    open("scenes.json", "w").write(json.dumps([{"ch": c, "en": en, "ons": ons.replace("≈ ", "~").replace("≈", "~"), "words": len(en.split()),
+        "dur": round(len(en.split()) / 2.6 + 0.6, 2)} for c, en, _, ons in P], ensure_ascii=False, indent=1))
     print(f"{len(P)} scenes, {words} words ≈ {mins:.1f} min, {n} Fish Audio chunks")
