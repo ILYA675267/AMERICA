@@ -26,6 +26,13 @@ function hero(x, k = 1.6, o = {}) {
 }
 const counter = (x, y, v, size = 120, color = GREEN) => marker(money(v), x, y, size, { color, outline: true });
 const grow = (t, t0, d, a, b) => lerp(a, b, ease((t - t0) / d));
+// Painted backgrounds (anim/bg). Drawn a bit larger than the frame so camera moves never show an edge.
+// IP(x, y) converts a point on the 1672x941 picture into world coordinates.
+const BGX = -80, BGY = -45, BGS = 2080 / 1672;
+const IP = (x, y) => [BGX + x * BGS, BGY + y * BGS];
+function bgImg(name) { const im = window.IMG && IMG[name]; if (im) ctx.drawImage(im, BGX, BGY, 2080, 941 * BGS); }
+const DESK = { x: 1180, y: 592 };   // top of the desk in the hero's room (bg01)
+const HILL = x => 514 + 0.1765 * (x + 80);   // snow hill surface line (bg05)
 // Street backdrop (same neighbourhood as the reference clip), built once and drawn behind outdoor scenes, faded into the paper.
 const STREET = (() => { const n = WORLD.length; buildStreet(); return WORLD.splice(n); })();
 function backdrop(t, dx = 0, fadeAmt = 0.42) {
@@ -40,7 +47,7 @@ const S = [
  // 00 $10 = coffee / delivery / subscriptions
  (t, d) => { hero(520, 1.6, { armR: [170, -260], face: 'smile' }); bill(780, 520, 200, -0.2);
    const k = Math.min(2, Math.floor(t / (d / 3))), tt = t - k * d / 3, s = pop(tt, 0);
-   at(1350, GY, s, 0, () => { if (k === 0) { coffee(-90, 0, 1.6); muffin(130, 0, 1.6); } else if (k === 1) bag(0, 0, 1.8); else { screen(-130, -40, 220, 160, '#ffd0cc', 1); screen(130, -40, 220, 160, '#cfe0ff', 1); } }); },
+   at(1200, GY, s * 0.9, 0, () => { if (k === 0) { coffee(-90, 0, 1.6); muffin(130, 0, 1.6); } else if (k === 1) bag(0, 0, 1.8); else { screen(-130, -40, 220, 160, '#ffd0cc', 1); screen(130, -40, 220, 160, '#cfe0ff', 1); } }); },
  // 01 what if you didn't — lottery / crypto / magic crossed out
  (t, d) => { hero(420, 1.6, { armR: [160, -230], face: 'flat' }); bill(660, 560, 180, -0.2);
    [[1000, ticket], [1350, cryptoCoin], [1680, wand]].forEach(([x, f], i) => { const t0 = 0.6 + i * d * 0.22; at(x, 560, pop(t, t0), 0, () => f(0, 0)); crossOut(x, 560, 90, (t - t0 - 0.4) / 0.5); }); },
@@ -48,16 +55,13 @@ const S = [
  (t, d) => { const h = grow(t, 0.8, d - 1.2, 260, 760); jar(1250, GY, h, clamp(t / d), 3); hero(520, 1.5, { face: t > 1.5 ? 'shock' : 'smile', tilt: -0.08 }); if (t < 1.2) bill(1250, lerp(300, GY - 120, t / 1.2), 140, t * 3); },
  // 03 disclaimer
  (t, d) => { hero(960, 1.6, { face: 'smile', tilt: Math.sin(t * 5) * 0.05 * (t < 1.5) , armR: [150, -150], armL: [-150, -150] }); },
- // 04 day one: walk out of the coffee shop to the desk with the jar
- (t, d) => { // coffee shop on the left, desk + jar on the right
-   ctx.beginPath(); ctx.rect(80, GY - 420, 380, 420); ink('#f6f4ee'); marker('COFFEE', 270, GY - 360, 60); coffee(200, GY - 140, 0.9); coffee(330, GY - 140, 0.9);
-   ctx.beginPath(); ctx.rect(1420, GY - 200, 420, 24); ink('#e3d3b8'); ctx.beginPath(); ctx.moveTo(1450, GY - 176); ctx.lineTo(1450, GY); ctx.moveTo(1810, GY - 176); ctx.lineTo(1810, GY); ink(null);
-   jar(1640, GY - 200, 220, t > d - 0.6 ? 0.05 : 0, 5);
-   const wt = Math.min(t, d - 1.2), hx = 560 + heroWalkX(wt, 0.55);
-   if (t < d - 1.2) heroWalk(Math.min(hx, 1350), GY, 0.55, t, { blink: true });
-   else { hero(1350, 1.15, { armR: [190, -330] }); const p = clamp((t - (d - 1.2)) / 0.6); bill(1640, lerp(GY - 520, GY - 260, p), 110, p * 4); } },
+ // 04 day one: walk out of the coffee shop... then drop the bill into the jar on the desk at home
+ (t, d) => { const cut = d * 0.55;
+   if (t < cut) { heroWalk(420 + heroWalkX(t, 0.55), GY, 0.55, t, { blink: true }); return; }
+   const lt = t - cut; jar(DESK.x, DESK.y, 200, lt > 1.4 ? 0.05 : 0, 5); hero(860, 1.45, { armR: [230, -380] });
+   const p = clamp((lt - 0.6) / 0.7); if (p < 1) bill(lerp(1150, DESK.x, p), lerp(380, DESK.y - 60, p), 100, p * 4); },
  // 05 lonely bill at the bottom, shrug
- (t, d) => { jar(1250, GY, 520, 0.03, 6); hero(560, 1.6, { face: 'flat', armL: [-190, -330], armR: [190, -330] }); },
+ (t, d) => { jar(DESK.x, DESK.y, 220, 0.04, 6); hero(760, 1.6, { face: 'flat', armL: [-190, -330], armR: [190, -330] }); },
  // 06 the math: $70/week -> $300/month -> $3,650/year
  (t, d) => { hero(380, 1.5, { armR: [180, -300], face: 'smile' });
    const rows = [['$10', 'a day'], ['$70', 'a week'], ['$300', 'a month'], ['$3,650', 'a year']];
@@ -73,7 +77,7 @@ const S = [
  // 09 jar shrinks, value drops
  (t, d) => { const p = ease(t / d); jar(1200, GY, lerp(620, 520, p), 1, 7); hero(520, 1.6, { face: p > 0.4 ? 'sad' : 'flat' }); counter(1200, 230, lerp(36500, 31500, p), 110, p > 0.5 ? RED : C.ink); },
  // 10 the bank
- (t, d) => { backdrop(t, 500); bank(1300, GY, 1.3); hero(480, 1.5, { face: 'smile', armR: [180, -200] }); jar(700, GY, 260, 1, 7); counter(1300, 260, grow(t, 0.8, d - 1.2, 36500, 44800), 110); },
+ (t, d) => { hero(480, 1.5, { face: 'smile', armR: [180, -200] }); jar(700, GY, 260, 1, 7); counter(1450, 270, grow(t, 0.8, d - 1.2, 36500, 44800), 110); },
  // 11 rates swing, door "option 3"
  (t, d) => { at(700, 560, 1, 0, () => { ctx.beginPath(); ctx.arc(0, 0, 220, Math.PI, 0); ink('#fff'); for (let k = 0; k <= 6; k++) { const a = Math.PI + k * Math.PI / 6; ctx.beginPath(); ctx.moveTo(Math.cos(a) * 190, Math.sin(a) * 190); ctx.lineTo(Math.cos(a) * 215, Math.sin(a) * 215); ink(null, 4); }
      const a = Math.PI * 1.5 + Math.sin(t * 2.5) * 0.9; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(a) * 170, Math.sin(a) * 170); ctx.strokeStyle = RED; ctx.lineWidth = 12; ctx.stroke(); marker('RATE', 0, 60, 54); });
@@ -102,20 +106,19 @@ const S = [
  (t, d) => { for (let k = 0; k < 30; k++) bill(1100 + (k % 2) * 6, GY - 20 - k * 16, 230, 0, '$100');
    at(1290 + Math.sin(t * 8) * 6, GY - 260, 1, 0, () => { ctx.beginPath(); ctx.ellipse(0, 0, 60, 40, 0, 0, 7); ink('#7a8f3a'); ctx.beginPath(); ctx.arc(-58, -6, 24, 0, 7); ink('#7a8f3a'); for (let k = -1; k <= 1; k++) { ctx.beginPath(); ctx.moveTo(k * 22, 30); ctx.lineTo(k * 26 + Math.sin(t * 20 + k) * 6, 62); ink(null, 4); } marker('1%', 0, 0, 40, { color: '#fff' }); });
    hero(480, 1.5, { face: 'flat' }); },
- // 16 snowball of coins rolls down a hill and grows
- (t, d) => { ctx.beginPath(); ctx.moveTo(0, 360); ctx.quadraticCurveTo(900, 520, 1920, 980); ink(null, 7);
-   const p = clamp(t / d), x = lerp(150, 1650, p), y = 360 + (980 - 360) * (p * p * 0.55 + p * 0.45) - 30, r = lerp(30, 230, p * p);
-   snowball(x, y - r * 0.85, r, p * 14); heroWalk(110 + p * 200, 400, 0.35, t); },
+ // 16 snowball of coins rolls down the painted hill and grows
+ (t, d) => { const p = clamp(t / d), x = lerp(120, 1750, p * p * 0.6 + p * 0.4), r = lerp(26, 220, p * p);
+   snowball(x, HILL(x) - r * 0.95, r, p * 16); const hx = 60 + p * 160; heroWalk(hx, HILL(hx), 0.33, t); },
  // 17 "Einstein" quote with a question mark
  (t, d) => { hero(760, 1.6, { wildHair: true, mustache: true, face: 'smile', armR: [190, -300] }); at(1300, 420, pop(t, d * 0.5), 0, () => marker('?', 0, 0, 380, { color: RED, outline: true })); },
  // 18 Rule of 72 on a board, money doubles
- (t, d) => { ctx.beginPath(); ctx.rect(500, 160, 900, 440); ink('#2f3b33', 10); marker('72 ÷ 7 = ~10', 950, 380, 120, { color: '#f4f1e8' });
+ (t, d) => { const q = clamp(t / 1.2); ctx.save(); ctx.beginPath(); ctx.rect(560, 280, 800 * q, 300); ctx.clip(); marker('72 ÷ 7 = ~10', 961, 430, 120); ctx.restore();
    const p = clamp((t - d * 0.5) / 1); for (let k = 0; k < 6 + Math.round(6 * p); k++) bill(1650, GY - 20 - k * 18, 220, 0, '$100'); hero(300, 1.2, { armR: [180, -240] }); },
  // 19 year 1: magnifying glass on a tiny coin
  (t, d) => { calendar(1500, 420, 'YEAR 1'); hero(700, 1.6, { face: 'flat', armR: [230, -150] });
    ctx.beginPath(); ctx.arc(1000, GY - 230, 70, 0, 7); ink('rgba(214,230,232,0.6)', 9); ctx.beginPath(); ctx.moveTo(950, GY - 180); ctx.lineTo(900, GY - 120); ink(null, 16); coin(1000, GY - 230, 12); },
  // 20 year 3: friends leave with phones and suitcases
- (t, d) => { backdrop(t, -300); calendar(1550, 330, 'YEAR 3', 0.9); jar(420, GY, 360, 0.3, 8); hero(700, 1.4, { face: 'flat' });
+ (t, d) => { calendar(1570, 560, 'YEAR 3', 0.8); jar(420, GY, 360, 0.3, 8); hero(700, 1.4, { face: 'flat' });
    const p = clamp(t / d); heroFront(1150 + p * 400, GY, 1.2, { cap: RED, face: 'grin', armR: [180, -260], armL: [-150, -150] }); heroFront(1350 + p * 420, GY, 1.2, { glasses: true, face: 'grin', armR: [150, -150] });
    ctx.beginPath(); ctx.roundRect(1350 + p * 420 + 160, GY - 150, 110, 150, 12); ink('#4a7cff'); },
  // 21 crash
@@ -150,8 +153,8 @@ const S = [
  // 30 hand reaches for coffee, other hand stops it
  (t, d) => { const p = Math.sin(clamp(t / d) * Math.PI); coffee(1100, GY - 140, 2); hero(700, 1.6, { armR: [lerp(150, 260, p), -260], armL: [lerp(-150, 230, clamp(t / d * 2 - 0.6)), -260], face: t > d * 0.5 ? 'flat' : 'grin' }); },
  // 31 Save More Tomorrow: two economists at a board
- (t, d) => { ctx.beginPath(); ctx.rect(560, 150, 1000, 480); ink('#fff', 8); marker('RAISE', 760, 330, 70); piggy(1360, 520, 1.1, clamp(t / d));
-   const p = clamp((t - 0.5) / 1.5); ctx.beginPath(); ctx.moveTo(880, 330); ctx.quadraticCurveTo(1050, 250, lerp(880, 1210, p), lerp(330, 420, p)); ink(null, 9);
+ (t, d) => { marker('RAISE', 720, 380, 70); piggy(1230, 560, 0.85, clamp(t / d));
+   const p = clamp((t - 0.5) / 1.5); ctx.beginPath(); ctx.moveTo(840, 380); ctx.quadraticCurveTo(1000, 300, lerp(840, 1110, p), lerp(380, 470, p)); ink(null, 9);
    heroFront(380, GY, 1.2, { glasses: true, armR: [200, -330] }); heroFront(1760, GY, 1.2, { mustache: true, armL: [-200, -300] }); },
  // 32 savings rate bars
  (t, d) => { const a = clamp(t / 1), b = clamp((t - 1) / (d - 1.5));
@@ -173,19 +176,22 @@ const S = [
  (t, d) => { [560, 960, 1360].forEach((x, i) => heroFront(x, GY, 1.2, { face: i === 1 && t > 1 ? 'shock' : 'smile', armL: i === 1 && t > 1 ? [-130, -330] : undefined, armR: i === 1 && t > 1 ? [130, -330] : undefined, cap: i === 0 ? RED : undefined, glasses: i === 2 }));
    if (t > 1) at(960, 330, pop(t, 1), 0, () => { ctx.beginPath(); ctx.rect(-130, -80, 260, 160); ink('#fff'); marker('BILL $400', 0, 0, 52, { color: RED }); }); },
  // 37 broken car: calm, money from the jar
- (t, d) => { backdrop(t, -150); at(1250, GY, 1, 0, () => { ctx.beginPath(); ctx.roundRect(-330, -220, 660, 160, 40); ink('#ffb3a7'); ctx.beginPath(); ctx.moveTo(-200, -220); ctx.lineTo(-130, -330); ctx.lineTo(130, -330); ctx.lineTo(200, -220); ink('#d3d8da'); for (const x of [-200, 200]) { ctx.beginPath(); ctx.arc(x, -60, 60, 0, 7); ink('#3a3a3a'); }
+ (t, d) => { at(1250, GY, 1, 0, () => { ctx.beginPath(); ctx.roundRect(-330, -220, 660, 160, 40); ink('#ffb3a7'); ctx.beginPath(); ctx.moveTo(-200, -220); ctx.lineTo(-130, -330); ctx.lineTo(130, -330); ctx.lineTo(200, -220); ink('#d3d8da'); for (const x of [-200, 200]) { ctx.beginPath(); ctx.arc(x, -60, 60, 0, 7); ink('#3a3a3a'); }
      for (let k = 0; k < 3; k++) { const p = (t * 0.6 + k / 3) % 1; ctx.globalAlpha = 1 - p; ctx.beginPath(); ctx.arc(-300 + Math.sin(p * 6) * 20, -240 - p * 300, 30 + p * 40, 0, 7); ink('#fff', 4); ctx.globalAlpha = 1; } });
    jar(330, GY, 360, 0.8, 15); hero(640, 1.4, { face: 'smile', armL: [-200, -250] }); bill(lerp(380, 520, clamp(t / 2)), GY - 520, 120, 0.2); },
- // 38 freedom: doors open one by one
- (t, d) => { const icons = [(x, y) => { ctx.beginPath(); ctx.roundRect(x - 50, y - 30, 100, 70, 8); ink('#8a5a3c'); }, (x, y) => building(x, y + 60, 70, 140, 3), (x, y) => { ctx.beginPath(); ctx.moveTo(x - 50, y); ctx.lineTo(x, y - 50); ctx.lineTo(x + 50, y); ctx.closePath(); ink(RED); ctx.beginPath(); ctx.rect(x - 40, y, 80, 60); ink('#fff'); }];
-   [900, 1250, 1600].forEach((x, i) => door(x, GY, clamp((t - 0.5 - i * d * 0.22) / 0.8), icons[i])); hero(450, 1.5, { face: 'grin', armR: [200, -330], armL: [-200, -330] }); },
- // 39 evening at the window, full jar, warm lamp
- (t, d) => { ctx.fillStyle = 'rgba(40,50,80,0.12)'; ctx.fillRect(0, 0, W, H);
-   ctx.beginPath(); ctx.rect(1100, 180, 560, 440); ink('#2e3a5c', 10); ctx.beginPath(); ctx.arc(1520, 300, 40, 0, 7); ctx.fillStyle = '#f3e3a0'; ctx.fill();
-   const g = ctx.createRadialGradient(560, 380, 20, 560, 380, 500); g.addColorStop(0, 'rgba(255,214,102,0.5)'); g.addColorStop(1, 'rgba(255,214,102,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-   jar(860, GY, 420, 1, 16); hero(560, 1.5, { face: 'smile' }); },
- // 40 a new bill into an empty jar
- (t, d) => { jar(1150, GY, 520, 0, 17); hero(650, 1.6, { armR: [200, -380], face: 'grin' }); const p = clamp((t - d * 0.4) / 0.8); bill(lerp(1000, 1150, p), lerp(GY - 680, GY - 60, p), 160, p * 4); },
+ // 38 freedom: doors of the hallway light up one by one, each with a new life inside
+ (t, d) => { const doors = [[IP(158, 182), IP(310, 782)], [IP(1252, 256), IP(1370, 718)], [IP(688, 366), IP(983, 524)]];
+   const icons = [(x, y) => { ctx.beginPath(); ctx.roundRect(x - 50, y - 30, 100, 70, 8); ink('#8a5a3c'); ctx.beginPath(); ctx.roundRect(x - 20, y - 46, 40, 18, 6); ink(null, 5); },
+     (x, y) => building(x, y + 70, 70, 150, 3), (x, y) => { ctx.beginPath(); ctx.moveTo(x - 50, y); ctx.lineTo(x, y - 50); ctx.lineTo(x + 50, y); ctx.closePath(); ink(RED); ctx.beginPath(); ctx.rect(x - 40, y, 80, 60); ink('#fff'); }];
+   doors.forEach(([[x1, y1], [x2, y2]], i) => { const o = clamp((t - 0.5 - i * d * 0.22) / 0.6); if (o <= 0) return;
+     ctx.fillStyle = `rgba(255,214,102,${0.6 * o})`; ctx.fillRect(x1, y1, x2 - x1, y2 - y1); ctx.save(); ctx.globalAlpha = o; icons[i]((x1 + x2) / 2, (y1 + y2) / 2); ctx.restore(); });
+   hero(960, 1.4, { face: 'grin', armR: [200, -330], armL: [-200, -330] }); },
+ // 39 evening in the room: night tint, warm desk lamp, full jar on the desk
+ (t, d) => { ctx.fillStyle = 'rgba(40,50,90,0.18)'; ctx.fillRect(-200, -200, W + 400, H + 400);
+   const g = ctx.createRadialGradient(1640, 470, 20, 1640, 470, 520); g.addColorStop(0, 'rgba(255,214,102,0.55)'); g.addColorStop(1, 'rgba(255,214,102,0)'); ctx.fillStyle = g; ctx.fillRect(-200, -200, W + 400, H + 400);
+   jar(DESK.x, DESK.y, 220, 1, 16); hero(720, 1.5, { face: 'smile' }); },
+ // 40 a new bill into an empty jar on the desk
+ (t, d) => { jar(DESK.x, DESK.y, 220, 0, 17); hero(850, 1.5, { armR: [300, -560], face: 'grin' }); const p = clamp((t - d * 0.4) / 0.8); if (p < 1) bill(lerp(1150, DESK.x, p), lerp(360, DESK.y - 60, p), 110, p * 4); },
  // 41 outro: wave, debt monster rises behind
  (t, d) => { const p = clamp((t - d * 0.45) / 1.5); if (p > 0) scribbleMonster(1450, GY, 1.2 * p + 0.01, t); card(1450, GY - 520 * p, 0.3); hero(700, 1.6, { face: 'grin', armR: [200 + Math.sin(t * 8) * 30, -420] }); },
 ];
@@ -213,6 +219,9 @@ const BADW = /CRASH|SELL|THIEF|FEES|MISTAKE|QUIT|-/;
 const NOKW = new Set([6, 9, 10, 14, 18, 23, 24, 25, 26]);
 const FACE = { 2: [520, 500], 9: [520, 470], 14: [480, 500], 21: [330, 557], 26: [600, 557] };
 const CHAP = []; SC.forEach((s, i) => { if (!i || s.ch !== SC[i - 1].ch) CHAP.push(i); s.chi = CHAP.length - 1; });
+const IMGS = { 0: 'bg02_coffee', 4: (t, d) => t < d * 0.55 ? 'bg02_coffee' : 'bg01_room', 5: 'bg01_room', 7: 'bg01_room', 8: 'bg01_room', 9: 'bg01_room',
+  10: 'bg03_bank', 16: 'bg05_snow_hill', 18: 'bg09_classroom', 20: 'bg06_airport', 29: 'bg02_coffee', 30: 'bg02_coffee', 31: 'bg09_classroom', 32: 'bg09_classroom',
+  35: 'bg01_room', 37: 'bg07_garage', 38: 'bg10_hallway', 39: 'bg01_room', 40: 'bg01_room', 41: 'bg01_room' };
 const SHOTS = [[1, 0, 0], [1.1, -60, -25], [1.05, 60, 10], [1.12, 0, -40], [1.07, -40, 15]];
 
 function subtitle(line) {
@@ -264,7 +273,7 @@ function render(t) {
   // camera: quick punch to a new framing on every phrase + slow drift; scenes slide in from alternating sides
   const sh = SHOTS[(b + i) % SHOTS.length], pv = SHOTS[(Math.max(0, b - 1) + i) % SHOTS.length], f = b ? easeOutBack(BEATT / 0.28) : 1;
   let z = lerp(pv[0], sh[0], f) + 0.012 * BEATT, cx = 960 + lerp(pv[1], sh[1], f), cy = 560 + lerp(pv[2], sh[2], f);
-  const tin = clamp(lt / 0.4), dir = i % 2 ? 1 : -1;
+  const tin = clamp(lt / 0.4), dir = IMGS[i] ? 0 : (i % 2 ? 1 : -1);
   cx += dir * 700 * Math.pow(1 - tin, 3); z *= 1 + 0.12 * Math.pow(1 - tin, 2);
   // screen shake on bad news when the label lands
   if (s.bad && lt > 0.55 && lt < 1.1) { const a = (1.1 - lt) * 22; cx += Math.sin(lt * 90) * a; cy += Math.cos(lt * 70) * a; }
@@ -275,7 +284,9 @@ function render(t) {
     if (dt > 0 && dt < D) { const e = dt < 0.15 ? easeOutBack(dt / 0.15) : dt > D - 0.2 ? ease((D - dt) / 0.2) : 1;
       z = lerp(z, 2.1, e); cx = lerp(cx, FACE[i][0], e); cy = lerp(cy, FACE[i][1], e); } }
   setCamera(cx, cy, z);
-  ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(-600, GY + 2); ctx.lineTo(2600, GY + 2); ctx.strokeStyle = '#8d8c88'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
+  const im = typeof IMGS[i] === 'function' ? IMGS[i](lt, s.dur) : IMGS[i];
+  if (im) bgImg(im);
+  else { ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(-600, GY + 2); ctx.lineTo(2600, GY + 2); ctx.strokeStyle = '#8d8c88'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1; }
   s.draw(lt, s.dur);
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   // label: slams in big at the center, then settles at the top

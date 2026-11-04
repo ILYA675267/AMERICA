@@ -27,6 +27,11 @@ const dataFile = opt('--data');
   }).join('');
   await page.setContent(`<html><head><style>${faces}</style></head><body style="margin:0"><canvas id="c" width="1920" height="1080"></canvas></body></html>`);
   await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load())));
+  // background images (anim/bg/*.jpg|png) -> window.IMG[name]
+  const bdir = path.join(__dirname, 'bg');
+  const imgs = fs.existsSync(bdir) ? Object.fromEntries(fs.readdirSync(bdir).filter(f => /\.(png|jpe?g)$/i.test(f)).map(f => [f.replace(/\.\w+$/, ''),
+    `data:image/${/png$/i.test(f) ? 'png' : 'jpeg'};base64,` + fs.readFileSync(path.join(bdir, f)).toString('base64')])) : {};
+  await page.evaluate(async imgs => { window.IMG = {}; await Promise.all(Object.entries(imgs).map(([k, src]) => { const im = new Image(); im.src = src; window.IMG[k] = im; return im.decode(); })); }, imgs);
   await page.addScriptTag({ content: code });
   const dur = await page.evaluate(() => window.__DUR);
   const grab = t => page.evaluate(t => { render(t); return document.getElementById('c').toDataURL('image/jpeg', 0.95).split(',')[1]; }, t);
