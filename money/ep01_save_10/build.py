@@ -10,7 +10,7 @@ P = [
   "Герой у кофейни: в руке купюра $10, она по очереди превращается в кофе с маффином, в пакет доставки, в два экрана подписок.", "$10"),
  ("INTRO", "But what if, starting today, you didn't? What if you put away just ten dollars a day, every single day, for ten years? No lottery. No crypto. No secret trick. Just ten boring dollars.",
   "Герой останавливается, смотрит на купюру. Рядом появляются и зачёркиваются лотерейный билет, монета крипты, «волшебная палочка».", "10 YEARS"),
- ("INTRO", "By the end of this video, you'll see why that boring little habit could grow into more than fifty thousand dollars… and why most people never even try.",
+ ("INTRO", "By the end of this video, you'll see why that boring little habit could grow into more than fifty thousand dollars. Stick around, because in year five something happens that makes most people quit… and there's one mistake that could cost you over four hundred thousand dollars.",
   "Купюра падает в банку, банка быстро растёт до гигантской, герой задирает голову.", "$50,000+"),
  ("INTRO", "Quick note: this is for entertainment and education, not financial advice. Now… let's run the experiment.",
   "Короткая плашка-дисклеймер, герой кивает и закатывает рукава.", "NOT FINANCIAL ADVICE"),
@@ -51,7 +51,7 @@ P = [
  ("THE SNOWBALL", "Here's a handy trick called the Rule of 72. Divide 72 by your yearly return, and you get roughly how many years it takes your money to double. At seven percent, that's about ten years.",
   "На доске пишется 72 ÷ 7 ≈ 10, стопка денег удваивается.", "RULE OF 72"),
 
- ("THE BORING YEARS", "Back to your jar. Year one. You've saved three thousand six hundred fifty dollars, and your investments earned you… about a hundred and twenty. That's it. It feels like nothing is happening.",
+ ("THE BORING YEARS", "Knowing the math is easy. Living through it is hard. So let's watch your jar, year by year. Year one. You've saved three thousand six hundred fifty dollars, and your investments earned you… about a hundred and twenty. That's it. It feels like nothing is happening.",
   "Календарь «YEAR 1». Герой разглядывает крошечную монетку прибыли через лупу.", "YEAR 1: +$120"),
  ("THE BORING YEARS", "Year three. Twelve thousand dollars. Your friends are buying new phones and flying to Miami. You're still dropping ten dollars into a jar. This is the part where most people quit.",
   "Друзья с новыми телефонами и чемоданами машут на прощание; герой с банкой.", "YEAR 3: $12,100"),
@@ -64,7 +64,7 @@ P = [
  ("THE BORING YEARS", "And in year ten, something wild happens. Your money earns about three thousand four hundred dollars in a single year. Almost as much as you put in yourself. The snowball is finally rolling on its own.",
   "Снежок из монет катится сам, герой просто идёт рядом и улыбается.", "YEAR 10: +$3,400"),
 
- ("TIME BEATS MONEY", "Now the really crazy part. Don't stop at ten years. Keep the same ten dollars a day for thirty years, and at seven percent you'd have around three hundred seventy thousand dollars.",
+ ("TIME BEATS MONEY", "Now, remember that four-hundred-thousand-dollar mistake? Here it comes. Don't stop at ten years. Keep the same ten dollars a day for thirty years, and at seven percent you'd have around three hundred seventy thousand dollars.",
   "Банка вырастает до размеров дома.", "30 YEARS: ≈ $371,000"),
  ("TIME BEATS MONEY", "Keep going for forty years, say from age twenty-five to sixty-five, and it's close to eight hundred thousand dollars. From ten dollars a day.",
   "Банка размером с небоскрёб, герой-старичок с тростью (та же фигура + очки) смотрит снизу вверх.", "40 YEARS: ≈ $800,000"),
@@ -113,6 +113,68 @@ SOURCES = [
     "Средняя ставка по кредиткам в США ≈ 20%+ (Federal Reserve G.19).",
     "Fed SHED 2025: 63% могут покрыть $400 наличными (т. е. ≈37% нет) — https://www.federalreserve.gov/consumerscommunities/shed.htm",
 ]
+
+
+# ---- kinetic words: numbers said in words -> "$3,650", "7%", "YEAR 3"; plus key terms. Each gets its position (0..1) in the scene.
+UNITS = {w: i for i, w in enumerate("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split())}
+TENS = {w: 10 * (i + 2) for i, w in enumerate("twenty thirty forty fifty sixty seventy eighty ninety".split())}
+SCALES = {"hundred": 100, "thousand": 1000, "million": 1000000}
+KEYS = {"inflation": "INFLATION", "compound interest": "COMPOUND INTEREST", "index fund": "INDEX FUND", "fees": "FEES", "crashes": "CRASH!",
+        "sell!": "SELL!", "freedom": "FREEDOM", "automatically": "AUTOMATIC", "present bias": "PRESENT BIAS", "snowball": "SNOWBALL",
+        "rule of 72": "RULE OF 72", "warren buffett": "BUFFETT", "emergency fund": "EMERGENCY FUND", "lottery": "LOTTERY", "crypto": "CRYPTO",
+        "thief": "THIEF!", "time": None, "quit": "QUIT?", "mistake": "MISTAKE", "willpower": "WILLPOWER", "millionaire": "MILLIONAIRE"}
+
+
+def kinetic(text):
+    toks = [(m.group(0), m.start()) for m in re.finditer(r"[A-Za-z0-9!'-]+", text)]
+    stop = {k for k, (w, p) in enumerate(toks) if p + len(w) < len(text) and text[p + len(w)] in ".?!:;,…"}
+    out, i, low = [], 0, text.lower()
+    while i < len(toks):
+        w, pos = toks[i]; lw = w.lower().strip("!")
+        parts = lw.split("-")
+        if lw in UNITS or lw in TENS or all(x in UNITS or x in TENS for x in parts) and len(parts) > 1 or (lw == "a" and i + 1 < len(toks) and toks[i + 1][0].lower().startswith("hundred")):
+            total, cur, j = 0, 0, i
+            while j < len(toks):
+                x = toks[j][0].lower().strip(".,!?")
+                ps = x.split("-")
+                if x == "a" and j == i: cur = 1
+                elif all(p in UNITS or p in TENS for p in ps): cur += sum(UNITS.get(p, TENS.get(p, 0)) for p in ps)
+                elif x in ("hundred",) or x.startswith("hundred"): cur = max(cur, 1) * 100
+                elif x in ("thousand", "million") or x.split("-")[0] in ("thousand", "million"):
+                    total += max(cur, 1) * SCALES[x.split("-")[0]]; cur = 0
+                elif x == "and" and j + 1 < len(toks) and toks[j + 1][0].lower() in UNITS: pass
+                else: break
+                j += 1
+                if j - 1 in stop: break
+            val = total + cur
+            nxt = toks[j][0].lower() if j < len(toks) else ""
+            dec = ""
+            if nxt == "point" and j + 1 < len(toks) and toks[j + 1][0].lower() in UNITS:
+                dec = "." + str(UNITS[toks[j + 1][0].lower()]); j += 2; nxt = toks[j][0].lower() if j < len(toks) else ""
+            prev = toks[i - 1][0].lower() if i else ""
+            if nxt.startswith("dollar") or toks[j - 1][0].lower().endswith("dollar"):
+                out.append((f"${val:,}{dec}", pos))
+            elif nxt.startswith("percent"):
+                out.append((f"{val}{dec}%", pos))
+            elif prev == "year" and val <= 40:
+                out.append((f"YEAR {val}", toks[i - 1][1]))
+            elif nxt in ("years", "days", "months", "weeks") and val >= 5:
+                out.append((f"{val} {nxt.upper()}", pos))
+            i = max(j, i + 1); continue
+        i += 1
+    for k, v in KEYS.items():
+        if v and k in low: out.append((v, low.index(k)))
+    out.sort(key=lambda x: x[1])
+    res, last = [], -1
+    for w, pos in out:
+        f = pos / max(1, len(text))
+        if res and (w == res[-1]["w"] or f - last < 0.08): continue
+        res.append({"w": w, "f": round(f, 3)}); last = f
+    return res
+
+
+# dramatic zoom onto the hero's face: scene index -> moment (fraction of the scene)
+DRAMA = {2: 0.45, 9: 0.7, 14: 0.75, 21: 0.5, 26: 0.6}
 
 
 def chunks(text, limit=500):
@@ -211,6 +273,6 @@ if __name__ == "__main__":
     open("fish_audio.md", "w").write("\n".join(fa))
     # scenes.json for the animation (durations estimated at ~156 words/min until real voiceover timings exist)
     import json
-    open("scenes.json", "w").write(json.dumps([{"ch": c, "en": en, "ons": ons.replace("≈ ", "~").replace("≈", "~"), "words": len(en.split()),
-        "dur": round(len(en.split()) / 2.6 + 0.6, 2)} for c, en, _, ons in P], ensure_ascii=False, indent=1))
+    open("scenes.json", "w").write(json.dumps([{"ch": c, "en": en, "ons": ons.replace("≈ ", "~").replace("≈", "~"), "kw": [k for k in kinetic(en) if k["w"] not in ons], "drama": DRAMA.get(i), "words": len(en.split()),
+        "dur": round(len(en.split()) / 2.6 + 0.6, 2)} for i, (c, en, _, ons) in enumerate(P)], ensure_ascii=False, indent=1))
     print(f"{len(P)} scenes, {words} words ≈ {mins:.1f} min, {n} Fish Audio chunks")

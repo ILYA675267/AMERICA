@@ -64,6 +64,11 @@ for i, s in enumerate(data):
     for k, p in enumerate(parts):
         if k: add(tick(), t0 + w / total_w * s["dur"], 0.12)
         w += len(p.split())
+    for k in s.get("kw") or []:                       # soft pop for every kinetic word
+        add(pop(), t0 + k["f"] * s["dur"], 0.22, pan=0.3 if k["w"].startswith("$") else -0.3)
+        if k["w"].startswith("$"): add(coin(2637), t0 + k["f"] * s["dur"] + 0.05, 0.06)
+    if s.get("drama") is not None: add(boom(), t0 + s["drama"] * s["dur"], 0.8)
+    if i and s["ch"] != data[i - 1]["ch"]: add(whoosh(0.6), t0, 0.6); add(pop(), t0 + 0.25, 0.4)
     ons = s.get("ons") or ""
     if ons:
         add(pop(), t0 + 0.3, 0.5)

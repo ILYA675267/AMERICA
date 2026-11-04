@@ -6,14 +6,14 @@
 
 ## INTRO
 
-**01** · 321 симв.
+**01** · 479 симв.
 ```
-Ten dollars. That's one fancy coffee and a muffin. A delivery fee and a tip. Two streaming subscriptions you forgot you even had. You probably spend it every day without thinking. But what if, starting today, you didn't? What if you put away just ten dollars a day, every single day, for ten years? No lottery. No crypto.
+Ten dollars. That's one fancy coffee and a muffin. A delivery fee and a tip. Two streaming subscriptions you forgot you even had. You probably spend it every day without thinking. But what if, starting today, you didn't? What if you put away just ten dollars a day, every single day, for ten years? No lottery. No crypto. No secret trick. Just ten boring dollars. By the end of this video, you'll see why that boring little habit could grow into more than fifty thousand dollars.
 ```
 
-**02** · 299 симв.
+**02** · 267 симв.
 ```
-No secret trick. Just ten boring dollars. By the end of this video, you'll see why that boring little habit could grow into more than fifty thousand dollars… and why most people never even try. Quick note: this is for entertainment and education, not financial advice. Now… let's run the experiment.
+Stick around, because in year five something happens that makes most people quit… and there's one mistake that could cost you over four hundred thousand dollars. Quick note: this is for entertainment and education, not financial advice. Now… let's run the experiment.
 ```
 
 
@@ -79,14 +79,14 @@ There's no proof he ever said it. But the math is very real. Here's a handy tric
 
 ## THE BORING YEARS
 
-**12** · 410 симв.
+**12** · 444 симв.
 ```
-Back to your jar. Year one. You've saved three thousand six hundred fifty dollars, and your investments earned you… about a hundred and twenty. That's it. It feels like nothing is happening. Year three. Twelve thousand dollars. Your friends are buying new phones and flying to Miami. You're still dropping ten dollars into a jar. This is the part where most people quit. Year five. The market suddenly crashes.
+Knowing the math is easy. Living through it is hard. So let's watch your jar, year by year. Year one. You've saved three thousand six hundred fifty dollars, and your investments earned you… about a hundred and twenty. That's it. It feels like nothing is happening. Year three. Twelve thousand dollars. Your friends are buying new phones and flying to Miami. You're still dropping ten dollars into a jar. This is the part where most people quit.
 ```
 
-**13** · 407 симв.
+**13** · 447 симв.
 ```
-In a few weeks, your account drops about thirty percent, from twenty-two thousand to around fifteen. Every news channel is screaming. And your brain screams: sell! But here's what history shows. The U.S. market has crashed many times, and every time so far, it eventually recovered, sometimes after years. People who panicked and sold locked in their losses. People who kept going were buying at a discount.
+Year five. The market suddenly crashes. In a few weeks, your account drops about thirty percent, from twenty-two thousand to around fifteen. Every news channel is screaming. And your brain screams: sell! But here's what history shows. The U.S. market has crashed many times, and every time so far, it eventually recovered, sometimes after years. People who panicked and sold locked in their losses. People who kept going were buying at a discount.
 ```
 
 **14** · 342 симв.
@@ -97,9 +97,9 @@ So you keep going. Ten dollars a day. Year seven: about thirty-three thousand. Y
 
 ## TIME BEATS MONEY
 
-**15** · 429 симв.
+**15** · 474 симв.
 ```
-Now the really crazy part. Don't stop at ten years. Keep the same ten dollars a day for thirty years, and at seven percent you'd have around three hundred seventy thousand dollars. Keep going for forty years, say from age twenty-five to sixty-five, and it's close to eight hundred thousand dollars. From ten dollars a day. But if you wait and start at thirty-five instead of twenty-five, you'd end up with less than half of that.
+Now, remember that four-hundred-thousand-dollar mistake? Here it comes. Don't stop at ten years. Keep the same ten dollars a day for thirty years, and at seven percent you'd have around three hundred seventy thousand dollars. Keep going for forty years, say from age twenty-five to sixty-five, and it's close to eight hundred thousand dollars. From ten dollars a day. But if you wait and start at thirty-five instead of twenty-five, you'd end up with less than half of that.
 ```
 
 **16** · 265 симв.

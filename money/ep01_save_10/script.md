@@ -1,12 +1,12 @@
 # Ep. 01 — What If You Saved $10 a Day for 10 Years?
 
-42 сцен · 1347 слов озвучки · ≈ 9.0 мин при спокойном темпе 150 слов/мин.
+42 сцен · 1383 слов озвучки · ≈ 9.2 мин при спокойном темпе 150 слов/мин.
 
 **Название:** What If You Saved $10 a Day for 10 Years?  
 **Обложка:** `thumbnail.png`  
 **Описание (начало):** What happens if you put away just $10 a day for 10 years? We run the numbers: a jar, a savings account and an index fund — plus compound interest, the Rule of 72, and why your brain makes saving so hard. Not financial advice.
 
-**Главы (для описания):** 0:00 Intro · 0:43 Day One · 1:18 Option 1: The Jar · 1:52 Option 2: The Bank · 2:19 Option 3: The Index Fund · 3:19 The Snowball · 3:59 The Boring Years · 5:18 Time Beats Money · 6:05 Why It'S So Hard · 7:43 What It Really Buys · 8:18 Ending
+**Главы (для описания):** 0:00 Intro · 0:51 Day One · 1:25 Option 1: The Jar · 1:59 Option 2: The Bank · 2:26 Option 3: The Index Fund · 3:27 The Snowball · 4:07 The Boring Years · 5:31 Time Beats Money · 6:19 Why It'S So Hard · 7:57 What It Really Buys · 8:33 Ending
 
 
 ## INTRO
@@ -19,7 +19,7 @@ _Надпись:_ `$10`
 _Анимация:_ Герой останавливается, смотрит на купюру. Рядом появляются и зачёркиваются лотерейный билет, монета крипты, «волшебная палочка».  
 _Надпись:_ `10 YEARS`
 
-**03.** By the end of this video, you'll see why that boring little habit could grow into more than fifty thousand dollars… and why most people never even try.  
+**03.** By the end of this video, you'll see why that boring little habit could grow into more than fifty thousand dollars. Stick around, because in year five something happens that makes most people quit… and there's one mistake that could cost you over four hundred thousand dollars.  
 _Анимация:_ Купюра падает в банку, банка быстро растёт до гигантской, герой задирает голову.  
 _Надпись:_ `$50,000+`
 
@@ -103,7 +103,7 @@ _Надпись:_ `RULE OF 72`
 
 ## THE BORING YEARS
 
-**20.** Back to your jar. Year one. You've saved three thousand six hundred fifty dollars, and your investments earned you… about a hundred and twenty. That's it. It feels like nothing is happening.  
+**20.** Knowing the math is easy. Living through it is hard. So let's watch your jar, year by year. Year one. You've saved three thousand six hundred fifty dollars, and your investments earned you… about a hundred and twenty. That's it. It feels like nothing is happening.  
 _Анимация:_ Календарь «YEAR 1». Герой разглядывает крошечную монетку прибыли через лупу.  
 _Надпись:_ `YEAR 1: +$120`
 
@@ -129,7 +129,7 @@ _Надпись:_ `YEAR 10: +$3,400`
 
 ## TIME BEATS MONEY
 
-**26.** Now the really crazy part. Don't stop at ten years. Keep the same ten dollars a day for thirty years, and at seven percent you'd have around three hundred seventy thousand dollars.  
+**26.** Now, remember that four-hundred-thousand-dollar mistake? Here it comes. Don't stop at ten years. Keep the same ten dollars a day for thirty years, and at seven percent you'd have around three hundred seventy thousand dollars.  
 _Анимация:_ Банка вырастает до размеров дома.  
 _Надпись:_ `30 YEARS: ≈ $371,000`
 

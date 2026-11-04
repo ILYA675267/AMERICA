@@ -5,7 +5,7 @@ const GY = 930;                                   // ground line
 const SUBS = true;
 let TT = 0;                                       // global time (for blinking)
 // Hero with automatic "talking" gestures: on every phrase (beat) the arms move to a new pose and he does a small hop.
-let BEAT = 0, BEATT = 0, SCN = 0;
+let BEAT = 0, BEATT = 0, SCN = 0, BG = '#efebe2';
 const GESTURES = [[[-150, -150], [150, -150]], [[-150, -150], [190, -330]], [[-200, -260], [200, -260]], [[-190, -330], [150, -150]], [[-120, -240], [120, -240]]];
 function hero(x, k = 1.6, o = {}) {
   const g = i => GESTURES[(i + SCN * 2) % GESTURES.length], f = ease(BEATT / 0.3), a = g(Math.max(0, BEAT - 1)), b = g(BEAT);
@@ -27,7 +27,7 @@ function backdrop(t, dx = 0, fadeAmt = 0.42) {
   ctx.save(); ctx.translate(960 - 960 * k + dx, GY - 42 - 760 * k); ctx.scale(k, k);
   for (const it of STREET) it.d ? rc.draw(it.d) : it.f(t);
   ctx.restore();
-  ctx.fillStyle = `rgba(239,235,226,${fadeAmt})`; ctx.fillRect(-500, -500, W + 1000, H + 1000);
+  ctx.globalAlpha = fadeAmt; ctx.fillStyle = BG; ctx.fillRect(-500, -500, W + 1000, H + 1000); ctx.globalAlpha = 1;
 }
 
 const S = [
@@ -188,11 +188,18 @@ for (const s of SC) {
 }
 const DURATION = acc;
 // camera framings, cycled per phrase: [zoom, dx, dy]
+// per-chapter paper tint, words that are "bad news", scenes whose top area is busy (no kinetic words there),
+// and the hero's face position for dramatic zooms
+const TINTS = ['#efebe2', '#e8eef1', '#edf0e4', '#f4ecdc', '#f1e8e8', '#e9ebf3'];
+const BADW = /CRASH|SELL|THIEF|FEES|MISTAKE|QUIT|-/;
+const NOKW = new Set([6, 9, 10, 14, 18, 23, 24, 25, 26]);
+const FACE = { 2: [520, 500], 9: [520, 470], 14: [480, 500], 21: [330, 557], 26: [600, 557] };
+const CHAP = []; SC.forEach((s, i) => { if (!i || s.ch !== SC[i - 1].ch) CHAP.push(i); s.chi = CHAP.length - 1; });
 const SHOTS = [[1, 0, 0], [1.1, -60, -25], [1.05, 60, 10], [1.12, 0, -40], [1.07, -40, 15]];
 
 function subtitle(line) {
   ctx.font = '800 46px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
-  ctx.strokeStyle = 'rgba(239,235,226,0.9)'; ctx.lineWidth = 8; ctx.strokeText(line, 960, 1012);
+  ctx.strokeStyle = BG; ctx.lineWidth = 8; ctx.strokeText(line, 960, 1012);
   ctx.fillStyle = C.ink; ctx.fillText(line, 960, 1012);
 }
 function subLine(s, b, bt) {   // within a phrase, show 7-word pieces in turn
@@ -217,6 +224,7 @@ function render(t) {
   let b = 0; while (b + 1 < s.beats.length && lt >= s.beats[b + 1]) b++;
   SCN = i; BEAT = b; BEATT = lt - s.beats[b];
   beginFrame();
+  BG = TINTS[s.chi % TINTS.length]; ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H);
   // camera: quick punch to a new framing on every phrase + slow drift; scenes slide in from alternating sides
   const sh = SHOTS[(b + i) % SHOTS.length], pv = SHOTS[(Math.max(0, b - 1) + i) % SHOTS.length], f = b ? easeOutBack(BEATT / 0.28) : 1;
   let z = lerp(pv[0], sh[0], f) + 0.012 * BEATT, cx = 960 + lerp(pv[1], sh[1], f), cy = 560 + lerp(pv[2], sh[2], f);
@@ -224,6 +232,12 @@ function render(t) {
   cx += dir * 700 * Math.pow(1 - tin, 3); z *= 1 + 0.12 * Math.pow(1 - tin, 2);
   // screen shake on bad news when the label lands
   if (s.bad && lt > 0.55 && lt < 1.1) { const a = (1.1 - lt) * 22; cx += Math.sin(lt * 90) * a; cy += Math.cos(lt * 70) * a; }
+  // micro punch on every kinetic word
+  for (const k of s.kw || []) { const dt = lt - k.f * s.dur; if (dt > 0 && dt < 0.35) z += 0.045 * Math.sin(dt / 0.35 * Math.PI); }
+  // dramatic zoom onto the hero's face
+  if (s.drama != null && FACE[i]) { const dt = lt - s.drama * s.dur, D = 1.0;
+    if (dt > 0 && dt < D) { const e = dt < 0.15 ? easeOutBack(dt / 0.15) : dt > D - 0.2 ? ease((D - dt) / 0.2) : 1;
+      z = lerp(z, 2.1, e); cx = lerp(cx, FACE[i][0], e); cy = lerp(cy, FACE[i][1], e); } }
   setCamera(cx, cy, z);
   ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(-600, GY + 2); ctx.lineTo(2600, GY + 2); ctx.strokeStyle = '#8d8c88'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
   s.draw(lt, s.dur);
@@ -237,8 +251,26 @@ function render(t) {
       if (s.ons.includes('$') && lt > 0.55 && lt < 2.2) burst(lt - 0.55, 960, 470);
     }
   }
+  // kinetic words: numbers and key terms pop up exactly when they are said
+  if (!NOKW.has(i)) (s.kw || []).forEach((k, n) => {
+    const dt = lt - k.f * s.dur + 0.05; if (dt < 0 || dt > 1.6) return;
+    const sc = easeOutBack(dt / 0.3), al = dt > 1.3 ? 1 - (dt - 1.3) / 0.3 : 1, side = n % 2 ? 1 : -1;
+    const money = k.w.startsWith('$') || k.w.endsWith('%'), bad = BADW.test(k.w);
+    ctx.save(); ctx.globalAlpha = al;
+    at(960 + side * 470, 300 - dt * 18, sc, side * 0.07 + Math.sin(dt * 14) * 0.05 * Math.max(0, 1 - dt * 1.5), () =>
+      marker(k.w, 0, 0, 110, { color: bad ? RED : money ? GREEN : C.ink, outline: bad || money }));
+    ctx.restore();
+  });
   if (SUBS) subtitle(subLine(s, b, BEATT));
+  // chapter card: a black band with the chapter name sweeps across at the start of each chapter
+  if (s.chi > 0 && i === CHAP[s.chi] && lt < 1.2) {
+    const x = lt < 0.25 ? lerp(-W, 0, ease(lt / 0.25)) : lt > 0.9 ? lerp(0, W, ease((lt - 0.9) / 0.3)) : 0;
+    ctx.save(); ctx.translate(x, 0); ctx.rotate(-0.03);
+    ctx.fillStyle = C.ink; ctx.fillRect(-100, 420, W + 200, 230);
+    marker(s.ch, 960, 535, 120, { color: '#f4f1e8' });
+    ctx.restore();
+  }
   // flash of paper at the very start of a scene (hides the cut)
-  if (lt < 0.12) { ctx.fillStyle = `rgba(239,235,226,${1 - lt / 0.12})`; ctx.fillRect(0, 0, W, H); }
+  if (lt < 0.12) { ctx.globalAlpha = 1 - lt / 0.12; ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
   endFrame();
 }
