@@ -25,9 +25,9 @@ function sleepingWindow(x, y, s, t, o = {}) {
   // legs + feet
   ctx.save(); ctx.translate(0, br * 0.4);
   for (const [y1, y2] of [[500, 478], [545, 560]]) {
-    ctx.beginPath(); ctx.moveTo(620, y1); ctx.lineTo(760, y2); ctx.lineWidth = 32 + 14 * HERO_LINE; ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.stroke();
-    ctx.lineWidth = 32; ctx.strokeStyle = C.white; ctx.stroke();
-    ctx.beginPath(); ctx.ellipse(782, y2, 24, 32, 0.3, 0, 7); inkPath(C.white, 6);
+    ctx.beginPath(); ctx.moveTo(620, y1); ctx.lineTo(760, y2); ctx.lineWidth = 50 + 14 * HERO_LINE; ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.stroke();
+    ctx.lineWidth = 50; ctx.strokeStyle = C.white; ctx.stroke();
+    ctx.beginPath(); ctx.ellipse(790, y2, 26, 36, 0.3, 0, 7); inkPath(C.white, 6);
   }
   // torso
   ctx.save(); ctx.translate(520, 505 + br); ctx.rotate(0.1);
@@ -38,7 +38,7 @@ function sleepingWindow(x, y, s, t, o = {}) {
   ctx.restore(); ctx.restore();
   // head
   ctx.save(); ctx.translate(370, 360 + br * 0.6); ctx.rotate(-0.3);
-  ctx.beginPath(); ctx.arc(0, 0, 150, 0, Math.PI * 2); inkPath(C.white, 8);
+  ctx.beginPath(); ctx.ellipse(0, 0, 172, 138, 0, 0, Math.PI * 2); inkPath(C.white, 8);
   ctx.beginPath(); ctx.arc(-52, -2, 22, 0.15 * Math.PI, 0.85 * Math.PI); inkPath(null, 7);
   ctx.beginPath(); ctx.arc(48, -2, 22, 0.15 * Math.PI, 0.85 * Math.PI); inkPath(null, 7);
   ctx.beginPath(); ctx.arc(0, 30, 62, 0.22 * Math.PI, 0.78 * Math.PI); inkPath(null, 7);

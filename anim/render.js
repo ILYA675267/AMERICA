@@ -13,7 +13,7 @@ const audio = opt('--audio');
 const preview = opt('--preview');
 
 (async () => {
-  const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
+  const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js', 'lib/street.js', 'lib/walk.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
   const code = lib.join('\n;\n') + '\n;\n' + fs.readFileSync(scene, 'utf8') + '\n;window.__DUR = DURATION;';
   const browser = await chromium.launch();
   const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
