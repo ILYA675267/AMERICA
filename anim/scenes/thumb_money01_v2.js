@@ -21,9 +21,7 @@ function render(t) {
   heroFront(330, 1010, 1.25, { face: 'sad', armR: [150, -150], armL: [-130, -130] });
   // rain falling onto his head
   ctx.strokeStyle = '#6f9fd8'; ctx.lineWidth = 6; ctx.lineCap = 'round';
-  for (const [x, y] of [[160, 430], [215, 470], [265, 435], [315, 470], [190, 505], [290, 510]]) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x - 7, y + 22); ctx.stroke(); }
-  // tear
-  ctx.beginPath(); ctx.moveTo(283, 655); ctx.bezierCurveTo(296, 675, 294, 692, 283, 692); ctx.bezierCurveTo(272, 692, 270, 675, 283, 655); ctx.fillStyle = '#9fd3ff'; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = 4; ctx.stroke();
+  for (const [x, y] of [[160, 430], [215, 470], [265, 435], [315, 470], [190, 505], [290, 510]]) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 7, y + 22); ctx.stroke(); }
   // a lonely, crumpled $10 in his hand
   bill(530, 830, 120, -0.35, '$10');
   // a fly buzzing around the empty jar, with a dotted path
