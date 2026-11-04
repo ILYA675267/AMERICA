@@ -4,8 +4,8 @@
 // Classic cycle: contact - down - passing - up. The stance foot is locked to the ground, so feet never slide.
 // Local units: ground at y = 0, head ry = 100.
 const WALK = {
-  thigh: 44, shin: 42, hipY: -92, stride: 78, lift: 22, period: 1.0,     // seconds per full cycle (two steps)
-  legW: 36, armW: 15, arm: 82, torsoH: 116, torsoTop: 62, torsoBot: 104,
+  thigh: 46, shin: 44, hipY: -104, stride: 78, lift: 22, period: 1.0,     // seconds per full cycle (two steps)
+  legW: 44, armW: 15, arm: 82, torsoH: 112, torsoTop: 62, torsoBot: 84,
   headRx: 125, headRy: 100, bob: 7, line: 6,
 };
 const walkSpeed = () => 2 * WALK.stride / WALK.period;      // one stride per half cycle
@@ -36,7 +36,7 @@ function tube(pts, w) {          // white limb with black outline
 }
 function shoe(x, y, ang) {       // rounded shoe, sole flat on the ground, toe forward
   ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
-  ctx.beginPath(); ctx.moveTo(-20, 0); ctx.bezierCurveTo(-24, -20, -6, -26, 8, -24); ctx.bezierCurveTo(34, -22, 40, -8, 36, 0); ctx.closePath();
+  ctx.beginPath(); ctx.moveTo(-26, 0); ctx.lineTo(-26, -24); ctx.quadraticCurveTo(-26, -34, -15, -34); ctx.lineTo(10, -34); ctx.bezierCurveTo(34, -33, 46, -18, 46, -6); ctx.quadraticCurveTo(46, 0, 38, 0); ctx.closePath();
   ctx.fillStyle = C.white; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = LW(); ctx.lineJoin = 'round'; ctx.stroke();
   ctx.restore();
 }
@@ -59,22 +59,22 @@ function heroWalk(x, groundY, s, t, o = {}) {
   };
   const leg = (ph, dx) => {
     const f = footAt(ph);
-    const { knee, foot } = ik2(dx, hipY, f.x + dx, f.y - 14, WALK.thigh, WALK.shin);
-    tube([[dx, hipY - 10], [dx, hipY], knee, foot], WALK.legW);
-    shoe(foot[0] + 4, foot[1] + 14, f.ang);
+    const { knee, foot } = ik2(dx, hipY, f.x + dx, f.y - 30, WALK.thigh, WALK.shin);
+    tube([[dx, hipY - 24], [dx, hipY], knee, foot], WALK.legW);
+    shoe(foot[0], foot[1] + 30, f.ang);
   };
   arm(p + 1);                 // back arm: forward when the front leg is forward
-  leg((p + 0.5) % 1, -10);    // back leg
-  leg(p, 10);                 // front leg
+  leg((p + 0.5) % 1, -14);    // back leg
+  leg(p, 14);                 // front leg
   // torso: no neck, widening downward; sides outlined, bottom open so the legs read as one shape with the body
-  const tt = WALK.torsoTop / 2, tb = WALK.torsoBot / 2;
-  ctx.beginPath(); ctx.moveTo(-tb, hipY + 6); ctx.bezierCurveTo(-tb + 2, hipY - 50, -tt - 6, topY + 30, -tt, topY);
-  ctx.lineTo(tt, topY); ctx.bezierCurveTo(tt + 6, topY + 30, tb - 2, hipY - 50, tb, hipY + 6); ctx.closePath();
+  const tt = WALK.torsoTop / 2, tb = WALK.torsoBot / 2, by = hipY + 10;
+  const sides = () => { ctx.moveTo(-tb, by); ctx.bezierCurveTo(-tb + 2, hipY - 50, -tt - 6, topY + 30, -tt, topY);
+    ctx.lineTo(tt, topY); ctx.bezierCurveTo(tt + 6, topY + 30, tb - 2, hipY - 50, tb, by); };
+  ctx.beginPath(); sides(); ctx.quadraticCurveTo(0, by + 14, -tb, by); ctx.closePath();
   ctx.fillStyle = C.white; ctx.fill();
-  ctx.beginPath(); ctx.moveTo(-tb, hipY + 6); ctx.bezierCurveTo(-tb + 2, hipY - 50, -tt - 6, topY + 30, -tt, topY);
-  ctx.moveTo(tt, topY); ctx.bezierCurveTo(tt + 6, topY + 30, tb - 2, hipY - 50, tb, hipY + 6);
+  ctx.beginPath(); ctx.moveTo(-tb, by); ctx.bezierCurveTo(-tb + 2, hipY - 50, -tt - 6, topY + 30, -tt, topY);
+  ctx.moveTo(tt, topY); ctx.bezierCurveTo(tt + 6, topY + 30, tb - 2, hipY - 50, tb, by);
   ctx.strokeStyle = C.ink; ctx.lineWidth = LW(); ctx.lineCap = 'round'; ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(-6, hipY + 4); ctx.lineTo(6, hipY + 4); ctx.stroke();   // crotch line
   arm(p + 0.5);               // front arm: back when the front leg is forward
   // head: wide oval, slight lag and nod
   const hb = -WALK.bob * (1 - Math.cos((p - 0.06) * 4 * Math.PI)) / 2 - bob;
