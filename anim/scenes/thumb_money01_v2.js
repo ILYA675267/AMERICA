@@ -18,9 +18,9 @@ function render(t) {
   // money rain behind the hero and the jar (drawn first, so they cover it)
   const r = rng(5);
   // extra money behind the jar (around its edges and above the lid)
-  for (let k = 0; k < 34; k++) { const side = k % 2 ? 1 : -1, x = 1560 + side * (150 + r() * 230), y = 380 + r() * 620; if (k % 5 === 0) coin(x, y, 24); else bill(x, y, 120 + r() * 40, (r() - 0.5) * 1.8, r() < 0.5 ? '$100' : '$10'); }
-  for (let k = 0; k < 8; k++) { const x = 1380 + r() * 360, y = 390 + r() * 70; bill(x, y, 120, (r() - 0.5) * 1.8, '$100'); }
-  for (let k = 0; k < 26; k++) { const x = 1010 + r() * 890, y = 400 + r() * 560; if (k % 4 === 0) coin(x, y, 24); else bill(x, y, 120 + r() * 40, (r() - 0.5) * 1.8, r() < 0.5 ? '$100' : '$10'); }
+  for (let k = 0; k < 18; k++) { const side = k % 2 ? 1 : -1, x = 1560 + side * (150 + r() * 230), y = 380 + r() * 620; if (k % 5 === 0) coin(x, y, 24); else bill(x, y, 120 + r() * 40, (r() - 0.5) * 1.8, r() < 0.5 ? '$100' : '$10'); }
+  for (let k = 0; k < 4; k++) { const x = 1380 + r() * 360, y = 390 + r() * 70; bill(x, y, 120, (r() - 0.5) * 1.8, '$100'); }
+  for (let k = 0; k < 18; k++) { const x = 1010 + r() * 890, y = 400 + r() * 560; if (k % 4 === 0) coin(x, y, 24); else bill(x, y, 120 + r() * 40, (r() - 0.5) * 1.8, r() < 0.5 ? '$100' : '$10'); }
   jar(1560, 1010, 560, 1, 21);
   heroFront(1120, 1010, 1.25, { face: 'grin', armL: [-200, -330], armR: [175, -330] });
   ctx.setTransform(1, 0, 0, 1, 0, 0);
