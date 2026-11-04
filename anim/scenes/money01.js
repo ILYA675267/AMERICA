@@ -171,8 +171,8 @@ function subtitle(text, t, d) {
   const words = text.replace(/\(.*?\)\s*/g, '').split(' '), per = 7, n = Math.ceil(words.length / per);
   const k = Math.min(n - 1, Math.floor(t / d * n)), line = words.slice(k * per, k * per + per).join(' ');
   ctx.font = '800 46px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  const w = ctx.measureText(line).width;
-  ctx.fillStyle = 'rgba(255,255,255,0.85)'; ctx.beginPath(); ctx.roundRect(960 - w / 2 - 24, 1010 - 34, w + 48, 68, 16); ctx.fill();
+  // plain black text on the picture (thin paper-coloured halo keeps it readable where it crosses lines)
+  ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(239,235,226,0.9)'; ctx.lineWidth = 8; ctx.strokeText(line, 960, 1012);
   ctx.fillStyle = C.ink; ctx.fillText(line, 960, 1012);
 }
 
