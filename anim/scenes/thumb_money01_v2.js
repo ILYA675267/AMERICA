@@ -16,8 +16,10 @@ function render(t) {
   jar(690, 1010, 330, 0.03, 4);
   // right: year 10 with money rain
   jar(1560, 1010, 560, 1, 21);
-  heroFront(1190, 1010, 1.25, { face: 'grin', armL: [-200, -330], armR: [200, -330] });
-  const r = rng(5); for (let k = 0; k < 12; k++) { const x = 1050 + r() * 860, y = 420 + r() * 140; if (k % 3) bill(x, y, 120 + r() * 50, (r() - 0.5) * 1.6, r() < 0.5 ? '$100' : '$10'); else coin(x, y, 24); }
+  heroFront(1120, 1010, 1.25, { face: 'grin', armL: [-200, -330], armR: [175, -330] });
+  // money falls only into the jar and to its right, never over the hero or the numbers
+  const r = rng(5); for (let k = 0; k < 10; k++) { const x = 1420 + r() * 460, y = 480 + r() * 50 - (k % 3) * 15; if (k % 3) bill(x, y, 110 + r() * 40, (r() - 0.5) * 1.6, r() < 0.5 ? '$100' : '$10'); else coin(x, y, 22); }
+  for (let k = 0; k < 4; k++) bill(1800 + r() * 80, 590 + k * 110, 100, (r() - 0.5) * 1.6, '$100');
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   // labels
   at(250, 110, 1, -0.04, () => marker('DAY 1', 0, 0, 90, { hl: '#fff' }));
