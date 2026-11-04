@@ -58,8 +58,8 @@ const S = [
  // 04 day one: walk out of the coffee shop... then drop the bill into the jar on the desk at home
  (t, d) => { const cut = d * 0.55;
    if (t < cut) { heroWalk(420 + heroWalkX(t, 0.55), GY, 0.55, t, { blink: true }); return; }
-   const lt = t - cut; jar(DESK.x, DESK.y, 200, lt > 1.4 ? 0.05 : 0, 5); hero(860, 1.45, { armR: [230, -380] });
-   const p = clamp((lt - 0.6) / 0.7); if (p < 1) bill(lerp(1150, DESK.x, p), lerp(380, DESK.y - 60, p), 100, p * 4); },
+   const lt = t - cut; jar(DESK.x, DESK.y, 200, lt > 1.4 ? 0.05 : 0, 5); hero(880, 1.25, { armR: [240, -400] });
+   const p = clamp((lt - 0.6) / 0.7); if (p < 1) bill(lerp(1180, DESK.x, p), lerp(400, DESK.y - 60, p), 100, p * 4); },
  // 05 lonely bill at the bottom, shrug
  (t, d) => { jar(DESK.x, DESK.y, 220, 0.04, 6); hero(760, 1.6, { face: 'flat', armL: [-190, -330], armR: [190, -330] }); },
  // 06 the math: $70/week -> $300/month -> $3,650/year
@@ -75,9 +75,9 @@ const S = [
    at(1640, 330, 1, 0, () => { ctx.beginPath(); ctx.ellipse(0, 0, 120, 50, 0, Math.PI, 0); ink('#e0a35a'); ctx.beginPath(); ctx.rect(-125, 0, 250, 30); ink('#7a4a2a'); ctx.beginPath(); ctx.ellipse(0, 40, 120, 22, 0, 0, Math.PI); ink('#e0a35a');
      marker('$' + (5 * Math.pow(1.03, clamp(t / d) * 10)).toFixed(2), 0, 130, 70, { color: RED }); }); },
  // 09 jar shrinks, value drops
- (t, d) => { const p = ease(t / d); jar(1200, GY, lerp(620, 520, p), 1, 7); hero(520, 1.6, { face: p > 0.4 ? 'sad' : 'flat' }); counter(1200, 230, lerp(36500, 31500, p), 110, p > 0.5 ? RED : C.ink); },
+ (t, d) => { const p = ease(t / d); jar(1200, GY, lerp(620, 520, p), 1, 7); hero(520, 1.6, { face: p > 0.4 ? 'sad' : 'flat' }); counter(1530, 300, lerp(36500, 31500, p), 84, p > 0.5 ? RED : C.ink); },
  // 10 the bank
- (t, d) => { hero(480, 1.5, { face: 'smile', armR: [180, -200] }); jar(700, GY, 260, 1, 7); counter(1450, 270, grow(t, 0.8, d - 1.2, 36500, 44800), 110); },
+ (t, d) => { hero(400, 1.45, { face: 'smile', armR: [200, -200] }); jar(800, GY, 260, 1, 7); counter(1450, 270, grow(t, 0.8, d - 1.2, 36500, 44800), 110); },
  // 11 rates swing, door "option 3"
  (t, d) => { at(700, 560, 1, 0, () => { ctx.beginPath(); ctx.arc(0, 0, 220, Math.PI, 0); ink('#fff'); for (let k = 0; k <= 6; k++) { const a = Math.PI + k * Math.PI / 6; ctx.beginPath(); ctx.moveTo(Math.cos(a) * 190, Math.sin(a) * 190); ctx.lineTo(Math.cos(a) * 215, Math.sin(a) * 215); ink(null, 4); }
      const a = Math.PI * 1.5 + Math.sin(t * 2.5) * 0.9; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(Math.cos(a) * 170, Math.sin(a) * 170); ctx.strokeStyle = RED; ctx.lineWidth = 12; ctx.stroke(); marker('RATE', 0, 60, 54); });
@@ -113,14 +113,15 @@ const S = [
  (t, d) => { hero(760, 1.6, { wildHair: true, mustache: true, face: 'smile', armR: [190, -300] }); at(1300, 420, pop(t, d * 0.5), 0, () => marker('?', 0, 0, 380, { color: RED, outline: true })); },
  // 18 Rule of 72 on a board, money doubles
  (t, d) => { const q = clamp(t / 1.2); ctx.save(); ctx.beginPath(); ctx.rect(560, 280, 800 * q, 300); ctx.clip(); marker('72 ÷ 7 = ~10', 961, 430, 120); ctx.restore();
-   const p = clamp((t - d * 0.5) / 1); for (let k = 0; k < 6 + Math.round(6 * p); k++) bill(1650, GY - 20 - k * 18, 220, 0, '$100'); hero(300, 1.2, { armR: [180, -240] }); },
+   const p = clamp((t - d * 0.5) / 1); for (let k = 0; k < 6 + Math.round(6 * p); k++) bill(1380, GY - 20 - k * 18, 200, 0, '$100'); hero(900, 1.0, { armL: [-200, -330] }); },
  // 19 year 1: magnifying glass on a tiny coin
  (t, d) => { calendar(1500, 420, 'YEAR 1'); hero(700, 1.6, { face: 'flat', armR: [230, -150] });
    ctx.beginPath(); ctx.arc(1000, GY - 230, 70, 0, 7); ink('rgba(214,230,232,0.6)', 9); ctx.beginPath(); ctx.moveTo(950, GY - 180); ctx.lineTo(900, GY - 120); ink(null, 16); coin(1000, GY - 230, 12); },
- // 20 year 3: friends leave with phones and suitcases
- (t, d) => { calendar(1570, 560, 'YEAR 3', 0.8); jar(420, GY, 360, 0.3, 8); hero(700, 1.4, { face: 'flat' });
-   const p = clamp(t / d); heroFront(1150 + p * 400, GY, 1.2, { cap: RED, face: 'grin', armR: [180, -260], armL: [-150, -150] }); heroFront(1350 + p * 420, GY, 1.2, { glasses: true, face: 'grin', armR: [150, -150] });
-   ctx.beginPath(); ctx.roundRect(1350 + p * 420 + 160, GY - 150, 110, 150, 12); ink('#4a7cff'); },
+ // 20 year 3: friends leave with phones and suitcases (airport)
+ (t, d) => { calendar(1180, 330, 'YEAR 3', 0.7); jar(330, GY, 340, 0.3, 8); hero(720, 1.35, { face: 'flat' });
+   const p = clamp(t / d); heroFront(1150 + p * 380, GY, 1.0, { cap: RED, face: 'grin', armR: [160, -240], armL: [-150, -150] });
+   heroFront(1500 + p * 380, GY, 1.0, { glasses: true, face: 'grin', armR: [150, -120] });
+   ctx.beginPath(); ctx.roundRect(1500 + p * 380 + 150, GY - 140, 100, 140, 12); ink('#4a7cff'); },
  // 21 crash
  (t, d) => { const pts = marketPts(21, 40, 0.6, 0.04); for (let i = 26; i < 40; i++) pts[i][1] = Math.max(0.05, pts[i][1] - 0.32 * clamp((i - 26) / 3));
    chart(600, 760, 1000, 500, pts, clamp(t / (d * 0.6)), clamp(t / (d * 0.6)) > 0.66 ? RED : GREEN); hero(330, 1.3, { face: t > d * 0.45 ? 'shock' : 'smile' });
@@ -155,7 +156,7 @@ const S = [
  // 31 Save More Tomorrow: two economists at a board
  (t, d) => { marker('RAISE', 720, 380, 70); piggy(1230, 560, 0.85, clamp(t / d));
    const p = clamp((t - 0.5) / 1.5); ctx.beginPath(); ctx.moveTo(840, 380); ctx.quadraticCurveTo(1000, 300, lerp(840, 1110, p), lerp(380, 470, p)); ink(null, 9);
-   heroFront(380, GY, 1.2, { glasses: true, armR: [200, -330] }); heroFront(1760, GY, 1.2, { mustache: true, armL: [-200, -300] }); },
+   heroFront(330, GY, 1.1, { glasses: true, armR: [200, -330] }); heroFront(1600, GY, 1.1, { mustache: true, armL: [-200, -300] }); },
  // 32 savings rate bars
  (t, d) => { const a = clamp(t / 1), b = clamp((t - 1) / (d - 1.5));
    ctx.beginPath(); ctx.rect(800, GY - 120 * a, 220, 120 * a); ink('#d3d8da'); marker('3.5%', 910, GY - 170, 80);
@@ -171,14 +172,14 @@ const S = [
  (t, d) => { ctx.beginPath(); ctx.roundRect(1100, 220, 360, 640, 40); ink('#3a3a3a'); ctx.beginPath(); ctx.roundRect(1125, 260, 310, 560, 20); ink('#f4f1e8', 4);
    ctx.beginPath(); ctx.roundRect(1160, 300, 110, 110, 20); ink('#cfe0ff'); ctx.beginPath(); ctx.roundRect(1290, 650, 110, 110, 20); ink(MONEY);
    for (let k = 0; k < 3; k++) { const p = (t * 0.5 + k / 3) % 1; bill(lerp(1215, 1345, p), lerp(355, 705, p), 80, p * 2); }
-   hero(560, 1.5, { face: 'smile', armR: [140, -240] }); coffee(700, GY - 330, 0.6); },
+   hero(560, 1.5, { face: 'smile', armR: [140, -240] }); coffee(770, GY - 345, 0.45); },
  // 36 one in three can't cover $400
  (t, d) => { [560, 960, 1360].forEach((x, i) => heroFront(x, GY, 1.2, { face: i === 1 && t > 1 ? 'shock' : 'smile', armL: i === 1 && t > 1 ? [-130, -330] : undefined, armR: i === 1 && t > 1 ? [130, -330] : undefined, cap: i === 0 ? RED : undefined, glasses: i === 2 }));
    if (t > 1) at(960, 330, pop(t, 1), 0, () => { ctx.beginPath(); ctx.rect(-130, -80, 260, 160); ink('#fff'); marker('BILL $400', 0, 0, 52, { color: RED }); }); },
  // 37 broken car: calm, money from the jar
- (t, d) => { at(1250, GY, 1, 0, () => { ctx.beginPath(); ctx.roundRect(-330, -220, 660, 160, 40); ink('#ffb3a7'); ctx.beginPath(); ctx.moveTo(-200, -220); ctx.lineTo(-130, -330); ctx.lineTo(130, -330); ctx.lineTo(200, -220); ink('#d3d8da'); for (const x of [-200, 200]) { ctx.beginPath(); ctx.arc(x, -60, 60, 0, 7); ink('#3a3a3a'); }
+ (t, d) => { at(1400, GY, 0.9, 0, () => { ctx.beginPath(); ctx.roundRect(-330, -220, 660, 160, 40); ink('#ffb3a7'); ctx.beginPath(); ctx.moveTo(-200, -220); ctx.lineTo(-130, -330); ctx.lineTo(130, -330); ctx.lineTo(200, -220); ink('#d3d8da'); for (const x of [-200, 200]) { ctx.beginPath(); ctx.arc(x, -60, 60, 0, 7); ink('#3a3a3a'); }
      for (let k = 0; k < 3; k++) { const p = (t * 0.6 + k / 3) % 1; ctx.globalAlpha = 1 - p; ctx.beginPath(); ctx.arc(-300 + Math.sin(p * 6) * 20, -240 - p * 300, 30 + p * 40, 0, 7); ink('#fff', 4); ctx.globalAlpha = 1; } });
-   jar(330, GY, 360, 0.8, 15); hero(640, 1.4, { face: 'smile', armL: [-200, -250] }); bill(lerp(380, 520, clamp(t / 2)), GY - 520, 120, 0.2); },
+   jar(300, GY, 360, 0.8, 15); hero(660, 1.4, { face: 'smile', armL: [-230, -280] }); const bp = clamp(t / 1.5); bill(lerp(300, 340, bp), lerp(GY - 300, GY - 420, bp), 110, 0.2); },
  // 38 freedom: doors of the hallway light up one by one, each with a new life inside
  (t, d) => { const doors = [[IP(158, 182), IP(310, 782)], [IP(1252, 256), IP(1370, 718)], [IP(688, 366), IP(983, 524)]];
    const icons = [(x, y) => { ctx.beginPath(); ctx.roundRect(x - 50, y - 30, 100, 70, 8); ink('#8a5a3c'); ctx.beginPath(); ctx.roundRect(x - 20, y - 46, 40, 18, 6); ink(null, 5); },
@@ -191,7 +192,7 @@ const S = [
    const g = ctx.createRadialGradient(1640, 470, 20, 1640, 470, 520); g.addColorStop(0, 'rgba(255,214,102,0.55)'); g.addColorStop(1, 'rgba(255,214,102,0)'); ctx.fillStyle = g; ctx.fillRect(-200, -200, W + 400, H + 400);
    jar(DESK.x, DESK.y, 220, 1, 16); hero(720, 1.5, { face: 'smile' }); },
  // 40 a new bill into an empty jar on the desk
- (t, d) => { jar(DESK.x, DESK.y, 220, 0, 17); hero(850, 1.5, { armR: [300, -560], face: 'grin' }); const p = clamp((t - d * 0.4) / 0.8); if (p < 1) bill(lerp(1150, DESK.x, p), lerp(360, DESK.y - 60, p), 110, p * 4); },
+ (t, d) => { jar(DESK.x, DESK.y, 220, 0, 17); hero(880, 1.3, { armR: [230, -420], face: 'grin' }); const p = clamp((t - d * 0.4) / 0.8); if (p < 1) bill(lerp(1180, DESK.x, p), lerp(380, DESK.y - 60, p), 110, p * 4); },
  // 41 outro: wave, debt monster rises behind
  (t, d) => { const p = clamp((t - d * 0.45) / 1.5); if (p > 0) scribbleMonster(1450, GY, 1.2 * p + 0.01, t); card(1450, GY - 520 * p, 0.3); hero(700, 1.6, { face: 'grin', armR: [200 + Math.sin(t * 8) * 30, -420] }); },
 ];
