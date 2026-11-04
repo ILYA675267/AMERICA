@@ -12,6 +12,7 @@ const fps = +opt('--fps', 30);
 const audio = opt('--audio');
 const preview = opt('--preview');
 const dataFile = opt('--data');
+const range = opt('--range');   // "from,to" seconds: render only this part (for checks)
 
 (async () => {
   const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js', 'lib/street.js', 'lib/walk.js', 'lib/hero_front.js', 'lib/props.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
@@ -45,9 +46,10 @@ const dataFile = opt('--data');
   if (audio) ff.push('-i', audio, '-c:a', 'aac', '-b:a', '192k', '-shortest');
   ff.push('-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out);
   const enc = spawn('ffmpeg', ff, { stdio: ['pipe', 'inherit', 'inherit'] });
-  const n = Math.round(dur * fps);
+  const [r0, r1] = range ? range.split(',').map(Number) : [0, dur];
+  const n = Math.round((r1 - r0) * fps);
   for (let i = 0; i < n; i++) {
-    const buf = Buffer.from(await grab(i / fps), 'base64');
+    const buf = Buffer.from(await grab(r0 + i / fps), 'base64');
     if (!enc.stdin.write(buf)) await new Promise(r => enc.stdin.once('drain', r));
     if (i % 60 === 0) process.stdout.write(`\r${i}/${n}`);
   }

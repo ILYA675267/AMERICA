@@ -66,7 +66,7 @@ const S = [
  (t, d) => { hero(380, 1.5, { armR: [180, -300], face: 'smile' });
    const rows = [['$10', 'a day'], ['$70', 'a week'], ['$300', 'a month'], ['$3,650', 'a year']];
    rows.forEach(([a, b], i) => { const t0 = 0.3 + i * d / 4.6; const s = pop(t, t0); if (s <= 0) return;
-     at(1150, 230 + i * 180, s, 0, () => { marker(a, -60, 0, 110, { color: i === 3 ? GREEN : C.ink, outline: i === 3, align: 'right' }); marker(b, 0, 6, 64, { align: 'left' }); }); }); },
+     at(1150, 300 + i * 165, s, 0, () => { marker(a, -60, 0, 110, { color: i === 3 ? GREEN : C.ink, outline: i === 3, align: 'right' }); marker(b, 0, 6, 64, { align: 'left' }); }); }); },
  // 07 full jar, thief peeks out
  (t, d) => { jar(1000, GY, 600, 1, 7); hero(480, 1.5, { face: 'grin' }); const p = ease((t - d * 0.55) / 0.8); at(lerp(2150, 1720, p), GY, 1.2, -0.1 * p, () => thief(0, 0, 1)); },
  // 08 inflation thief steals, burger price climbs
@@ -222,7 +222,12 @@ const FACE = { 2: [520, 500], 9: [520, 470], 14: [480, 500], 21: [330, 557], 26:
 const CHAP = []; SC.forEach((s, i) => { if (!i || s.ch !== SC[i - 1].ch) CHAP.push(i); s.chi = CHAP.length - 1; });
 const IMGS = { 0: 'bg02_coffee', 4: (t, d) => t < d * 0.55 ? 'bg02_coffee' : 'bg01_room', 5: 'bg01_room', 7: 'bg01_room', 8: 'bg01_room', 9: 'bg01_room',
   10: 'bg03_bank', 16: 'bg05_snow_hill', 18: 'bg09_classroom', 20: 'bg06_airport', 29: 'bg02_coffee', 30: 'bg02_coffee', 31: 'bg09_classroom', 32: 'bg09_classroom',
-  35: 'bg01_room', 37: 'bg07_garage', 38: 'bg10_hallway', 39: 'bg01_room', 40: 'bg01_room', 41: 'bg01_room' };
+  35: 'bg01_room', 37: 'bg07_garage', 38: 'bg10_hallway', 39: 'bg01_room', 40: 'bg01_room', 41: 'bg01_room',
+  // explainer scenes: the hero stands at a whiteboard (bg11) or the board fills the frame (bg12)
+  1: 'bg11_board_room', 3: 'bg11_board_room', 11: 'bg11_board_room', 12: 'bg11_board_room', 14: 'bg11_board_room', 17: 'bg11_board_room',
+  19: 'bg11_board_room', 23: 'bg11_board_room', 33: 'bg11_board_room', 34: 'bg11_board_room', 36: 'bg11_board_room',
+  6: 'bg12_board_close', 13: 'bg12_board_close', 15: 'bg12_board_close', 21: 'bg12_board_close', 22: 'bg12_board_close', 28: 'bg12_board_close' };
+const BOARD = new Set([1, 3, 11, 12, 14, 17, 19, 23, 33, 34, 36, 6, 13, 15, 21, 22, 28, 18, 31, 32]);   // scenes where text is written on a board
 const SHOTS = [[1, 0, 0], [1.1, -60, -25], [1.05, 60, 10], [1.12, 0, -40], [1.07, -40, 15]];
 
 function subtitle(line) {
@@ -288,7 +293,9 @@ function render(t) {
   const im = typeof IMGS[i] === 'function' ? IMGS[i](lt, s.dur) : IMGS[i];
   if (im) bgImg(im);
   else { ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(-600, GY + 2); ctx.lineTo(2600, GY + 2); ctx.strokeStyle = '#8d8c88'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1; }
+  WRITE_ON = BOARD.has(i); WRITE_T = TT; WRITE_SCN = i;
   s.draw(lt, s.dur);
+  WRITE_ON = false;
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   // label: slams in big at the center, then settles at the top
   if (s.ons) {

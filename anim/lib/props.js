@@ -7,13 +7,35 @@ const fade = (t, t0, d = 0.4) => clamp((t - t0) / d);
 
 function ink(fill, w = INK()) { if (fill) { ctx.fillStyle = fill; ctx.fill(); } ctx.strokeStyle = C.ink; ctx.lineWidth = w; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke(); }
 function at(x, y, s, rot, f) { ctx.save(); ctx.translate(x, y); if (rot) ctx.rotate(rot); if (s !== 1) ctx.scale(s, s); f(); ctx.restore(); }
+// Write-on mode (board scenes): text appears left-to-right as if written with a marker, with a pen at the writing edge.
+// Each piece of text is remembered by scene + its letters (digits ignored, so animated counters are written once).
+let WRITE_ON = false, WRITE_T = 0, WRITE_SCN = -1;
+const WRITTEN = new Map();
 function marker(text, x, y, size, o = {}) {
   ctx.save(); ctx.translate(x, y); if (o.rot) ctx.rotate(o.rot);
   ctx.font = `${size}px "Permanent Marker"`; ctx.textAlign = o.align || 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
   const w = ctx.measureText(text).width;
+  let wp = 1;
+  if (WRITE_ON && !o.noWrite) {
+    const key = WRITE_SCN + '|' + text.replace(/[0-9.,]/g, '#') + '|' + size;
+    if (!WRITTEN.has(key) || WRITTEN.get(key) > WRITE_T) WRITTEN.set(key, WRITE_T);
+    wp = clamp((WRITE_T - WRITTEN.get(key)) / Math.min(1.3, 0.2 + text.length * 0.05));
+  }
+  const x0 = o.align === 'left' ? 0 : o.align === 'right' ? -w : -w / 2;
+  if (wp < 1) { ctx.save(); ctx.beginPath(); ctx.rect(x0 - size * 0.3, -size, (w + size * 0.6) * wp, size * 2); ctx.clip(); }
   if (o.hl) { ctx.fillStyle = o.hl; const x0 = o.align === 'left' ? -14 : -w / 2 - 18; ctx.fillRect(x0, -size * 0.55, w + 36, size * 1.1); }
   if (o.outline) { ctx.strokeStyle = C.ink; ctx.lineWidth = size * 0.17; ctx.strokeText(text, 0, 0); }
   ctx.fillStyle = o.color || C.ink; ctx.fillText(text, 0, 0);
+  if (wp < 1) {
+    ctx.restore();
+    // the marker pen at the writing edge, wiggling like handwriting
+    const ex = x0 + w * wp, ey = Math.sin(WRITE_T * 40) * size * 0.12, k = size / 100;
+    ctx.save(); ctx.translate(ex, ey); ctx.rotate(-0.75); ctx.scale(k, k);
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(14, -8); ctx.lineTo(14, 8); ctx.closePath(); ctx.fillStyle = o.color || C.ink; ctx.fill();
+    ctx.beginPath(); ctx.roundRect(14, -14, 40, 28, 6); ctx.fillStyle = o.color === GREEN ? GREEN : o.color === RED ? RED : '#3a3a3a'; ctx.fill(); ctx.strokeStyle = C.ink; ctx.lineWidth = 4; ctx.stroke();
+    ctx.beginPath(); ctx.roundRect(54, -16, 120, 32, 10); ctx.fillStyle = '#f4f1e8'; ctx.fill(); ctx.stroke();
+    ctx.restore();
+  }
   ctx.restore(); return w;
 }
 const money = n => '$' + Math.round(n).toLocaleString('en-US');
