@@ -12,23 +12,7 @@ function render(t) {
   ctx.restore();
   ctx.beginPath(); split.forEach((p, i) => i ? ctx.lineTo(...p) : ctx.moveTo(...p)); ctx.strokeStyle = C.ink; ctx.lineWidth = 14; ctx.lineJoin = 'round'; ctx.stroke();
   // left: day 1
-  // grey rain cloud over the sad hero
-  ctx.save(); ctx.translate(0, -120);
-  ctx.fillStyle = '#9aa3ad'; ctx.strokeStyle = C.ink; ctx.lineWidth = 7;
-  ctx.beginPath(); for (const [cx, cy, rr] of [[170, 470, 55], [235, 440, 70], [305, 465, 55], [240, 490, 60]]) { ctx.moveTo(cx + rr, cy); ctx.arc(cx, cy, rr, 0, 7); } ctx.fill();
-  ctx.beginPath(); ctx.moveTo(115, 470); ctx.bezierCurveTo(100, 410, 160, 395, 180, 410); ctx.bezierCurveTo(200, 360, 280, 365, 290, 410); ctx.bezierCurveTo(350, 400, 370, 470, 340, 500); ctx.bezierCurveTo(300, 540, 150, 540, 115, 470); ctx.stroke();
-  ctx.restore();
-  heroFront(330, 1010, 1.25, { face: 'sad', armR: [150, -150], armL: [-130, -130] });
-  // rain falling onto his head
-  ctx.strokeStyle = '#6f9fd8'; ctx.lineWidth = 6; ctx.lineCap = 'round';
-  for (const [x, y] of [[160, 430], [215, 470], [265, 435], [315, 470], [190, 505], [290, 510]]) { ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + 7, y + 22); ctx.stroke(); }
-  // a lonely, crumpled $10 in his hand
-  bill(530, 830, 120, -0.35, '$10');
-  // a fly buzzing around the empty jar, with a dotted path
-  ctx.setLineDash([6, 10]); ctx.strokeStyle = C.ink; ctx.lineWidth = 3;
-  ctx.beginPath(); ctx.moveTo(610, 640); ctx.bezierCurveTo(650, 560, 760, 560, 780, 610); ctx.bezierCurveTo(800, 660, 720, 680, 740, 630); ctx.stroke(); ctx.setLineDash([]);
-  ctx.beginPath(); ctx.ellipse(745, 620, 9, 7, 0, 0, 7); ctx.fillStyle = C.ink; ctx.fill();
-  ctx.beginPath(); ctx.ellipse(738, 607, 9, 6, -0.6, 0, 7); ctx.ellipse(752, 607, 9, 6, 0.6, 0, 7); ctx.fillStyle = 'rgba(255,255,255,0.8)'; ctx.fill(); ctx.lineWidth = 2.5; ctx.stroke();
+  heroFront(330, 1010, 1.25, { face: 'sad', armR: [130, -130], armL: [-130, -130] });
   jar(690, 1010, 330, 0.03, 4);
   // right: year 10 with money rain
   // money rain behind the hero and the jar (drawn first, so they cover it)
@@ -43,7 +27,7 @@ function render(t) {
   // labels
   at(250, 110, 1, -0.04, () => marker('DAY 1', 0, 0, 90, { hl: '#fff' }));
   at(1720, 110, 1, 0.04, () => marker('YEAR 10', 0, 0, 90, { hl: YELLOW }));
-  at(600, 330, 1, -0.05, () => marker('$10', 0, 0, 210, { color: '#fff', outline: true }));
+  at(470, 330, 1, -0.05, () => marker('$10', 0, 0, 230, { color: '#fff', outline: true }));
   at(1450, 300, 1, -0.04, () => marker('$52,600', 0, 0, 190, { color: GREEN, outline: true }));
   endFrame();
 }
