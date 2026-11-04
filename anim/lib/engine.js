@@ -19,7 +19,9 @@ const ctx = cv.getContext('2d');
 const rc = rough.canvas(cv);
 const G = rc.generator;
 let SEED = 1;
-const R = (o = {}) => Object.assign({ roughness: 0.9, bowing: 0.7, stroke: C.ink, strokeWidth: 1.7, disableMultiStroke: true, seed: SEED++ }, o);
+// Line thickness multipliers (1 = original thin version). LINE for the sketchy world, HERO_LINE for the hero + window.
+const LINE = 1.2, HERO_LINE = 1.1;
+const R = (o = {}) => { const r = Object.assign({ roughness: 0.9, bowing: 0.7, stroke: C.ink, strokeWidth: 1.7, disableMultiStroke: true, seed: SEED++ }, o); r.strokeWidth *= LINE; return r; };
 
 // ---------- world: list of items drawn every frame ----------
 const WORLD = [];

@@ -2,7 +2,7 @@
 // Drawn with clean ink paths (no rough jitter) so he stays crisp in close-ups.
 function inkPath(fill, width = 7) {
   if (fill) { ctx.fillStyle = fill; ctx.fill(); }
-  ctx.strokeStyle = C.ink; ctx.lineWidth = width; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke();
+  ctx.strokeStyle = C.ink; ctx.lineWidth = width * HERO_LINE; ctx.lineJoin = 'round'; ctx.lineCap = 'round'; ctx.stroke();
 }
 
 // Window with the sleeping hero. Local box 960x640, placed at world (x, y) with scale s.
@@ -25,7 +25,7 @@ function sleepingWindow(x, y, s, t, o = {}) {
   // legs + feet
   ctx.save(); ctx.translate(0, br * 0.4);
   for (const [y1, y2] of [[500, 478], [545, 560]]) {
-    ctx.beginPath(); ctx.moveTo(620, y1); ctx.lineTo(760, y2); ctx.lineWidth = 46; ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(620, y1); ctx.lineTo(760, y2); ctx.lineWidth = 32 + 14 * HERO_LINE; ctx.lineCap = 'round'; ctx.strokeStyle = C.ink; ctx.stroke();
     ctx.lineWidth = 32; ctx.strokeStyle = C.white; ctx.stroke();
     ctx.beginPath(); ctx.ellipse(782, y2, 24, 32, 0.3, 0, 7); inkPath(C.white, 6);
   }
