@@ -15,6 +15,6 @@ function render(t) {
   // title + tagline
   marker('HUMAN', 1090, 460, 88, { rot: -0.03 });
   marker('LITERACY', 1090, 548, 88, { hl: YELLOW, rot: -0.03 });
-  marker('Animated "what if" stories. Real math.', 1090, 630, 34, { rot: -0.015 });
+  marker('Animated stories. Real math.', 1090, 630, 34, { rot: -0.015 });
   endFrame();
 }
