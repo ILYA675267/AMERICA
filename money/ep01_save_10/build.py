@@ -38,7 +38,7 @@ P = [
   "Огромный пирог из сотен маленьких зданий-компаний; герой отрезает себе тонкий кусочек.", "INDEX FUND"),
  ("OPTION 3: THE INDEX FUND", "Historically, the U.S. stock market has averaged around ten percent a year, or roughly seven percent after inflation. Not every year. Some years it falls hard. But over long stretches, that's been the average.",
   "Рисованный график: зигзаг с падениями, но общая линия идёт вверх.", "≈ 10% / YEAR (≈ 7% AFTER INFLATION)"),
- ("OPTION 3: THE INDEX FUND", "If your ten dollars a day earned seven percent a year, after ten years you'd have about fifty-two thousand six hundred dollars. You only put in thirty-six thousand five hundred. The other sixteen thousand? Your money made that by itself.",
+ ("OPTION 3: THE INDEX FUND", "Quick guess before I tell you. How much would you have? Thirty-six thousand? Fifty? A hundred? Write your guess in the comments. Okay… if your ten dollars a day earned seven percent a year, after ten years you'd have about fifty-two thousand six hundred dollars. You only put in thirty-six thousand five hundred. The other sixteen thousand? Your money made that by itself.",
   "Две стопки: «Ты вложил $36,500» и сверху зелёная стопка «Деньги заработали сами $16,100».", "$52,600"),
 
  ("OPTION 3: THE INDEX FUND", "One warning: fees. A fund that charges one percent a year sounds tiny. But over thirty years, a one percent fee on your ten dollars a day could eat around sixty-five thousand dollars. That's why many long-term investors look for low-cost index funds.",
@@ -228,7 +228,7 @@ def retime(audio_dir):
     for d, x in zip(durs, data): d and x.update(dur=round(d, 3))
     open("scenes.json", "w").write(json.dumps(data, ensure_ascii=False, indent=1))
     open("concat.txt", "w").write("".join(f"file '{os.path.abspath(f)}'\n" for f in files))
-    subprocess.check_call(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "concat.txt", "-ar", "48000", "-ac", "2", "voice.wav"])
+    subprocess.check_call(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", "concat.txt", "-af", "adelay=2500|2500", "-ar", "48000", "-ac", "2", "voice.wav"])
     print(f"{len(files)} audio files, total {sum(durs):.1f} s -> scenes.json retimed, voice.wav written")
 
 

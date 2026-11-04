@@ -9,7 +9,8 @@ SR = 48000
 data = json.load(open(sys.argv[1]))
 out_path = sys.argv[2]
 music = "--no-music" not in sys.argv
-total = sum(s["dur"] for s in data) + 1.0
+COLD = 2.5                     # cold open before the first scene (matches scenes/money01.js)
+total = sum(s["dur"] for s in data) + COLD + 1.0
 L = np.zeros(int(total * SR)); R = np.zeros_like(L)
 rng = np.random.default_rng(1)
 
@@ -56,7 +57,10 @@ def tick():
     return np.sin(2 * np.pi * 1400 * t) * env(n, 0.001, 0.012)
 
 
-t0 = 0.0
+# cold open: rising coin cascade, slam, rewind whoosh
+for k in range(14): add(coin(1800 + k * 120), 0.15 + k * 0.1, 0.08, pan=(k % 3 - 1) * 0.3)
+add(pop(), 1.5, 0.7); add(boom(), 1.5, 0.7); add(whoosh(0.5), 2.05, 0.7)
+t0 = COLD
 for i, s in enumerate(data):
     if i: add(whoosh(), max(0, t0 - 0.12), 0.35, pan=0.4 if i % 2 else -0.4)
     parts = [p for p in re.split(r"(?<=[.!?…:])\s+", s["en"]) if p]
@@ -70,11 +74,14 @@ for i, s in enumerate(data):
     if s.get("drama") is not None: add(boom(), t0 + s["drama"] * s["dur"], 0.8)
     if i and s["ch"] != data[i - 1]["ch"]: add(whoosh(0.6), t0, 0.6); add(pop(), t0 + 0.25, 0.4)
     ons = s.get("ons") or ""
+    bstarts = []; ww = 0
+    for p in parts: bstarts.append(ww / total_w * s["dur"]); ww += len(p.split())
+    la = t0 + (bstarts[7] if i == 14 and len(bstarts) > 7 else 0)    # scene 14: the answer label comes at the reveal
     if ons:
-        add(pop(), t0 + 0.3, 0.5)
+        add(pop(), la + 0.3, 0.5)
         if "$" in ons:
-            for k, f0 in enumerate([2093, 2637, 3136, 2349, 2794]): add(coin(f0), t0 + 0.55 + k * 0.07, 0.10, pan=(k - 2) * 0.2)
-        if re.search(r"-|INFLATION|CAN'T|FEE", ons): add(boom(), t0 + 0.5, 0.6)
+            for k, f0 in enumerate([2093, 2637, 3136, 2349, 2794]): add(coin(f0), la + 0.55 + k * 0.07, 0.10, pan=(k - 2) * 0.2)
+        if re.search(r"-|INFLATION|CAN'T|FEE", ons): add(boom(), la + 0.5, 0.6)
     t0 += s["dur"]
 
 if music:   # gentle pluck arpeggio, I–V–vi–IV in C, 96 bpm, very low in the mix

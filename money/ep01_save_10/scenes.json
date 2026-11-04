@@ -208,25 +208,21 @@
  },
  {
   "ch": "OPTION 3: THE INDEX FUND",
-  "en": "If your ten dollars a day earned seven percent a year, after ten years you'd have about fifty-two thousand six hundred dollars. You only put in thirty-six thousand five hundred. The other sixteen thousand? Your money made that by itself.",
+  "en": "Quick guess before I tell you. How much would you have? Thirty-six thousand? Fifty? A hundred? Write your guess in the comments. Okay… if your ten dollars a day earned seven percent a year, after ten years you'd have about fifty-two thousand six hundred dollars. You only put in thirty-six thousand five hundred. The other sixteen thousand? Your money made that by itself.",
   "ons": "$52,600",
   "kw": [
    {
     "w": "$10",
-    "f": 0.034
-   },
-   {
-    "w": "7%",
-    "f": 0.139
+    "f": 0.384
    },
    {
     "w": "10 YEARS",
-    "f": 0.257
+    "f": 0.527
    }
   ],
   "drama": 0.75,
-  "words": 40,
-  "dur": 15.98
+  "words": 63,
+  "dur": 24.83
  },
  {
   "ch": "OPTION 3: THE INDEX FUND",

@@ -5,7 +5,7 @@ const GY = 930;                                   // ground line
 const SUBS = true;
 let TT = 0;                                       // global time (for blinking)
 // Hero with automatic "talking" gestures: on every phrase (beat) the arms move to a new pose and he does a small hop.
-let BEAT = 0, BEATT = 0, SCN = 0, BG = '#efebe2';
+let BEAT = 0, BEATT = 0, SCN = 0, BG = '#efebe2', PHRASE = '';
 const GESTURES = [[[-150, -150], [150, -150]], [[-150, -150], [190, -330]], [[-200, -260], [200, -260]], [[-190, -330], [150, -150]], [[-120, -240], [120, -240]]];
 function hero(x, k = 1.6, o = {}) {
   const g = i => GESTURES[(i + SCN * 2) % GESTURES.length], f = ease(BEATT / 0.3), a = g(Math.max(0, BEAT - 1)), b = g(BEAT);
@@ -14,6 +14,12 @@ function hero(x, k = 1.6, o = {}) {
   const auto = { bob: Math.sin(TT * 3) * 4 - hop, blink: (TT % 3.7) > 3.58, tilt: Math.sin(TT * 1.3) * 0.04 };
   if (!o.armL) auto.armL = pose(0); if (!o.armR) auto.armR = pose(1);
   heroFront(x, GY - hop * k * 0.6, k, Object.assign(auto, o));
+  // reaction icon above the head for the current phrase: "?" for questions, "!" for exclamations, sweat drop on bad news
+  const rx = x + 70 * k, ry = GY - 470 * k - hop * k * 0.6, wob = Math.sin(TT * 9) * 0.12, ap = easeOutBack(BEATT / 0.3);
+  if (/\?$/.test(PHRASE)) at(rx, ry, k * 0.55 * ap, wob, () => marker('?', 0, 0, 150, { color: '#4a7cff', outline: true }));
+  else if (/!$/.test(PHRASE)) at(rx, ry, k * 0.55 * ap, wob, () => marker('!', 0, 0, 150, { color: RED, outline: true }));
+  else if (/crash|thief|lose|losses|quit|hard|shrank|screaming|debt|panick/i.test(PHRASE)) at(x + 130 * k, GY - 380 * k, k * ap, 0, () => {
+    ctx.beginPath(); ctx.moveTo(0, -34); ctx.bezierCurveTo(22, -4, 20, 22, 0, 22); ctx.bezierCurveTo(-20, 22, -22, -4, 0, -34); ink('#9fd3ff', 5); });
   // little emphasis marks next to the head right after a new phrase starts
   if (BEAT > 0 && BEATT < 0.45) { const al = 1 - BEATT / 0.45; ctx.save(); ctx.globalAlpha = al; ctx.strokeStyle = C.ink; ctx.lineWidth = 6; ctx.lineCap = 'round';
     const hx = x + 150 * k, hy = GY - 300 * k; for (let j = -1; j <= 1; j++) { const an = -0.6 + j * 0.45; ctx.beginPath(); ctx.moveTo(hx + Math.cos(an) * 20 * k, hy + Math.sin(an) * 20 * k); ctx.lineTo(hx + Math.cos(an) * (40 + 20 * (1 - al)) * k, hy + Math.sin(an) * (40 + 20 * (1 - al)) * k); ctx.stroke(); } ctx.restore(); }
@@ -77,8 +83,17 @@ const S = [
    const p = ease((t - d * 0.45) / 1); ctx.fillStyle = 'rgba(255,211,77,0.45)'; ctx.fillRect(780 + 7 * 70 - 34, GY - 520, 70, 480); hero(380, 1.5, { face: 'grin', armR: [200, -280] }); if (p > 0) bill(lerp(1300, 620, p), lerp(GY - 300, GY - 440, p), 120); },
  // 13 market chart drawn on
  (t, d) => { chart(560, 820, 1200, 560, marketPts(13, 60, 0.85, 0.07, [[0.3, 0.12], [0.62, 0.18]]), clamp(t / (d * 0.8))); hero(300, 1.2, { face: 'smile', armR: [170, -260] }); },
- // 14 two stacks: what you put in vs what money made
- (t, d) => { const a = clamp(t / (d * 0.4)), b = clamp((t - d * 0.4) / (d * 0.45));
+ // 14 viewer guess (A/B/C card with a ticking timer), then the reveal: two stacks — what you put in vs what money made
+ (t, d) => { const r0 = SC[14].beats[7];
+   if (t < r0) { const opts = [['A', '$36,000'], ['B', '$50,000'], ['C', '$100,000']];
+     hero(330, 1.4, { face: 'flat', armR: [150, -330] });
+     opts.forEach(([l, v], k) => { const sc = pop(t, SC[14].beats[2 + k]); if (sc <= 0) return;
+       at(1100, 300 + k * 190, sc, 0, () => { ctx.beginPath(); ctx.roundRect(-330, -70, 660, 140, 24); ink('#fff'); ctx.beginPath(); ctx.arc(-250, 0, 46, 0, 7); ink(YELLOW); marker(l, -250, 4, 64); marker(v, 40, 4, 84, { color: GREEN }); }); });
+     const tp = clamp(t / r0); ctx.beginPath(); ctx.arc(1620, 760, 90, 0, 7); ink('#fff'); ctx.beginPath(); ctx.moveTo(1620, 760); ctx.arc(1620, 760, 80, -Math.PI / 2, -Math.PI / 2 + tp * Math.PI * 2); ctx.closePath(); ctx.fillStyle = 'rgba(232,72,63,0.6)'; ctx.fill();
+     ctx.beginPath(); ctx.moveTo(1620, 760); ctx.lineTo(1620 + Math.cos(-Math.PI / 2 + tp * 6.28) * 70, 760 + Math.sin(-Math.PI / 2 + tp * 6.28) * 70); ink(null, 7);
+     return; }
+   t -= r0; d -= r0;
+   const a = clamp(t / (d * 0.4)), b = clamp((t - d * 0.4) / (d * 0.45));
    for (let k = 0; k < Math.round(28 * a); k++) bill(1050 + (k % 2) * 6, GY - 20 - k * 16, 230, 0, '$100');
    for (let k = 0; k < Math.round(12 * b); k++) bill(1050 + (k % 2) * 6, GY - 20 - 28 * 16 - k * 16, 230, 0, '$100');
    marker('YOU: $36,500', 1230, GY - 220, 60, { align: 'left' }); if (b > 0) marker('MONEY: +$16,100', 1230, GY - 560, 60, { align: 'left', color: GREEN });
@@ -185,8 +200,11 @@ for (const s of SC) {
   let w = 0; s.beats = parts.map(p => { const st = w / total * s.dur; w += p.split(' ').length; return st; });
   s.parts = parts;
   s.bad = /-|INFLATION|CAN'T|FEE/.test(s.ons || '');
+  s.labelAt = 0;
 }
-const DURATION = acc;
+const COLD = 2.5;            // cold-open hook before the first word
+const DURATION = acc + COLD;
+SC[14].labelAt = SC[14].beats[7];   // don't spoil the viewer's guess: show the answer only at the reveal
 // camera framings, cycled per phrase: [zoom, dx, dy]
 // per-chapter paper tint, words that are "bad news", scenes whose top area is busy (no kinetic words there),
 // and the hero's face position for dramatic zooms
@@ -217,14 +235,32 @@ function burst(t, x, y) {      // coins and bills flying out of a money label
   }
 }
 
+function coldOpen(t) {
+  beginFrame(); BG = TINTS[0];
+  const shake = 6 * Math.sin(t * 60); setCamera(960 + shake, 560, 1 + t * 0.06);
+  jar(1330, GY, 640, clamp(t / 1.5), 21); hero(520, 1.5, { face: 'shock', armL: [-210, -300], armR: [210, -300] });
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  const v = 10 * Math.pow(52600 / 10, ease(clamp(t / 1.5)));
+  at(960, 170, 1 + 0.05 * Math.sin(t * 30), -0.03, () => marker(money(v), 0, 0, 170, { color: GREEN, outline: true }));
+  if (t > 0.2 && t < 1.8) burst(t - 0.2, 1330, GY - 640);
+  if (t > 1.5) { const sc = lerp(3, 1, easeOutBack((t - 1.5) / 0.25)); at(960, 560, sc, -0.08, () => marker('WHAT IF?', 0, 0, 200, { hl: YELLOW })); }
+  if (t > 2.1) { const p = (t - 2.1) / 0.4; ctx.fillStyle = 'rgba(44,44,44,0.25)'; for (let k = 0; k < 14; k++) ctx.fillRect(0, ((k * 97 + p * 900) % H), W, 6);
+    marker('<< REWIND', 1700, 90, 60); ctx.globalAlpha = p; ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H); ctx.globalAlpha = 1; }
+  endFrame();
+}
+
 function render(t) {
+  if (t < COLD) return coldOpen(t);
+  t -= COLD;
   TT = t;
   let i = SC.findIndex(s => t < s.t0 + s.dur); if (i < 0) i = SC.length - 1;
   const s = SC[i], lt = t - s.t0;
   let b = 0; while (b + 1 < s.beats.length && lt >= s.beats[b + 1]) b++;
-  SCN = i; BEAT = b; BEATT = lt - s.beats[b];
+  SCN = i; BEAT = b; BEATT = lt - s.beats[b]; PHRASE = s.parts[b].trim();
   beginFrame();
   BG = TINTS[s.chi % TINTS.length]; ctx.fillStyle = BG; ctx.fillRect(0, 0, W, H);
+  ctx.globalAlpha = 0.1; for (let k = 0; k < 16; k++) { const r = rng(k * 31 + 5), sp = 25 + r() * 35, x = r() * W + Math.sin(t * 0.5 + k) * 30, y = H + 100 - ((t * sp + r() * H * 1.2) % (H + 200));
+    if (k % 2) coin(x, y, 18 + r() * 10); else marker('$', x, y, 60 + r() * 30); } ctx.globalAlpha = 1;
   // camera: quick punch to a new framing on every phrase + slow drift; scenes slide in from alternating sides
   const sh = SHOTS[(b + i) % SHOTS.length], pv = SHOTS[(Math.max(0, b - 1) + i) % SHOTS.length], f = b ? easeOutBack(BEATT / 0.28) : 1;
   let z = lerp(pv[0], sh[0], f) + 0.012 * BEATT, cx = 960 + lerp(pv[1], sh[1], f), cy = 560 + lerp(pv[2], sh[2], f);
@@ -244,12 +280,17 @@ function render(t) {
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   // label: slams in big at the center, then settles at the top
   if (s.ons) {
+    const lt0 = lt; { const lt = lt0 - s.labelAt;
     const p = clamp((lt - 0.3) / 0.25), q = ease((lt - 1.0) / 0.45);
     if (p > 0) {
       const sc = lerp(lerp(2.6, 1.7, easeOutBack(p)), 1, q), y = lerp(470, 110, q);
       at(960, y, sc, -0.02 * q + (1 - q) * 0.03, () => marker(s.ons, 0, 0, 84, { hl: s.bad ? '#ffb3a7' : YELLOW }));
       if (s.ons.includes('$') && lt > 0.55 && lt < 2.2) burst(lt - 0.55, 960, 470);
+      if (lt > 0.5 && lt < 0.85) { const e = (lt - 0.5) / 0.35; ctx.save(); ctx.globalAlpha = 1 - e; ctx.strokeStyle = C.ink; ctx.lineWidth = 9; ctx.lineCap = 'round';
+        for (let k = 0; k < 14; k++) { const an = k / 14 * 6.28; ctx.beginPath(); ctx.moveTo(960 + Math.cos(an) * (260 + e * 200), 470 + Math.sin(an) * (130 + e * 120)); ctx.lineTo(960 + Math.cos(an) * (330 + e * 260), 470 + Math.sin(an) * (170 + e * 150)); ctx.stroke(); }
+        ctx.restore(); }
     }
+  }
   }
   // kinetic words: numbers and key terms pop up exactly when they are said
   if (!NOKW.has(i)) (s.kw || []).forEach((k, n) => {

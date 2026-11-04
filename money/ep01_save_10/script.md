@@ -1,12 +1,12 @@
 # Ep. 01 — What If You Saved $10 a Day for 10 Years?
 
-42 сцен · 1383 слов озвучки · ≈ 9.2 мин при спокойном темпе 150 слов/мин.
+42 сцен · 1406 слов озвучки · ≈ 9.4 мин при спокойном темпе 150 слов/мин.
 
 **Название:** What If You Saved $10 a Day for 10 Years?  
 **Обложка:** `thumbnail.png`  
 **Описание (начало):** What happens if you put away just $10 a day for 10 years? We run the numbers: a jar, a savings account and an index fund — plus compound interest, the Rule of 72, and why your brain makes saving so hard. Not financial advice.
 
-**Главы (для описания):** 0:00 Intro · 0:51 Day One · 1:25 Option 1: The Jar · 1:59 Option 2: The Bank · 2:26 Option 3: The Index Fund · 3:27 The Snowball · 4:07 The Boring Years · 5:31 Time Beats Money · 6:19 Why It'S So Hard · 7:57 What It Really Buys · 8:33 Ending
+**Главы (для описания):** 0:00 Intro · 0:51 Day One · 1:25 Option 1: The Jar · 1:59 Option 2: The Bank · 2:26 Option 3: The Index Fund · 3:36 The Snowball · 4:16 The Boring Years · 5:40 Time Beats Money · 6:29 Why It'S So Hard · 8:07 What It Really Buys · 8:42 Ending
 
 
 ## INTRO
@@ -77,7 +77,7 @@ _Надпись:_ `INDEX FUND`
 _Анимация:_ Рисованный график: зигзаг с падениями, но общая линия идёт вверх.  
 _Надпись:_ `≈ 10% / YEAR (≈ 7% AFTER INFLATION)`
 
-**15.** If your ten dollars a day earned seven percent a year, after ten years you'd have about fifty-two thousand six hundred dollars. You only put in thirty-six thousand five hundred. The other sixteen thousand? Your money made that by itself.  
+**15.** Quick guess before I tell you. How much would you have? Thirty-six thousand? Fifty? A hundred? Write your guess in the comments. Okay… if your ten dollars a day earned seven percent a year, after ten years you'd have about fifty-two thousand six hundred dollars. You only put in thirty-six thousand five hundred. The other sixteen thousand? Your money made that by itself.  
 _Анимация:_ Две стопки: «Ты вложил $36,500» и сверху зелёная стопка «Деньги заработали сами $16,100».  
 _Надпись:_ `$52,600`
 
