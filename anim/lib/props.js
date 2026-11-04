@@ -10,16 +10,22 @@ function at(x, y, s, rot, f) { ctx.save(); ctx.translate(x, y); if (rot) ctx.rot
 // Write-on mode (board scenes): text appears left-to-right as if written with a marker, with a pen at the writing edge.
 // Each piece of text is remembered by scene + its letters (digits ignored, so animated counters are written once).
 let WRITE_ON = false, WRITE_T = 0, WRITE_SCN = -1;
-const WRITTEN = new Map();
+const WRITTEN = new Map(), QEND = new Map();
 function marker(text, x, y, size, o = {}) {
   ctx.save(); ctx.translate(x, y); if (o.rot) ctx.rotate(o.rot);
   ctx.font = `${size}px "Permanent Marker"`; ctx.textAlign = o.align || 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
   const w = ctx.measureText(text).width;
   let wp = 1;
   if (WRITE_ON && !o.noWrite) {
+    // one marker for the whole board: each new text waits in a queue until the previous one is finished
     const key = WRITE_SCN + '|' + text.replace(/[0-9.,]/g, '#') + '|' + size;
-    if (!WRITTEN.has(key) || WRITTEN.get(key) > WRITE_T) WRITTEN.set(key, WRITE_T);
-    wp = clamp((WRITE_T - WRITTEN.get(key)) / Math.min(1.3, 0.2 + text.length * 0.05));
+    const dur = Math.min(1.3, 0.2 + text.length * 0.05);
+    let e = WRITTEN.get(key);
+    if (!e || e.seen > WRITE_T) {
+      const start = Math.max(WRITE_T, (QEND.get(WRITE_SCN) || 0) + 0.08);
+      e = { seen: WRITE_T, start, dur }; WRITTEN.set(key, e); QEND.set(WRITE_SCN, start + dur);
+    }
+    wp = clamp((WRITE_T - e.start) / e.dur);
   }
   const x0 = o.align === 'left' ? 0 : o.align === 'right' ? -w : -w / 2;
   if (wp < 1) { ctx.save(); ctx.beginPath(); ctx.rect(x0 - size * 0.3, -size, (w + size * 0.6) * wp, size * 2); ctx.clip(); }
