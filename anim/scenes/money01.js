@@ -4,7 +4,20 @@
 const GY = 930;                                   // ground line
 const SUBS = true;
 let TT = 0;                                       // global time (for blinking)
-const hero = (x, k = 1.6, o = {}) => heroFront(x, GY, k, Object.assign({ bob: Math.sin(TT * 2.4) * 3, blink: (TT % 3.7) > 3.58 }, o));
+// Hero with automatic "talking" gestures: on every phrase (beat) the arms move to a new pose and he does a small hop.
+let BEAT = 0, BEATT = 0, SCN = 0;
+const GESTURES = [[[-150, -150], [150, -150]], [[-150, -150], [190, -330]], [[-200, -260], [200, -260]], [[-190, -330], [150, -150]], [[-120, -240], [120, -240]]];
+function hero(x, k = 1.6, o = {}) {
+  const g = i => GESTURES[(i + SCN * 2) % GESTURES.length], f = ease(BEATT / 0.3), a = g(Math.max(0, BEAT - 1)), b = g(BEAT);
+  const pose = side => [lerp(a[side][0], b[side][0], f), lerp(a[side][1], b[side][1], f)];
+  const hop = BEAT > 0 ? Math.sin(clamp(BEATT / 0.35) * Math.PI) * 26 : 0;
+  const auto = { bob: Math.sin(TT * 3) * 4 - hop, blink: (TT % 3.7) > 3.58, tilt: Math.sin(TT * 1.3) * 0.04 };
+  if (!o.armL) auto.armL = pose(0); if (!o.armR) auto.armR = pose(1);
+  heroFront(x, GY - hop * k * 0.6, k, Object.assign(auto, o));
+  // little emphasis marks next to the head right after a new phrase starts
+  if (BEAT > 0 && BEATT < 0.45) { const al = 1 - BEATT / 0.45; ctx.save(); ctx.globalAlpha = al; ctx.strokeStyle = C.ink; ctx.lineWidth = 6; ctx.lineCap = 'round';
+    const hx = x + 150 * k, hy = GY - 300 * k; for (let j = -1; j <= 1; j++) { const an = -0.6 + j * 0.45; ctx.beginPath(); ctx.moveTo(hx + Math.cos(an) * 20 * k, hy + Math.sin(an) * 20 * k); ctx.lineTo(hx + Math.cos(an) * (40 + 20 * (1 - al)) * k, hy + Math.sin(an) * (40 + 20 * (1 - al)) * k); ctx.stroke(); } ctx.restore(); }
+}
 const counter = (x, y, v, size = 120, color = GREEN) => marker(money(v), x, y, size, { color, outline: true });
 const grow = (t, t0, d, a, b) => lerp(a, b, ease((t - t0) / d));
 // Street backdrop (same neighbourhood as the reference clip), built once and drawn behind outdoor scenes, faded into the paper.
@@ -162,34 +175,70 @@ const S = [
  (t, d) => { const p = clamp((t - d * 0.45) / 1.5); if (p > 0) scribbleMonster(1450, GY, 1.2 * p + 0.01, t); card(1450, GY - 520 * p, 0.3); hero(700, 1.6, { face: 'grin', armR: [200 + Math.sin(t * 8) * 30, -420] }); },
 ];
 
-// ---- framework: timing, label, subtitles, transitions ----
+// ---- framework: timing, beats, camera cuts, label slam, particles, transitions, subtitles ----
 const SC = DATA.map((s, i) => Object.assign({}, s, { draw: S[i] }));
-let acc = 0; for (const s of SC) { s.t0 = acc; acc += s.dur; }
+let acc = 0;
+for (const s of SC) {
+  s.t0 = acc; acc += s.dur;
+  // beats = phrases (sentences); each gets a share of the scene time by word count
+  const parts = s.en.split(/(?<=[.!?…:])\s+/).filter(Boolean), total = s.en.split(' ').length;
+  let w = 0; s.beats = parts.map(p => { const st = w / total * s.dur; w += p.split(' ').length; return st; });
+  s.parts = parts;
+  s.bad = /-|INFLATION|CAN'T|FEE/.test(s.ons || '');
+}
 const DURATION = acc;
+// camera framings, cycled per phrase: [zoom, dx, dy]
+const SHOTS = [[1, 0, 0], [1.1, -60, -25], [1.05, 60, 10], [1.12, 0, -40], [1.07, -40, 15]];
 
-function subtitle(text, t, d) {
-  const words = text.replace(/\(.*?\)\s*/g, '').split(' '), per = 7, n = Math.ceil(words.length / per);
-  const k = Math.min(n - 1, Math.floor(t / d * n)), line = words.slice(k * per, k * per + per).join(' ');
-  ctx.font = '800 46px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  // plain black text on the picture (thin paper-coloured halo keeps it readable where it crosses lines)
-  ctx.lineJoin = 'round'; ctx.strokeStyle = 'rgba(239,235,226,0.9)'; ctx.lineWidth = 8; ctx.strokeText(line, 960, 1012);
+function subtitle(line) {
+  ctx.font = '800 46px Inter'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.lineJoin = 'round';
+  ctx.strokeStyle = 'rgba(239,235,226,0.9)'; ctx.lineWidth = 8; ctx.strokeText(line, 960, 1012);
   ctx.fillStyle = C.ink; ctx.fillText(line, 960, 1012);
+}
+function subLine(s, b, bt) {   // within a phrase, show 7-word pieces in turn
+  const words = s.parts[b].split(' '), per = 7, n = Math.ceil(words.length / per);
+  const bd = (b + 1 < s.beats.length ? s.beats[b + 1] : s.dur) - s.beats[b];
+  const k = Math.min(n - 1, Math.floor(bt / bd * n));
+  return words.slice(k * per, k * per + per).join(' ');
+}
+function burst(t, x, y) {      // coins and bills flying out of a money label
+  const r = rng(7);
+  for (let k = 0; k < 16; k++) {
+    const a = -Math.PI / 2 + (r() - 0.5) * 2.6, v = 500 + r() * 600, tt = t;
+    const px = x + Math.cos(a) * v * tt, py = y + Math.sin(a) * v * tt + 900 * tt * tt;
+    if (k % 3 === 0) bill(px, py, 70, tt * 8 + k, '$'); else coin(px, py, 14);
+  }
 }
 
 function render(t) {
   TT = t;
   let i = SC.findIndex(s => t < s.t0 + s.dur); if (i < 0) i = SC.length - 1;
   const s = SC[i], lt = t - s.t0;
+  let b = 0; while (b + 1 < s.beats.length && lt >= s.beats[b + 1]) b++;
+  SCN = i; BEAT = b; BEATT = lt - s.beats[b];
   beginFrame();
-  const z = 1 + 0.035 * clamp(lt / s.dur);
-  setCamera(960, 560, z);
-  ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(-200, GY + 2); ctx.lineTo(2200, GY + 2); ctx.strokeStyle = '#8d8c88'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
+  // camera: quick punch to a new framing on every phrase + slow drift; scenes slide in from alternating sides
+  const sh = SHOTS[(b + i) % SHOTS.length], pv = SHOTS[(Math.max(0, b - 1) + i) % SHOTS.length], f = b ? easeOutBack(BEATT / 0.28) : 1;
+  let z = lerp(pv[0], sh[0], f) + 0.012 * BEATT, cx = 960 + lerp(pv[1], sh[1], f), cy = 560 + lerp(pv[2], sh[2], f);
+  const tin = clamp(lt / 0.4), dir = i % 2 ? 1 : -1;
+  cx += dir * 700 * Math.pow(1 - tin, 3); z *= 1 + 0.12 * Math.pow(1 - tin, 2);
+  // screen shake on bad news when the label lands
+  if (s.bad && lt > 0.55 && lt < 1.1) { const a = (1.1 - lt) * 22; cx += Math.sin(lt * 90) * a; cy += Math.cos(lt * 70) * a; }
+  setCamera(cx, cy, z);
+  ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(-600, GY + 2); ctx.lineTo(2600, GY + 2); ctx.strokeStyle = '#8d8c88'; ctx.lineWidth = 2; ctx.stroke(); ctx.globalAlpha = 1;
   s.draw(lt, s.dur);
   ctx.setTransform(1, 0, 0, 1, 0, 0);
-  if (s.ons) { const sc = pop(lt, 0.25); if (sc > 0) at(960, 110, sc, -0.02, () => marker(s.ons, 0, 0, 84, { hl: YELLOW })); }
-  if (SUBS) subtitle(s.en, lt, s.dur);
-  // quick paper-wipe between chapters, short dip between scenes
-  const fadeIn = clamp(lt / 0.18);
-  if (fadeIn < 1) { ctx.fillStyle = `rgba(239,235,226,${1 - fadeIn})`; ctx.fillRect(0, 0, W, H); }
+  // label: slams in big at the center, then settles at the top
+  if (s.ons) {
+    const p = clamp((lt - 0.3) / 0.25), q = ease((lt - 1.0) / 0.45);
+    if (p > 0) {
+      const sc = lerp(lerp(2.6, 1.7, easeOutBack(p)), 1, q), y = lerp(470, 110, q);
+      at(960, y, sc, -0.02 * q + (1 - q) * 0.03, () => marker(s.ons, 0, 0, 84, { hl: s.bad ? '#ffb3a7' : YELLOW }));
+      if (s.ons.includes('$') && lt > 0.55 && lt < 2.2) burst(lt - 0.55, 960, 470);
+    }
+  }
+  if (SUBS) subtitle(subLine(s, b, BEATT));
+  // flash of paper at the very start of a scene (hides the cut)
+  if (lt < 0.12) { ctx.fillStyle = `rgba(239,235,226,${1 - lt / 0.12})`; ctx.fillRect(0, 0, W, H); }
   endFrame();
 }
