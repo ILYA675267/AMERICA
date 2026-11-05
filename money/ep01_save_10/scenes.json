@@ -6,7 +6,7 @@
   "kw": [],
   "drama": null,
   "words": 31,
-  "dur": 12.52
+  "dur": 12.53
  },
  {
   "ch": "INTRO",
@@ -24,7 +24,7 @@
   ],
   "drama": null,
   "words": 34,
-  "dur": 13.68
+  "dur": 16.1
  },
  {
   "ch": "INTRO",
@@ -46,7 +46,7 @@
   ],
   "drama": 0.45,
   "words": 47,
-  "dur": 18.68
+  "dur": 18.191
  },
  {
   "ch": "INTRO",
@@ -55,7 +55,7 @@
   "kw": [],
   "drama": null,
   "words": 16,
-  "dur": 6.75
+  "dur": 9.395
  },
  {
   "ch": "DAY ONE",
@@ -64,7 +64,7 @@
   "kw": [],
   "drama": null,
   "words": 36,
-  "dur": 14.45
+  "dur": 14.75
  },
  {
   "ch": "DAY ONE",
@@ -78,7 +78,7 @@
   ],
   "drama": null,
   "words": 19,
-  "dur": 7.91
+  "dur": 7.765
  },
  {
   "ch": "DAY ONE",
@@ -100,7 +100,7 @@
   ],
   "drama": null,
   "words": 32,
-  "dur": 12.91
+  "dur": 13.743
  },
  {
   "ch": "OPTION 1: THE JAR",
@@ -118,7 +118,7 @@
   ],
   "drama": null,
   "words": 27,
-  "dur": 10.98
+  "dur": 12.43
  },
  {
   "ch": "OPTION 1: THE JAR",
@@ -132,7 +132,7 @@
   ],
   "drama": null,
   "words": 34,
-  "dur": 13.68
+  "dur": 13.107
  },
  {
   "ch": "OPTION 1: THE JAR",
@@ -150,7 +150,7 @@
   ],
   "drama": 0.7,
   "words": 24,
-  "dur": 9.83
+  "dur": 11.243
  },
  {
   "ch": "OPTION 2: THE BANK",
@@ -168,7 +168,7 @@
   ],
   "drama": null,
   "words": 33,
-  "dur": 13.29
+  "dur": 12.55
  },
  {
   "ch": "OPTION 2: THE BANK",
@@ -186,7 +186,7 @@
   ],
   "drama": null,
   "words": 34,
-  "dur": 13.68
+  "dur": 13.207
  },
  {
   "ch": "OPTION 3: THE INDEX FUND",
@@ -195,7 +195,7 @@
   "kw": [],
   "drama": null,
   "words": 35,
-  "dur": 14.06
+  "dur": 13.81
  },
  {
   "ch": "OPTION 3: THE INDEX FUND",
@@ -204,7 +204,7 @@
   "kw": [],
   "drama": null,
   "words": 34,
-  "dur": 13.68
+  "dur": 14.459
  },
  {
   "ch": "OPTION 3: THE INDEX FUND",
@@ -222,7 +222,7 @@
   ],
   "drama": 0.75,
   "words": 63,
-  "dur": 24.83
+  "dur": 28.82
  },
  {
   "ch": "OPTION 3: THE INDEX FUND",
@@ -244,7 +244,7 @@
   ],
   "drama": null,
   "words": 43,
-  "dur": 17.14
+  "dur": 19.816
  },
  {
   "ch": "THE SNOWBALL",
@@ -258,7 +258,7 @@
   ],
   "drama": null,
   "words": 34,
-  "dur": 13.68
+  "dur": 14.31
  },
  {
   "ch": "THE SNOWBALL",
@@ -272,7 +272,7 @@
   ],
   "drama": null,
   "words": 31,
-  "dur": 12.52
+  "dur": 12.406
  },
  {
   "ch": "THE SNOWBALL",
@@ -290,7 +290,7 @@
   ],
   "drama": null,
   "words": 35,
-  "dur": 14.06
+  "dur": 13.487
  },
  {
   "ch": "THE BORING YEARS",
@@ -304,7 +304,7 @@
   ],
   "drama": null,
   "words": 46,
-  "dur": 18.29
+  "dur": 20.33
  },
  {
   "ch": "THE BORING YEARS",
@@ -322,7 +322,7 @@
   ],
   "drama": null,
   "words": 31,
-  "dur": 12.52
+  "dur": 13.316
  },
  {
   "ch": "THE BORING YEARS",
@@ -344,7 +344,7 @@
   ],
   "drama": 0.5,
   "words": 32,
-  "dur": 12.91
+  "dur": 16.73
  },
  {
   "ch": "THE BORING YEARS",
@@ -353,7 +353,7 @@
   "kw": [],
   "drama": null,
   "words": 41,
-  "dur": 16.37
+  "dur": 19.136
  },
  {
   "ch": "THE BORING YEARS",
@@ -371,7 +371,7 @@
   ],
   "drama": null,
   "words": 24,
-  "dur": 9.83
+  "dur": 10.59
  },
  {
   "ch": "THE BORING YEARS",
@@ -385,7 +385,7 @@
   ],
   "drama": null,
   "words": 36,
-  "dur": 14.45
+  "dur": 13.913
  },
  {
   "ch": "TIME BEATS MONEY",
@@ -415,7 +415,7 @@
   ],
   "drama": null,
   "words": 35,
-  "dur": 14.06
+  "dur": 15.27
  },
  {
   "ch": "TIME BEATS MONEY",
@@ -429,7 +429,7 @@
   ],
   "drama": 0.6,
   "words": 24,
-  "dur": 9.83
+  "dur": 9.94
  },
  {
   "ch": "TIME BEATS MONEY",
@@ -447,7 +447,7 @@
   ],
   "drama": null,
   "words": 32,
-  "dur": 12.91
+  "dur": 11.3
  },
  {
   "ch": "TIME BEATS MONEY",
@@ -461,7 +461,7 @@
   ],
   "drama": null,
   "words": 30,
-  "dur": 12.14
+  "dur": 13.907
  },
  {
   "ch": "WHY IT'S SO HARD",
@@ -470,7 +470,7 @@
   "kw": [],
   "drama": null,
   "words": 33,
-  "dur": 13.29
+  "dur": 13.83
  },
  {
   "ch": "WHY IT'S SO HARD",
@@ -488,7 +488,7 @@
   ],
   "drama": null,
   "words": 26,
-  "dur": 10.6
+  "dur": 11.78
  },
  {
   "ch": "WHY IT'S SO HARD",
@@ -506,7 +506,7 @@
   ],
   "drama": null,
   "words": 33,
-  "dur": 13.29
+  "dur": 15.139
  },
  {
   "ch": "WHY IT'S SO HARD",
@@ -524,7 +524,7 @@
   ],
   "drama": null,
   "words": 41,
-  "dur": 16.37
+  "dur": 16.107
  },
  {
   "ch": "WHY IT'S SO HARD",
@@ -538,7 +538,7 @@
   ],
   "drama": null,
   "words": 48,
-  "dur": 19.06
+  "dur": 20.06
  },
  {
   "ch": "WHY IT'S SO HARD",
@@ -552,7 +552,7 @@
   ],
   "drama": null,
   "words": 34,
-  "dur": 13.68
+  "dur": 15.093
  },
  {
   "ch": "WHY IT'S SO HARD",
@@ -566,7 +566,7 @@
   ],
   "drama": null,
   "words": 30,
-  "dur": 12.14
+  "dur": 11.985
  },
  {
   "ch": "WHAT IT REALLY BUYS",
@@ -575,7 +575,7 @@
   "kw": [],
   "drama": null,
   "words": 29,
-  "dur": 11.75
+  "dur": 11.31
  },
  {
   "ch": "WHAT IT REALLY BUYS",
@@ -589,7 +589,7 @@
   ],
   "drama": null,
   "words": 29,
-  "dur": 11.75
+  "dur": 12.465
  },
  {
   "ch": "WHAT IT REALLY BUYS",
@@ -603,7 +603,7 @@
   ],
   "drama": null,
   "words": 30,
-  "dur": 12.14
+  "dur": 14.573
  },
  {
   "ch": "ENDING",
@@ -629,7 +629,7 @@
   ],
   "drama": null,
   "words": 34,
-  "dur": 13.68
+  "dur": 12.69
  },
  {
   "ch": "ENDING",
@@ -647,7 +647,7 @@
   ],
   "drama": null,
   "words": 25,
-  "dur": 10.22
+  "dur": 9.235
  },
  {
   "ch": "ENDING",
@@ -661,6 +661,6 @@
   ],
   "drama": null,
   "words": 41,
-  "dur": 16.37
+  "dur": 12.479
  }
 ]
