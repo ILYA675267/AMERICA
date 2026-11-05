@@ -11,16 +11,16 @@ What would really happen if you put away just $10 a day for 10 years? We run the
 
 ⏱ Chapters
 0:00 Intro
-0:44 Day One
-1:19 Option 1: The Jar
-1:54 Option 2: The Bank
-2:21 Option 3: The Index Fund
-3:21 The Snowball
-4:02 The Boring Years
-5:21 Time Beats Money
-6:08 Why It's So Hard
-7:47 What It Really Buys
-8:23 Ending
+0:58 Day One
+1:34 Option 1: The Jar
+2:11 Option 2: The Bank
+2:37 Option 3: The Index Fund
+3:54 The Snowball
+4:34 The Boring Years
+6:08 Time Beats Money
+6:59 Why It's So Hard
+8:43 What It Really Buys
+9:21 Ending
 
 📌 This video is for entertainment and education only. It is not financial advice. Do your own research or talk to a licensed professional before investing.
 
@@ -33,7 +33,7 @@ Sources:
 
 #personalfinance #compoundinterest #money
 ```
-Главы в описании — примерные (по оценочной длине). После финальной сборки я пришлю точные.
+Главы — точные, по финальному ролику с озвучкой.
 
 ## Теги
 ```
