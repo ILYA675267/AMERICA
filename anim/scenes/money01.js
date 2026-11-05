@@ -109,8 +109,11 @@ const S = [
  // 16 snowball of coins rolls down the painted hill and grows
  (t, d) => { const p = clamp(t / d), x = lerp(120, 1750, p * p * 0.6 + p * 0.4), r = lerp(26, 220, p * p);
    snowball(x, HILL(x) - r * 0.95, r, p * 16); const hx = 60 + p * 160; heroWalk(hx, HILL(hx), 0.33, t); },
- // 17 "Einstein" quote with a question mark
- (t, d) => { hero(760, 1.6, { wildHair: true, mustache: true, face: 'smile', armR: [190, -300] }); at(1300, 420, pop(t, d * 0.5), 0, () => marker('?', 0, 0, 380, { color: RED, outline: true })); },
+ // 17 "Einstein" quote with a question mark (the provided Einstein drawing, gently bobbing)
+ (t, d) => { const im = window.IMG && IMG.char_einstein, h = 620, w = h * im.width / im.height, bob = Math.sin(TT * 2.4) * 6, sq = 1 + Math.sin(TT * 2.4) * 0.01;
+   ctx.fillStyle = 'rgba(70,70,75,0.16)'; ctx.beginPath(); ctx.ellipse(720, GY + 4, w * 0.32, 14, 0, 0, 7); ctx.fill();
+   ctx.save(); ctx.translate(720, GY); ctx.rotate(Math.sin(TT * 1.3) * 0.02); ctx.scale(1, sq); ctx.drawImage(im, -w / 2, -h + bob * 0.3, w, h); ctx.restore();
+   at(1300, 420, pop(t, d * 0.5), 0, () => marker('?', 0, 0, 380, { color: RED, outline: true })); },
  // 18 Rule of 72 on a board, money doubles
  (t, d) => { const q = clamp(t / 1.2); ctx.save(); ctx.beginPath(); ctx.rect(560, 280, 800 * q, 300); ctx.clip(); marker('72 ÷ 7 = ~10', 961, 430, 120); ctx.restore();
    const p = clamp((t - d * 0.5) / 1); for (let k = 0; k < 6 + Math.round(6 * p); k++) bill(1380, GY - 20 - k * 18, 200, 0, '$100'); hero(900, 1.0, { armL: [-200, -330] }); },
