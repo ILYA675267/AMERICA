@@ -12,21 +12,23 @@ const fps = +opt('--fps', 30);
 const audio = opt('--audio');
 const preview = opt('--preview');
 const dataFile = opt('--data');
+const SCALE = +opt('--scale', 1);   // 1 = 1920x1080, 1.3333 = 2560x1440, 2 = 3840x2160 (drawn natively, not upscaled)
 const range = opt('--range');   // "from,to" seconds: render only this part (for checks)
 
 (async () => {
   const lib = ['node_modules/roughjs/bundled/rough.js', 'lib/engine.js', 'lib/hero.js', 'lib/street.js', 'lib/walk.js', 'lib/hero_front.js', 'lib/props.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8'));
   const data = dataFile ? `const DATA = ${fs.readFileSync(dataFile, 'utf8')};\n` : '';
-  const code = lib.join('\n;\n') + '\n;\n' + data + fs.readFileSync(scene, 'utf8') + '\n;window.__DUR = DURATION;';
+  const pre = `window.SS = ${SCALE};\n`;
+  const code = pre + lib.join('\n;\n') + '\n;\n' + data + fs.readFileSync(scene, 'utf8') + '\n;window.__DUR = DURATION;';
   const browser = await chromium.launch();
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  const page = await browser.newPage({ viewport: { width: Math.round(1920 * SCALE), height: Math.round(1080 * SCALE) } });
   page.on('pageerror', e => { console.error('PAGE ERROR', e.message); process.exit(1); });
   const fdir = path.join(__dirname, 'fonts');
   const faces = fs.readdirSync(fdir).filter(f => f.endsWith('.ttf')).map(f => {
     const name = f.replace(/-Regular\.ttf$|\.ttf$/, '').replace(/([a-z])([A-Z])/g, '$1 $2');
     return `@font-face{font-family:"${name}";src:url(data:font/ttf;base64,${fs.readFileSync(path.join(fdir, f)).toString('base64')})}`;
   }).join('');
-  await page.setContent(`<html><head><style>${faces}</style></head><body style="margin:0"><canvas id="c" width="1920" height="1080"></canvas></body></html>`);
+  await page.setContent(`<html><head><style>${faces}</style></head><body style="margin:0"><canvas id="c" width="${Math.round(1920 * SCALE)}" height="${Math.round(1080 * SCALE)}"></canvas></body></html>`);
   await page.evaluate(() => Promise.all([...document.fonts].map(f => f.load())));
   // background images (anim/bg/*.jpg|png) -> window.IMG[name]
   const bdir = path.join(__dirname, 'bg');
@@ -35,7 +37,8 @@ const range = opt('--range');   // "from,to" seconds: render only this part (for
   await page.evaluate(async imgs => { window.IMG = {}; await Promise.all(Object.entries(imgs).map(([k, src]) => { const im = new Image(); im.src = src; window.IMG[k] = im; return im.decode(); })); }, imgs);
   await page.addScriptTag({ content: code });
   const dur = await page.evaluate(() => window.__DUR);
-  const grab = t => page.evaluate(t => { render(t); return document.getElementById('c').toDataURL('image/jpeg', 0.95).split(',')[1]; }, t);
+  const Q = +(process.env.JPEGQ || 0.95);
+  const grab = t => page.evaluate(([t, q]) => { render(t); return document.getElementById('c').toDataURL('image/jpeg', q).split(',')[1]; }, [t, Q]);
 
   if (preview) {
     const dir = opt('--preview-dir', path.dirname(out)); fs.mkdirSync(dir, { recursive: true });
@@ -44,7 +47,7 @@ const range = opt('--range');   // "from,to" seconds: render only this part (for
   }
   const ff = ['-y', '-loglevel', 'error', '-f', 'image2pipe', '-framerate', String(fps), '-c:v', 'mjpeg', '-i', '-'];
   if (audio) ff.push('-i', audio, '-c:a', 'aac', '-b:a', '192k', '-shortest');
-  ff.push('-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out);
+  ff.push('-c:v', 'libx264', '-preset', 'medium', '-crf', process.env.CRF || '18', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out);
   const enc = spawn('ffmpeg', ff, { stdio: ['pipe', 'inherit', 'inherit'] });
   const [r0, r1] = range ? range.split(',').map(Number) : [0, dur];
   const n = Math.round((r1 - r0) * fps);

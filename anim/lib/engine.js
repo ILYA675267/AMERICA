@@ -16,6 +16,10 @@ function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 10139
 
 const cv = document.getElementById('c');
 const ctx = cv.getContext('2d');
+// Supersampling: the whole world is still described in 1920x1080 units; every transform is multiplied by SS,
+// so lines and text are drawn natively at the higher resolution.
+const SS = window.SS || 1;
+{ const st = ctx.setTransform.bind(ctx); ctx.setTransform = (a, b, c, d, e, f) => st(a * SS, b * SS, c * SS, d * SS, e * SS, f * SS); }
 const rc = rough.canvas(cv);
 const G = rc.generator;
 let SEED = 1;
