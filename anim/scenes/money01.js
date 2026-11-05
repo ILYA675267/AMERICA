@@ -66,7 +66,7 @@ const S = [
  (t, d) => { hero(380, 1.5, { armR: [180, -300], face: 'smile' });
    const rows = [['$10', 'a day'], ['$70', 'a week'], ['$300', 'a month'], ['$3,650', 'a year']];
    rows.forEach(([a, b], i) => { const t0 = 0.3 + i * d / 4.6; const s = pop(t, t0); if (s <= 0) return;
-     at(1150, 300 + i * 165, s, 0, () => { marker(a, -60, 0, 110, { color: i === 3 ? GREEN : C.ink, outline: i === 3, align: 'right' }); marker(b, 0, 6, 64, { align: 'left' }); }); }); },
+     at(1150, 260 + i * 125, s, 0, () => { marker(a, -60, 0, 96, { color: i === 3 ? GREEN : C.ink, outline: i === 3, align: 'right' }); marker(b, 0, 6, 64, { align: 'left' }); }); }); },
  // 07 full jar, thief peeks out
  (t, d) => { jar(1000, GY, 600, 1, 7); hero(480, 1.5, { face: 'grin' }); const p = ease((t - d * 0.55) / 0.8); at(lerp(2150, 1720, p), GY, 1.2, -0.1 * p, () => thief(0, 0, 1)); },
  // 08 inflation thief steals, burger price climbs
@@ -86,7 +86,7 @@ const S = [
  (t, d) => { const r = rng(12); for (let k = 0; k < 16; k++) building(780 + k * 70 + (k % 2) * 6, GY - 40, 64, 180 + r() * 260, k);
    const p = ease((t - d * 0.45) / 1); ctx.fillStyle = 'rgba(255,211,77,0.45)'; ctx.fillRect(780 + 7 * 70 - 34, GY - 520, 70, 480); hero(380, 1.5, { face: 'grin', armR: [200, -280] }); if (p > 0) bill(lerp(1300, 620, p), lerp(GY - 300, GY - 440, p), 120); },
  // 13 market chart drawn on
- (t, d) => { chart(560, 820, 1200, 560, marketPts(13, 60, 0.85, 0.07, [[0.3, 0.12], [0.62, 0.18]]), clamp(t / (d * 0.8))); hero(300, 1.2, { face: 'smile', armR: [170, -260] }); },
+ (t, d) => { chart(620, 650, 1020, 440, marketPts(13, 60, 0.85, 0.07, [[0.3, 0.12], [0.62, 0.18]]), clamp(t / (d * 0.8))); hero(300, 1.2, { face: 'smile', armR: [170, -260] }); },
  // 14 viewer guess (A/B/C card with a ticking timer), then the reveal: two stacks — what you put in vs what money made
  (t, d) => { const r0 = SC[14].beats[7];
    if (t < r0) { const opts = [['A', '$36,000'], ['B', '$50,000'], ['C', '$100,000']];
@@ -124,10 +124,10 @@ const S = [
    ctx.beginPath(); ctx.roundRect(1500 + p * 380 + 150, GY - 140, 100, 140, 12); ink('#4a7cff'); },
  // 21 crash
  (t, d) => { const pts = marketPts(21, 40, 0.6, 0.04); for (let i = 26; i < 40; i++) pts[i][1] = Math.max(0.05, pts[i][1] - 0.32 * clamp((i - 26) / 3));
-   chart(600, 760, 1000, 500, pts, clamp(t / (d * 0.6)), clamp(t / (d * 0.6)) > 0.66 ? RED : GREEN); hero(330, 1.3, { face: t > d * 0.45 ? 'shock' : 'smile' });
+   chart(560, 640, 880, 400, pts, clamp(t / (d * 0.6)), clamp(t / (d * 0.6)) > 0.66 ? RED : GREEN); hero(330, 1.3, { face: t > d * 0.45 ? 'shock' : 'smile' });
    if (t > d * 0.45) { newsTV(1500, 330, t); newsTV(1750, 560, t + 1); newsTV(1250, 980 - 90, t + 2); } },
  // 22 history: crashes and recoveries
- (t, d) => { chart(260, 860, 1450, 640, marketPts(22, 90, 1.05, 0.05, [[0.15, 0.12], [0.38, 0.2], [0.6, 0.15], [0.82, 0.22]]), clamp(t / (d * 0.85))); },
+ (t, d) => { chart(300, 660, 1340, 480, marketPts(22, 90, 1.05, 0.05, [[0.15, 0.12], [0.38, 0.2], [0.6, 0.15], [0.82, 0.22]]), clamp(t / (d * 0.85))); },
  // 23 calendar flipping years, counter speeds up
  (t, d) => { const y = 5 + Math.min(4, Math.floor(t / (d / 5))); calendar(1400, 420, 'YEAR ' + y); const v = [21776, 26500, 32850, 37500, 43300][y - 5];
    counter(1400, 640, v, 120); jar(700, GY, 300 + (y - 5) * 60, 0.4 + (y - 5) * 0.12, 9); hero(380, 1.4, { face: 'smile' }); },
@@ -146,9 +146,9 @@ const S = [
    if (t > d * 0.35) heroWalk(b, GY, 0.4, t); else hero(260, 0.62, { face: 'flat' }); marker('35', b, GY - 190, 60);
    jar(1650, GY - 280, 300, 1, 12); jar(1650, GY, 150, 1, 13); },
  // 28 Buffett: old man with newspaper, money mountain at the end of a timeline
- (t, d) => { ctx.beginPath(); ctx.moveTo(200, GY); ctx.lineTo(1800, GY); ink(null, 6); for (const [x, l] of [[200, '0'], [800, '30'], [1300, '65'], [1750, '90']]) { ctx.beginPath(); ctx.moveTo(x, GY); ctx.lineTo(x, GY - 20); ink(null, 5); marker(l, x + 34, GY - 40, 44); }
-   const p = clamp(t / (d * 0.8)); ctx.beginPath(); ctx.moveTo(200, GY); for (let k = 0; k <= 60; k++) { const f = k / 60, x = 200 + f * 1550 * p; ctx.lineTo(x, GY - Math.pow(f * p, 6) * 700); } ctx.lineTo(200 + 1550 * p, GY); ctx.closePath(); ink(MONEY);
-   hero(500, 1.0, { glasses: true, mustache: true, armR: [90, -190], armL: [-90, -190] }); ctx.beginPath(); ctx.rect(410, GY - 250, 180, 120); ink('#f4f1e8', 4); for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.moveTo(430, GY - 225 + k * 22); ctx.lineTo(570, GY - 225 + k * 22); ink(null, 3); } },
+ (t, d) => { const BY = 660; ctx.beginPath(); ctx.moveTo(300, BY); ctx.lineTo(1660, BY); ink(null, 6); for (const [x, l] of [[300, '0'], [820, '30'], [1270, '65'], [1640, '90']]) { ctx.beginPath(); ctx.moveTo(x, BY); ctx.lineTo(x, BY - 20); ink(null, 5); marker(l, x + 34, BY - 40, 44); }
+   const p = clamp(t / (d * 0.8)); ctx.beginPath(); ctx.moveTo(300, BY); for (let k = 0; k <= 60; k++) { const f = k / 60, x = 300 + f * 1340 * p; ctx.lineTo(x, BY - Math.pow(f * p, 6) * 470); } ctx.lineTo(300 + 1340 * p, BY); ctx.closePath(); ink(MONEY);
+   hero(230, 0.9, { glasses: true, mustache: true, armR: [90, -190], armL: [-90, -190] }); ctx.beginPath(); ctx.rect(150, GY - 228, 160, 108); ink('#f4f1e8', 4); for (let k = 0; k < 4; k++) { ctx.beginPath(); ctx.moveTo(168, GY - 205 + k * 20); ctx.lineTo(292, GY - 205 + k * 20); ink(null, 3); } },
  // 29 present bias: coffee now vs jar far away
  (t, d) => { coffee(760, GY - 200, 2.2); jar(1650, GY - 300, 140, 1, 14); ctx.beginPath(); ctx.moveTo(900, GY - 300); ctx.lineTo(1580, GY - 300); ctx.setLineDash([16, 18]); ink(null, 5); ctx.setLineDash([]); marker('NOW', 760, 300, 80); marker('10 YEARS', 1650, 440, 56); hero(340, 1.4, { face: 'grin' }); },
  // 30 hand reaches for coffee, other hand stops it
@@ -226,7 +226,7 @@ const IMGS = { 0: 'bg02_coffee', 4: (t, d) => t < d * 0.55 ? 'bg02_coffee' : 'bg
   // explainer scenes: the hero stands at a whiteboard (bg11) or the board fills the frame (bg12)
   1: 'bg11_board_room', 3: 'bg11_board_room', 11: 'bg11_board_room', 12: 'bg11_board_room', 14: 'bg11_board_room', 17: 'bg11_board_room',
   19: 'bg11_board_room', 23: 'bg11_board_room', 33: 'bg11_board_room', 34: 'bg11_board_room', 36: 'bg11_board_room',
-  6: 'bg12_board_close', 13: 'bg12_board_close', 15: 'bg12_board_close', 21: 'bg12_board_close', 22: 'bg12_board_close', 28: 'bg12_board_close' };
+  6: 'bg11_board_room', 13: 'bg11_board_room', 15: 'bg11_board_room', 21: 'bg11_board_room', 22: 'bg11_board_room', 28: 'bg11_board_room' };
 const BOARD = new Set([1, 3, 11, 12, 14, 17, 19, 23, 33, 34, 36, 6, 13, 15, 21, 22, 28, 18, 31, 32]);   // scenes where text is written on a board
 const SHOTS = [[1, 0, 0], [1.1, -60, -25], [1.05, 60, 10], [1.12, 0, -40], [1.07, -40, 15]];
 
