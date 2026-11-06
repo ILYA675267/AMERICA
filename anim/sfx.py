@@ -102,28 +102,39 @@ if "--writes" in sys.argv:
     for w in json.load(open(sys.argv[sys.argv.index("--writes") + 1])):
         add(marker_sound(w["d"]), COLD + w["t"], 0.12)
 
-if music:   # calm documentary bed: slow pad chords + sparse soft piano, no drums, Am–F–C–G at ~66 bpm, very low in the mix
-    bar = 4 * 60 / 66
-    prog = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]          # Am, F, C, G (MIDI)
+if music:   # calm documentary theme: a soft piano melody (two 8-bar phrases) over quiet pad chords and a bass note
+    beat = 60 / 72; bar = 4 * beat
     hz = lambda m: 440 * 2 ** ((m - 69) / 12)
+    prog = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]         # Am, F, C, G — two bars each
+    # melody (MIDI note, beats); 32 beats per phrase = 8 bars
+    A = [(76, 2), (72, 1), (74, 1), (76, 3), (69, 1),  (77, 2), (76, 1), (72, 1), (69, 4),
+         (67, 1), (72, 1), (76, 2), (74, 2), (72, 2),  (71, 2), (74, 1), (79, 1), (74, 3), (71, 1)]
+    B = [(72, 2), (76, 1), (81, 1), (79, 2), (76, 2),  (77, 1), (76, 1), (74, 1), (72, 1), (69, 4),
+         (76, 2), (79, 2), (76, 2), (72, 2),           (74, 2), (71, 2), (69, 4)]
     def pad(notes, d):
         n = int(d * SR); t = np.arange(n) / SR; sig = np.zeros(n)
-        for m in notes + [notes[0] - 12]:
-            for det in (-0.12, 0.0, 0.12):                                    # gently detuned voices = warm, string-like
-                f = hz(m) * 2 ** (det / 12)
-                sig += np.sin(2 * np.pi * f * t + rng.random() * 6) + 0.25 * np.sin(4 * np.pi * f * t)
-        env_ = np.minimum(1, t / 1.8) * np.minimum(1, (d - t) / 1.8)          # slow swell in and out
-        return sig * env_ * (0.85 + 0.15 * np.sin(2 * np.pi * 0.11 * t)) / 12
-    def piano(m, d=3.0):
-        n = int(d * SR); t = np.arange(n) / SR; f = hz(m)
-        return (np.sin(2 * np.pi * f * t) + 0.35 * np.sin(4 * np.pi * f * t) + 0.12 * np.sin(6 * np.pi * f * t)) * np.minimum(1, t / 0.01) * np.exp(-t / 0.9)
-    t = 0.0; k = 0
+        for m in notes:
+            for det in (-0.08, 0.08):
+                f = hz(m) * 2 ** (det / 12); sig += np.sin(2 * np.pi * f * t + rng.random() * 6)
+        return sig * np.minimum(1, t / 1.5) * np.minimum(1, (d - t) / 1.5) / 6
+    def bass(m, d):
+        n = int(d * SR); t = np.arange(n) / SR
+        return np.sin(2 * np.pi * hz(m) * t) * np.minimum(1, t / 0.05) * np.exp(-t / 2.5)
+    def piano(m, d):
+        n = int((d + 1.2) * SR); t = np.arange(n) / SR; f = hz(m)
+        tone = np.sin(2 * np.pi * f * t) + 0.3 * np.sin(4 * np.pi * f * t) * np.exp(-t / 0.4) + 0.08 * np.sin(6 * np.pi * f * t) * np.exp(-t / 0.2)
+        rel = np.where(t < d, 1.0, np.exp(-(t - d) / 0.35))                  # note held for its length, then a soft release
+        return tone * np.minimum(1, t / 0.008) * np.exp(-t / 1.6) * rel
+    t = 0.0; phrase = 0
     while t < total - 1:
-        ch = prog[k % 4]; d = 2 * bar
-        add(pad(ch, d + 1.8), max(0, t - 0.9), 0.042)                          # chords overlap for a seamless bed
-        for j, beat in enumerate((0, 3, 5)):                                  # three quiet piano notes per chord
-            add(piano(ch[(j + k) % 3] + 12), t + beat * bar / 4 * 2 / 2 + j * 0.7, 0.026, pan=0.25 if j % 2 else -0.25)
-        t += d; k += 1
+        for k in range(4):                                                    # accompaniment for one 8-bar phrase
+            ct = t + k * 2 * bar
+            if ct < total: add(pad(prog[k], 2 * bar + 1.5), max(0, ct - 0.75), 0.008); add(bass(prog[k][0] - 12, 2 * bar), ct, 0.011)
+        mt = t
+        for m, b in (A if phrase % 2 == 0 else B):
+            if mt < total - 1: add(piano(m, b * beat * 0.95), mt, 0.013, pan=0.1)
+            mt += b * beat
+        t += 8 * bar; phrase += 1
 
 mix = np.stack([L, R], 1)
 mix /= max(1.0, np.abs(mix).max() / 0.9)
