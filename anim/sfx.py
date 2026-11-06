@@ -102,22 +102,28 @@ if "--writes" in sys.argv:
     for w in json.load(open(sys.argv[sys.argv.index("--writes") + 1])):
         add(marker_sound(w["d"]), COLD + w["t"], 0.12)
 
-if music:   # gentle pluck arpeggio, I–V–vi–IV in C, 96 bpm, very low in the mix
-    beat = 60 / 96
-    chords = [[60, 64, 67, 72], [55, 59, 62, 67], [57, 60, 64, 69], [53, 57, 60, 65]]
-    def pluck(midi, d=0.6):
-        n = int(d * SR); t = np.arange(n) / SR; f = 440 * 2 ** ((midi - 69) / 12)
-        return (np.sin(2 * np.pi * f * t) + 0.3 * np.sin(4 * np.pi * f * t)) * env(n, 0.004, 0.25)
-    def kick():
-        n = int(0.25 * SR); t = np.arange(n) / SR
-        return np.sin(2 * np.pi * np.cumsum(60 * np.exp(-t * 20) + 45) / SR) * env(n, 0.002, 0.08)
-    k = 0; t = 0.0
+if music:   # calm documentary bed: slow pad chords + sparse soft piano, no drums, Am–F–C–G at ~66 bpm, very low in the mix
+    bar = 4 * 60 / 66
+    prog = [[57, 60, 64], [53, 57, 60], [48, 52, 55], [55, 59, 62]]          # Am, F, C, G (MIDI)
+    hz = lambda m: 440 * 2 ** ((m - 69) / 12)
+    def pad(notes, d):
+        n = int(d * SR); t = np.arange(n) / SR; sig = np.zeros(n)
+        for m in notes + [notes[0] - 12]:
+            for det in (-0.12, 0.0, 0.12):                                    # gently detuned voices = warm, string-like
+                f = hz(m) * 2 ** (det / 12)
+                sig += np.sin(2 * np.pi * f * t + rng.random() * 6) + 0.25 * np.sin(4 * np.pi * f * t)
+        env_ = np.minimum(1, t / 1.8) * np.minimum(1, (d - t) / 1.8)          # slow swell in and out
+        return sig * env_ * (0.85 + 0.15 * np.sin(2 * np.pi * 0.11 * t)) / 12
+    def piano(m, d=3.0):
+        n = int(d * SR); t = np.arange(n) / SR; f = hz(m)
+        return (np.sin(2 * np.pi * f * t) + 0.35 * np.sin(4 * np.pi * f * t) + 0.12 * np.sin(6 * np.pi * f * t)) * np.minimum(1, t / 0.01) * np.exp(-t / 0.9)
+    t = 0.0; k = 0
     while t < total - 1:
-        ch = chords[(k // 8) % 4]
-        add(pluck(ch[k % 4] + (12 if k % 8 >= 4 else 0)), t, 0.05, pan=0.3 if k % 2 else -0.3)
-        if k % 2 == 0: add(pluck(ch[0] - 24, 1.2), t, 0.05)
-        if k % 4 == 0: add(kick(), t, 0.07)
-        t += beat / 2; k += 1
+        ch = prog[k % 4]; d = 2 * bar
+        add(pad(ch, d + 1.8), max(0, t - 0.9), 0.042)                          # chords overlap for a seamless bed
+        for j, beat in enumerate((0, 3, 5)):                                  # three quiet piano notes per chord
+            add(piano(ch[(j + k) % 3] + 12), t + beat * bar / 4 * 2 / 2 + j * 0.7, 0.026, pan=0.25 if j % 2 else -0.25)
+        t += d; k += 1
 
 mix = np.stack([L, R], 1)
 mix /= max(1.0, np.abs(mix).max() / 0.9)
