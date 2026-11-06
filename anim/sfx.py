@@ -129,10 +129,10 @@ if music:   # calm documentary theme: a soft piano melody (two 8-bar phrases) ov
     while t < total - 1:
         for k in range(4):                                                    # accompaniment for one 8-bar phrase
             ct = t + k * 2 * bar
-            if ct < total: add(pad(prog[k], 2 * bar + 1.5), max(0, ct - 0.75), 0.0032); add(bass(prog[k][0] - 12, 2 * bar), ct, 0.0045)
+            if ct < total: add(pad(prog[k], 2 * bar + 1.5), max(0, ct - 0.75), 0.0064); add(bass(prog[k][0] - 12, 2 * bar), ct, 0.009)
         mt = t
         for m, b in (A if phrase % 2 == 0 else B):
-            if mt < total - 1: add(piano(m, b * beat * 0.95), mt, 0.0052, pan=0.1)
+            if mt < total - 1: add(piano(m, b * beat * 0.95), mt, 0.0104, pan=0.1)
             mt += b * beat
         t += 8 * bar; phrase += 1
 
