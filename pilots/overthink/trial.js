@@ -1,131 +1,133 @@
-// "Stop Overthinking" — 50-second trial cut, no voice-over: on-screen text, scenes from the user, Milo poses on locations.
-// Pacing rule: something new every 3–6 s. Milo is never redrawn: user poses only, with a light "talking" bob.
+// "Stop Overthinking" — 50-second trial cut v2 (no voice-over).
+// Rules (HANDOFF.md): no camera zoom/pan — backgrounds exactly as they are; Milo stands on the floor of the scene
+// (feet on the floor line, contact shadow, perspective scale), never slides; he may change poses in place;
+// board text is handwritten on the board (marker font, written stroke by stroke, no floating);
+// only UI on top of the frame (subtitles, phone bubbles) may animate in.
 const DUR = 50;
 const INK = '#16161a';
 const POSE = { phone: [465, 687], thinking_gears: [559, 456], realization: [458, 452], presenting: [502, 549],
   talking: [523, 676], facepalm_stress: [425, 452], question_think: [438, 723], idea: [402, 563] };
 
 const glw = (x, y, r, col, op) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${col}" opacity="${op}" filter="url(#glow)" style="mix-blend-mode:screen"/>`;
-const fl = (t, id, amp = 2.5) => `translate(${Math.sin(t * 1.1 + id * 1.7) * amp * 0.4},${Math.sin(t * 1.6 + id * 2.3) * amp})`;
+// Background exactly as it is: full frame, no camera move.
+const bg = img => `<image href="${img}" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice"/>`;
 
-// Full-frame background with a slow camera move (zoom z0->z1 around fx,fy).
-function bg(img, p, z0, z1, fx = 640, fy = 360) {
-  const z = lerp(z0, z1, ease(p));
-  return `<g transform="translate(${fx},${fy}) scale(${z}) translate(${-fx},${-fy})"><image href="${img}" width="${W}" height="${H}" preserveAspectRatio="xMidYMid slice"/></g>`;
-}
-// Milo pose standing with feet at (x, y), height h. talk: 0..1 talking bob; pop: entrance spring 0..1.
-function milo2(pose, x, y, h, t, talk = 0, pop = 1, flip = false) {
+// Milo standing on the floor: feet at (x, y), height h. talk 0..1 = small breathing bob in place (no sliding).
+// Pose changes are instant cuts at the same feet position; shadow stays fixed on the floor.
+function milo2(pose, x, y, h, t, talk = 0, shadowCol = '#1a0f22') {
   const [iw, ih] = POSE[pose], w = h * iw / ih;
-  const bob = talk * Math.abs(Math.sin(t * 7.5)) * 4, sq = talk * Math.sin(t * 15) * 0.012;
-  const k = back(clamp(pop));
-  return `<g transform="translate(${x},${y - bob}) scale(${k * (1 + sq)},${k * (1 - sq)})">
-    <ellipse cx="0" cy="${bob - 2}" rx="${w * 0.33}" ry="${h * 0.035}" fill="#000" opacity="0.35"/>
-    <image href="${ASSETS['pose_' + pose]}" x="${-w / 2}" y="${-h}" width="${w}" height="${h}" ${flip ? 'transform="scale(-1,1)"' : ''}/></g>`;
+  const breathe = Math.sin(t * 2.2) * 0.008 + talk * Math.abs(Math.sin(t * 7)) * 0.018;  // scale from the feet up
+  return `<ellipse cx="${x}" cy="${y - 3}" rx="${w * 0.36}" ry="${h * 0.04}" fill="${shadowCol}" opacity="0.45" filter="url(#soft)"/>
+    <ellipse cx="${x}" cy="${y - 3}" rx="${w * 0.22}" ry="${h * 0.022}" fill="${shadowCol}" opacity="0.4"/>
+    <g transform="translate(${x},${y}) scale(${1 - breathe * 0.4},${1 + breathe})">
+    <image href="${ASSETS['pose_' + pose]}" x="${-w / 2}" y="${-h}" width="${w}" height="${h}"/></g>`;
 }
-// Caption bar at the bottom: white text on a dark rounded strip, soft in/out.
-function cap(s, t, a, b, y = 694, size = 30, hl = null) {
+// Subtitle strip over the frame (UI): fades in, no bounce.
+function cap(s, t, a, b, hl = null) {
   const op = Math.min(seg(t, a, a + 0.3), 1 - seg(t, b - 0.3, b));
   if (op <= 0) return '';
-  const w = s.length * size * 0.56 + 60;
-  let words = s;
-  if (hl) words = s.replace(hl, `\u0000${hl}\u0001`);
-  const parts = words.split(/(\u0000[^\u0001]*\u0001)/).map(p => p.startsWith('\u0000')
-    ? `<tspan fill="${P.mustard}">${p.slice(1, -1)}</tspan>` : p.replace(/&/g, '&amp;').replace(/</g, '&lt;')).join('');
-  return `<g opacity="${op}" transform="translate(640,${y + (1 - ease(seg(t, a, a + 0.3))) * 10})">
-    <rect x="${-w / 2}" y="${-size - 10}" width="${w}" height="${size + 26}" rx="14" fill="#140f1e" opacity="0.82"/>
-    <text x="0" y="0" font-family="Inter" font-weight="800" font-size="${size}" fill="#fff" text-anchor="middle">${parts}</text></g>`;
+  const size = 30, w = s.length * size * 0.55 + 56, y = 690;
+  let html = s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  if (hl) html = html.replace(hl, `<tspan fill="${P.mustard}">${hl}</tspan>`);
+  return `<g opacity="${op}"><rect x="${640 - w / 2}" y="${y - size - 8}" width="${w}" height="${size + 22}" rx="12" fill="#140f1e" opacity="0.8"/>
+    <text x="640" y="${y}" font-family="Inter" font-weight="800" font-size="${size}" fill="#fff" text-anchor="middle">${html}</text></g>`;
 }
-// Big title text with a yellow highlight box (style of the thumbnail).
-function title(lines, t, a, b, cx, cy, size = 64) {
-  const op = Math.min(seg(t, a, a + 0.3), 1 - seg(t, b - 0.3, b));
+// Handwriting on a surface: text revealed left to right as if written with a marker (no movement, no outline).
+let _wid = 0;
+function written(str, x, y, size, col, t, a, dur, o = {}) {
+  if (t < a) return '';
+  const p = clamp((t - a) / dur), id = 'w' + (_wid++);
+  const w = str.length * size * (o.cw || 0.5) + 20;
+  const anchor = o.anchor || 'middle', x0 = anchor === 'middle' ? x - w / 2 : x - 10;
+  return `<defs><clipPath id="${id}"><rect x="${x0}" y="${y - size * 1.1}" width="${w * p}" height="${size * 1.5}"/></clipPath></defs>
+    <g clip-path="url(#${id})" ${o.rot ? `transform="rotate(${o.rot} ${x} ${y})"` : ''}><text x="${x}" y="${y}" font-family="${o.font || 'PatrickHand'}" font-size="${size}"
+    fill="${col}" text-anchor="${anchor}" opacity="0.92">${str.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</text></g>`;
+}
+// Marker underline / circle drawn on the board.
+function strokeLine(d, len, col, t, a, dur, wdt = 5) {
+  if (t < a) return '';
+  const p = clamp((t - a) / dur);
+  return `<path d="${d}" stroke="${col}" stroke-width="${wdt}" fill="none" stroke-linecap="round" stroke-dasharray="${len}" stroke-dashoffset="${len * (1 - p)}" opacity="0.9"/>`;
+}
+// Phone chat bubble (UI on top of the frame): fades in, no bounce, does not float.
+function bubble(x, y, s, t, a, me = true) {
+  const op = seg(t, a, a + 0.25);
   if (op <= 0) return '';
-  let s = `<g opacity="${op}" transform="translate(${cx},${cy}) scale(${back(seg(t, a, a + 0.45))}) ${fl(t, 7, 1.5)}">`;
-  lines.forEach(([txtS, yel], i) => {
-    const y = i * size * 1.12, w = txtS.length * size * 0.62 + 40;
-    if (yel) s += `<rect x="${-w / 2}" y="${y - size * 0.85}" width="${w}" height="${size * 1.05}" rx="12" fill="${P.mustard}" transform="rotate(-2 0 ${y})"/>`;
-    s += `<text x="0" y="${y}" font-family="Inter" font-weight="900" font-size="${size}" text-anchor="middle" fill="${yel ? INK : '#fff'}" stroke="${yel ? 'none' : INK}" stroke-width="${yel ? 0 : 8}" paint-order="stroke">${txtS}</text>`;
-  });
-  return s + '</g>';
+  const w = s.length * 13 + 44;
+  return `<g opacity="${op}"><rect x="${x - w / 2}" y="${y - 26}" width="${w}" height="48" rx="22" fill="${me ? '#5aa7ff' : '#f6f1e8'}" stroke="${INK}" stroke-width="3"/>
+    ${txt(x, y + 6, s, 22, me ? '#fff' : INK, { weight: 800 })}</g>`;
 }
-// Chat bubble (phone message) that pops in.
-function bubble(x, y, s, t, a, me = true, w = 220) {
-  const p = seg(t, a, a + 0.35);
-  if (p <= 0) return '';
-  return `<g transform="translate(${x},${y}) scale(${back(p)}) ${fl(t, x % 7, 2)}" opacity="${p}">
-    <rect x="${-w / 2}" y="-30" width="${w}" height="56" rx="24" fill="${me ? '#5aa7ff' : '#f1ede4'}" stroke="${INK}" stroke-width="4"/>
-    ${txt(0, 8, s, 26, me ? '#fff' : INK, { weight: 800 })}</g>`;
-}
+// "SIGN n/7" tag (UI): fades in.
 function signTag(n, t, a, b) {
-  const op = Math.min(seg(t, a, a + 0.25), 1 - seg(t, b - 0.3, b));
+  const op = Math.min(seg(t, a, a + 0.3), 1 - seg(t, b - 0.3, b));
   if (op <= 0) return '';
-  return `<g opacity="${op}" transform="translate(70,70) scale(${back(seg(t, a, a + 0.4))})">
-    <rect x="0" y="-40" width="230" height="64" rx="14" fill="${P.mustard}" stroke="${INK}" stroke-width="5"/>
-    ${txt(115, 7, `SIGN ${n} / 7`, 34, INK, { weight: 900 })}</g>`;
+  return `<g opacity="${op}"><rect x="40" y="34" width="210" height="58" rx="12" fill="${P.mustard}" stroke="${INK}" stroke-width="4"/>${txt(145, 74, `SIGN ${n} / 7`, 30, INK, { weight: 900 })}</g>`;
 }
-const vign = () => `<defs><radialGradient id="vgT" cx="50%" cy="50%" r="72%"><stop offset="55%" stop-color="#000" stop-opacity="0"/><stop offset="100%" stop-color="#000" stop-opacity="0.45"/></radialGradient></defs><rect width="${W}" height="${H}" fill="url(#vgT)"/>`;
+const defs = `<defs><filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter></defs>`;
 
-// ---------------- shots ----------------
-const SHOTS = [0, 9, 15, 21, 28, 36, 44, 50];
+const SHOTS = [0, 9, 15, 28, 36, 44, 50];
+const BLUE = '#2b4a8f', RED = '#c8463b', BLACK = '#2a2530';
 
 function render(t) {
-  let s = '';
-  if (t < 9) {            // 1. Hook: the bed scene, 23:47
-    s += bg(ASSETS.ot_bed, seg(t, 0, 9), 1.0, 1.12, 420, 520);
-    s += glw(272, 572, 70, '#ffb35c', 0.18 + 0.06 * Math.sin(t * 2));            // clock glow
-    s += glw(170, 390, 120, '#ffcf8a', 0.12 + 0.03 * Math.sin(t * 5));           // lamp flicker
+  _wid = 0;
+  let s = defs;
+  if (t < 9) {            // 1. Hook: the bed scene as it is
+    s += bg(ASSETS.ot_bed);
+    s += glw(272, 572, 70, '#ffb35c', 0.16 + 0.06 * Math.sin(t * 2));     // clock glow pulse
+    s += glw(170, 390, 110, '#ffcf8a', 0.10 + 0.03 * Math.sin(t * 5));    // lamp flicker
     s += cap("It's 11:47 PM.", t, 0.6, 3.2);
-    s += cap('6 hours ago you texted "haha ok"...', t, 3.4, 6.2, 694, 30, 'haha ok');
-    s += cap('...and you still can\'t stop thinking about it.', t, 6.4, 8.9);
-  } else if (t < 15) {    // 2. Phone, "Seen", spiralling thoughts
+    s += cap('6 hours ago you texted "haha ok"...', t, 3.4, 6.2, 'haha ok');
+    s += cap("...and you still can't stop thinking about it.", t, 6.4, 8.9);
+  } else if (t < 15) {    // 2. Bedroom: Milo on the rug with his phone, thoughts pop in (UI)
     const lt = t - 9;
-    s += bg(ASSETS.loc_bedroom_desk, seg(lt, 0, 6), 1.04, 1.1);
-    s += milo2('phone', 640, 650, 320, t, 0, seg(lt, 0, 0.4));
-    s += bubble(880, 250, 'haha ok', lt, 0.5);
-    s += `<g opacity="${seg(lt, 1.1, 1.4)}">${txt(940, 300, 'Seen ✓✓', 20, '#d9d2ff', { weight: 700 })}</g>`;
-    ['did that sound rude?', 'are they mad at me?', 'why did I say that'].forEach((q, i) => {
-      s += bubble(330 + (i % 2) * 40, 190 + i * 90, q, lt, 2.0 + i * 1.0, false, q.length * 13 + 40);
-    });
-  } else if (t < 21) {    // 3. Title on the whiteboard
+    s += bg(ASSETS.loc_bedroom_desk);
+    s += milo2('phone', 800, 640, 270, t, 0, '#2a1830');
+    s += bubble(1010, 360, 'haha ok', lt, 0.4);
+    s += `<g opacity="${seg(lt, 0.9, 1.2)}">${txt(1060, 400, 'Seen ✓✓', 18, '#e8e0ff', { weight: 700 })}</g>`;
+    ['did that sound rude?', 'are they mad at me?', 'why did I say that?'].forEach((q, i) => { s += bubble(520 - i * 20, 190 + i * 64, q, lt, 1.8 + i * 1.1, false); });
+  } else if (t < 28) {    // 3–4. Whiteboard: title written on the board, Milo next to it changes poses in place
     const lt = t - 15;
-    s += bg(ASSETS.loc_whiteboard, seg(lt, 0, 6), 1.0, 1.05);
-    s += title([['WHY YOU', false], ['OVERTHINK', true], ['EVERYTHING', false]], lt, 0.3, 5.8, 690, 230, 62);
-    s += milo2('facepalm_stress', 1080, 660, 250, t, 0, seg(lt, 0.6, 1.0));
-  } else if (t < 28) {    // 4. Why: the brain thinks replaying keeps you safe
-    const lt = t - 21;
-    s += bg(ASSETS.loc_whiteboard, seg(lt, 0, 7), 1.05, 1.1);
-    s += milo2(lt < 3.6 ? 'thinking_gears' : 'presenting', 470, 655, lt < 3.6 ? 300 : 330, t, lt > 3.6 ? 1 : 0, seg(lt, 0, 0.35) + (lt > 3.6 ? 0 : 0));
-    s += title([['REPLAYING', false], ['= SAFETY?', true]], lt, 0.5, 6.8, 760, 220, 52);
-    s += cap('Your brain thinks replaying it will keep you safe.', t, 21.8, 24.6);
-    s += cap('It doesn\'t. It just drains you.', t, 24.8, 27.8, 694, 30, 'drains you');
-  } else if (t < 36) {    // 5. SIGN 1 — re-reading messages
+    s += bg(ASSETS.loc_whiteboard);
+    // board writing area: x 395..1055, y 75..435 (no movement, written on)
+    s += written('Why you', 725, 150, 58, BLACK, lt, 0.3, 0.7);
+    s += written('OVERTHINK', 725, 240, 92, BLUE, lt, 1.0, 1.0);
+    s += strokeLine('M520 262 Q725 274 930 258', 420, RED, lt, 2.0, 0.5, 7);
+    s += written('everything', 725, 320, 58, BLACK, lt, 2.4, 0.8);
+    if (lt > 6.2) {
+      s += written('replaying = safety?', 725, 400, 46, RED, lt, 6.4, 1.2);
+    }
+    const pose = lt < 4.2 ? 'facepalm_stress' : lt < 6.2 ? 'thinking_gears' : lt < 9.4 ? 'realization' : 'presenting';
+    const ph = { facepalm_stress: 200, thinking_gears: 200, realization: 205, presenting: 235 }[pose];
+    s += milo2(pose, 960, 645, ph, t, pose === 'presenting' ? 1 : 0, '#5a3a24');
+    s += cap('Your brain thinks replaying it keeps you safe.', t, 21.4, 24.4, 'keeps you safe');
+    s += cap("It doesn't. It just drains you.", t, 24.6, 27.8, 'drains you');
+  } else if (t < 36) {    // 5. SIGN 1 — re-reading the message, café
     const lt = t - 28;
-    s += bg(ASSETS.loc_cafe, seg(lt, 0, 8), 1.0, 1.08, 640, 400);
-    s += milo2('phone', 520, 655, 310, t, 0, seg(lt, 0, 0.35));
+    s += bg(ASSETS.loc_cafe);
+    s += milo2('phone', 640, 660, 230, t, 0, '#2a140c');
     s += signTag(1, lt, 0.2, 7.8);
-    ['haha ok', 'haha ok', 'haha ok'].forEach((q, i) => {
-      const a = 1.2 + i * 0.6;
-      s += bubble(800 + i * 30, 190 + i * 74, q, lt, a);
-    });
-    s += `<g opacity="${seg(lt, 3.2, 3.5)}" transform="translate(1010,470) scale(${back(seg(lt, 3.2, 3.6))})">${txt(3, 3, '× 27', 64, INK)}${txt(0, 0, '× 27', 64, P.mustard)}</g>`;
-    s += cap('You re-read the same message 27 times.', t, 29.0, 35.8, 694, 30, '27 times');
-  } else if (t < 44) {    // 6. SIGN 2 — rehearsing conversations
+    ['haha ok', 'haha ok', 'haha ok'].forEach((q, i) => { s += bubble(860 + i * 26, 210 + i * 62, q, lt, 1.0 + i * 0.5); });
+    s += `<g opacity="${seg(lt, 2.8, 3.1)}">${txt(1063, 303, '× 27', 56, INK)}${txt(1060, 300, '× 27', 56, P.mustard)}</g>`;
+    s += cap('You re-read the same message 27 times.', t, 29.0, 35.8, '27 times');
+  } else if (t < 44) {    // 6. SIGN 2 — rehearsing a conversation, subway
     const lt = t - 36;
-    s += bg(ASSETS.loc_subway, seg(lt, 0, 8), 1.0, 1.06);
-    s += milo2('talking', 480, 655, 320, t, 1, seg(lt, 0, 0.35));
+    s += bg(ASSETS.loc_subway);
+    s += milo2('talking', 600, 650, 260, t, 1, '#1c1630');
     s += signTag(2, lt, 0.2, 7.8);
-    [['"Hey, so... about yesterday"', 1.2], ['"No wait, too weird"', 3.0], ['"Hey! So, funny story..."', 4.8]].forEach(([q, a], i) => {
-      const op = Math.min(seg(lt, a, a + 0.3), i < 2 ? 1 - seg(lt, a + 1.6, a + 1.9) : 1);
-      if (op > 0) s += `<g opacity="${op}">${bubble(880, 210 + i * 40, q, lt, a, false, q.length * 13 + 40)}</g>`;
+    [['"Hey, so... about yesterday"', 1.2, 3.0], ['"No wait, that\'s weird"', 3.0, 4.8], ['"Hey! So, funny story..."', 4.8, 99]].forEach(([q, a, b]) => {
+      const op = Math.min(seg(lt, a, a + 0.25), 1 - seg(lt, b, b + 0.25));
+      if (op > 0) s += `<g opacity="${op}">${bubble(880, 250, q, lt, a, false)}</g>`;
     });
-    s += cap('You rehearse conversations that never happen.', t, 37.0, 43.8, 694, 30, 'never happen');
-  } else {                // 7. End card / teaser
+    s += cap('You rehearse conversations that never happen.', t, 37.0, 43.8, 'never happen');
+  } else {                // 7. End card: rooftop, Milo by the parapet
     const lt = t - 44;
-    s += bg(ASSETS.loc_rooftop, seg(lt, 0, 6), 1.0, 1.06);
-    s += milo2('idea', 560, 660, 300, t, 0, seg(lt, 0.2, 0.6));
-    s += title([['5 MORE SIGNS', false], ['+ HOW TO STOP', true]], lt, 0.4, 6.0, 940, 230, 54);
-    s += cap('Full video: Stop Overthinking — MiloLore', t, 45.4, 49.6, 694, 28);
+    s += bg(ASSETS.loc_rooftop);
+    s += milo2(lt < 2.6 ? 'question_think' : 'idea', 690, 625, lt < 2.6 ? 250 : 205, t, 0, '#1b1426');
+    const op = Math.min(seg(lt, 0.5, 0.9), 1 - seg(lt, 5.4, 5.9));
+    s += `<g opacity="${op}"><rect x="760" y="120" width="460" height="130" rx="16" fill="#140f1e" opacity="0.78"/>
+      ${txt(990, 175, '5 MORE SIGNS', 44, '#fff', { weight: 900 })}${txt(990, 228, '+ HOW TO STOP', 44, P.mustard, { weight: 900 })}</g>`;
+    s += cap('Full video: Stop Overthinking — MiloLore', t, 45.4, 49.6);
   }
-  s += vign();
-  const dip = SHOTS.slice(1, -1).map(c => Math.max(0, 1 - Math.abs(t - c) / 0.18)).reduce((a, b) => Math.max(a, b), 0);
+  const dip = SHOTS.slice(1, -1).map(c => Math.max(0, 1 - Math.abs(t - c) / 0.2)).reduce((a, b) => Math.max(a, b), 0);
   return sframe(s + fade(Math.max(dip * 0.9, 1 - seg(t, 0, 0.6), seg(t, 49.3, 50))), t, '#000');
 }

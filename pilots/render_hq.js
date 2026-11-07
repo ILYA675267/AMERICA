@@ -16,6 +16,8 @@ const [scene, out] = args;
   const assets = fs.existsSync(adir) ? Object.fromEntries(fs.readdirSync(adir).filter(f => /\.(png|jpe?g)$/.test(f))
     .map(f => [f.replace(/\.\w+$/, ''), `data:image/${f.endsWith('png') ? 'png' : 'jpeg'};base64,` + fs.readFileSync(path.join(adir, f)).toString('base64')])) : {};
   const code = `const ASSETS = ${JSON.stringify(assets)};\n` + ['lib.js', 'style.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8')).join('\n') + '\n' + scene.split(',').map(f => fs.readFileSync(f, 'utf8')).join('\n');
+  const fdir = path.join(__dirname, 'fonts');
+  const fontCss = fs.existsSync(fdir) ? fs.readdirSync(fdir).filter(f => f.endsWith('.woff2')).map(f => `@font-face{font-family:'${f.replace(/\.woff2$/, '')}';src:url(data:font/woff2;base64,${fs.readFileSync(path.join(fdir, f)).toString('base64')}) format('woff2');}`).join('') : '';
   const scale = opt('scale', 2), fps = opt('fps', 30), jobs = opt('jobs', 4);
   // One browser process per job (real parallelism). The page is laid out at the final pixel size with DPR 1 and the
   // 1280x720 SVG scaled up by CSS: vector-sharp, and CDP captures it ~2x faster than page.screenshot().
@@ -24,7 +26,7 @@ const [scene, out] = args;
   for (let j = 0; j < jobs; j++) {
     const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
     const p = await browser.newPage({ viewport: { width: pw, height: ph }, deviceScaleFactor: 1 });
-    await p.setContent(`<html><body style="margin:0;background:#000"><style>#s svg{width:${pw}px;height:${ph}px;display:block}</style><div id="s"></div><script>${code}</script></body></html>`);
+    await p.setContent(`<html><body style="margin:0;background:#000"><style>${fontCss}#s svg{width:${pw}px;height:${ph}px;display:block}</style><div id="s"></div><script>${code}</script></body></html>`);
     await p.evaluate(() => document.fonts.ready);
     p.cdp = await p.context().newCDPSession(p);
     browsers.push(browser); pages.push(p);

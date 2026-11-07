@@ -11,9 +11,11 @@ const path = require('path');
   const assets = fs.existsSync(adir) ? Object.fromEntries(fs.readdirSync(adir).filter(f => /\.(png|jpe?g)$/.test(f))
     .map(f => [f.replace(/\.\w+$/, ''), `data:image/${f.endsWith('png') ? 'png' : 'jpeg'};base64,` + fs.readFileSync(path.join(adir, f)).toString('base64')])) : {};
   const code = `const ASSETS = ${JSON.stringify(assets)};\n` + ['lib.js', 'style.js'].map(f => fs.readFileSync(path.join(__dirname, f), 'utf8')).join('\n') + '\n' + fs.readFileSync(scene, 'utf8');
+  const fdir = path.join(__dirname, 'fonts');
+  const fontCss = fs.existsSync(fdir) ? fs.readdirSync(fdir).filter(f => f.endsWith('.woff2')).map(f => `@font-face{font-family:'${f.replace(/\.woff2$/, '')}';src:url(data:font/woff2;base64,${fs.readFileSync(path.join(fdir, f)).toString('base64')}) format('woff2');}`).join('') : '';
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
   const page = await browser.newPage({ viewport: { width: 1280, height: 720 }, deviceScaleFactor: Number(process.env.SCALE || 1) });
-  await page.setContent(`<html><body style="margin:0;background:#000"><div id="s"></div><script>${code}</script></body></html>`);
+  await page.setContent(`<html><body style="margin:0;background:#000"><style>${fontCss}</style><div id="s"></div><script>${code}</script></body></html>`);
   await page.evaluate(() => document.fonts.ready);
   const times = only ? only.split(',').map(Number) : [...Array(300).keys()].map(i => i / 30);
   for (let i = 0; i < times.length; i++) {
