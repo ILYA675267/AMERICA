@@ -74,17 +74,17 @@ function choices(op, t) {
 // ---------- scene geometry: where Milo stands (feet x, y), head size, shadow tint ----------
 const LOC = {
   bed: { img: 'ot_bed' },
-  bedroom: { img: 'loc_bedroom_desk', x: 800, y: 640, u: 132, sh: '#2a1830' },
+  bedroom: { img: 'loc_bedroom_desk', x: 800, y: 640, u: 132, sh: '#2a1830', seat: { x: 400, y: 498, u: 120, sh: '#3a2840' } },
   board: { img: 'loc_whiteboard', x: 960, y: 645, u: 112, sh: '#5a3a24' },
   cafe: { img: 'loc_cafe', x: 640, y: 662, u: 112, sh: '#2a140c' },
   subway: { img: 'loc_subway', x: 600, y: 652, u: 128, sh: '#1c1630' },
   roofnight: { img: 'loc_rooftop', x: 690, y: 626, u: 118, sh: '#1b1426' },
   study: { img: 'loc_study_room', x: 640, y: 665, u: 128, sh: '#5a3a24' },
-  therapy: { img: 'loc_therapist_office_sunset', x: 830, y: 706, u: 116, sh: '#3a2418' },
-  park: { img: 'loc_park_sunset_bench', x: 900, y: 626, u: 112, sh: '#3a2a2a' },
+  therapy: { img: 'loc_therapist_office_sunset', x: 830, y: 706, u: 116, sh: '#3a2418', seat: { x: 1000, y: 524, u: 104, sh: '#6a4a30' } },
+  park: { img: 'loc_park_sunset_bench', x: 900, y: 626, u: 112, sh: '#3a2a2a', seat: { x: 630, y: 452, u: 100, sh: '#3a2a20' } },
   mountain: { img: 'loc_mountain_overlook_bench', x: 760, y: 652, u: 112, sh: '#2a1f2a' },
-  fire: { img: 'loc_cozy_fireplace_rain', x: 900, y: 656, u: 112, sh: '#2a1a20' },
-  library: { img: 'loc_reading_library_window', x: 520, y: 702, u: 112, sh: '#2a1810' },
+  fire: { img: 'loc_cozy_fireplace_rain', x: 900, y: 656, u: 112, sh: '#2a1a20', seat: { x: 230, y: 470, u: 106, sh: '#4a3030' } },
+  library: { img: 'loc_reading_library_window', x: 520, y: 702, u: 112, sh: '#2a1810', seat: { x: 165, y: 505, u: 104, sh: '#4a3020' } },
   roofsun: { img: 'loc_rooftop_sunset', x: 560, y: 646, u: 128, sh: '#4a3530' },
 };
 const BLUE = '#2b4a8f', RED = '#c8463b', BLACK = '#2a2530', GREEN = '#2f7d4f';
@@ -104,13 +104,13 @@ const SHOTS = [
     ["If this sounds familiar, you're not alone.", { pose: 'question_think' }],
   ] },
   { loc: 'board', beats: [
-    ['This is overthinking.', { pose: 'thinking_gears', write: [['Why you', 725, 150, 58, BLACK], ['OVERTHINK', 725, 240, 92, BLUE]] }],
-    ["And today we'll see why it happens,", { pose: 'thinking_gears', write: [['everything', 725, 320, 58, BLACK]] }],
+    ['This is overthinking.', { pose: 'thinking_idea', write: [['Why you', 725, 150, 58, BLACK], ['OVERTHINK', 725, 240, 92, BLUE]] }],
+    ["And today we'll see why it happens,", { pose: 'thinking_idea', write: [['everything', 725, 320, 58, BLACK]] }],
     ['the 7 signs you do it,', { pose: 'presenting', talk: 1, hl: '7 signs', write: [['7 signs', 600, 400, 46, RED]] }],
     ['and 5 simple ways to stop.', { pose: 'presenting', talk: 1, hl: '5 simple ways', write: [['5 fixes', 850, 400, 46, GREEN]] }],
   ] },
   { loc: 'study', tagS: 'WHAT IS IT?', beats: [
-    ['Overthinking means replaying the same thoughts again and again,', { pose: 'thinking_gears' }],
+    ['Overthinking means replaying the same thoughts again and again,', { pose: 'thinking_idea' }],
     ['without getting any closer to an answer.', { pose: 'shrug', hl: 'without' }],
     ['It feels like solving a problem.', { pose: 'thinking_idea' }],
     ["But it's really just running in circles.", { pose: 'tired_sigh', hl: 'running in circles' }],
@@ -120,8 +120,8 @@ const SHOTS = [
     ['Your brain is built to spot danger.', { pose: 'presenting', talk: 1, write: [['spot danger -> stay safe', 725, 250, 46, BLACK]] }],
     ['A long time ago, danger meant a lion in the grass.', { pose: 'presenting', talk: 1 }],
     ["Today it's an unread message, or a weird look from a coworker.", { pose: 'surprised', write: [['today: "Seen" , a look', 725, 330, 44, RED]] }],
-    ['Your brain treats them the same way.', { pose: 'realization' }],
-    ['It replays them, hoping to keep you safe.', { pose: 'thinking_gears', write: [['replay = safety?', 725, 410, 50, RED]] }],
+    ['Your brain treats them the same way.', { pose: 'idea' }],
+    ['It replays them, hoping to keep you safe.', { pose: 'thinking_idea', write: [['replay = safety?', 725, 410, 50, RED]] }],
     ["But it doesn't make you safer. It just makes you tired.", { pose: 'tired_sigh', hl: 'tired' }],
   ] },
   { loc: 'board', beats: [
@@ -139,50 +139,50 @@ const SHOTS = [
     ['What you will say, what they might answer,', { pose: 'talking', talk: 1, ui: 'r2' }],
     ['and what you will say back. Ten different versions.', { pose: 'shrug', ui: 'r3' }],
   ] },
-  { loc: 'therapy', tagS: 'SIGN 3 / 7', beats: [
-    ['Sign three: you keep wondering what people think of you.', { pose: 'question_think', hl: 'what people think' }],
+  { loc: 'therapy', sit: 1, tagS: 'SIGN 3 / 7', beats: [
+    ['Sign three: you keep wondering what people think of you.', { pose: 'sit_think', hl: 'what people think' }],
     ['One small mistake, and you replay it for days.', { pose: 'facepalm_stress' }],
-    ['Even though most people forgot about it in five minutes.', { pose: 'shrug', hl: 'five minutes' }],
+    ['Even though most people forgot about it in five minutes.', { pose: 'sit_think', hl: 'five minutes' }],
   ] },
-  { loc: 'bedroom', tagS: 'SIGN 4 / 7', beats: [
-    ["Sign four: you can't make small decisions.", { pose: 'question_think', ui: 'abc', hl: 'small decisions' }],
-    ['What to eat. What to wear. Which movie to watch.', { pose: 'shrug', ui: 'abc' }],
+  { loc: 'bedroom', sit: 1, tagS: 'SIGN 4 / 7', beats: [
+    ["Sign four: you can't make small decisions.", { pose: 'sit_think', ui: 'abc', hl: 'small decisions' }],
+    ['What to eat. What to wear. Which movie to watch.', { pose: 'sit_think', ui: 'abc' }],
     ['Every choice feels like a test you could fail.', { pose: 'facepalm_stress', hl: 'a test' }],
   ] },
   { loc: 'roofnight', tagS: 'SIGN 5 / 7', beats: [
     ['Sign five: you always expect the worst.', { pose: 'surprised', hl: 'the worst' }],
     ['A late reply means they hate you.', { pose: 'phone' }],
     ['A short email from your boss means you are getting fired.', { pose: 'facepalm_stress' }],
-    ['Your mind writes the scariest story first.', { pose: 'thinking_gears', hl: 'scariest story' }],
+    ['Your mind writes the scariest story first.', { pose: 'thinking_idea', hl: 'scariest story' }],
   ] },
   { loc: 'bed', tagS: 'SIGN 6 / 7', beats: [
     ["Sign six: you can't fall asleep.", { hl: "can't fall asleep" }],
     ['Your body is tired, but your mind starts a meeting', {}],
     ['about everything that happened today, and everything that might happen tomorrow.', {}],
   ] },
-  { loc: 'fire', tagS: 'SIGN 7 / 7', beats: [
-    ['Sign seven: you feel exhausted, even when you did nothing.', { pose: 'tired_sigh', hl: 'exhausted' }],
+  { loc: 'fire', sit: 1, tagS: 'SIGN 7 / 7', beats: [
+    ['Sign seven: you feel exhausted, even when you did nothing.', { pose: 'facepalm_stress', hl: 'exhausted' }],
     ['Because thinking all day is work too.', { pose: 'sad_hug_knees' }],
     ['Your brain ran a marathon, and you never left the couch.', { pose: 'sad_hug_knees', hl: 'a marathon' }],
   ] },
   { loc: 'board', beats: [
     ['If you saw yourself in three or more of these, take a breath.', { pose: 'meditating', write: [['3+ signs?', 725, 200, 80, RED]] }],
     ["It doesn't mean something is wrong with you.", { pose: 'meditating' }],
-    ['It means your brain is trying too hard to protect you.', { pose: 'realization', write: [['your brain is trying to help', 725, 300, 44, BLACK]] }],
+    ['It means your brain is trying too hard to protect you.', { pose: 'idea', write: [['your brain is trying to help', 725, 300, 44, BLACK]] }],
     ['And here is how to calm it down.', { pose: 'confident', write: [['5 FIXES', 725, 400, 70, GREEN]] }],
   ] },
   // ----- 5 fixes -----
   { loc: 'study', tagS: 'FIX 1 / 5', tagC: '#7fd18a', beats: [
     ['Fix one: give your worries a time slot.', { pose: 'idea', ui: 'timer', hl: 'a time slot' }],
-    ['Set a timer for five minutes, and let yourself worry about everything.', { pose: 'thinking_gears', ui: 'timer' }],
+    ['Set a timer for five minutes, and let yourself worry about everything.', { pose: 'thinking_idea', ui: 'timer' }],
     ['When the timer ends, the worry time is over.', { pose: 'confident', ui: 'timer0' }],
     ['If a thought comes back later, tell it: not now, see you tomorrow.', { pose: 'talking', talk: 1, hl: 'not now' }],
   ] },
-  { loc: 'library', tagS: 'FIX 2 / 5', tagC: '#7fd18a', beats: [
+  { loc: 'library', sit: 1, tagS: 'FIX 2 / 5', tagC: '#7fd18a', beats: [
     ['Fix two: write it down.', { pose: 'reading_happy', hl: 'write it down' }],
-    ['Thoughts in your head feel huge and endless.', { pose: 'thinking_gears' }],
+    ['Thoughts in your head feel huge and endless.', { pose: 'sit_think' }],
     ['On paper, they become just a few lines.', { pose: 'reading_happy', ui: 'note' }],
-    ['And small enough to deal with.', { pose: 'realization', ui: 'note' }],
+    ['And small enough to deal with.', { pose: 'reading_happy', ui: 'note' }],
   ] },
   { loc: 'board', tagS: 'FIX 3 / 5', tagC: '#7fd18a', beats: [
     ['Fix three: ask one simple question.', { pose: 'question_think', hl: 'one simple question' }],
@@ -193,14 +193,16 @@ const SHOTS = [
   { loc: 'park', tagS: 'FIX 4 / 5', tagC: '#7fd18a', beats: [
     ['Fix four: move your body.', { pose: 'walking', hl: 'move your body' }],
     ['A short walk, without headphones.', { pose: 'walking' }],
+  ] },
+  { loc: 'park', sit: 1, beats: [
     ['When your body moves, your mind slows down.', { pose: 'meditating', hl: 'slows down' }],
-    ['Ten minutes outside can quiet more thoughts than an hour in bed.', { pose: 'excited_wave' }],
+    ['Ten minutes outside can quiet more thoughts than an hour in bed.', { pose: 'sit_think' }],
   ] },
   { loc: 'mountain', tagS: 'FIX 5 / 5', tagC: '#7fd18a', beats: [
     ['Fix five: say it out loud.', { pose: 'talking', talk: 1, hl: 'say it out loud' }],
     ['Tell a friend, or just say it to yourself.', { pose: 'talking', talk: 1 }],
     ['A thought that sounded terrifying in your head', { pose: 'surprised' }],
-    ['often sounds a lot smaller once you hear it.', { pose: 'realization', hl: 'a lot smaller' }],
+    ['often sounds a lot smaller once you hear it.', { pose: 'idea', hl: 'a lot smaller' }],
   ] },
   { loc: 'board', beats: [
     ["Let's recap.", { pose: 'presenting', talk: 1, write: [['1. worry slot (5 min)', 725, 130, 44, BLUE]] }],
@@ -275,7 +277,8 @@ function render(t) {
   if (L.x !== undefined) {
     let pose = 'question_think', talk = 0;
     for (let i = 0; i <= bi; i++) if (beats[i].o.pose) { pose = beats[i].o.pose; talk = beats[i].o.talk || 0; }
-    s += milo2(pose, L.x, L.y, L.u, t, talk, L.sh);
+    const st = sh.sit && L.seat ? L.seat : L;   // whole shot either seated on furniture or standing on the floor
+    s += milo2(pose, st.x, st.y, st.u, t, talk, st.sh);
   }
   // UI overlays
   if (o.ui) s += ui(o.ui, t, beat, t - beat.a, seg(t, beat.a + 0.1, beat.a + 0.35));
