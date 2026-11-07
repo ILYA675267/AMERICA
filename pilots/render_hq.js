@@ -32,7 +32,7 @@ const [scene, out] = args;
   const dur = await pages[0].evaluate(() => (typeof DUR !== 'undefined' ? DUR : 10));
   const from = opt('from', 0), to = opt('to', dur);
   const n = Math.round((to - from) * fps);
-  const ff = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'image2pipe', '-framerate', String(fps), '-i', '-',
+  const ff = spawn('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'image2pipe', '-c:v', 'png', '-framerate', String(fps), '-i', '-',
     '-c:v', 'libx264', '-preset', 'slow', '-crf', '14', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out], { stdio: ['pipe', 'inherit', 'inherit'] });
   // Render in batches of `jobs` frames in parallel, write them to ffmpeg in order.
   const t0 = Date.now();
@@ -51,5 +51,5 @@ const [scene, out] = args;
   ff.stdin.end();
   await new Promise(r => ff.on('close', r));
   await Promise.all(browsers.map(b => b.close()));
-  process.stderr.write(`\ndone: ${out}\n`);
+  process.stderr.write(`\ndone: ${out} (${n} frames sent)\n`);
 })();
